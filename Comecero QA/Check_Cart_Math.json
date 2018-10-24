@@ -1,0 +1,344 @@
+{
+  "info": {
+    "_postman_id": "e643c24e-e940-4617-9837-ed98d62e39cc",
+    "name": "Check Cart Math",
+    "description": "- This set of tests expects you to use the [Customer Data Simple](https://drive.google.com/open?id=1JaEwUMvVICe29V0leLKcGH6m7Kf2lQMQ) data collection in the runner.\n- This set of tests expects you to be using the Base Account.\n\nTest carts with different tax, pricing, promotion and currency scenarios to ensure that the amounts are calculated correctly. In the testing, it also uses a moderate amount of promotional scenarios. Note that the testing for promotions in this suite is not extensive but does provide a base-level of coverage. ",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "674534ff-221e-4459-8714-8d1b87a07868",
+      "name": "No Shipping, No Discount",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "fe95dcfa-9964-46cb-a48f-65b5dfb8b720",
+            "type": "text/javascript",
+            "exec": [
+              "// Load the standard tests",
+              "let utils = eval(globals.loadUtils);",
+              "",
+              "utils.checkCartTotals();",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+        },
+        "url": "https://{{host}}/api/v1/carts"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "e9b0954c-bfcd-4084-9166-9e9bd683fa5e",
+      "name": "Yes Shipping, No Discount",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "396fd770-ce7c-40b7-bf49-1f3d229206e0",
+            "type": "text/javascript",
+            "exec": [
+              "// Load the standard tests",
+              "let utils = eval(globals.loadUtils);",
+              "",
+              "utils.checkCartTotals();"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":3\r\n      },   \t\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":2\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/carts"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "3683e92f-cb48-4d76-9af2-de32d5531f92",
+      "name": "No Shipping, Yes Discount (% of Order)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a7b9b543-3cec-4df6-a816-5adc30501670",
+            "type": "text/javascript",
+            "exec": [
+              "// Load the standard tests",
+              "let utils = eval(globals.loadUtils);",
+              "",
+              "utils.checkCartTotals();"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"currency\": \"USD\",\r\n  \"promotion_code\": \"half-off-order\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/carts"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "12963260-b3dc-43af-a1e1-92474ef3d1fc",
+      "name": "No Shipping, Yes Discount (% of Product)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "140053dc-51a6-4463-9008-ee41f108eb54",
+            "type": "text/javascript",
+            "exec": [
+              "// Load the standard tests",
+              "let utils = eval(globals.loadUtils);",
+              "",
+              "utils.checkCartTotals();"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"currency\": \"USD\",\r\n  \"promotion_code\": \"half-off-items\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/carts"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "f724c533-6b5d-4b38-becf-0d474c79053c",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "0dd8e91d-493f-4c2f-98d6-af4a25976960",
+        "type": "text/javascript",
+        "exec": [
+          "pm.globals.set(\"loadUtils\", function loadUtils() {",
+          "",
+          "    let utils = {};",
+          "",
+          "    utils.checkCartTotals = function () {",
+          "",
+          "        var _ = require('lodash');",
+          "",
+          "        var data = JSON.parse(responseBody);",
+          "",
+          "        tests[\"Response status code 200 or 201\"] = responseCode.code === 201 || responseCode.code === 200;",
+          "",
+          "        if (responseCode.code !== 201 && responseCode.code !== 200) {",
+          "            tests[\"Due to status code response, additional tests for this scenario will not run.\"] = false;",
+          "            return;",
+          "        }",
+          "",
+          "        // Log the customer scenario for easy reference.",
+          "        tests[\"Scenario: Country: \" + data.customer.billing_address.country + \", Tax inclusive: \" + data.tax_inclusive + \", Discount on gross: \" + data.discount_on_gross + \", Shipping: \" + data.shipping + \", Discounts: \" + data.total_discounts] = true;",
+          "",
+          "        function checkTotal(subtotal, shipping, tax, discount, total, allowRoundingError) {",
+          "",
+          "            var calc = _.round(subtotal + shipping + tax - discount, 2);",
+          "            if (calc === total)",
+          "                return true;",
+          "",
+          "            // Check if you are within the margin of error on rounding.",
+          "            if (allowRoundingError) {",
+          "                if (calc + 0.01 === total || calc - 0.01 === total)",
+          "                    return true;",
+          "            }",
+          "",
+          "            return false;",
+          "        }",
+          "",
+          "",
+          "        function checkItemTotal(data, item) {",
+          "            tests[\"Check item subtotal: \" + item.item_id] = _.round(item.price * item.quantity, 2) === item.subtotal;",
+          "            tests[\"Check item original subtotal: \" + item.item_id] = item.price_original * item.quantity === item.subtotal_original;",
+          "            tests[\"Check item total: \" + item.item_id] = checkTotal(item.subtotal, 0, item.tax, 0, item.total);",
+          "",
+          "            tests[\"Check item settlement subtotal: \" + item.item_id] = _.round(item.settlement_price * item.quantity, 2) === item.settlement_subtotal;",
+          "            tests[\"Check item original subtotal: \" + item.item_id] = _.round(item.settlement_price_original * item.quantity, 2) === item.settlement_subtotal_original;",
+          "            tests[\"Check item total: \" + item.item_id] = checkTotal(item.settlement_subtotal, 0, item.settlement_tax, 0, item.settlement_total);",
+          "",
+          "            if (data.discount_on_gross) {",
+          "                tests[\"Check item total (cross check discount): \" + item.item_id] = checkTotal(item.subtotal_original, 0, item.tax_original, item.discount, item.total);",
+          "                tests[\"Check item total (cross check discount): \" + item.item_id] = checkTotal(item.settlement_subtotal_original, 0, item.settlement_tax_original, item.settlement_discount, item.settlement_total);",
+          "            } else {",
+          "                tests[\"Check item total (cross check discount): \" + item.item_id] = checkTotal(item.subtotal_original, 0, item.tax, item.discount, item.total);",
+          "                tests[\"Check item total (cross check discount): \" + item.item_id] = checkTotal(item.settlement_subtotal_original, 0, item.settlement_tax, item.settlement_discount, item.settlement_total);",
+          "            }",
+          "        }",
+          "",
+          "        function compareAmounts(data) {",
+          "            if (data.currency == data.settlement_currency) {",
+          "                tests[\"Compare settlement subtotal\"] = data.subtotal == data.settlement_subtotal;",
+          "                tests[\"Compare settlement subtotal original\"] = data.subtotal_original == data.settlement_subtotal_original;",
+          "                tests[\"Compare shipping subtotal\"] = data.shipping == data.settlement_shipping;",
+          "                tests[\"Compare shipping subtotal original\"] = data.shipping_original == data.settlement_shipping_original;",
+          "                tests[\"Compare settlement tax\"] = data.tax == data.settlement_tax;",
+          "                tests[\"Compare settlement tax original\"] = data.tax_original == data.settlement_tax_original;",
+          "                tests[\"Compare settlement discount\"] = data.discount == data.settlement_discount;",
+          "                tests[\"Compare settlement total\"] = data.total == data.settlement_total;",
+          "                tests[\"Compare settlement total original\"] = data.total_original == data.settlement_total_original;",
+          "            }",
+          "        }",
+          "",
+          "        function compareItemAmounts(data, item) {",
+          "            if (data.currency == data.settlement_currency) {",
+          "                tests[\"Compare settlement price: \" + item.item_id] = item.price == item.settlement_price;",
+          "                tests[\"Compare settlement price original: \" + item.item_id] = item.price_original == item.settlement_price_original;",
+          "                tests[\"Compare settlement subtotal: \" + item.item_id] = item.subtotal == item.settlement_subtotal;",
+          "                tests[\"Compare settlement subtotal original: \" + item.item_id] = item.subtotal_original == item.settlement_subtotal_original;",
+          "                tests[\"Compare settlement tax: \" + item.item_id] = item.tax == item.settlement_tax;",
+          "                tests[\"Compare settlement tax original: \" + item.item_id] = item.tax_original == item.settlement_tax_original;",
+          "                tests[\"Compare settlement discount: \" + item.item_id] = item.discount == item.settlement_discount;",
+          "                tests[\"Compare settlement total: \" + item.item_id] = item.total == item.settlement_total;",
+          "                tests[\"Compare settlement total original: \" + item.item_id] = item.total_original == item.settlement_total_original;",
+          "            }",
+          "        }",
+          "",
+          "        // Check the cart amounts.",
+          "        if (data.discount_on_gross) {",
+          "",
+          "            // The discount includes tax so we have to split the discount into base and tax amounts.",
+          "            var taxRate = 0;",
+          "            var discountNet = 0;",
+          "            var settlementDiscountNet = 0;",
+          "",
+          "            if (data.tax && data.subtotal && data.discount) {",
+          "                taxRate = data.tax / (data.total - data.tax);",
+          "                discountNet = _.round(data.discount / (1 + taxRate), 2);",
+          "                settlementDiscountNet = _.round(data.settlement_discount / (1 + taxRate), 2);",
+          "            }",
+          "",
+          "            tests[\"Check cart total\"] = checkTotal(data.subtotal, data.shipping, data.tax, discountNet, data.total, true);",
+          "            tests[\"Check cart settlement total\"] = checkTotal(data.settlement_subtotal, data.settlement_shipping, data.settlement_tax, settlementDiscountNet, data.settlement_total, true);",
+          "",
+          "        } else {",
+          "            tests[\"Check cart total\"] = checkTotal(data.subtotal, data.shipping, data.tax, data.discount, data.total);",
+          "            tests[\"Check cart settlement total\"] = checkTotal(data.settlement_subtotal, data.settlement_shipping, data.settlement_tax, data.settlement_discount, data.settlement_total);",
+          "        }",
+          "",
+          "        // Check original amounts",
+          "        tests[\"Check cart original total\"] = checkTotal(data.subtotal_original, data.shipping_original, data.tax_original, 0, data.total_original);",
+          "        tests[\"Check cart original settlement total\"] = checkTotal(data.settlement_subtotal_original, data.settlement_shipping_original, data.settlement_tax_original, 0, data.settlement_total_original);",
+          "",
+          "        if (data.tax_inclusive && data.discount_on_gross) {",
+          "            tests[\"Check cart original total (cross check discount)\"] = checkTotal(data.subtotal_original, data.shipping_original, data.tax_original, data.total_discounts, data.total);",
+          "            tests[\"Check cart original settlement total (cross check discount)\"] = checkTotal(data.settlement_subtotal_original, data.settlement_shipping_original, data.settlement_tax_original, data.settlement_total_discounts, data.settlement_total);",
+          "        } else {",
+          "            tests[\"Check cart original total (cross check discount)\"] = checkTotal(data.subtotal_original, data.shipping_original, data.tax, data.total_discounts, data.total);",
+          "            tests[\"Check cart original settlement total (cross check discount)\"] = checkTotal(data.settlement_subtotal_original, data.settlement_shipping_original, data.settlement_tax, data.settlement_total_discounts, data.settlement_total);",
+          "        }",
+          "",
+          "        // Check the shipping item",
+          "        if (data.shipping_item) {",
+          "            tests[\"Has shipping item\"] = 0 === 0; // This is just to log the scenario to screen",
+          "            checkItemTotal(data, data.shipping_item);",
+          "        } else {",
+          "            tests[\"No shipping item\"] = 0 === 0; // This is just to log the scenario to screen",
+          "        }",
+          "",
+          "        // Check the items",
+          "        _.each(data.items, function (item) {",
+          "            checkItemTotal(data, item);",
+          "        });",
+          "",
+          "        // If currency and settlement currency match, make sure the values match.",
+          "        compareAmounts(data);",
+          "",
+          "        // Compare amounts for the shipping item",
+          "        if (data.shipping_item) {",
+          "            compareItemAmounts(data, data.shipping_item);",
+          "        }",
+          "",
+          "        // Compare amounts for the items",
+          "        _.each(data.items, function (item) {",
+          "            compareItemAmounts(data, item);",
+          "        });",
+          "",
+          "    };",
+          "",
+          "    return utils;",
+          "",
+          "} + '; loadUtils();');",
+          ""
+        ]
+      }
+    }
+  ]
+}
