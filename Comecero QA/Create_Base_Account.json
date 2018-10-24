@@ -1,0 +1,1497 @@
+{
+  "info": {
+    "_postman_id": "f72ca000-2c35-4315-84a4-702c5e71dfcf",
+    "name": "Create Base Account",
+    "description": "Creates a base account fixture with a set of configurations that stands as the basis for automated QA test scenarios.\n\n- This set of tests expects you to use the [Create Base Account](https://drive.google.com/open?id=1EXbdwP5IWnOir0zt_kBPZuvEqMyq4Uqr) data collection in the runner.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "523c2f88-50e3-44a5-bd8d-b85a40007b1b",
+      "name": "Create Account",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "8ee3046c-bfb9-4d26-ba57-9db1e55ac766",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"account_id\", data.account_id);",
+              "pm.environment.set(\"token\", data.token);",
+              "tests[\"Account ID: \" + data.account_id] = true;",
+              "tests[\"Account trusted live token: \" + data.token] = true;"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"company_name\": \"My Company, Inc\",\r\n  \"name\": \"John Clements\",\r\n  \"email\": \"{{email}}\",\r\n  \"website\": \"http://www.example.com\",\r\n  \"phone\": \"888-282-2558\",\r\n  \"address_1\": \"7119 W. Main St.\",\r\n  \"address_2\": \"Suite 100\",\r\n  \"city\": \"Los Angeles\",\r\n  \"state_prov\": \"CA\",\r\n  \"postal_code\": \"90071\",\r\n  \"country\": \"US\",\r\n  \"user_id\": \"jclements\",\r\n  \"password\": \"myp@ssw0rd\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/accounts"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "434d5f18-cecf-4983-89ee-beccbfbdb910",
+      "name": "Create Secret Test Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "5d5079f9-0ff7-446c-8af5-dc2751d4ae36",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"live_token\", pm.environment.get(\"token\"));",
+              "pm.environment.set(\"token\", data.token);",
+              "tests[\"Account secret test token: \" + data.token] = true;"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"comments\": \"Created during API test run\",\n  \"permissions\": [\n    {\n      \"resource\": \"*\",\n      \"methods\": [\n        \"*\"\n      ],\n      \"allow\": true\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "https://{{host}}/api/v1/auths/secret?test=true",
+          "protocol": "https",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "auths",
+            "secret"
+          ],
+          "query": [
+            {
+              "key": "test",
+              "value": "true",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "c08d6380-e05a-4573-9944-c0ce1c6a02a9",
+      "name": "Create Digital Product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "e172717b-cf26-4583-850a-f8f47ba6ba58",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"digital_product_id\", data.product_id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"product_id\": \"digital.test\",\r\n    \"name\": \"ABC Web Analyzer\",\r\n    \"description\": \"A web analytics product to perform advanced analysis of server log files.\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 10,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 8,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "edd8b2ae-f6d4-437d-bab4-04bdaaaf27aa",
+      "name": "Create Digital Product w/ Volume Prices",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "70f6e6a7-c2f6-4b2c-b814-004be89eef78",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"product_id\": \"digital-vol.test\",\r\n    \"name\": \"PDF Viewer Pro\",\r\n    \"description\": \"A web analytics product to perform advanced analysis of server log files.\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 15,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 14,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n   \"volume_prices\":[\r\n      {\r\n         \"low\":2,\r\n         \"prices\":[\r\n            {\r\n               \"price\":10,\r\n               \"currency\":\"USD\"\r\n            },\r\n            {\r\n               \"price\":9,\r\n               \"currency\":\"EUR\"\r\n            }            \r\n         ]\r\n      },\r\n      {\r\n         \"low\":10,\r\n         \"prices\":[\r\n            {\r\n               \"price\":5,\r\n               \"currency\":\"USD\"\r\n            },\r\n            {\r\n               \"price\":4,\r\n               \"currency\":\"EUR\"\r\n            } \r\n         ]\r\n      },\r\n      {\r\n         \"low\":20,\r\n         \"prices\":[\r\n            {\r\n               \"price\":3,\r\n               \"currency\":\"USD\"\r\n            },\r\n            {\r\n               \"price\":2,\r\n               \"currency\":\"EUR\"\r\n            } \r\n         ]\r\n      }\r\n   ],    \r\n    \"active\": true\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "f7d0098d-c845-4c14-8566-eff12c7030c5",
+      "name": "Create Live Digital Product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "07ec8d56-f533-4d70-addb-81aa4731cb17",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{live_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"product_id\": \"digital\",\r\n    \"name\": \"ABC Web Analyzer\",\r\n    \"description\": \"A web analytics product to perform advanced analysis of server log files.\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 10,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 8,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "4b146dfd-2267-4024-86af-7ea7c9160ddb",
+      "name": "Create Digital Subscription Product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "20ac27c1-c11f-40a4-a062-c782af218ff6",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"digital_subscription_product_id\", data.product_id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"product_id\": \"digital-sub.test\",\t\r\n    \"name\": \"Monster AV\",\r\n    \"description\": \"An incredibly powerful anti-virus solution for PC and Mac.\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 20,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 18,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "d8cd4370-e6a4-4b14-acd5-1bd62ae8fd48",
+      "name": "Create Physical Product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a574196a-d93b-49ec-8a9a-7023115621df",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"physical_product_id\", data.product_id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"product_id\": \"physical.test\",\t\r\n    \"name\": \"Stapler\",\r\n    \"description\": \"Performs advanced operations such as stapling stuff together.\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 30,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 28,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "ba34acc5-1fb9-4410-b6e0-b05c4abbe513",
+      "name": "Create Physical Product - 2",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "e6cb5c00-ad5e-4140-83a9-7faf1f96088f",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"product_id\": \"physical-2.test\",\t\r\n    \"name\": \"Paper Clips\",\r\n    \"description\": \"Clips papers together\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 18,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 16,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "8a953dcd-9669-4198-83a2-d3e8114ce3fc",
+      "name": "Create Physical Subscription Product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a01e76b1-3b85-4e32-a1ca-e199be29aabd",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"physical_subscription_product_id\", data.product_id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"product_id\": \"physical-sub.test\",\t\r\n    \"name\": \"Flower of the Month\",\r\n    \"description\": \"Get a flower delivered to your mailbox. Somtimes fresh, sometimes dead, but always on time.\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 40,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 38,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "5bddb86a-f927-4f87-92b1-219b645a7d3c",
+      "name": "Create Service Product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a2a26b93-d9af-4f8d-bded-16fa2ed846b1",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"service_product_id\", data.product_id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"product_id\": \"service.test\",\t\r\n    \"name\": \"Saasy Service\",\r\n    \"description\": \"The central management platform for your entire digital life.\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 50,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 48,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "e90cd495-7bd4-42e9-b0eb-c8cd2be9b36f",
+      "name": "Create Hourly Subscription Plan",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "299c1328-7fdf-47a8-a7d0-7a1d6f93d45e",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"hourly_subscription_plan_id\", data.subscription_plan_id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"name\":\"Hourly Subscription\",\r\n   \"billing_interval\": 1,\r\n   \"billing_interval_unit\": \"hour\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/subscription_plans"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "4031356d-4080-445e-a1df-6347a43a3b1e",
+      "name": "Create Hourly Trial Subscription Plan",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f67ed817-32cf-4e35-acfc-eacc31f74459",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"hourly_trial_subscription_plan_id\", data.subscription_plan_id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"name\":\"Hourly Subscription with Trial\",\r\n   \"billing_interval\": 1,\r\n   \"billing_interval_unit\": \"hour\",\r\n   \"total_billings\": null,\r\n   \"trial_interval\": 1,\r\n   \"trial_interval_unit\": \"hour\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/subscription_plans"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "60a74d93-209b-46e4-84a2-39a0ebddd156",
+      "name": "Assign Hourly Subscription",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "1306c13c-9f89-4846-b015-8dc4e649617e",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var data = JSON.parse(responseBody);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"subscription_plan_id\": \"{{hourly_subscription_plan_id}}\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products/{{digital_subscription_product_id}}"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "ba846d37-4748-41fa-814c-0be0be8ccf08",
+      "name": "Assign Hourly Trial Subscription",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "989c03aa-4a47-4ef6-86b4-5544faf24a58",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var data = JSON.parse(responseBody);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"subscription_plan_id\": \"{{hourly_trial_subscription_plan_id}}\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products/{{physical_subscription_product_id}}"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "5fbcd74e-801b-40a7-af0a-7a76de4ca785",
+      "name": "Create 5 Minute Subscription Plan",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "ec320aec-60a1-416a-8184-2ebe91db1f38",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"name\":\"5 Minute Subscription\",\r\n   \"billing_interval\":\"5\",\r\n   \"billing_interval_unit\":\"minute\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/subscription_plans",
+        "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "8d4609d9-bea6-48fb-baa5-220577e8d433",
+      "name": "Create 5 Minute Subscription Plan w/ Trial",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "ec320aec-60a1-416a-8184-2ebe91db1f38",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"name\":\"5 Minute Subscription with Trial\",\r\n   \"trial_interval\": 5,\r\n   \"trial_interval_unit\": \"minute\",\r\n   \"billing_interval\": 5,\r\n   \"billing_interval_unit\":\"minute\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/subscription_plans",
+        "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "f5615ed9-e134-480a-8086-fd5bb300f9e9",
+      "name": "Set Tax Settings",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f17dbf91-4d47-47d8-a8b5-0fff1583f942",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"tax_inclusive_countries\":[\r\n      \"EU\",\r\n      \"CA\"\r\n   ],\r\n   \"gross_discount_countries\":[\r\n      \"EU\"\r\n   ],\r\n   \"rules\":[\r\n      {\r\n         \"country\":\"US\",\r\n         \"state_prov\":\"UT\",\r\n         \"location_postal_code\":\"84050\",\r\n         \"rate\":null,\r\n         \"tax_code\":null\r\n      },   \t\r\n      {\r\n         \"country\":\"US\",\r\n         \"state_prov\":\"CA\",\r\n         \"location_postal_code\":\"90210\",\r\n         \"rate\":null,\r\n         \"tax_code\":null\r\n      },   \t\r\n      {\r\n         \"country\":\"AU\",\r\n         \"rate\":\"0.1\"\r\n      },\r\n      {\r\n         \"country\":\"CA\",\r\n         \"state_prov\":\"ON\",\r\n         \"location_postal_code\":null,\r\n         \"rate\":null,\r\n         \"tax_code\":null\r\n      },\r\n      {\r\n         \"country\":\"EU\",\r\n         \"state_prov\":null,\r\n         \"location_postal_code\":null,\r\n         \"rate\":null,\r\n         \"tax_code\":null\r\n      }\r\n   ]\r\n}\r\n"
+        },
+        "url": "https://{{host}}/api/v1/settings/tax"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "fe486b11-7712-494c-9555-68a02b4aa785",
+      "name": "Add Worldwide Shipping Method",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "9ac0fffb-9b7f-44df-bbab-7670e58552f9",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"subtotal_config\":{\r\n      \"rules\":[\r\n         {\r\n            \"ranges\":[\r\n               {\r\n                  \"minimum\":\"0\",\r\n                  \"maximum\":\"999999\",\r\n                  \"price\":\"4.00\"\r\n               }\r\n            ],\r\n            \"currency\":\"EUR\"\r\n         },\r\n         {\r\n            \"ranges\":[\r\n               {\r\n                  \"minimum\":\"0\",\r\n                  \"maximum\":\"999999\",\r\n                  \"price\":\"5.00\"\r\n               }\r\n            ],\r\n            \"currency\":\"USD\"\r\n         }\r\n      ],\r\n      \"percent_of_subtotal\":\"0.00\"\r\n   },\r\n   \"description\":\"Worldwide\",\r\n   \"details\":\"Worldwide shipping\",\r\n   \"countries\":[\r\n      \"*\"\r\n   ]\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/shipping_methods"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "b98f2379-c2ce-4f68-838d-322335675a4d",
+      "name": "Create Amazon Pay Test Gateway",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"payment_method_type\": \"amazon_pay\",\r\n    \"provider_id\": \"amazon_pay\",\r\n    \"currencies\": [\r\n        \"USD\"\r\n    ],\r\n    \"active\": true,\r\n    \"comments\": \"Amazon Pay Sandbox Account for QA testing\",\r\n    \"fields\": {\r\n        \"seller_id\": \"{{ap_seller_id}}\",\r\n        \"access_key\": \"{{ap_access_key}}\",\r\n        \"secret_key\": \"{{ap_secret_key}}\",\r\n        \"client_id\": \"{{ap_client_id}}\",\r\n        \"client_secret\": \"{{ap_client_secret}}\"\r\n    }\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/gateways"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "93c40a7b-4518-4953-8262-b293fe9504b2",
+      "name": "Create PayPal Test Gateway",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"payment_method_type\": \"paypal\",\r\n    \"provider_id\": \"paypal\",\r\n    \"currencies\": [\r\n        \"USD\",\r\n        \"EUR\",\r\n        \"GBP\"\r\n    ],\r\n    \"active\": true,\r\n    \"comments\": \"PayPal Sandbox Account for QA testing\",\r\n    \"fields\": {\r\n        \"username\": \"{{pp_username}}\",\r\n        \"client_id\": \"{{pp_client_id}}\",\r\n        \"client_secret\": \"{{pp_client_secret}}\",\r\n        \"username_nvp\": \"{{pp_username_nvp}}\",\r\n        \"password_nvp\": \"{{pp_password_nvp}}\",\r\n        \"signature_nvp\": \"{{pp_signature_nvp}}\"\r\n    }\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/gateways"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "c6ed8333-7636-48d8-ac5c-edee39a04850",
+      "name": "Create Coupon: Half Off Order",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"order\",\r\n      \"code\":\"half-off-order\",\r\n      \"discount_percent\":\"0.50\"\r\n   },\r\n   \"name\":\"Half off order\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "82db25c6-c82f-4c9b-a630-485cebb91eb9",
+      "name": "Create Coupon: Half Off Items",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"product\",\r\n      \"product_ids\":[\r\n         \"digital.test\",\r\n         \"digital-vol.test\",         \r\n         \"physical-sub.test\",\r\n         \"digital-sub.test\",\r\n         \"service.test\",\r\n         \"physical.test\"\r\n      ],\r\n      \"code\":\"half-off-items\",\r\n      \"discount_percent\":\"0.50\"\r\n   },\r\n   \"name\":\"Half off items\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "5ef9bf6d-345b-46a5-af60-8d29d3fe9d48",
+      "name": "Create Coupon: Half Off Items Apply to Recurring",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":true,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"product\",\r\n      \"product_ids\":[\r\n         \"digital.test\",\r\n         \"digital-vol.test\",         \r\n         \"physical-sub.test\",\r\n         \"digital-sub.test\",\r\n         \"service.test\",\r\n         \"physical.test\"\r\n      ],\r\n      \"code\":\"half-off-items-recurring\",\r\n      \"discount_percent\":\"0.50\"\r\n   },\r\n   \"name\":\"Half off items recurring\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "b886a605-ed19-42e2-b345-6ce451674b6c",
+      "name": "Create Coupon: Huge Off Items",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"product\",\r\n      \"product_ids\":[\r\n         \"digital.test\",\r\n         \"digital-vol.test\",         \r\n         \"physical-sub.test\",\r\n         \"digital-sub.test\",\r\n         \"service.test\",\r\n         \"physical.test\"\r\n      ],\r\n      \"code\":\"huge-off-items\",\r\n      \"discount_percent\":\"0.99\"\r\n   },\r\n   \"name\":\"Huge off items\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "468658c2-666e-46bf-8c6b-e45b473dcd13",
+      "name": "Create Coupon: Huge Off Order",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"order\",\r\n      \"code\":\"huge-off-order\",\r\n      \"discount_percent\":\"0.99\"\r\n   },\r\n   \"name\":\"Huge off order\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "401c53c8-15c1-4f13-8c0e-ee1e16ded402",
+      "name": "Create Coupon: Tiny Off Items",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"product\",\r\n      \"product_ids\":[\r\n         \"digital.test\",\r\n         \"digital-vol.test\",         \r\n         \"physical-sub.test\",\r\n         \"digital-sub.test\",\r\n         \"service.test\",\r\n         \"physical.test\"\r\n      ],\r\n      \"code\":\"tiny-off-items\",\r\n      \"discount_percent\":\"0.01\"\r\n   },\r\n   \"name\":\"Tiny off items\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "46c43cf9-fee7-4e66-8083-112b4fd6ae6f",
+      "name": "Create Coupon: Tiny Off Order",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"order\",\r\n      \"code\":\"tiny-off-order\",\r\n      \"discount_percent\":\"0.99\"\r\n   },\r\n   \"name\":\"Tiny off order\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "3bf87f6c-8f31-470f-ae79-352808b1a0ca",
+      "name": "Create Coupon: Five Off Items",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"discount_amount\":[\r\n         {\r\n            \"price\":\"5.00\",\r\n            \"currency\":\"USD\"\r\n         },\r\n         {\r\n            \"price\":\"5.00\",\r\n            \"currency\":\"EUR\"\r\n         }\r\n      ],\r\n      \"type\":\"product\",\r\n      \"product_ids\":[\r\n         \"digital.test\",\r\n         \"digital-vol.test\",         \r\n         \"physical-sub.test\",\r\n         \"digital-sub.test\",\r\n         \"service.test\",\r\n         \"physical.test\"\r\n      ],\r\n      \"code\":\"five-off-items\"\r\n   },\r\n   \"name\":\"Five off items\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "06a71a01-661e-4646-99fc-68c3376eef43",
+      "name": "Create Coupon: Five Off Order",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"discount_amount\":[\r\n         {\r\n            \"price\":\"5.00\",\r\n            \"currency\":\"USD\"\r\n         },\r\n         {\r\n            \"price\":\"5.00\",\r\n            \"currency\":\"EUR\"\r\n         }\r\n      ],\r\n      \"type\":\"order\",\r\n      \"code\":\"five-off-order\"\r\n   },\r\n   \"name\":\"Five off order\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "74d05c00-c3c6-48b1-8377-f48aceef6eb6",
+      "name": "Create Coupon: Huge Fixed Off Items",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"discount_amount\":[\r\n         {\r\n            \"price\":\"100.00\",\r\n            \"currency\":\"USD\"\r\n         },\r\n         {\r\n            \"price\":\"100.00\",\r\n            \"currency\":\"EUR\"\r\n         }\r\n      ],\r\n      \"type\":\"product\",\r\n      \"product_ids\":[\r\n         \"digital.test\",\r\n         \"digital-vol.test\",         \r\n         \"physical-sub.test\",\r\n         \"digital-sub.test\",\r\n         \"service.test\",\r\n         \"physical.test\"\r\n      ],\r\n      \"code\":\"huge-fixed-off-items\"\r\n   },\r\n   \"name\":\"Huge Fixed off items\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "9fe65d2a-b71e-4ad0-92fd-655ed3644dfc",
+      "name": "Create Coupon: Huge Fixed Off Order",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"discount_amount\":[\r\n         {\r\n            \"price\":\"100.00\",\r\n            \"currency\":\"USD\"\r\n         },\r\n         {\r\n            \"price\":\"100.00\",\r\n            \"currency\":\"EUR\"\r\n         }\r\n      ],\r\n      \"type\":\"order\",\r\n      \"code\":\"huge-fixed-off-order\"\r\n   },\r\n   \"name\":\"Huge fixed off order\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "30e5e810-e7e1-4295-935c-783788227a87",
+      "name": "Create Coupon: Ten Percent off Shipping",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"discount_percent\":\"0.50\",\r\n      \"type\":\"shipping\",\r\n      \"code\":\"half-off-shipping\"\r\n   },\r\n   \"name\":\"Half off shipping\",\r\n   \"type\":\"coupon\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "3f1763da-de0a-4c1e-8273-e9d01defa1b5",
+      "name": "Create Cross Sell: 25% Off Stapler",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"weight\":1,\r\n      \"discount_percent\":\"0.25\",\r\n      \"product_id\":\"physical.test\",\r\n      \"offer_with_product_ids\":[\r\n         \"physical-sub.test\"\r\n      ]\r\n   },\r\n   \"name\":\"Cross Sell Stapler with Flower (Percent)\",\r\n   \"type\":\"cross_sell\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "08ab0a32-c566-42b9-bb80-17fcec5fdb01",
+      "name": "Create Cross Sell: Two Off ABC",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"discount_amount\":[\r\n         {\r\n            \"price\": 2,\r\n            \"currency\":\"USD\"\r\n         },\r\n         {\r\n            \"price\": 2,\r\n            \"currency\":\"EUR\"\r\n         }\r\n      ],\r\n      \"weight\":1,\r\n      \"product_id\":\"digital.test\",\r\n      \"offer_with_product_ids\":[\r\n         \"digital-sub.test\"\r\n      ]\r\n   },\r\n   \"name\":\"Cross Sell ABC with Monster AV (Amount)\",\r\n   \"type\":\"cross_sell\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "680ef880-0d3b-4be9-a622-b07daaa886af",
+      "name": "Create Cross Sell: No Discount",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"weight\":1,\r\n      \"product_id\":\"physical-2.test\",\r\n      \"offer_with_product_ids\":[\r\n         \"physical.test\"\r\n      ]\r\n   },\r\n   \"name\":\"Cross Sell Paper Clips with Stapler (No Discount)\",\r\n   \"type\":\"cross_sell\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/promotions"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "9a8da94f-73f1-467b-b7ea-3df6ef8e6696",
+      "name": "Clean up Variables",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "52ce4275-4e39-4e7e-88ae-0e7a15bcf81a",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "pm.environment.unset(\"account_id\");",
+              "pm.environment.unset(\"token\");",
+              "pm.environment.unset(\"live_token\");",
+              "pm.environment.unset(\"token\");",
+              "pm.environment.unset(\"digital_product_id\");",
+              "pm.environment.unset(\"digital_subscription_product_id\");",
+              "pm.environment.unset(\"physical_product_id\");",
+              "pm.environment.unset(\"physical_subscription_product_id\");",
+              "pm.environment.unset(\"service_product_id\");",
+              "pm.environment.unset(\"hourly_subscription_plan_id\");",
+              "pm.environment.unset(\"hourly_trial_subscription_plan_id\");"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"weight\":1,\r\n      \"product_id\":\"physical-2.test\",\r\n      \"offer_with_product_ids\":[\r\n         \"physical.test\"\r\n      ]\r\n   },\r\n   \"name\":\"Cross Sell Paper Clips with Stapler (No Discount)\",\r\n   \"type\":\"cross_sell\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/settings/general"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "24ba53ef-876d-438d-af3c-a00ea026aa71",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "2393003e-5447-46f2-92e5-6b73363aab08",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
