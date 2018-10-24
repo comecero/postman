@@ -1,0 +1,1812 @@
+{
+  "info": {
+    "_postman_id": "2f0f293b-8c7d-44ba-8952-5782a3187ef1",
+    "name": "Coupons ",
+    "description": "- This set of tests expects you to be using the Base Account. ",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "cdb693a6-2918-4e1e-8ab3-72c819fbbf6d",
+      "name": "Pre-request Configurations",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "744d60a6-b751-4e89-8a78-665984ccf25f",
+          "name": "Get Notification Subscriptions",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "09e78ddc-848e-4610-a39c-393e9d4f1259",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "",
+                  "// Find the payment, order notification subscriptions",
+                  "var notifications = JSON.parse(responseBody);",
+                  "var list = notifications.data;",
+                  "",
+                  "_.each(list, function(item) {",
+                  "    ",
+                  "    if (item.type === \"order:confirmation\")",
+                  "        pm.globals.set(\"order_confirmation_subscription_url\", item.url);",
+                  "        ",
+                  "            if (item.type === \"payment:confirmation\")",
+                  "        pm.globals.set(\"payment_confirmation_subscription_url\", item.url);",
+                  "    ",
+                  "});",
+                  "",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"promotion_code\": \"{{promotion_code}}\",\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"{{product_id}}\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/notification_subscriptions",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "763d86db-4289-45af-9b03-d9a25c0ac035",
+          "name": "Disable Order Notification Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ec320aec-60a1-416a-8184-2ebe91db1f38",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Order email notifications have been disabled\"] = responseCode.code === 200;",
+                  "",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": false\n}"
+            },
+            "url": "{{order_confirmation_subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "378b3045-d14f-465f-bfef-f4abc8c87793",
+          "name": "Disable Payment Notification Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "82452e4c-9550-4daa-8063-f5b84f40aee0",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Payment email notifications have been disabled\"] = responseCode.code === 200;",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": false\n}"
+            },
+            "url": "{{payment_confirmation_subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "db236e77-f986-4125-b356-5008a2e559a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "fa8477f9-7918-46af-8244-edb14f473d45",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_postman_id": "1d7fb034-a999-4766-a75e-61e9a086ac0c",
+      "name": "Discount more than Product Price",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "82d1cb87-323a-46ee-9d32-50d482739d88",
+          "name": "Create Coupon: Huge Off Items Fixed",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "11f7ecaf-d06d-4487-b346-967fa0f15101",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "if (data.url) {",
+                  "    pm.globals.set(\"coupon_url\", data.url);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"apply_to_recurring\":true,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"product\",\r\n      \"product_ids\":[\r\n         \"digital.test\",\r\n         \"digital-vol.test\",         \r\n         \"physical-sub.test\",\r\n         \"digital-sub.test\",\r\n         \"service.test\",\r\n         \"physical.test\"\r\n      ],\r\n      \"code\":\"huge-off-items-fixed\",\r\n      \"discount_amount\":[\r\n         {\r\n            \"price\":\"99000.00\",\r\n            \"currency\":\"USD\"\r\n         },\r\n         {\r\n            \"price\":\"99000.00\",\r\n            \"currency\":\"EUR\"\r\n         }\r\n      ]\r\n   },\r\n   \"name\":\"Huge off items fixed\",\r\n   \"type\":\"coupon\"\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a6e68da2-0eaa-44ad-87e2-7418a45748bc",
+          "name": "Create Cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3fdf0f01-9f34-40bf-ad51-c16b93386270",
+                "type": "text/javascript",
+                "exec": [
+                  "// Load the standard tests",
+                  "let utils = {};",
+                  "if (globals.loadUtils) ",
+                  "    utils = eval(globals.loadUtils);",
+                  "",
+                  "",
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "var item = data.items[0];",
+                  "var plan = item.subscription_plan;",
+                  "var terms = item.subscription_terms;",
+                  "",
+                  "utils.comparePlanToTerms(plan, terms);",
+                  "",
+                  "tests[\"Item price is correct \" + item.price] = parseFloat(item.price) === 0;",
+                  "tests[\"Item discount is correct \" + item.discount] = parseFloat(item.discount) === 20;",
+                  "tests[\"Subscription item price is correct \" + terms.price] = parseFloat(terms.price) === 20;",
+                  "tests[\"Subscription item discount is correct \" + terms.discount_price] = terms.discount_price === 0;",
+                  "",
+                  "pm.globals.set(\"cart_url\", data.url);",
+                  "pm.globals.set(\"subscription_plan\", plan);",
+                  "pm.globals.set(\"subscription_terms\", terms);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"promotion_code\": \"huge-off-items-fixed\",\t\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital-sub.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=items.subscription_plan,items.subscription_terms",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "items.subscription_plan,items.subscription_terms",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "50862b8d-2498-4a9e-8601-a3b1bbec22e4",
+          "name": "Submit Cart Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ef726021-6bbd-4f88-a94a-2cd6b74cf990",
+                "type": "text/javascript",
+                "exec": [
+                  "// Load the standard tests",
+                  "let utils = {};",
+                  "if (globals.loadUtils)",
+                  "    utils = eval(globals.loadUtils);",
+                  "",
+                  "tests[\"Country: \" + pm.variables.get(\"country\") + \", State / Prov: \" + pm.variables.get(\"state_prov\") + \", Product ID: \" + pm.variables.get(\"product_id\") + \", Promotion Code: \" + pm.variables.get(\"promotion_code\")] = true;",
+                  "",
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "// Cross check the plan and terms fron the order to the original cart.",
+                  "var order_plan = data.order.items[0].subscription;",
+                  "var order_terms = data.order.items[0].subscription_terms;",
+                  "",
+                  "utils.compareSettings(order_plan, pm.globals.get(\"subscription_plan\"));",
+                  "utils.compareSettings(order_terms, pm.globals.get(\"subscription_terms\"));",
+                  "",
+                  "// Make sure the item amounts are what you expect.",
+                  "var item = data.order.items[0];",
+                  "var subscriptionItem = item.subscription.items[0];",
+                  "var subscription = item.subscription;",
+                  "",
+                  "tests[\"Item price is correct \" + item.price] = parseFloat(item.price) === 0;",
+                  "tests[\"Item discount is correct \" + item.discount] = parseFloat(item.discount) === 20;",
+                  "tests[\"Subscription item price is correct \" + subscriptionItem.reference_price] = parseFloat(subscriptionItem.reference_price) === 20;",
+                  "tests[\"Subscription item discount is correct \" + subscriptionItem.reference_discount_price] = subscriptionItem.reference_discount_price === 0;",
+                  "",
+                  "pm.globals.set(\"subscription_url\", item.subscription.url);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+            },
+            "url": {
+              "raw": "{{cart_url}}/payments?expand=order.items.subscription,order.items.subscription_terms",
+              "host": [
+                "{{cart_url}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "order.items.subscription,order.items.subscription_terms",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d7f5596a-38ca-4c37-8e02-90798c45fbda",
+          "name": "Delete Coupon",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3f3dc7e4-71dc-459d-9e12-dd80028e6205",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Coupon has been deleted\"] = responseCode.code === 204;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+            },
+            "url": "{{coupon_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "32963743-1cb6-4286-8329-7227d66b8c00",
+          "name": "Cancel Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1dd1213b-3a1c-4feb-985a-d9a172fbb473",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Subscription has been cancelled\"] = responseCode.code === 200;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"status\":\"cancelled\",\r\n   \"cancellation_reason\": \"Cancelled upon completion of an automated test\"\r\n}"
+            },
+            "url": "{{subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "5ddfa085-f52f-43f0-a2d8-900e2d092dbd",
+      "name": "Apply and Revert Discount",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "ae5340af-a2ed-43f6-a4ef-accef2c56da8",
+          "name": "Create Cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5e290a93-c844-4699-b621-d84a79510e47",
+                "type": "text/javascript",
+                "exec": [
+                  "// Load the standard tests",
+                  "let utils = {};",
+                  "if (globals.loadUtils) ",
+                  "    utils = eval(globals.loadUtils);",
+                  "",
+                  "",
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cart_url\", data.url);",
+                  "pm.globals.set(\"cart_total_original\", data.total);",
+                  "pm.globals.set(\"cart_settlement_total_original\", data.settlement_total);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"currency\": \"EUR\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=items.subscription_plan,items.subscription_terms",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "items.subscription_plan,items.subscription_terms",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7f400c12-2ed5-4ac2-8b9a-5787d7f3c75c",
+          "name": "Add Promotion Code",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "12a73889-7b83-4e90-b398-e74ba1e4cb63",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "tests[\"Discount was applied\"] = data.total_discounts > 0;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"promotion_code\": \"half-off-items\"\r\n}"
+            },
+            "url": "{{cart_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "64765d53-26f2-463e-9c45-ab59fd9cc8f2",
+          "name": "Remove Promotion Code",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5a301d1e-42ea-4a91-8358-72e598a743f2",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "tests[\"Discount was removed\"] = data.total_discounts === 0;",
+                  "",
+                  "tests[\"Total was reverted correctly\"] = data.total === pm.globals.get(\"cart_total_original\");",
+                  "tests[\"Settlement total was reverted correctly\"] = data.settlement_total === pm.globals.get(\"cart_settlement_total_original\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"promotion_code\": null\r\n}"
+            },
+            "url": "{{cart_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "f75661af-faa5-4209-90fb-2da95a776510",
+      "name": "Apply Promotion to Shipping",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "f10d1e8a-a572-47ce-ada1-5100016f26f5",
+          "name": "Create Cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8f34f3ff-dc44-4d31-98de-bd54aa6ff39a",
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "tests[\"Shipping promotion applied successfully\"] = data.shipping_item.discount > 0 && data.shipping_original > data.shipping;",
+                  "pm.globals.set(\"cart_url\", data.url);",
+                  "pm.globals.set(\"shipping\", data.shipping);",
+                  "pm.globals.set(\"shipping_original\", data.shipping_original);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"promotion_code\": \"half-off-shipping\",\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":10\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=items.subscription_plan,items.subscription_terms",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "items.subscription_plan,items.subscription_terms",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "75dc3165-4a1d-44ed-ac89-21c34fa6eb76",
+          "name": "Submit Cart Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a880a1c2-9884-4a28-85e9-d84e67a2cc1f",
+                "type": "text/javascript",
+                "exec": [
+                  "// Load the standard tests",
+                  "let utils = {};",
+                  "if (globals.loadUtils)",
+                  "    utils = eval(globals.loadUtils);",
+                  "",
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "tests[\"Shipping discount was applied\"] = data.order.shipping == pm.globals.get(\"shipping\");",
+                  "tests[\"Shipping discount was applied cross check\"] = data.order.shipping_original == pm.globals.get(\"shipping_original\");"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+            },
+            "url": {
+              "raw": "{{cart_url}}/payments?expand=order",
+              "host": [
+                "{{cart_url}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "order",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "13781ed3-4fa1-4406-86e3-a25007725296",
+      "name": "Apply Promotion to Volume Discount Product",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "36444b85-e5ec-441c-9970-0b3ef82017e3",
+          "name": "Create Cart with Tiny Discount",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5e8d494c-0486-47dc-a8d3-4d50659271a7",
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Volume discount was selected as the best discount\"] = data.items[0].price === 3;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"promotion_code\": \"tiny-off-items\",\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital-vol.test\",\r\n         \"quantity\":20\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=items.subscription_plan,items.subscription_terms",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "items.subscription_plan,items.subscription_terms",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ef0a7050-bce2-4945-b0e8-a72547bf114d",
+          "name": "Create Cart with Huge Discount",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9c4ed804-5719-47d0-923b-8fe9fb1505d2",
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Promotion discount was selected as the best discount\"] = data.items[0].price === 0.15;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"promotion_code\": \"huge-off-items\",\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital-vol.test\",\r\n         \"quantity\":20\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=items.subscription_plan,items.subscription_terms",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "items.subscription_plan,items.subscription_terms",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "066e0611-48c9-4a50-b484-0b9a691d9300",
+      "name": "Discount Single Product Only",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "dcb25604-de63-4053-85b6-eecf107f11e8",
+          "name": "Create Coupon: Single Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "205e63fc-e358-483b-b842-d96722cbe389",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"coupon_url\", data.url);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"product\",\r\n      \"product_ids\":[\r\n         \"digital.test\"\r\n      ],\r\n      \"code\":\"single-product\",\r\n      \"discount_amount\":[\r\n         {\r\n            \"price\":\"5\",\r\n            \"currency\":\"USD\"\r\n         } \r\n      ]\r\n   },\r\n   \"name\":\"Single Product\",\r\n   \"type\":\"coupon\"\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e692aa67-4478-4fa1-a2d7-6377b2792302",
+          "name": "Create Cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b9ddec26-53fc-4e1e-a9f6-a871a44f1d48",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cart_url\", data.url);",
+                  "",
+                  "_.each(data.items, function(item) {",
+                  "    ",
+                  "    if (item.product_id === \"digital.test\") {",
+                  "        tests[\"Should have a discount\"] = item.discount > 0;",
+                  "    }",
+                  "    ",
+                  "    if (item.product_id === \"physical.test\") {",
+                  "        tests[\"Should not have a discount\"] = item.discount === 0;",
+                  "    }    ",
+                  "    ",
+                  "});",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"promotion_code\": \"single-product\",\t\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }       \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=items.subscription_plan,items.subscription_terms",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "items.subscription_plan,items.subscription_terms",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b5d077a3-1284-4750-b380-1d602cd77f75",
+          "name": "Submit Cart Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f8161987-1ba7-4356-bd15-6215e046e7c8",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "_.each(data.order.items, function(item) {",
+                  "    ",
+                  "    if (item.product_id === \"digital.test\") {",
+                  "        tests[\"Should have a discount\"] = item.discount > 0;",
+                  "    }",
+                  "    ",
+                  "    if (item.product_id === \"physical.test\") {",
+                  "        tests[\"Should not have a discount\"] = item.discount === 0;",
+                  "    }    ",
+                  "    ",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+            },
+            "url": {
+              "raw": "{{cart_url}}/payments?expand=order.items",
+              "host": [
+                "{{cart_url}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "order.items",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "462c45f3-354a-446b-9414-5c45abf35927",
+          "name": "Delete Coupon",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5ccc0d0f-db39-4271-ac1d-e0526ee19bb3",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Coupon has been deleted\"] = responseCode.code === 204;",
+                  "pm.globals.unset(\"coupon_url\");"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+            },
+            "url": "{{coupon_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "b596ee89-2182-4ea4-a91b-c9c775fa4a7e",
+      "name": "Payment Currency != Coupon Currency",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "811afa7a-6e12-4018-8c51-7701c79a5af4",
+          "name": "Create Coupon: Single Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "205e63fc-e358-483b-b842-d96722cbe389",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"coupon_url\", data.url);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"product\",\r\n      \"product_ids\":[\r\n         \"digital.test\"\r\n      ],\r\n      \"code\":\"single-product\",\r\n      \"discount_amount\":[\r\n         {\r\n            \"price\":\"5\",\r\n            \"currency\":\"USD\"\r\n         } \r\n      ]\r\n   },\r\n   \"name\":\"Single Product\",\r\n   \"type\":\"coupon\"\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "699fffc6-64e3-43b7-adeb-952a2d99ebe5",
+          "name": "Convert Amount",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6147bb86-6c4f-4598-9bdb-06006a3c97f5",
+                "exec": [
+                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"amount\", parseFloat(data.amount));",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"promotion_code\": \"single-product\",\t\r\n  \"currency\": \"GBP\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      }      \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/fx/amount?amount=5&from_currency=USD&to_currency=GBP",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "fx",
+                "amount"
+              ],
+              "query": [
+                {
+                  "key": "amount",
+                  "value": "5",
+                  "equals": true
+                },
+                {
+                  "key": "from_currency",
+                  "value": "USD",
+                  "equals": true
+                },
+                {
+                  "key": "to_currency",
+                  "value": "GBP",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "03f6b199-326d-4c10-a3e4-cf3513ccb333",
+          "name": "Create Cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "946c3bb5-d374-4203-b631-6c6b81dae236",
+                "exec": [
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cart_url\", data.url);",
+                  "var item = data.items[0];",
+                  "",
+                  "tests[\"Should have a discount\"] = item.discount > 0;",
+                  "tests[\"Currency should be GBP\"] = item.currency = \"GBP\";",
+                  "tests[\"Discount should be \" + pm.globals.get(\"amount\")] = parseFloat(item.discount) === parseFloat(pm.globals.get(\"amount\"));"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"promotion_code\": \"single-product\",\t\r\n  \"currency\": \"GBP\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      }      \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=items.subscription_plan,items.subscription_terms",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "items.subscription_plan,items.subscription_terms",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "929b2f5f-8a89-438d-8845-6b6fcb379a74",
+          "name": "Submit Cart Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "253ef019-85d4-4dab-a197-bd0fcd5669af",
+                "exec": [
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "var item = data.order.items[0];",
+                  "",
+                  "tests[\"Discount should be \" + pm.globals.get(\"amount\")] = parseFloat(item.discount) === parseFloat(pm.globals.get(\"amount\"));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+            },
+            "url": {
+              "raw": "{{cart_url}}/payments?expand=order.items",
+              "host": [
+                "{{cart_url}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "order.items",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c850eb21-036b-4921-8773-d917620c43f0",
+          "name": "Delete Coupon",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5ccc0d0f-db39-4271-ac1d-e0526ee19bb3",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Coupon has been deleted\"] = responseCode.code === 204;",
+                  "pm.globals.unset(\"coupon_url\");"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+            },
+            "url": "{{coupon_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "ceb94629-eae8-470e-a424-41f532570f2f",
+      "name": "Post-request Cleanup",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "90333ddd-b400-4d5a-9fd3-b15929848ac9",
+          "name": "Enable Order Notification Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "930c5570-6aa0-4d4d-8d90-448b23b70c0e",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Order email notifications have been enabled\"] = responseCode.code === 200;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": true\n}"
+            },
+            "url": "{{order_confirmation_subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "95e4a6a8-084b-4c19-8c95-75d7a84b3dc2",
+          "name": "Enable Payment Notification Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "979d83e2-5b8c-4ef2-86fd-cb5a2f5a133a",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Payment email notifications have been enabled\"] = responseCode.code === 200;",
+                  "",
+                  "pm.globals.unset(\"order_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"payment_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"coupon_url\");",
+                  "pm.globals.unset(\"subscription_plan\");",
+                  "pm.globals.unset(\"subscription_terms\");",
+                  "pm.globals.unset(\"subscription_url\");",
+                  "pm.globals.unset(\"cart_url\");",
+                  "pm.globals.unset(\"cart_total_original\");",
+                  "pm.globals.unset(\"cart_settlement_total_original\");",
+                  "pm.globals.unset(\"cart_url\");",
+                  "pm.globals.unset(\"shipping\");",
+                  "pm.globals.unset(\"shipping_original\");",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": true\n}"
+            },
+            "url": "{{payment_confirmation_subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "1c2a669f-31bf-4c92-8ae5-43e6f8347613",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "62cdd340-66b0-4e01-bcd3-e7f5ebdd382f",
+        "type": "text/javascript",
+        "exec": [
+          "pm.globals.set(\"loadUtils\", function loadUtils() {",
+          "",
+          "    let utils = {};",
+          "",
+          "    utils.comparePlanToTerms = function (plan, terms) {",
+          "",
+          "        // Define the settings, by plan.",
+          "        var billing_interval, billing_interval_unit, billing_interval_description, trial_interval, trial_interval_unit, trial_interval_description;",
+          "",
+          "        switch (plan.name) {",
+          "            case \"Hourly Subscription\":",
+          "                billing_interval = 1;",
+          "                billing_interval_unit = \"hour\";",
+          "                billing_interval_description = \"1 hour\";",
+          "                trial_interval = null;",
+          "                trial_interval_unit = null;",
+          "                trial_interval_description = null;",
+          "                break;",
+          "            case \"Hourly Subscription with Trial\":",
+          "                billing_interval = 1;",
+          "                billing_interval_unit = \"hour\";",
+          "                billing_interval_description = \"1 hour\";",
+          "                trial_interval = 1;",
+          "                trial_interval_unit = \"hour\";",
+          "                trial_interval_description = \"1 hour\";",
+          "                break;",
+          "             case \"5 Minute Subscription\":",
+          "                billing_interval = 5;",
+          "                billing_interval_unit = \"minute\";",
+          "                billing_interval_description = \"5 minutes\";",
+          "                trial_interval = null;",
+          "                trial_interval_unit = null;",
+          "                trial_interval_description = null;",
+          "                break;",
+          "            case \"5 Minute Subscription with Trial\":",
+          "                billing_interval = 5;",
+          "                billing_interval_unit = \"minute\";",
+          "                billing_interval_description = \"5 minutes\";",
+          "                trial_interval = 5;",
+          "                trial_interval_unit = \"minute\";",
+          "                trial_interval_description = \"5 minutes\";",
+          "                break;           ",
+          "        }",
+          "",
+          "        tests[\"Check billing_interval\"] = plan.billing_interval === billing_interval;",
+          "        tests[\"Check billing_interval_unit\"] = plan.billing_interval_unit === billing_interval_unit;",
+          "        tests[\"Check billing_interval_description\"] = plan.billing_interval_description === billing_interval_description;",
+          "        tests[\"Check trial_interval\"] = plan.trial_interval === trial_interval;",
+          "        tests[\"Check trial_interval_unit\"] = plan.trial_interval_unit === trial_interval_unit;",
+          "        tests[\"Check trial_interval_description\"] = plan.trial_interval_description === trial_interval_description;",
+          "",
+          "        utils.compareSettings(plan, terms);",
+          "",
+          "    }",
+          "",
+          "    utils.compareSettings = function (obj1, obj2) {",
+          "",
+          "        // This allows you to compare things like a subscription plan to the subscription, a subscription terms to a subscription plan, etc. and make sure they match.",
+          "",
+          "        tests[\"Compare billing_interval\"] = obj1.billing_interval === obj2.billing_interval;",
+          "        tests[\"Compare billing_interval_unit\"] = obj1.billing_interval_unit === obj2.billing_interval_unit;",
+          "        tests[\"Compare billing_interval_description\"] = obj1.billing_interval_description === obj2.billing_interval_description;",
+          "        tests[\"Compare trial_interval\"] = obj1.trial_interval === obj2.trial_interval;",
+          "        tests[\"Compare trial_interval_unit\"] = obj1.trial_interval_unit === obj2.trial_interval_unit;",
+          "        tests[\"Compare trial_interval_description\"] = obj1.trial_interval_description === obj2.trial_interval_description;",
+          "",
+          "    }",
+          "    ",
+          "    utils.amountsAreEqual = function (amount, compareTo, allowRoundingError) {",
+          "",
+          "        if (parseFloat(amount) === parseFloat(compareTo)) {",
+          "            return true;",
+          "        }",
+          "",
+          "        if (allowRoundingError) {",
+          "            if (((parseFloat(amount) + 0.01).toFixed(2) === parseFloat(compareTo).toFixed(2)) || ((parseFloat(amount) - 0.01).toFixed(2) === parseFloat(compareTo).toFixed(2))) {",
+          "                return true;",
+          "            }",
+          "        }",
+          "",
+          "        return false;",
+          "",
+          "    }",
+          "",
+          "    return utils;",
+          "",
+          "} + '; loadUtils();');"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "3f48bd88-b83e-4a51-bfc6-471ccec2ff6d",
+      "key": "name",
+      "value": "James Smith",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "bf02316c-094e-423b-be27-faadf9098c05",
+      "key": "address_1",
+      "value": "648 Broad St",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "fd054071-0abc-41db-831f-285437e7b618",
+      "key": "city",
+      "value": "Westerville",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "0cbfac74-28ee-4bd9-821a-9380b61b8837",
+      "key": "state_prov",
+      "value": "OH",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "7b408ab3-2e9e-47bf-8372-376cca22a9f2",
+      "key": "postal_code",
+      "value": "43081",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "0c7921b8-90f3-47d1-9126-985b6a1f4ea0",
+      "key": "country",
+      "value": "US",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "d4e48562-b518-41ec-bae7-351dcb790b32",
+      "key": "phone",
+      "value": "614-555-0191",
+      "type": "string",
+      "description": ""
+    }
+  ]
+}
