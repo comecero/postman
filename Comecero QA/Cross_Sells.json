@@ -1,0 +1,2633 @@
+{
+  "info": {
+    "_postman_id": "aea732a3-f78f-47da-bece-455c7f881feb",
+    "name": "Cross Sells",
+    "description": "- This set of tests expects you to be using the Base Account. ",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "b96e5fc9-067d-40c2-b001-3aaa442004b0",
+      "name": "Basic Test",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "02f6b814-ef90-4f62-a891-04e73a60688c",
+          "name": "Create Cross Sell Promotion",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "84f654bd-6681-4db8-9890-0df9adedf41a",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cross_sell_promotion_url\", jsonData.url);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"physical.test\",\r\n        \"offer_with_product_ids\": [\"*\"],\r\n        \"discount_percent\": 0.1\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions",
+            "description": "Happy path cross sell create with a 10% discount."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ba4ab93d-2347-4a71-9efa-bca3e6be2641",
+          "name": "Delete Cross Sell Promotion",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "133ce728-2d5e-42f2-9f10-9a7caf104220",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 204\"] = responseCode.code === 204;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{cross_sell_promotion_url}}",
+            "description": "Happy path cross sell create with a 10% discount."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d6fcd1dc-60ae-423d-b401-8360fa0d57fd",
+          "name": "Create cart with cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cb7576f4-ef4b-4cf2-ae27-67633862dee1",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    pm.globals.set(\"cross_sell_cart_url\", jsonData.url);    ",
+                  "    pm.globals.set(\"cross_sell_id\", jsonData.cross_sells.data[0].cross_sell_id);",
+                  "    pm.globals.set(\"cross_sell_product_id\", jsonData.cross_sells.data[0].product_id);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n   \"items\":[\n      {\n         \"product_id\":\"digital-sub.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Create a cart with product and expand cross sells.  Stores cross sell data for later use.\n\nExpects a product id of 1001.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "26baea64-6b61-4394-a843-d6567b94d630",
+          "name": "Add invalid cross sell to cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 400\"] = responseCode.code === 400;\r",
+                  "if (responseCode.code === 400) {\r",
+                  "    var json = JSON.parse(responseBody);\r",
+                  "    var error = json.error;\r",
+                  "    tests[\"Verify error type\"] = error.type === \"bad_request\";\r",
+                  "    tests[\"Verify error code\"] = error.code === \"invalid_input\";\r",
+                  "    tests[\"Verify error reference\"] = error.reference === \"ED4ETR1\";\r",
+                  "    tests[\"Verify error status\"] = error.status === 400;\r",
+                  "    tests[\"Verify start of message\"] = error.message.startsWith(\"Invalid cross sell provided:\")\r",
+                  "}\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}a\",\n \"quantity\":1\n} "
+            },
+            "url": "{{cross_sell_cart_url}}/items",
+            "description": "NEGATIVE TEST\n\nAttempts to add a cross sell (but valid promotion) to cart with invalid \"checksum\" to confirm bad request response.\n\nValidates reference code and message starts with \"Invalid cross sell provided:\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1dfe1aff-03a6-4f55-aba2-7135acbe3c7b",
+          "name": "Add cross sell to cart items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c798ceb9-2385-4c5a-95f9-316c2d295c27",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var item = JSON.parse(responseBody);",
+                  "    tests[\"Verify original price\"] = item.price_original === 10;",
+                  "    tests[\"Verify price\"] = item.price === 8;",
+                  "    tests[\"Verify discount\"] = item.discount === 2;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}\",\n \"quantity\":1\n} "
+            },
+            "url": "{{cross_sell_cart_url}}/items"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "aee2e19f-808b-4d80-b96e-6da74695cf6b",
+          "name": "Cross Sell Cart Resource",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+                  "if (responseCode.code === 201) {\r",
+                  "    var json = JSON.parse(responseBody);\r",
+                  "    tests[\"Verify total items > 0\"] = json.total_items > 0;\r",
+                  "}\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}\",\n \"quantity\":1\n} "
+            },
+            "url": "{{cross_sell_cart_url}}/cross_sells",
+            "description": "Fetch the cart cross sells specific url"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "6716df61-6db7-4701-a1c5-8ac6d1eeb10e",
+          "name": "Checkout Cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"customer\": {\r\n     \"email\": \"{{email}}\",\r\n       \"name\": \"{{name}}\",\r\n       \"billing_address\": {\r\n          \"address_1\": \"{{address_1}}\",\r\n          \"city\": \"{{city}}\",\r\n          \"state_prov\": \"{{state_prov}}\",\r\n          \"postal_code\": \"{{postal_code}}\",\r\n          \"country\": \"{{country}}\"\r\n       }\r\n   },\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{cross_sell_cart_url}}/payments"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "d5e21119-7f93-44a6-a739-4bfc16803e95",
+      "name": "Check Qualifying Items",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "da164569-ae03-471c-bc14-1fd272e42137",
+          "name": "Create cart with cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "52ac005c-46ce-4cdc-ab8a-f3bb22e84707",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    pm.globals.set(\"cross_sell_cart_url\", jsonData.url);    ",
+                  "    pm.globals.set(\"cross_sell_id\", jsonData.cross_sells.data[0].cross_sell_id);",
+                  "    pm.globals.set(\"cross_sell_product_id\", jsonData.cross_sells.data[0].product_id);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n   \"items\":[\n      {\n         \"product_id\":\"digital-sub.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Create a cart with product and expand cross sells.  Stores cross sell data for later use.\n\nExpects a product id of 1001.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7af8aac4-87a7-4615-b862-9a9b6044a720",
+          "name": "Add cross sell to cart w/o qualifiying product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3ec97ae7-05c4-42d7-a6c7-cc1d8c982a69",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "tests[\"Adding items with a cross sell without the qualifyting does not give a discount\"] = data.total_discounts === 0;",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"{{cross_sell_product_id}}\",\r\n         \"cross_sell_id\":\"{{cross_sell_id}}\",\r\n         \"quantity\":1\r\n      }\r\n   ]\r\n}"
+            },
+            "url": "{{cross_sell_cart_url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fcbddc02-53a4-4edd-99d1-2e5e69006c0b",
+          "name": "Add cross sell to cart w/ qualifiying product having cross sell id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "55678c73-6ba3-48b1-9af7-b4ebceae8dc6",
+                "type": "text/javascript",
+                "exec": [
+                  "// This tests applying the cross-sell ID to the \"qualifying\" product rather than the product that is offered as a cross sell.",
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "tests[\"Add cross sell id to the qualifying productg does not give a discount\"] = data.total_discounts === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"{{cross_sell_product_id}}\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"digital-sub.test\",\r\n         \"cross_sell_id\":\"{{cross_sell_id}}\",         \r\n         \"quantity\":1\r\n      }      \r\n   ]\r\n}"
+            },
+            "url": "{{cross_sell_cart_url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "af81e21f-ab55-44de-9680-6a7c918b3cfc",
+          "name": "Add cross sell to cart w/ qualifiying product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cbe9a72b-8fb3-4edd-bc40-0e465d207501",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "if (responseCode.code === 200) {",
+                  "    var data = JSON.parse(responseBody);",
+                  "    ",
+                  "    var item = _.find(data.items, function(item) {",
+                  "        return item.item_id == \"digital.test\";",
+                  "    });",
+                  "    ",
+                  "    if (!item) {",
+                  "        tests[\"Cross sell product is added to cart\"] = false;",
+                  "        return;",
+                  "    }",
+                  "        ",
+                  "    tests[\"Verify original price\"] = item.price_original === 10;",
+                  "    tests[\"Verify price\"] = item.price === 8;",
+                  "    tests[\"Verify discount\"] = item.discount === 2;",
+                  "    ",
+                  "    // The product that qualified the cross sell should not be discounted.",
+                  "    var qualifyingItem = _.find(data.items, function(item) {",
+                  "        return item.item_id == \"digital-sub.test\";",
+                  "    });",
+                  "    ",
+                  "    if (!qualifyingItem) {",
+                  "        tests[\"Item that qualified the cross sell is added to the cart\"] = false;",
+                  "        return;",
+                  "    }",
+                  "    ",
+                  "    // The qualifying product should not receive a discount.",
+                  "    tests[\"Item that qualified the cross sell is not discounted\"] = qualifyingItem.discount === 0;",
+                  "        ",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"{{cross_sell_product_id}}\",\r\n         \"cross_sell_id\":\"{{cross_sell_id}}\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"digital-sub.test\",\r\n         \"quantity\":1\r\n      }      \r\n   ]\r\n}"
+            },
+            "url": "{{cross_sell_cart_url}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "dc5c9cee-52d0-42e7-abaf-f1d7019cd46b",
+      "name": "Remove Qualifying Item in Separate Request",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "be1a5886-2f2c-4d0b-82bb-822528ab7ab8",
+          "name": "Create cart with cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ff0bb31f-720d-44f3-a3a0-370b397a7e7a",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    pm.globals.set(\"cross_sell_cart_url\", jsonData.url);    ",
+                  "    pm.globals.set(\"cross_sell_id\", jsonData.cross_sells.data[0].cross_sell_id);",
+                  "    pm.globals.set(\"cross_sell_product_id\", jsonData.cross_sells.data[0].product_id);",
+                  "}",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n   \"items\":[\n      {\n         \"product_id\":\"digital-sub.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Create a cart with product and expand cross sells.  Stores cross sell data for later use.\n\nExpects a product id of 1001.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d0650b30-1707-41ca-afdf-8682d00b4ffb",
+          "name": "Delete qualifying product from cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3502cd15-19d9-48f1-bd4a-73c513b93911",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 204\"] = responseCode.code === 204;",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}\",\n \"quantity\":1\n} "
+            },
+            "url": "{{cross_sell_cart_url}}/items/digital-sub.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "59045a3b-21f2-465a-b3aa-c1b7db3bcda9",
+          "name": "Add cross sell to cart items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "147d9144-e094-4d77-b865-8faccb506183",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "tests[\"Deleting the qualifying item does not give a discount\"] = data.discount === 0;",
+                  "tests[\"cross_sell_id has been removed\"] = data.cross_sell_id === null;",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}\",\n \"quantity\":1\n} "
+            },
+            "url": "{{cross_sell_cart_url}}/items"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "ac2134e6-bb48-4e40-8c2b-8fac3c92c27c",
+      "name": "Check Best Offer - Large Coupon",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "d3de4c67-2a80-4d06-b8a1-28bcd73782c2",
+          "name": "Create cart with cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9163e029-96ad-4116-a365-82403b706849",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    pm.globals.set(\"cross_sell_cart_url\", jsonData.url);    ",
+                  "    pm.globals.set(\"cross_sell_id\", jsonData.cross_sells.data[0].cross_sell_id);",
+                  "    pm.globals.set(\"cross_sell_product_id\", jsonData.cross_sells.data[0].product_id);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n   \"items\":[\n      {\n         \"product_id\":\"digital-sub.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Create a cart with product and expand cross sells.  Stores cross sell data for later use.\n\nExpects a product id of 1001.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d6f4f5c7-fe04-4f4e-ad2f-483167a7f1d8",
+          "name": "Add cross sell to cart w/ qualifiying product and huge coupon",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "fb66a487-8f36-4abb-bdb7-bb493c484e52",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "if (responseCode.code === 200) {",
+                  "    var data = JSON.parse(responseBody);",
+                  "    ",
+                  "    var item = _.find(data.items, function(item) {",
+                  "        return item.item_id == \"digital.test\";",
+                  "    });",
+                  "    ",
+                  "    if (!item) {",
+                  "        tests[\"Cross sell product is added to cart\"] = false;",
+                  "        return;",
+                  "    }",
+                  "        ",
+                  "    tests[\"Cross sell discount has not been used\"] = item.cross_sell_id === null;",
+                  "    tests[\"Coupon discount was applied\"] = item.discount > 0;",
+                  "        ",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"promotion_code\": \"huge-off-items\",\r\n\t\"items\":[\r\n\t  {\r\n\t     \"product_id\":\"{{cross_sell_product_id}}\",\r\n\t     \"cross_sell_id\":\"{{cross_sell_id}}\",\r\n\t     \"quantity\":1\r\n\t  },\r\n\t  {\r\n\t     \"product_id\":\"digital-sub.test\",\r\n\t     \"quantity\":1\r\n\t  }      \r\n\t]\r\n}"
+            },
+            "url": "{{cross_sell_cart_url}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "edb4a9b9-e40d-43fa-bdd4-ebc2b81ed3a7",
+      "name": "Check Best Offer - Small Coupon",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "b7512d1d-90c5-4fa7-8a93-eba01d6023e3",
+          "name": "Create cart with cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9163e029-96ad-4116-a365-82403b706849",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    pm.globals.set(\"cross_sell_cart_url\", jsonData.url);    ",
+                  "    pm.globals.set(\"cross_sell_id\", jsonData.cross_sells.data[0].cross_sell_id);",
+                  "    pm.globals.set(\"cross_sell_product_id\", jsonData.cross_sells.data[0].product_id);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n   \"items\":[\n      {\n         \"product_id\":\"digital-sub.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Create a cart with product and expand cross sells.  Stores cross sell data for later use.\n\nExpects a product id of 1001.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5e4fbc35-e9fc-4721-8a56-edb2831b29be",
+          "name": "Add cross sell to cart w/ qualifiying product and huge coupon",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9b2bbf62-3ca1-4dcc-8cf4-052597ce68c2",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "if (responseCode.code === 200) {",
+                  "    var data = JSON.parse(responseBody);",
+                  "    ",
+                  "    var item = _.find(data.items, function(item) {",
+                  "        return item.item_id == \"digital.test\";",
+                  "    });",
+                  "    ",
+                  "    if (!item) {",
+                  "        tests[\"Cross sell product is added to cart\"] = false;",
+                  "        return;",
+                  "    }",
+                  "        ",
+                  "    tests[\"Cross sell discount ha been used\"] = item.cross_sell_id !== null;",
+                  "    tests[\"Cross sell discount was applied\"] = item.discount > 0;",
+                  "        ",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"promotion_code\": \"tiny-off-items\",\r\n\t\"items\":[\r\n\t  {\r\n\t     \"product_id\":\"{{cross_sell_product_id}}\",\r\n\t     \"cross_sell_id\":\"{{cross_sell_id}}\",\r\n\t     \"quantity\":1\r\n\t  },\r\n\t  {\r\n\t     \"product_id\":\"digital-sub.test\",\r\n\t     \"quantity\":1\r\n\t  }      \r\n\t]\r\n}"
+            },
+            "url": "{{cross_sell_cart_url}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "1aa0fcab-a508-45d9-93bc-7ba58aeb1bfa",
+      "name": "Check Reference Price",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "1cc7d246-f40d-45a2-9e22-d1b8e743b533",
+          "name": "Create cart with cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d35843c7-0312-4ba6-87ed-002f83b14ce2",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    pm.globals.set(\"cross_sell_cart_url\", jsonData.url);    ",
+                  "    pm.globals.set(\"cross_sell_id\", jsonData.cross_sells.data[0].cross_sell_id);",
+                  "    pm.globals.set(\"cross_sell_product_id\", jsonData.cross_sells.data[0].product_id);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n   \"items\":[\n      {\n         \"product_id\":\"digital-sub.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Create a cart with product and expand cross sells.  Stores cross sell data for later use.\n\nExpects a product id of 1001.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d73b6bff-c155-4009-947d-f2bb89c30fcb",
+          "name": "Add cross sell to cart items with reference price",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6e3792ac-810b-42dd-8cee-6f9da414e2a5",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Response is 201\"] = responseCode.code === 201;",
+                  "",
+                  "if (responseCode.code === 201) {",
+                  "    var item = JSON.parse(responseBody);",
+                  "    tests[\"Verify original price\"] = item.price_original === 9;",
+                  "    tests[\"Verify price\"] = item.price === 7;",
+                  "    tests[\"Verify discount\"] = item.discount === 2;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}\",\n \"quantity\":1,\n \"reference_price\": 9\n} "
+            },
+            "url": "{{cross_sell_cart_url}}/items"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "7f622d28-6780-484e-a57f-0becf82a30da",
+      "name": "Check No Discount",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "ed106cf2-edf2-4694-99c5-4af309903190",
+          "name": "Create cart with cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8d4c5482-a9ca-4e7c-a1e4-2a29ed91afc6",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    pm.globals.set(\"cross_sell_cart_url\", jsonData.url);    ",
+                  "    pm.globals.set(\"cross_sell_id\", jsonData.cross_sells.data[0].cross_sell_id);",
+                  "    pm.globals.set(\"cross_sell_product_id\", jsonData.cross_sells.data[0].product_id);",
+                  "    tests[\"Check no discount\"] = jsonData.cross_sells.data[0].discount === 0;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n   \"items\":[\n      {\n         \"product_id\":\"physical.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Create a cart with product and expand cross sells.  Stores cross sell data for later use.\n\nExpects a product id of 1001.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "09d3315f-3e8e-4ac1-8454-bc0f271222f5",
+          "name": "Add cross sell to cart items w/ no discount",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "02f9228e-506a-4260-b927-0dafe05644e4",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var item = JSON.parse(responseBody);",
+                  "    tests[\"Verify original price\"] = item.price_original === item.price;",
+                  "    tests[\"Verify discount\"] = item.discount === 0;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}\",\n \"quantity\":1\n} "
+            },
+            "url": "{{cross_sell_cart_url}}/items"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "6b86f802-e26d-4bfe-b9ed-b3baab4cb3ff",
+      "name": "Revert Discount on Qualifying Item Removal",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "82d8ac02-f372-4e8d-9420-07e1d6d2db97",
+          "name": "Create cart with cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "700214c6-517e-47fe-81b8-fa5e91b6ab79",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    pm.globals.set(\"cross_sell_cart_url\", jsonData.url);    ",
+                  "    pm.globals.set(\"cross_sell_id\", jsonData.cross_sells.data[0].cross_sell_id);",
+                  "    pm.globals.set(\"cross_sell_product_id\", jsonData.cross_sells.data[0].product_id);",
+                  "    tests[\"Check discount\"] = jsonData.cross_sells.data[0].discount === 2;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n   \"items\":[\n      {\n         \"product_id\":\"digital-sub.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Create a cart with product and expand cross sells.  Stores cross sell data for later use.\n\nExpects a product id of 1001.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "feaa45d5-d9f1-4b9b-9b10-783c962e7223",
+          "name": "Add cross sell to cart items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "45f8e5ec-2af5-4159-bf1f-1b802ef111e1",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var item = JSON.parse(responseBody);",
+                  "    tests[\"Verify original price\"] = item.price_original === 10;",
+                  "    tests[\"Verify price\"] = item.price === 8;    ",
+                  "    tests[\"Verify discount\"] = item.discount === 2;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}\",\n \"quantity\":1\n} "
+            },
+            "url": "{{cross_sell_cart_url}}/items"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "9cfb85b3-9e5f-4c28-9509-0d09a444ea93",
+          "name": "Confirm items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "92ad6a00-44e6-45b5-a46a-028071ed9d04",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "if (responseCode.code === 201) {",
+                  "    var data = JSON.parse(responseBody);",
+                  "    var items = [];",
+                  "    data.items.foreach(function(item) {",
+                  "        items.push(item.item_id);",
+                  "    });",
+                  "    ",
+                  "    tests[\"Check cart items\"] = items.indexOf(\"digital.test\" > -1) && items.indexOf(\"digital-sub.test\" > -1) && items.length === 2;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}\",\n \"quantity\":1\n} "
+            },
+            "url": "{{cross_sell_cart_url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3fd3237f-bd9b-45cf-b43f-6084cfb3e485",
+          "name": "Delete the Qualifying Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ec9b4d3a-9db6-44b0-a79d-fb8ac7979086",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 204\"] = responseCode.code === 204;",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}\",\n \"quantity\":1\n} "
+            },
+            "url": "{{cross_sell_cart_url}}/items/digital-sub.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d6e34505-9ab4-4c9f-9c6b-c99db053289d",
+          "name": "Confirm Discount Removal",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b0259e15-bf97-4907-919d-fe9c4e7d1b39",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "if (responseCode.code === 201) {",
+                  "    var data = JSON.parse(responseBody);",
+                  "    test[\"Discount was reverted\"] = data.total_discounts === 0;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}\",\n \"quantity\":1\n} "
+            },
+            "url": "{{cross_sell_cart_url}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "b4950423-511e-4f87-8a9d-ccff5ea45e05",
+      "name": "Check Discount Larger than Price",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "5a90aacd-f139-4cf6-8651-8ec0d4781182",
+          "name": "Create Cross Sell Promotion w/ huge discount",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5e04b07e-c59f-4881-905c-41ff8683bd6f",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cross_sell_promotion_url\", jsonData.url);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell Huge Discount\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"service.test\",\r\n        \"offer_with_product_ids\": [\"digital-vol.test\"],\r\n\t\t\"discount_amount\":[\r\n\t\t {\r\n\t\t    \"price\": 200,\r\n\t\t    \"currency\":\"USD\"\r\n\t\t },\r\n\t\t {\r\n\t\t    \"price\": 200,\r\n\t\t    \"currency\":\"EUR\"\r\n\t\t }\r\n\t\t]\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions",
+            "description": "Happy path cross sell create with a 10% discount."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2ab10dc8-cd32-46ac-bdcd-e8e776df12a4",
+          "name": "Create cart with cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cc93e6f6-1aa0-4057-98c5-f122f6d69c08",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    pm.globals.set(\"cross_sell_cart_url\", jsonData.url);    ",
+                  "    pm.globals.set(\"cross_sell_id\", jsonData.cross_sells.data[0].cross_sell_id);",
+                  "    pm.globals.set(\"cross_sell_product_id\", jsonData.cross_sells.data[0].product_id);",
+                  "    tests[\"Discount is the price original\"] = jsonData.cross_sells.data[0].discount === jsonData.cross_sells.data[0].price_original;",
+                  "    tests[\"Price is 0\"] = jsonData.cross_sells.data[0].price === 0;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n   \"items\":[\n      {\n         \"product_id\":\"digital-vol.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Create a cart with product and expand cross sells.  Stores cross sell data for later use.\n\nExpects a product id of 1001.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ce2b4790-2dfd-4cc3-8554-662b7e2890f0",
+          "name": "Add cross sell to cart items w/ larger discount than item price",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5f512e0f-05b0-4428-9a2b-1eb78c4a626e",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var item = JSON.parse(responseBody);",
+                  "    tests[\"Verify price is not less than 0\"] = item.price_original  - item.discount === 0;",
+                  "    tests[\"Verify discount is not greater than item price\"] = item.price === 0;",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"product_id\":\"{{cross_sell_product_id}}\",\n \"cross_sell_id\":\"{{cross_sell_id}}\",\n \"quantity\":1\n} "
+            },
+            "url": "{{cross_sell_cart_url}}/items"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f74ada1a-57d0-4ab4-bcfe-57456c26e96b",
+          "name": "Delete Cross Sell Promotion",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "133ce728-2d5e-42f2-9f10-9a7caf104220",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 204\"] = responseCode.code === 204;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{cross_sell_promotion_url}}",
+            "description": "Happy path cross sell create with a 10% discount."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "fd286064-ed83-4227-9927-58af992e4c3d",
+      "name": "Check Promotion Creation",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "40abaf91-7d0a-4660-8892-64984f926424",
+          "name": "Create Cross Sell Promotion - invalid product id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 400\"] = responseCode.code === 400;\r",
+                  "\r",
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "tests[\"Verify error on missing offer_products_id\"] = jsonData.error.message === \"product_id not found.\";\r",
+                  "\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell invalid product id\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"asdf\",\r\n        \"offer_with_product_ids\": [\"*\"],\r\n        \"weight\": 0\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5e2e95dd-fd1c-4dff-9b71-688d9028c9aa",
+          "name": "Create Cross Sell Promotion - no offer product ids",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 400\"] = responseCode.code === 400;\r",
+                  "\r",
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "tests[\"Verify error on missing offer_products_id\"] = jsonData.error.message === \"offer_with_product_ids must be a list of product ids with at least one product_id. May contain * for all products.\"\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell no offer product ids\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"digital.test\",\r\n        \"weight\": 0\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "6ce0f921-e54b-4a79-ae5f-f914ff3c9875",
+          "name": "Create Cross Sell Promotion - wild card offers plus extra product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 400\"] = responseCode.code === 400;\r",
+                  "\r",
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "tests[\"Verify error on wild card products and another product\"] = jsonData.error.message === \"offer_with_product_ids must be a list of product ids with at least one product_id. May contain * for all products.\";\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell wildcard offers plus\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"digital.test\",\r\n        \"offer_product_ids\": [\"*\", \"digital.test\"],\r\n        \"weight\": 0\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "bb9322aa-c0c8-4a2a-bf99-e6e09359e6db",
+          "name": "Create Cross Sell Promotion - test promo and live product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 400\"] = responseCode.code === 400;\r",
+                  "\r",
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "tests[\"Verify live product not on test promo\"] = jsonData.error.message === \"Cannot create a test promotion with live products\";\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell test live mismatch\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"digital.test\",\r\n        \"offer_with_product_ids\": [\"digital\"],\r\n        \"weight\": 0\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a42b53a1-12d6-48d5-87df-c3ed38eada1d",
+          "name": "Create Cross Sell Promotion - test discount amount and discount percent",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 400\"] = responseCode.code === 400;\r",
+                  "\r",
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "tests[\"Verify error on discount amount and discount percent\"] = jsonData.error.message === \"You cannot provide a discount percent and discount amount.\";\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell amount and percent\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"digital.test\",\r\n        \"offer_with_product_ids\": [\"physical.test\"],\r\n        \"discount_percent\": 0.1,\r\n        \"discount_amount\": [{\"currency\": \"USD\", \"price\": 10.00}],\r\n        \"weight\": 0\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "970b374f-4bc4-40f5-84b1-5589e78b3293",
+          "name": "Create Cross Sell Promotion - test invalid discount amount",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 400\"] = responseCode.code === 400;\r",
+                  "\r",
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "tests[\"Verify error on discount amount and discount percent\"] = jsonData.error.message === \"A discount amount must be greater than 0.\";\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell invalid discount amount\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"digital.test\",\r\n        \"offer_with_product_ids\": [\"physical.test\"],\r\n        \"discount_amount\": [{\"currency\": \"USD\", \"price\": 0.00}],\r\n        \"weight\": 0\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e681265d-ddc7-4f8a-bf5a-d54f9fde83e4",
+          "name": "Create Cross Sell Promotion - test invalid discount currency",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 400\"] = responseCode.code === 400;\r",
+                  "\r",
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "tests[\"Verify error on invalid discount currency\"] = jsonData.error.message === \"The following currency is invalid: Z. Please provide the ISO 4217 currency code.\";\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell invalid currency\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"digital.test\",\r\n        \"offer_with_product_ids\": [\"physical.test\"],\r\n        \"discount_amount\": [{\"currency\": \"Z\", \"price\": 10.00}],\r\n        \"weight\": 0\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c555c04c-832e-4327-b53b-990f01cc40a9",
+          "name": "Create Cross Sell Promotion - test negative discount percent",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 400\"] = responseCode.code === 400;\r",
+                  "\r",
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "tests[\"Verify error on negative % discount\"] = jsonData.error.message === \"A percentage discount must be greater than 0 but less than 1. For example, a 10% discount would be entered as 0.1.\";\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell negative percent\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"digital.test\",\r\n        \"offer_with_product_ids\": [\"physical.test\"],\r\n        \"discount_percent\": -1,\r\n        \"weight\": 0\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d99e9bf8-8bc4-402b-b133-8cf17d2122e3",
+          "name": "Create Cross Sell Promotion - test too high discount percent",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 400\"] = responseCode.code === 400;\r",
+                  "\r",
+                  "if (responseCode.code === 400) {\r",
+                  "    var jsonData = JSON.parse(responseBody);\r",
+                  "    tests[\"Verify error on negative % discount\"] = jsonData.error.message === \"A percentage discount must be greater than 0 but less than 1. For example, a 10% discount would be entered as 0.1.\";\r",
+                  "}\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell percent too high\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"digital.test\",\r\n        \"offer_with_product_ids\": [\"physical.test\"],\r\n        \"discount_percent\": 1.01,\r\n        \"weight\": 0\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "26709c1c-a9da-4806-852f-1aad80904282",
+          "name": "Create Cross Sell Promotion - test error negative weight",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 400\"] = responseCode.code === 400;\r",
+                  "\r",
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "tests[\"Verify error on negative weight\"] = jsonData.error.message === \"weight must be greater than or equal to 0\";\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell negative weight\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"digital.test\",\r\n        \"offer_with_product_ids\": [\"physical.test\"],\r\n        \"weight\": -1\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "3728cbdd-71f0-4693-90f2-38f379382c18",
+      "name": "Check Alternate Currency",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "54845aed-ddd2-4121-977b-65616e5d0865",
+          "name": "Create cart with cross sells expanded and EUR",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;\r",
+                  "if (responseCode.code === 201) {\r",
+                  "    var jsonData = JSON.parse(responseBody);\r",
+                  "    var cross_sells = jsonData.cross_sells;\r",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(cross_sells);\r",
+                  "    tests[\"Verify cart currency EUR\"] = jsonData.currency === \"EUR\";\r",
+                  "    tests[\"Verify cross sell currency EUR\"] = cross_sells.data[0].currency === \"EUR\";\r",
+                  "}\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"EUR\",\n   \"items\":[\n      {\n         \"product_id\":\"digital-sub.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?hide=customer&expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "hide",
+                  "value": "customer",
+                  "equals": true
+                },
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "29c413e9-6b77-4a1e-868c-123e1e5b37f3",
+      "name": "Check Taxes on Discount Amounts",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "e20864d1-9f85-4afc-b272-88ed97107e57",
+          "name": "Create EU cart with tax and cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "40d75c3b-aa9c-422f-8d86-da1ee0beee33",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    var cross_sell = jsonData.cross_sells.data[0];",
+                  "",
+                  "    // Verify amounts",
+                  "    tests[\"Verify cross sells original price\"] = cross_sell.price_original === 10;",
+                  "    tests[\"Verify cross sells price\"] = cross_sell.price === 8;",
+                  "    tests[\"Verify cross sells discount\"] = cross_sell.discount === 2;",
+                  "    tests[\"Verify cross sells price + discount + tax equals original\"] = cross_sell.price_original ===",
+                  "        cross_sell.price + cross_sell.discount;",
+                  "",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n  \"customer\": {\n  \t\"billing_address\": {\n  \t  \"country\": \"FR\"\t\n  \t}\n  },\n   \"items\":[\n      {\n         \"product_id\":\"digital-sub.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "07a837ec-1046-4cea-a4c8-8d27bd755ba6",
+          "name": "Create US, UT cart with tax and cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6fa448ee-1610-4d18-a892-b6d4c64893ba",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    var cross_sell = jsonData.cross_sells.data[0];",
+                  "",
+                  "    // Verify amounts",
+                  "    tests[\"Verify cross sells original price\"] = cross_sell.price_original === 10;",
+                  "    tests[\"Verify cross sells price\"] = cross_sell.price === 8;",
+                  "    tests[\"Verify cross sells discount\"] = cross_sell.discount === 2;",
+                  "    tests[\"Verify cross sells price + discount = original\"] = cross_sell.price_original ===",
+                  "        cross_sell.price + cross_sell.discount;",
+                  "",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n  \"customer\": {\n  \t\"billing_address\": {\n  \t  \"country\": \"US\",\n  \t  \"state_prov\": \"UT\",\n  \t  \"postal_code\": 84141\n  \t}\n  },\n   \"items\":[\n      {\n         \"product_id\":\"digital-sub.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7335fa25-3ba9-41e7-8d42-d02f99399eb4",
+          "name": "Create CA,ON cart with tax inc not gross and cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e9e98b75-51de-4841-af4e-6c51ebc1a04f",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(jsonData.cross_sells);",
+                  "    var cross_sell = jsonData.cross_sells.data[0];",
+                  "",
+                  "    // Verify amounts",
+                  "    tests[\"Verify cross sells original price\"] = cross_sell.price_original === 10;",
+                  "    tests[\"Verify cross sells price\"] = cross_sell.price === 8;",
+                  "    tests[\"Verify cross sells discount\"] = cross_sell.discount === 2;",
+                  "    tests[\"Verify cross sells price + discount = original\"] = cross_sell.price_original ===",
+                  "        cross_sell.price + cross_sell.discount;  ",
+                  "",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n  \"customer\": {\n  \t\"billing_address\": {\n  \t  \"country\": \"CA\",\n  \t  \"state_prov\": \"ON\",\n  \t  \"postal_code\": \"K0L 1Y0\",\n  \t  \"city\": \"Hastings\"\n  \t}\n  },\n   \"items\":[\n      {\n         \"product_id\":\"digital-sub.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Configured Tax to be inclusive for Canada, but not configured for discounts on gross prices"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "e7f812aa-f8ef-4a78-9c55-414d4b30d3f3",
+      "name": "Get Promotions",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "9fc6b068-ed6a-4440-88f4-b4ce4da28754",
+          "name": "get promos",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r",
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "tests[\"Verify data array in response\"] = jsonData.data.length >= 0\r",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"credit_card\",\n  \"data\":{\n     \"number\":\"4444555566661111\",\n     \"cvv\":123,\n     \"exp_month\":12,\n     \"exp_year\":2018,\n     \"cardholder_name\":\"Johnny Tester\",\n     \"billing_address\":{\n        \"address_1\":\"123 Main St.\",\n        \"city\":\"Smallvile\",\n        \"state_prov\":\"OH\",\n        \"postal_code\":\"43081\",\n        \"country\":\"US\"\n     }\n  }\n}\n  "
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "66ba08ae-a735-4ae3-be7f-1476851e4761",
+      "name": "Check Duplicate Cross Sells",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "0dd665c9-627e-4121-8749-18034341daa9",
+          "name": "Create Cross Sell Promotion",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5e04b07e-c59f-4881-905c-41ff8683bd6f",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cross_sell_promotion_url\", jsonData.url);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell Duplicate (1)\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"service.test\",\r\n        \"offer_with_product_ids\": [\"digital-vol.test\"],\r\n\t\t\"discount_amount\":[\r\n\t\t {\r\n\t\t    \"price\": 5,\r\n\t\t    \"currency\":\"USD\"\r\n\t\t },\r\n\t\t {\r\n\t\t    \"price\": 4,\r\n\t\t    \"currency\":\"EUR\"\r\n\t\t }\r\n\t\t]\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions",
+            "description": "Happy path cross sell create with a 10% discount."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c44910f2-de61-4500-ac15-e614b9e2ba8e",
+          "name": "Create Cross Sell Promotion (Duplicate)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "539915c4-28eb-4c8b-bbcf-34d8614cac8e",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cross_sell_2_promotion_url\", jsonData.url);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Test Cross Sell Duplicate (2)\",\r\n    \"type\": \"cross_sell\",\r\n    \"active\": true,\r\n    \"expires\": null,\r\n    \"comments\": null,\r\n    \"test\": true,\r\n    \"config\": {\r\n        \"product_id\": \"service.test\",\r\n        \"offer_with_product_ids\": [\"digital-vol.test\"],\r\n\t\t\"discount_amount\":[\r\n\t\t {\r\n\t\t    \"price\": 5,\r\n\t\t    \"currency\":\"USD\"\r\n\t\t },\r\n\t\t {\r\n\t\t    \"price\": 4,\r\n\t\t    \"currency\":\"EUR\"\r\n\t\t }\r\n\t\t]\r\n    }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions",
+            "description": "Happy path cross sell create with a 10% discount."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a9c05be3-34e8-48d7-9508-16d41905d1a0",
+          "name": "Create cart with cross sells expanded",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d6826e1b-517a-4edb-aa62-a877d4755288",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 201;",
+                  "if (responseCode.code === 201) {",
+                  "    var data = JSON.parse(responseBody);",
+                  "    tests[\"Verify cross sells expanded\"] = Object.isObject(data.cross_sells);",
+                  "",
+                  "    var _ = require('lodash');",
+                  "    ",
+                  "    var uniques = _.map(_.groupBy(data.cross_sells.data, function(item) {",
+                  "      return item.product_id;",
+                  "    }),function(grouped) {",
+                  "      return grouped[0];",
+                  "    });",
+                  "    ",
+                  "    if (uniques.length !== data.cross_sells.data.length) {",
+                  "        tests[\"Confirm the same products are not offered multiple times in the same list of cross sells\"] = false;",
+                  "    }    ",
+                  "    ",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"USD\",\n   \"items\":[\n      {\n         \"product_id\":\"digital-vol.test\",\n         \"quantity\":1\n      }  \n   ]\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=cross_sells",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "cross_sells",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Create a cart with product and expand cross sells.  Stores cross sell data for later use.\n\nExpects a product id of 1001.test"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5cbb2c67-e065-47bc-8883-720aee2f2b57",
+          "name": "Delete Cross Sell Promotion",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "133ce728-2d5e-42f2-9f10-9a7caf104220",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 204\"] = responseCode.code === 204;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{cross_sell_promotion_url}}",
+            "description": "Happy path cross sell create with a 10% discount."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "43e364d3-c8d2-474c-8afd-c60ae15e62b7",
+          "name": "Delete Cross Sell Promotion (Duplicate)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "133ce728-2d5e-42f2-9f10-9a7caf104220",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 204\"] = responseCode.code === 204;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{cross_sell_2_promotion_url}}",
+            "description": "Happy path cross sell create with a 10% discount."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "921d5b2f-1392-4ebf-b4b6-0bc6eacbc9f2",
+      "name": "Post-request Cleanup",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "8c27002f-6236-4023-9532-3da264680138",
+          "name": "Clean up Variables",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c8924a33-ee14-4d4a-a879-6c9b2eace6a1",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "",
+                  "pm.globals.unset(\"cross_sell_promotion_url\");",
+                  "pm.globals.unset(\"cross_sell_2_promotion_url\");",
+                  "pm.globals.unset(\"cross_sell_cart_url\");    ",
+                  "pm.globals.unset(\"cross_sell_id\");",
+                  "pm.globals.unset(\"cross_sell_product_id\");",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"credit_card\",\n  \"data\":{\n     \"number\":\"4444555566661111\",\n     \"cvv\":123,\n     \"exp_month\":12,\n     \"exp_year\":2018,\n     \"cardholder_name\":\"Johnny Tester\",\n     \"billing_address\":{\n        \"address_1\":\"123 Main St.\",\n        \"city\":\"Smallvile\",\n        \"state_prov\":\"OH\",\n        \"postal_code\":\"43081\",\n        \"country\":\"US\"\n     }\n  }\n}\n  "
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "b2d9e4ff-6efb-40f6-928d-7328ab9c514f",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "d3291bf7-f3ac-472c-a6cd-8f8d7ecc98e6",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "4517ee72-38f3-4b8a-9ca1-a36e55fda392",
+      "key": "name",
+      "value": "James Smith",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "4756a4fd-7a6c-4cd4-9d38-5c8523263c23",
+      "key": "address_1",
+      "value": "648 Broad St",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "6563b281-6b6b-43b7-93ea-8dee11e0144a",
+      "key": "city",
+      "value": "Westerville",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "2aa990db-df6e-4526-9e04-74bb8b99533f",
+      "key": "state_prov",
+      "value": "OH",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "1b668021-bf05-466f-8cc4-48e692e9e10d",
+      "key": "postal_code",
+      "value": "43081",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "328a1146-0b00-4a47-9927-0de3a8634056",
+      "key": "country",
+      "value": "US",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "8ecb9855-2376-4316-b77a-7e83f463b7d4",
+      "key": "phone",
+      "value": "614-555-0191",
+      "type": "string",
+      "description": ""
+    }
+  ]
+}
