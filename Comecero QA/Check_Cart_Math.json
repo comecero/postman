@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "e643c24e-e940-4617-9837-ed98d62e39cc",
     "name": "Check Cart Math",
-    "description": "- This set of tests expects you to use the [Customer Data Simple](https://drive.google.com/open?id=1JaEwUMvVICe29V0leLKcGH6m7Kf2lQMQ) data collection in the runner.\n- This set of tests expects you to be using the Base Account.\n\nTest carts with different tax, pricing, promotion and currency scenarios to ensure that the amounts are calculated correctly. In the testing, it also uses a moderate amount of promotional scenarios. Note that the testing for promotions in this suite is not extensive but does provide a base-level of coverage. ",
+    "description": "- This set of tests expects you to use the [Customer Data Simple](https://drive.google.com/open?id=1JaEwUMvVICe29V0leLKcGH6m7Kf2lQMQ) data collection in the runner.\n- This set of tests expects you to be using the Base Account.\n\nTest carts with different tax, pricing, promotion and currency scenarios to ensure that the amounts are calculated correctly. In the testing, it also uses a moderate amount of promotional scenarios. Note that the testing for promotions in this suite is not extensive but does provide a base-level of coverage.",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
