@@ -1,0 +1,2331 @@
+{
+  "info": {
+    "_postman_id": "9c0ebfea-2cc9-40d6-a2d4-aba923039234",
+    "name": "Invoices",
+    "description": "- This set of tests expects you to be using the Base Account.\n\nTests creation of invoices in various scenarios. ",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "7bbc2aae-4c9e-4566-961e-7cc050c6e1e2",
+      "name": "Pre-request Configurations",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "5646a6c5-cb1a-4508-8a8a-ba8055306f3b",
+          "name": "Get Notification Subscriptions",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2592e172-faa2-4ba6-b188-29c9626dc738",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "",
+                  "// Find the payment, order notification subscriptions",
+                  "var notifications = JSON.parse(responseBody);",
+                  "var list = notifications.data;",
+                  "",
+                  "_.each(list, function(item) {",
+                  "    ",
+                  "    if (item.type === \"order:confirmation\")",
+                  "        pm.globals.set(\"order_confirmation_subscription_url\", item.url);",
+                  "        ",
+                  "            if (item.type === \"payment:confirmation\")",
+                  "        pm.globals.set(\"payment_confirmation_subscription_url\", item.url);",
+                  "        ",
+                  "            if (item.type === \"refund:confirmation\")",
+                  "        pm.globals.set(\"refund_confirmation_subscription_url\", item.url);        ",
+                  "    ",
+                  "});",
+                  "",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"promotion_code\": \"{{promotion_code}}\",\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"{{product_id}}\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/notification_subscriptions",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "afaaf08c-dd30-4239-a728-1b2cec90ca27",
+          "name": "Disable Order Notification Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ec320aec-60a1-416a-8184-2ebe91db1f38",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Order email notifications have been disabled\"] = responseCode.code === 200;",
+                  "",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": false\n}"
+            },
+            "url": "{{order_confirmation_subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "64318bd1-b85c-4437-b9c3-8d22df5ed11c",
+          "name": "Disable Payment Notification Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "82452e4c-9550-4daa-8063-f5b84f40aee0",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Payment email notifications have been disabled\"] = responseCode.code === 200;",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": false\n}"
+            },
+            "url": "{{payment_confirmation_subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ac00a4c2-e33c-4bda-8b13-670b080c258e",
+          "name": "Disable Refund Notification Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5de69872-771e-4fc8-8bc0-76c002663061",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund email notifications have been disabled\"] = responseCode.code === 200;",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "7839393f-c627-406f-9af5-43661bffc685",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": false\n}"
+            },
+            "url": "{{refund_confirmation_subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "db236e77-f986-4125-b356-5008a2e559a8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "fa8477f9-7918-46af-8244-edb14f473d45",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_postman_id": "a69e21a4-6090-4ad2-aa29-bc92f04167c8",
+      "name": "With Products",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "28494fce-e67d-4024-a9d9-7e250e69d633",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ff5e800c-63e9-428b-91a3-bb3e754ccca8",
+          "name": "Pay Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9b52bbf6-8486-4761-9e11-f08ab8d7e82f",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f6ba8916-a802-41d4-8d3c-613e183f5d2d",
+          "name": "Refund Items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b1b883bc-4933-4b62-9ae2-aaa13bdb3bfa",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund items was successful\"] = data.total === 40 && data.subtotal === 40 && data.shipping === 0 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"digital.test\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"physical.test\",\n         \"quantity\":1\n      }\n  ]\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b10880eb-9788-410c-b2de-71625e57935e",
+          "name": "Refund Shipping",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7629114f-f7f1-468f-b4d2-5d4d8f8679a9",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund shipping was successful\"] = data.total === 5 && data.subtotal === 0 && data.shipping === 5 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"shipping\": 5\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "faad3afe-4667-4c23-bafe-00d1b7e27e5e",
+      "name": "With Items",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "0017d9c5-234b-4c6d-a0d2-77326ef37dad",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f00761ba-b933-4f2d-b6a0-cef223819a7e",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 140;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "tests[\"Has shipping\"] = data.shipping > 0;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"name\": \"Remote Control\",\r\n         \"quantity\":1,\r\n         \"type\": \"physical\",\r\n         \"reference_price\": 25\r\n      },\r\n      {\r\n         \"name\":\"Computer Repair\",\r\n         \"quantity\":1,\r\n         \"type\": \"service\",\r\n         \"reference_price\": 100         \r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f7e19049-baed-432e-8868-f62b36e57e7b",
+          "name": "Pay Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 140;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "dd1e86ab-7baa-4ba0-9b98-072b1ec03769",
+          "name": "Refund Items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c0901c9f-6491-4989-b3c5-f6493b75e798",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund items was successful\"] = data.total === 125 && data.subtotal === 125 && data.shipping === 0 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"1\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"2\",\n         \"quantity\":1\n      }\n  ]\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "6fcd6d76-c1e2-4ef5-8649-b63fd9c3724d",
+          "name": "Refund Shipping",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b88ba345-b9eb-401d-8f44-fdf2b9183710",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund shipping was successful\"] = data.total === 15 && data.subtotal === 0 && data.shipping === 15 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"shipping\": 15\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "a5552dd1-266e-4f19-aba0-8ea74326c244",
+      "name": "With Items, Custom ID",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "ab741227-4f8a-4f19-9c95-30cdc36eb679",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f00761ba-b933-4f2d-b6a0-cef223819a7e",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 140;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "tests[\"Has shipping\"] = data.shipping > 0;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"name\": \"Remote Control\",\r\n         \"item_id\": \"remote-control\",\r\n         \"quantity\":1,\r\n         \"type\": \"physical\",\r\n         \"reference_price\": 25\r\n      },\r\n      {\r\n         \"name\":\"Computer Repair\",\r\n         \"item_id\": \"computer-repair\",\r\n         \"quantity\":1,\r\n         \"type\": \"service\",\r\n         \"reference_price\": 100         \r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ee3bf2e2-51f6-4f00-a54a-56a8419ce810",
+          "name": "Pay Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 140;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "936bdd5f-c1f4-44f4-9eef-94a95f19690c",
+          "name": "Refund Items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c0901c9f-6491-4989-b3c5-f6493b75e798",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund items was successful\"] = data.total === 125 && data.subtotal === 125 && data.shipping === 0 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"remote-control\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"computer-repair\",\n         \"quantity\":1\n      }\n  ]\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b02fe3e8-b473-46d4-a006-d55e88b796a7",
+          "name": "Refund Shipping",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b88ba345-b9eb-401d-8f44-fdf2b9183710",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund shipping was successful\"] = data.total === 15 && data.subtotal === 0 && data.shipping === 15 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"shipping\": 15\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "fd3c4f3c-b7df-4845-9320-0134838d45d7",
+      "name": "With Items, Digital",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "62ca9398-ea59-4200-bb55-618adea6b9d9",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6e387113-0587-4e31-b109-203e34ddc343",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 250;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "tests[\"Doesn't have shipping\"] = data.shipping === 0;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"name\": \"Investment Forecast PDF\",\r\n         \"quantity\":2,\r\n         \"type\": \"digital\",\r\n         \"reference_price\": 100\r\n      },\r\n      {\r\n         \"name\":\"File Download\",\r\n         \"quantity\":1,\r\n         \"type\": \"digital\",\r\n         \"reference_price\": 50         \r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a56b5c39-a0e5-485f-860d-66a94e4cb527",
+          "name": "Pay Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "977e2011-10ce-42c5-b38c-d3d0611bf04d",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 250;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d34314e1-6549-4bf5-90b3-c5a8449e10bd",
+          "name": "Refund Items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61b0f606-080c-4166-8c28-d98df0e8d3b6",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund items was successful\"] = data.total === 150 && data.subtotal === 150 && data.shipping === 0 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"1\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"2\",\n         \"quantity\":1\n      }\n  ]\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "171be27b-de92-431b-a975-921870dd1830",
+          "name": "Refund Remaining Items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "480bfc30-7dcd-414c-afcf-7dd92769b3be",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund items was successful\"] = data.total === 100 && data.subtotal === 100 && data.shipping === 0 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"1\",\n         \"quantity\":1\n      }\n  ]\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8bb177c8-f4ea-4493-9789-b0050bb57dee",
+          "name": "Refund Shipping",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "da696f2d-6cfa-40fd-b2d4-6e60ccb82cfd",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Try to refund shipping when no shipping was paid\"] = responseCode.code === 400;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"shipping\": 15\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "8732f557-0d23-40f1-8ad6-d7b0c4d1e0be",
+      "name": "With Product and Item",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "b6d5eda6-a442-4a05-a7e0-8f3c335e9cd4",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0cf5fcdf-fe56-4e0c-973e-6600faae9382",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 145;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "tests[\"Has shipping\"] = data.shipping > 0;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"name\":\"Computer Repair\",\r\n         \"quantity\":1,\r\n         \"type\": \"service\",\r\n         \"reference_price\": 100         \r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ece8d4c1-f14b-4f32-ae4d-8f37995c68a6",
+          "name": "Pay Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "28ac544f-7c8a-4320-84c4-cbd4a055f651",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 145;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "6c711e05-e3f1-4b8f-bb4d-21eb0c193c8d",
+          "name": "Refund Items and Shipping",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bb304b28-607a-4322-ace7-5c69c9484f55",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund items was successful\"] = data.total === 145 && data.subtotal === 130 && data.shipping === 15 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"shipping\": 15,\n   \"items\":[\n      {\n         \"item_id\":\"physical.test\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"1\",\n         \"quantity\":1\n      }\n  ]\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "abb77c8e-6335-4cd1-a12f-c97d7225d3a2",
+      "name": "With Subscription Product",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "4d0eac35-2d2a-4df3-be7a-fc42fcbd41d1",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1d737501-9b52-4956-a859-c3e4cd71ae7d",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 60;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "tests[\"Subscription item has subscription plan\"] = data.items[0].subscription_plan.object !== null,",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital-sub.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/invoices?expand=items.subscription_plan",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "invoices"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "items.subscription_plan",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "495dc63b-a5e6-499f-84d4-cc12ea3b435b",
+          "name": "Pay Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "708e5883-1cc6-4b4d-b4e4-4306e97d472d",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 60;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";",
+                  "tests[\"Subscription was created\"] = data.order.items[0].subscription.items[0].reference_price === 20;",
+                  "pm.globals.set(\"subscription_url\", data.order.items[0].subscription.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{invoice_url}}/payments?expand=order.items.subscription",
+              "host": [
+                "{{invoice_url}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "order.items.subscription",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "72940f99-8109-4ec7-b440-e40b88bc6e90",
+          "name": "Cancel Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ae204306-77b0-4e54-99eb-8bc615f29d4e",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Subscription has been cancelled\"] = responseCode.code === 200;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"status\":\"cancelled\",\r\n   \"cancellation_reason\": \"Cancelled upon completion of an automated test\"\r\n}"
+            },
+            "url": "{{subscription_url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "4965d619-cd50-4f5d-ab83-825ea13c3e58",
+          "name": "Refund Items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "934ecabc-8ff8-42f3-93ff-c27bdae4776d",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund items was successful\"] = data.total === 50 && data.subtotal === 50 && data.shipping === 0 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"digital-sub.test\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"physical.test\",\n         \"quantity\":1\n      }\n  ]\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "324f4e7e-e3c3-45b8-8f1b-3cbdcc363d36",
+          "name": "Refund Shipping",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2da9dff2-c099-4a52-83e6-737c49d67e91",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund shipping was successful\"] = data.total === 10 && data.subtotal === 0 && data.shipping === 10 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"shipping\": 10\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "3cb6e348-a37c-4668-80a6-51a4fef378fe",
+      "name": "With Custom Invoice ID",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "9c705ee6-f21f-40c8-a334-622c55050c7e",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1d1f1156-9f67-4846-a780-16308cdcda06",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "pm.globals.set(\"invoice_url\", data.url);",
+                  "pm.globals.set(\"invoice_id\", data.invoice_id);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"invoice_id\": \"{{$timestamp}}\",\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "9004203f-5be6-41e5-813f-105ab47af3a1",
+          "name": "Pay Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9b52bbf6-8486-4761-9e11-f08ab8d7e82f",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "45a5b1bd-a7fe-411d-83ae-83dc63f33224",
+          "name": "Refund Items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b1b883bc-4933-4b62-9ae2-aaa13bdb3bfa",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund items was successful\"] = data.total === 40 && data.subtotal === 40 && data.shipping === 0 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"digital.test\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"physical.test\",\n         \"quantity\":1\n      }\n  ]\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "199027d4-2ade-4582-ba3e-8d2d9a6c867f",
+          "name": "Refund Shipping",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7629114f-f7f1-468f-b4d2-5d4d8f8679a9",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund shipping was successful\"] = data.total === 5 && data.subtotal === 0 && data.shipping === 5 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"shipping\": 5\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "83fde426-70de-45a9-ab47-e8062bbbdfc7",
+          "name": "Re-use Same Custom Invoice ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "07f255ee-81bf-479a-bfd0-5a66e2376a45",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Check duplicate invoice ID\"] = responseCode.code === 400;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"invoice_id\": \"{{invoice_id}}\",\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "edf0efb2-1d0f-4d69-a714-320f7cb4118b",
+      "name": "With Promotion Code",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "0c71a59c-e638-46d5-b056-a096d1a9d3a0",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9d5e1137-9dc3-4f25-a913-1022edf54e65",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 25 && data.total_discounts === 20;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"promotion_code\": \"half-off-items\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a6b7ebed-4ce0-4d1c-a39c-043995b5ab53",
+          "name": "Pay Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c8baab72-98b9-4471-85cf-2955cbef1a6a",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 25;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f009db89-9d71-44b0-ba98-e6effeb6c65f",
+          "name": "Refund Items",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3c8138b4-a5c3-4cc9-bfcb-25c5fc5ce31e",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund items was successful\"] = data.total === 20 && data.subtotal === 20 && data.shipping === 0 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"digital.test\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"physical.test\",\n         \"quantity\":1\n      }\n  ]\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "94e00e77-2ac1-48aa-bdc0-fad69474dc1a",
+          "name": "Refund Shipping",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7629114f-f7f1-468f-b4d2-5d4d8f8679a9",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund shipping was successful\"] = data.total === 5 && data.subtotal === 0 && data.shipping === 5 && data.tax === 0;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"shipping\": 5\n}"
+            },
+            "url": "{{invoice_url}}/refunds"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "9920bbac-997d-4385-8577-f22267ab44da",
+      "name": "With Notification",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "3e0aec61-b4ca-4e4e-9a33-2ad6f936cce9",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5b6ac161-af6b-4c53-b0c9-3e49897bd57e",
+          "name": "Get Notifications",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f208fa42-e2c5-4785-88bc-ceb318bcc2ed",
+                "type": "text/javascript",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "tests[\"Notification created successfully\"] = data.total_items === 1;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "3d07e1d5-0e57-44c1-8a37-47a59c8428f1",
+                "type": "text/javascript",
+                "exec": [
+                  "setTimeout(function(){}, 2000);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/notifications"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "defbaa86-e5b2-4387-95ba-0c64325f050b",
+          "name": "Delete Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "351b9428-2f1e-4380-a584-bda5947b66a9",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice deleted successfully\"] = responseCode.code === 204;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "c36475dd-d933-4595-a480-d95ff95cf2b9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{invoice_url}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "d4045dc9-bcab-4943-a5e9-0977f416ee51",
+      "name": "Post-request Cleanup",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "b0a617ff-0a62-482b-bf87-54ff4d71e659",
+          "name": "Enable Order Notification Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "930c5570-6aa0-4d4d-8d90-448b23b70c0e",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Order email notifications have been enabled\"] = responseCode.code === 200;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": true\n}"
+            },
+            "url": "{{order_confirmation_subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d019a512-805b-4cc5-9ac9-95783a2de581",
+          "name": "Enable Payment Notification Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2ffd2795-dc47-4167-9981-27957ce2ca07",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Payment email notifications have been enabled\"] = responseCode.code === 200;",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": true\n}"
+            },
+            "url": "{{payment_confirmation_subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8474ad73-f02e-4e92-8452-f6c886b536c4",
+          "name": "Enable Refund Notification Subscription Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e28482e1-c92e-44b2-af10-50dd3fcb694a",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Payment email notifications have been enabled\"] = responseCode.code === 200;",
+                  "",
+                  "pm.globals.unset(\"order_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"payment_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"refund_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"date_due\");",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": true\n}"
+            },
+            "url": "{{refund_confirmation_subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "df5d39b9-2659-430f-ab2c-0b60b7b9f7af",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "087925ec-a19d-4f29-8948-4ae286011cd3",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "9e50d36d-c940-4d84-8f6a-79dc5d295c2c",
+      "key": "name",
+      "value": "James Smith",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "8616b1e6-b1fd-47af-9d04-be0da9d6a1fb",
+      "key": "address_1",
+      "value": "648 Broad St",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "306d71d2-3ea7-4b6c-9400-849e8e5cc539",
+      "key": "city",
+      "value": "Westerville",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "a40bfd41-b4f5-496f-a57d-66cf2bc37fed",
+      "key": "state_prov",
+      "value": "OH",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "1bc616ad-6e7f-4129-ab01-4d1bbd54a46b",
+      "key": "postal_code",
+      "value": "43081",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "f22af539-6ef0-488e-aae0-0bff722aacc8",
+      "key": "country",
+      "value": "US",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "0ceaaa54-a706-4156-a52e-32c577d04c66",
+      "key": "phone",
+      "value": "614-555-0191",
+      "type": "string",
+      "description": ""
+    }
+  ]
+}
