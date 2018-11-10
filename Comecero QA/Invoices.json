@@ -1218,44 +1218,6 @@
           "response": []
         },
         {
-          "_postman_id": "b78ab8fd-35ff-5a4e-a9b3-80a4b0035f91",
-          "name": "Refund Items and Shipping",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bb304b28-607a-4322-ace7-5c69c9484f55",
-                "type": "text/javascript",
-                "exec": [
-                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Refund items was successful\"] = data.total === 145 && data.subtotal === 130 && data.shipping === 15 && data.tax === 0;"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n   \"shipping\": 15,\n   \"items\":[\n      {\n         \"item_id\":\"physical.test\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"1\",\n         \"quantity\":1\n      }\n  ]\n}"
-            },
-            "url": "{{invoice_url}}/refunds"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "95314b9c-0bb1-d257-1cca-6675498366be",
           "name": "Create Invoice",
           "event": [
@@ -2427,49 +2389,49 @@
   ],
   "variable": [
     {
-      "id": "a8e7131f-4792-4d95-9651-0be344678775",
+      "id": "f91e3b27-91cc-4e71-b5f7-0d16f4e67492",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e69ac214-a49a-408c-ade5-618f281efadb",
+      "id": "d2fe9e98-4a04-4444-a04e-325455977b60",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b49181ef-b975-476d-9f95-3a74c14ca27f",
+      "id": "97ca885b-bb53-49b1-94b8-0f521bfb3643",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "db0412b9-8258-41e4-a265-ac4e082421c4",
+      "id": "cd23a6fd-d692-4474-b870-b6ff549e62e8",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6e664cb4-2151-4a0d-992f-faba168e7048",
+      "id": "7390992f-5a68-45ee-9c77-3cfcafdef0d9",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c1f01bfa-9922-42c0-97a5-69e295520a6a",
+      "id": "d5212f5c-b885-4907-b7f4-824c4bbc9a8b",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0207be4f-4b34-4959-bb88-ffb38e9cff30",
+      "id": "15ce25e5-8ffa-4cbd-8192-6ab525360816",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
