@@ -894,6 +894,44 @@
       "response": []
     },
     {
+      "_postman_id": "d7f22993-9c70-480b-ae98-9c9510528c11",
+      "name": "Create PayPal Test Gateway Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4b9e8f3b-d0b9-4012-9f2a-e000fd284602",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"payment_method_type\": \"paypal\",\r\n    \"provider_id\": \"paypal\",\r\n    \"currencies\": [\r\n        \"USD\",\r\n        \"EUR\",\r\n        \"GBP\"\r\n    ],\r\n    \"active\": true,\r\n    \"comments\": \"PayPal Sandbox Account for QA testing\",\r\n    \"fields\": {\r\n        \"username\": \"{{pp_username}}\",\r\n        \"client_id\": \"{{pp_client_id}}\",\r\n        \"client_secret\": \"{{pp_client_secret}}\",\r\n        \"username_nvp\": \"{{pp_username_nvp}}\",\r\n        \"password_nvp\": \"{{pp_password_nvp}}\",\r\n        \"signature_nvp\": \"{{pp_signature_nvp}}\"\r\n    }\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/gateways"
+      },
+      "response": []
+    },
+    {
       "_postman_id": "c6ed8333-7636-48d8-ac5c-edee39a04850",
       "name": "Create Coupon: Half Off Order",
       "event": [
