@@ -522,10 +522,10 @@
           "listen": "test",
           "script": {
             "id": "161f7d3c-51d0-456e-8685-b9ddb2cb13ff",
-            "type": "text/javascript",
             "exec": [
               "tests[\"Coupon has been deleted\"] = responseCode.code === 204;"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
@@ -773,98 +773,98 @@
   ],
   "variable": [
     {
-      "id": "d5559d58-62df-4833-a5a4-7473438e10a6",
+      "id": "deee3245-09bc-4cd1-b607-900c81aa63ad",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "11fda43e-82f9-4770-80e8-71d4cece57de",
+      "id": "39d1ef53-536e-46a4-bca0-78415a5d9365",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "777b5710-8556-4635-b09b-29fa31257b93",
+      "id": "b4689ebc-81ab-4338-8e87-19a1d52f0d20",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "93e877d7-9800-4403-93f2-129a1c6aaf91",
+      "id": "f0faf234-2423-432d-84e4-845acdf56db8",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "331c030d-735b-4cab-bebe-bd530c398184",
+      "id": "d32b716e-4f89-46c7-8d0e-40cc9e967ee8",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "97de092d-4af2-4421-a3b3-07484afc5ccb",
+      "id": "75963fd6-fa34-40fc-87ba-9a12f4392351",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "06d8a624-43d6-4051-a383-672d45a40c34",
+      "id": "a96a5325-c664-48ae-9c60-708ab8f2c26e",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d8fe6976-aff7-4a3b-90cb-0fe069d7449e",
+      "id": "7fa98b6e-06a8-4e8f-9634-a7acb68cf164",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7d5eda41-d6bb-4f57-a3f7-c1831be60dfd",
+      "id": "feec7bb3-1330-4493-8fb6-fefc463f8a75",
       "key": "promotion_code",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2bd32301-155e-46c0-ace6-114f7c30f5d6",
+      "id": "6f60d093-730f-46fd-ba1e-7e8fe70b5e13",
       "key": "expected_item_price",
       "value": "20",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a1d75e59-9851-45c1-b9ab-6308874972da",
+      "id": "50d1be7d-9a78-486d-bb02-ab74894f2212",
       "key": "expected_item_discount",
       "value": "0",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cd626955-9d1e-4720-87c3-fcb127329630",
+      "id": "eac8bae5-9aec-4d42-b61c-46b2f915d7d4",
       "key": "expected_subscription_price",
       "value": "20",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c87ad653-4b49-499b-abd0-6787f15e66f5",
+      "id": "be19ebb7-7ccd-42bf-809c-70d75b0e631a",
       "key": "expected_discount_apply_count",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6c000e52-a31e-4273-9880-17742243c02c",
+      "id": "dfb33991-8a46-403f-8f2f-3847326427b5",
       "key": "expected_subscription_discount",
       "value": "0",
       "type": "string",
