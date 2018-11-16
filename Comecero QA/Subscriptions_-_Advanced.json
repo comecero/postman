@@ -2880,7 +2880,6 @@
               "listen": "test",
               "script": {
                 "id": "b159a350-83cd-4e5e-87ed-40154a3e57ac",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Payment method created\"] = responseCode.code === 201;",
                   "",
@@ -2889,7 +2888,8 @@
                   "}",
                   "",
                   "var data = JSON.parse(responseBody);"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -2907,7 +2907,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"4444555566661111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
+              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"{{bt_cc_valid}}\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
             },
             "url": "https://{{host}}/api/v1/customers/{{customer_id}}/payment_methods"
           },
@@ -3099,7 +3099,6 @@
               "listen": "test",
               "script": {
                 "id": "b159a350-83cd-4e5e-87ed-40154a3e57ac",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Payment method created\"] = responseCode.code === 201;",
                   "",
@@ -3108,7 +3107,8 @@
                   "}",
                   "",
                   "var data = JSON.parse(responseBody);"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -3126,7 +3126,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"4444555566661111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
+              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"{{bt_cc_valid}}\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
             },
             "url": "https://{{host}}/api/v1/customers/{{customer_id}}/payment_methods"
           },
@@ -6242,7 +6242,6 @@
               "listen": "test",
               "script": {
                 "id": "b159a350-83cd-4e5e-87ed-40154a3e57ac",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Payment method created\"] = responseCode.code === 201;",
                   "",
@@ -6251,7 +6250,8 @@
                   "}",
                   "",
                   "var data = JSON.parse(responseBody);"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -6269,7 +6269,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"4444555566661111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
+              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"{{bt_cc_valid}}\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
             },
             "url": "https://{{host}}/api/v1/customers/{{customer_id}}/payment_methods"
           },
@@ -14889,63 +14889,63 @@
   ],
   "variable": [
     {
-      "id": "1ee833f4-55a4-4da4-ad53-161b9e94d179",
+      "id": "8235ad73-333d-42a4-846e-8c5e8168086b",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f5e71ec9-b2d8-4316-ada0-9515cbf6df5d",
+      "id": "3ce861b9-4340-4d2a-b60d-fd9cc0b912aa",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2649059a-e25c-4c9c-b824-b2875e3b801b",
+      "id": "e2a098b2-19ad-4351-86be-1cc1c7059bf3",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c0964e8b-7e38-48ce-b04f-94b939b42517",
+      "id": "25d115d3-97c1-418a-96f0-ab698c9ba052",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "38acedda-b2dd-47ea-9ab2-d38c40da05a6",
+      "id": "ded21236-6d6f-42f5-8d56-043e973eff00",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "93c75a02-9366-4771-8730-d5f5cef2940b",
+      "id": "55866c4e-b819-45f7-bca9-91f6112d7185",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bef80638-daf5-4278-bc80-77e95fd179e0",
+      "id": "f94c6b09-4b52-42b1-964e-8ac9f1d68cc0",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1db68d5e-5096-4eac-b1cd-6feca7b002b6",
+      "id": "23c3a032-680b-44eb-9660-54e9cf1126dd",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "925e4789-af33-4d9c-bb8e-3ed367c0840a",
+      "id": "79fa9210-ecea-4b0f-a1a5-d0bf86fce3a0",
       "key": "promotion_code",
       "value": "",
       "type": "string",
