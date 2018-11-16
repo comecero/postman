@@ -882,7 +882,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"{{bt_cc_valid}}\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
             },
             "url": {
               "raw": "{{cart_url}}/payments?expand=order.items.subscription,order.items.subscription_terms",
@@ -7470,7 +7470,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"{{bt_cc_valid}}\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
             },
             "url": {
               "raw": "{{cart_url}}/payments?expand=order.items.subscription,order.items.subscription_terms",
@@ -14889,63 +14889,63 @@
   ],
   "variable": [
     {
-      "id": "aedeff6b-0787-4aa0-b0b6-6d570018d8f5",
+      "id": "3ecad01c-28b2-496e-8803-4125b7372356",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c5fc876c-c813-4354-b78f-1c201fcd9d0e",
+      "id": "d7fd1223-3214-4658-b1e9-c990b957ae06",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8e2eddef-94ad-41f1-bf7d-916cf316005c",
+      "id": "ea36b522-4950-41e0-8393-3472291dae0f",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5974126b-9f69-4f34-8f92-66a0ba680914",
+      "id": "7a5244bb-7b1f-47c6-84d3-4cd291fa0120",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "54f4b190-89e2-4b08-a69e-c04787a4782c",
+      "id": "81a39d6c-be1f-49b6-a405-7e1ca8529cea",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b5c5fb35-db93-402d-9d3a-db0d84ce0234",
+      "id": "828ba872-708c-46cb-80bf-b7081ab56fd5",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a3bf4f19-dc57-4e4f-b9da-92199198a636",
+      "id": "6ccf8efa-f473-4899-b716-8cdea481d233",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f002aa02-f5ab-4f8c-9e08-53c98416ac7b",
+      "id": "cfc5709a-7dee-4227-af80-03d5b195ec36",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "11a4ac71-38fc-4792-b2c1-356fab67bb1f",
+      "id": "de1814c6-4ef8-43a0-90f6-cf5d703ec9f6",
       "key": "promotion_code",
       "value": "",
       "type": "string",
