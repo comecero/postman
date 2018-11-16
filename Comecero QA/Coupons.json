@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "2f0f293b-8c7d-44ba-8952-5782a3187ef1",
     "name": "Coupons ",
-    "description": "- This set of tests expects you to be using the Base Account. ",
+    "description": "- This set of tests expects you to be using the Base Account.",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
@@ -350,7 +350,6 @@
               "listen": "test",
               "script": {
                 "id": "ef726021-6bbd-4f88-a94a-2cd6b74cf990",
-                "type": "text/javascript",
                 "exec": [
                   "// Load the standard tests",
                   "let utils = {};",
@@ -381,7 +380,8 @@
                   "tests[\"Subscription item discount is correct \" + subscriptionItem.reference_discount_price] = subscriptionItem.reference_discount_price === 0;",
                   "",
                   "pm.globals.set(\"subscription_url\", item.subscription.url);"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -402,7 +402,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"{{bt_cc_valid}}\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
             },
             "url": {
               "raw": "{{cart_url}}/payments?expand=order.items.subscription,order.items.subscription_terms",
@@ -782,7 +782,6 @@
               "listen": "test",
               "script": {
                 "id": "a880a1c2-9884-4a28-85e9-d84e67a2cc1f",
-                "type": "text/javascript",
                 "exec": [
                   "// Load the standard tests",
                   "let utils = {};",
@@ -794,7 +793,8 @@
                   "var data = JSON.parse(responseBody);",
                   "tests[\"Shipping discount was applied\"] = data.order.shipping == pm.globals.get(\"shipping\");",
                   "tests[\"Shipping discount was applied cross check\"] = data.order.shipping_original == pm.globals.get(\"shipping_original\");"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -815,7 +815,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"{{bt_cc_valid}}\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
             },
             "url": {
               "raw": "{{cart_url}}/payments?expand=order",
@@ -1465,7 +1465,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"{{bt_cc_valid}}\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
             },
             "url": {
               "raw": "{{cart_url}}/payments?expand=order.items",
@@ -1760,49 +1760,49 @@
   ],
   "variable": [
     {
-      "id": "3f48bd88-b83e-4a51-bfc6-471ccec2ff6d",
+      "id": "9aa2b995-28aa-4226-b3d7-c34ed70b9b32",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bf02316c-094e-423b-be27-faadf9098c05",
+      "id": "681bb2e7-52f7-4e1a-8541-220cd5bccd5d",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fd054071-0abc-41db-831f-285437e7b618",
+      "id": "6a5267d2-31df-408b-9b92-b1620b8c42af",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0cbfac74-28ee-4bd9-821a-9380b61b8837",
+      "id": "edf6b925-5b42-463c-a89d-10ba6355b9fe",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7b408ab3-2e9e-47bf-8372-376cca22a9f2",
+      "id": "1d5e6fcb-b969-4da3-94be-316d50221c94",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0c7921b8-90f3-47d1-9126-985b6a1f4ea0",
+      "id": "25b4c0cf-df63-447e-9c81-193630f7d6fc",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d4e48562-b518-41ec-bae7-351dcb790b32",
+      "id": "454d6163-7a51-4ad4-9e73-0bc6b873c1ab",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
