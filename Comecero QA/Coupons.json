@@ -432,10 +432,10 @@
               "listen": "test",
               "script": {
                 "id": "3f3dc7e4-71dc-459d-9e12-dd80028e6205",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Coupon has been deleted\"] = responseCode.code === 204;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1124,7 +1124,6 @@
               "listen": "test",
               "script": {
                 "id": "f8161987-1ba7-4356-bd15-6215e046e7c8",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Status is 201\"] = responseCode.code === 201;",
                   "",
@@ -1141,7 +1140,8 @@
                   "    }    ",
                   "    ",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1162,7 +1162,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"{{bt_cc_valid}}\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
             },
             "url": {
               "raw": "{{cart_url}}/payments?expand=order.items",
@@ -1192,11 +1192,11 @@
               "listen": "test",
               "script": {
                 "id": "5ccc0d0f-db39-4271-ac1d-e0526ee19bb3",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Coupon has been deleted\"] = responseCode.code === 204;",
                   "pm.globals.unset(\"coupon_url\");"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1495,11 +1495,11 @@
               "listen": "test",
               "script": {
                 "id": "5ccc0d0f-db39-4271-ac1d-e0526ee19bb3",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Coupon has been deleted\"] = responseCode.code === 204;",
                   "pm.globals.unset(\"coupon_url\");"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1760,49 +1760,49 @@
   ],
   "variable": [
     {
-      "id": "9aa2b995-28aa-4226-b3d7-c34ed70b9b32",
+      "id": "8b8b5666-c7cb-4222-865a-965efbc24cba",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "681bb2e7-52f7-4e1a-8541-220cd5bccd5d",
+      "id": "8b70555d-7817-431e-a808-0a839ff4995f",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6a5267d2-31df-408b-9b92-b1620b8c42af",
+      "id": "50f512f1-724c-464b-b1ce-7eed2906aa75",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "edf6b925-5b42-463c-a89d-10ba6355b9fe",
+      "id": "23156e92-698c-447a-8418-63e7f67f5c26",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1d5e6fcb-b969-4da3-94be-316d50221c94",
+      "id": "682834d1-5f1f-453c-abdf-6ede7bd66d6a",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "25b4c0cf-df63-447e-9c81-193630f7d6fc",
+      "id": "8a2830a7-a6f9-413d-a6bb-9161dd2697e9",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "454d6163-7a51-4ad4-9e73-0bc6b873c1ab",
+      "id": "797f34b7-66cd-4c4d-8e90-671d0456334a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
