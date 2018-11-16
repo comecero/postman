@@ -350,7 +350,6 @@
           "listen": "test",
           "script": {
             "id": "4692d7d6-e70b-4fcb-ad9c-dbda85f66c5b",
-            "type": "text/javascript",
             "exec": [
               "// Load the standard tests",
               "let utils = {};",
@@ -391,7 +390,8 @@
               "if (subscriptionItem.discount_apply_count) {",
               "    tests[\"expected_discount_apply_count \" + subscriptionItem.discount_apply_count + \", \" + pm.variables.get(\"expected_discount_apply_count\")] = subscriptionItem.discount_apply_count === pm.variables.get(\"expected_discount_apply_count\");",
               "}"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
@@ -412,7 +412,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+          "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"{{bt_cc_valid}}\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
         },
         "url": {
           "raw": "{{cart_url}}/payments?expand=order.items.subscription,order.items.subscription_terms",
@@ -773,98 +773,98 @@
   ],
   "variable": [
     {
-      "id": "deee3245-09bc-4cd1-b607-900c81aa63ad",
+      "id": "14c4fab6-768a-4ff7-9313-54c279e19859",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "39d1ef53-536e-46a4-bca0-78415a5d9365",
+      "id": "e46cd1a9-c0b2-4de3-b406-98fe65288227",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b4689ebc-81ab-4338-8e87-19a1d52f0d20",
+      "id": "65902880-12c7-45ca-b1a8-096a14461310",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f0faf234-2423-432d-84e4-845acdf56db8",
+      "id": "34d76623-8734-42b1-9a2e-6e5b36c602c1",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d32b716e-4f89-46c7-8d0e-40cc9e967ee8",
+      "id": "a209ee75-c74c-4670-a028-90de6fafbbd2",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "75963fd6-fa34-40fc-87ba-9a12f4392351",
+      "id": "df30b084-7080-4a4b-841e-6802380cbd18",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a96a5325-c664-48ae-9c60-708ab8f2c26e",
+      "id": "75f7d79a-0294-4f8e-96ee-793c0d75b987",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7fa98b6e-06a8-4e8f-9634-a7acb68cf164",
+      "id": "6e64ddb5-9f4f-48c7-998a-fc4629b8bc58",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "feec7bb3-1330-4493-8fb6-fefc463f8a75",
+      "id": "1332f8f0-a327-4e72-8e80-81fd9e4eef31",
       "key": "promotion_code",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6f60d093-730f-46fd-ba1e-7e8fe70b5e13",
+      "id": "154d2a99-59f0-4072-afff-85b06a9a8c07",
       "key": "expected_item_price",
       "value": "20",
       "type": "string",
       "description": ""
     },
     {
-      "id": "50d1be7d-9a78-486d-bb02-ab74894f2212",
+      "id": "28e5f99e-af4b-45d4-b3b6-932f9b0e7721",
       "key": "expected_item_discount",
       "value": "0",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eac8bae5-9aec-4d42-b61c-46b2f915d7d4",
+      "id": "1814ccef-2159-4b6b-8182-08b7b78abd9a",
       "key": "expected_subscription_price",
       "value": "20",
       "type": "string",
       "description": ""
     },
     {
-      "id": "be19ebb7-7ccd-42bf-809c-70d75b0e631a",
+      "id": "42533c88-982b-46c4-8389-122290b4115b",
       "key": "expected_discount_apply_count",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dfb33991-8a46-403f-8f2f-3847326427b5",
+      "id": "49822ca9-ebf2-4d4e-95a8-790dc0da5579",
       "key": "expected_subscription_discount",
       "value": "0",
       "type": "string",
