@@ -2026,10 +2026,10 @@
               "listen": "test",
               "script": {
                 "id": "161f7d3c-51d0-456e-8685-b9ddb2cb13ff",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Coupon has been deleted\"] = responseCode.code === 204;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -2050,7 +2050,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": ""
             },
             "url": "{{coupon_url}}",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -7780,7 +7780,6 @@
               "listen": "test",
               "script": {
                 "id": "b159a350-83cd-4e5e-87ed-40154a3e57ac",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Payment method created\"] = responseCode.code === 201;",
                   "",
@@ -7789,7 +7788,8 @@
                   "}",
                   "",
                   "var data = JSON.parse(responseBody);"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -7807,7 +7807,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"4444555566661111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
+              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"{{bt_cc_valid}}\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
             },
             "url": "https://{{host}}/api/v1/customers/{{customer_id}}/payment_methods"
           },
@@ -14889,63 +14889,63 @@
   ],
   "variable": [
     {
-      "id": "3ecad01c-28b2-496e-8803-4125b7372356",
+      "id": "43debd97-40a5-4346-9f48-139a6f18dc7d",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d7fd1223-3214-4658-b1e9-c990b957ae06",
+      "id": "e4b68148-03b4-4e15-9be9-43e679d113e1",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ea36b522-4950-41e0-8393-3472291dae0f",
+      "id": "1e99391f-bfe8-4195-806b-f2f2588b7933",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7a5244bb-7b1f-47c6-84d3-4cd291fa0120",
+      "id": "617587f9-4bae-47f9-8016-baea9a5051f9",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "81a39d6c-be1f-49b6-a405-7e1ca8529cea",
+      "id": "53d8c9c9-57db-4a7c-85d1-a4de33c093ea",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "828ba872-708c-46cb-80bf-b7081ab56fd5",
+      "id": "4655cd75-0493-434e-b10c-32e354da0cc2",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6ccf8efa-f473-4899-b716-8cdea481d233",
+      "id": "18da515c-c8be-4d0a-bbb0-b485a956d715",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cfc5709a-7dee-4227-af80-03d5b195ec36",
+      "id": "eea5b8b4-a9ab-44e6-b6f4-4af5f2d2fca0",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "de1814c6-4ef8-43a0-90f6-cf5d703ec9f6",
+      "id": "adf873e2-6455-4776-9661-a1b7ff212f31",
       "key": "promotion_code",
       "value": "",
       "type": "string",
