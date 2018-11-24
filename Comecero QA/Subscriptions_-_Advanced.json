@@ -5832,7 +5832,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"{{bt_cc_valid}}\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
+              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"4444555566661111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
             },
             "url": "https://{{host}}/api/v1/customers/{{customer_id}}/payment_methods"
           },
@@ -14889,63 +14889,63 @@
   ],
   "variable": [
     {
-      "id": "4372799a-0c99-4cb0-948a-658123b76899",
+      "id": "c66ac18b-72b7-4115-96e1-5ca48cadd451",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "52351553-2d8e-47ae-9116-170eaf9ee170",
+      "id": "9e8478e5-3c33-4cc8-ac11-28f1a16754ed",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e9567091-daf9-4b41-8e2d-dff09af4e301",
+      "id": "d739a32b-f715-4239-a448-0893356daccf",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "710a6c1a-0a6f-41ae-842d-726cb8b85b3f",
+      "id": "9fd6d2f8-67d8-437b-92ec-36f6fdf0bd84",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "054caf71-fc93-41e9-b128-4b8784ff327c",
+      "id": "8efe8c0a-ec35-4e01-8f02-babbb2f604db",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b5135b2f-76f3-4b11-8d23-40f7d73827e8",
+      "id": "d769c85f-8b41-4b6a-b889-ac2052c329ab",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "718b2ea6-7e69-4b65-86c9-f24286d27ee1",
+      "id": "361cf32a-570a-4ff6-96f4-129cbcdf1fe8",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e503ccb9-6531-47c9-b341-74ab2c16bb63",
+      "id": "d084d44d-11fd-4150-9e3f-9536894ccf42",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8454cb45-650b-4187-9bfa-a7504452c6ee",
+      "id": "10922135-825a-4f04-908f-2034ddb379c8",
       "key": "promotion_code",
       "value": "",
       "type": "string",
