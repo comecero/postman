@@ -6049,7 +6049,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"{{bt_cc_valid}}\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
+              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"4444555566661111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
             },
             "url": "https://{{host}}/api/v1/customers/{{customer_id}}/payment_methods"
           },
@@ -6269,7 +6269,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"{{bt_cc_valid}}\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
+              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"4444555566661111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
             },
             "url": "https://{{host}}/api/v1/customers/{{customer_id}}/payment_methods"
           },
@@ -6487,7 +6487,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"{{bt_cc_valid}}\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
+              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"4444555566661111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
             },
             "url": "https://{{host}}/api/v1/customers/{{customer_id}}/payment_methods"
           },
@@ -14889,63 +14889,63 @@
   ],
   "variable": [
     {
-      "id": "c66ac18b-72b7-4115-96e1-5ca48cadd451",
+      "id": "7548bfb4-922a-4d14-93b5-1c4357642a6e",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9e8478e5-3c33-4cc8-ac11-28f1a16754ed",
+      "id": "631823ce-c130-43a5-be48-ebd3dfc42936",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d739a32b-f715-4239-a448-0893356daccf",
+      "id": "2ead0032-a0f0-448b-bab4-56e64dcaab1e",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9fd6d2f8-67d8-437b-92ec-36f6fdf0bd84",
+      "id": "8fe12fa5-f4b4-4b79-86f8-1fc8c7493cb6",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8efe8c0a-ec35-4e01-8f02-babbb2f604db",
+      "id": "2296d819-7088-40f8-9cf9-be2d66efa48b",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d769c85f-8b41-4b6a-b889-ac2052c329ab",
+      "id": "3d8af794-c3c1-49f5-a23f-1620ec6d0d31",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "361cf32a-570a-4ff6-96f4-129cbcdf1fe8",
+      "id": "b61b6117-b278-48a5-9da3-e44212a658d1",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d084d44d-11fd-4150-9e3f-9536894ccf42",
+      "id": "711ba739-8933-41de-912c-f8fa0ff2d491",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "10922135-825a-4f04-908f-2034ddb379c8",
+      "id": "5dfbe269-1b01-4f09-b729-cb456f1c20bb",
       "key": "promotion_code",
       "value": "",
       "type": "string",
