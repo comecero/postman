@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "3451af65-65a9-4fa2-9c02-770465d9eb93",
     "name": "Subscriptions",
-    "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://drive.google.com/open?id=1yylAp1XKZtMcS0Wzq2nfdAXOJxTBWz1a) data collection in the runner.\n- This set of tests expects you to be using the Base Account. \n\nTests creation of subscriptions in various scenarios including different trial, promotion and tax situations.\n\n**NOTE** The Customer Data Subscriptions CSV includes \"\" as the values for items that are expected to be blank. Normally empty values in a CSV are just empty (not empty quotes). This is necessary due to a [bug in Postman](https://github.com/postmanlabs/postman-app-support/issues/2861). When this bug is fixed, you can remove the quotes. The reason it's an issue is because if you open the files in a spreadsheet and save back as CSV, you will lose your double quotes and the tests will fail. ",
+    "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://drive.google.com/open?id=1yylAp1XKZtMcS0Wzq2nfdAXOJxTBWz1a) data collection in the runner.\n- This set of tests expects you to be using the Base Account. \n- Before you run the tests, under Settings> Payment, set \"Allow Saved Credit Cards\" to true in the account you are testing.\n\nTests creation of subscriptions in various scenarios including different trial, promotion and tax situations.\n\n**NOTE** The Customer Data Subscriptions CSV includes \"\" as the values for items that are expected to be blank. Normally empty values in a CSV are just empty (not empty quotes). This is necessary due to a [bug in Postman](https://github.com/postmanlabs/postman-app-support/issues/2861). When this bug is fixed, you can remove the quotes. The reason it's an issue is because if you open the files in a spreadsheet and save back as CSV, you will lose your double quotes and the tests will fail.",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
@@ -412,7 +412,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"{{bt_cc_valid}}\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+          "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
         },
         "url": {
           "raw": "{{cart_url}}/payments?expand=order.items.subscription,order.items.subscription_terms",
@@ -483,10 +483,10 @@
           "listen": "test",
           "script": {
             "id": "161f7d3c-51d0-456e-8685-b9ddb2cb13ff",
-            "type": "text/javascript",
             "exec": [
               "tests[\"Coupon has been deleted\"] = responseCode.code === 204;"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
@@ -773,98 +773,98 @@
   ],
   "variable": [
     {
-      "id": "14c4fab6-768a-4ff7-9313-54c279e19859",
+      "id": "bb4c0507-e56f-421f-bb4d-cd25e95ff248",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e46cd1a9-c0b2-4de3-b406-98fe65288227",
+      "id": "dc63f13e-d04d-4c3b-b951-37b18cb4a3d2",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "65902880-12c7-45ca-b1a8-096a14461310",
+      "id": "50ee4380-1bd9-4c9c-a178-62ad3d5af9f9",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "34d76623-8734-42b1-9a2e-6e5b36c602c1",
+      "id": "f885f50e-8625-4a93-b5e1-51156f3a73c8",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a209ee75-c74c-4670-a028-90de6fafbbd2",
+      "id": "791185da-3bdd-4a51-90ec-a0bd953eeb31",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "df30b084-7080-4a4b-841e-6802380cbd18",
+      "id": "0c3ac2e6-d182-4121-b03a-e0779e957dfc",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "75f7d79a-0294-4f8e-96ee-793c0d75b987",
+      "id": "c5f50f1a-4f5c-4718-9872-4d7c9cf2c2c6",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6e64ddb5-9f4f-48c7-998a-fc4629b8bc58",
+      "id": "e13849b9-ac6b-4cd5-a5c3-df3d3ba3c921",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1332f8f0-a327-4e72-8e80-81fd9e4eef31",
+      "id": "3ac2a031-04d1-4de4-8e49-b9ead7b18c72",
       "key": "promotion_code",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "154d2a99-59f0-4072-afff-85b06a9a8c07",
+      "id": "6df29347-1661-45d0-9ef9-6070c2f1c77e",
       "key": "expected_item_price",
       "value": "20",
       "type": "string",
       "description": ""
     },
     {
-      "id": "28e5f99e-af4b-45d4-b3b6-932f9b0e7721",
+      "id": "00b820ea-8f90-4923-ac12-d12a6945e3cf",
       "key": "expected_item_discount",
       "value": "0",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1814ccef-2159-4b6b-8182-08b7b78abd9a",
+      "id": "8df7ed81-6a40-46b9-95f2-d3a3abb7a253",
       "key": "expected_subscription_price",
       "value": "20",
       "type": "string",
       "description": ""
     },
     {
-      "id": "42533c88-982b-46c4-8389-122290b4115b",
+      "id": "136b1ace-6f6c-4781-95b3-41fa665e08f0",
       "key": "expected_discount_apply_count",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "49822ca9-ebf2-4d4e-95a8-790dc0da5579",
+      "id": "388a348f-4b81-4218-9604-6979868b2d24",
       "key": "expected_subscription_discount",
       "value": "0",
       "type": "string",
