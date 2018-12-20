@@ -1367,12 +1367,12 @@
               "listen": "test",
               "script": {
                 "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Payment created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
-                  "pm.globals.set(\"payment_url\", data.url);"
-                ]
+                  "pm.globals.set(\"order_url\", data.url);"
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1404,13 +1404,13 @@
               "listen": "test",
               "script": {
                 "id": "ec1490a0-afff-49ef-8749-f5d7362f8bda",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Payment created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Refund was successful\"] = data.total === 90 && data.subtotal === 90 && data.shipping === 0 && data.tax === 0;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1430,7 +1430,7 @@
               "mode": "raw",
               "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"digital.test\",\n         \"quantity\":3\n      },   \t\n      {\n         \"item_id\":\"physical.test\",\n         \"quantity\":2\n      }        \n   ]\n}"
             },
-            "url": "{{payment_url}}/refunds"
+            "url": "{{order_url}}/refunds"
           },
           "response": []
         }
@@ -2195,49 +2195,49 @@
   ],
   "variable": [
     {
-      "id": "5458fa79-b787-4294-8bd0-d6d5a0c35376",
+      "id": "a0db3c8c-8cd8-4afe-bd1a-5b69722b7a9d",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7c0c9d31-8e43-4ad0-bab1-059e10b7d590",
+      "id": "16794321-6899-479b-b237-0b0a0a56575d",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ccd89925-f155-4061-818c-9bd95efd983c",
+      "id": "bf7bf64a-3796-4dcc-96f0-4e909b4d40ef",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9069d97b-0ff7-4642-aac9-6672648e9e65",
+      "id": "1d2414c1-e95d-4053-ac38-b1e12fe33220",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "45ea38c9-438d-4eea-8fb9-9e6cf640371c",
+      "id": "90174333-5d6d-4348-9b35-7eb1f2b2bbd8",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9fccc1be-2b27-4892-9ec0-cf014af6a03d",
+      "id": "73ec1594-caf5-435a-a463-1139727918d2",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8c9d7b8d-a0f5-46b9-8eed-063fe3b82014",
+      "id": "8a5febb9-424f-4a54-b079-7cfe79b6c7c5",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
