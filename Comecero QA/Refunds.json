@@ -1683,10 +1683,10 @@
               "listen": "test",
               "script": {
                 "id": "8e779a5f-cc28-4b8c-9535-04f7c7f7a066",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Check refunding more items that in order with partial refund\"] = responseCode.code === 400;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1706,7 +1706,7 @@
               "mode": "raw",
               "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"digital.test\",\n         \"quantity\":3\n      }       \n   ]\n}"
             },
-            "url": "{{payment_url}}/refunds"
+            "url": "{{order_url}}/refunds"
           },
           "response": []
         }
@@ -1765,12 +1765,12 @@
               "listen": "test",
               "script": {
                 "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Payment created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
-                  "pm.globals.set(\"payment_url\", data.url);"
-                ]
+                  "pm.globals.set(\"order_url\", data.order);"
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -2195,49 +2195,49 @@
   ],
   "variable": [
     {
-      "id": "4fc1a45c-cb79-4970-bacf-a8981aa72f05",
+      "id": "a6edf061-42b5-4934-af8b-d480b6a36866",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fae30616-2a90-4992-8d00-5fb5b972e1aa",
+      "id": "8f8ba5a6-5899-4fb6-8c69-797c64484feb",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4125e5da-a792-4b52-be39-eab597cd43cf",
+      "id": "989b3939-c7bd-4aa0-8e8b-45c4a313ad81",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "048e72db-bc49-4202-be46-b489e7e65415",
+      "id": "a33dc869-3fec-46ad-a08e-061dd48eb383",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dc4cf93a-4d9e-4b87-9b0b-6d8099b63940",
+      "id": "37e9702f-e482-42ab-bbb5-55ea8737a8b6",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f3b20f7c-9118-4888-b721-0733f336bfd1",
+      "id": "b3c4e2dd-ef6c-4829-857b-7c7c282d2aaa",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e9881d60-17d2-47ca-b0e1-756f0bdb8a50",
+      "id": "85fc807a-b142-4213-801b-9fb2251ad65e",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
