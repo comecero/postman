@@ -1001,13 +1001,13 @@
               "listen": "test",
               "script": {
                 "id": "480bfc30-7dcd-414c-afcf-7dd92769b3be",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Refund created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Refund items was successful\"] = data.total === 100 && data.subtotal === 100 && data.shipping === 0 && data.tax === 0;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1027,7 +1027,7 @@
               "mode": "raw",
               "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"1\",\n         \"quantity\":1\n      }\n  ]\n}"
             },
-            "url": "{{invoice_url}}/refunds"
+            "url": "{{order_url}}/refunds"
           },
           "response": []
         },
@@ -2393,49 +2393,49 @@
   ],
   "variable": [
     {
-      "id": "f1b5232f-a4d4-41fd-9f5b-324b935bcd72",
+      "id": "d98ca5d4-4389-4f3c-a302-55f35aa5c09d",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c315bcea-bee0-4c44-a33a-4b5c22439b8e",
+      "id": "8f72b4aa-5fab-488d-8614-81ac413e0ac1",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9c54c5bd-0422-4f3c-99de-0d1027e12759",
+      "id": "4d287e7f-a28c-4001-bb61-ae154ef7c8f9",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "792a5c9e-ff99-4f45-bab7-698a3e4c572c",
+      "id": "058b136f-d7c0-497d-ae5d-4de1b400ce2b",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "97eb7e1e-4656-4128-8fa4-f123eaf1939b",
+      "id": "9a9a7923-360f-4b99-b218-1ed1210d0cb2",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "611303f2-c76c-411d-92f2-71da40f0a908",
+      "id": "0feae825-3ac4-4d10-b3f6-7abf62783cdb",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c722e0d9-524b-4d36-9e55-0127572e21c7",
+      "id": "7569df86-b712-4db7-86b4-dca25a710716",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
