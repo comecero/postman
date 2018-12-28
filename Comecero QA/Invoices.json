@@ -1815,26 +1815,27 @@
               "listen": "test",
               "script": {
                 "id": "c8baab72-98b9-4471-85cf-2955cbef1a6a",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Total is OK\"] = data.total === 25;",
-                  "tests[\"Status is OK\"] = data.status === \"completed\";"
-                ]
+                  "tests[\"Status is OK\"] = data.status === \"completed\";",
+                  "pm.globals.set(\"order_url\", data.order);"
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "type": "text/javascript",
                 "exec": [
                   "var date = new Date();",
                   "date.setMonth(date.getMonth() + 1);",
                   "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1869,13 +1870,13 @@
               "listen": "test",
               "script": {
                 "id": "3c8138b4-a5c3-4cc9-bfcb-25c5fc5ce31e",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Refund created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Refund items was successful\"] = data.total === 20 && data.subtotal === 20 && data.shipping === 0 && data.tax === 0;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1895,7 +1896,7 @@
               "mode": "raw",
               "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"digital.test\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"physical.test\",\n         \"quantity\":1\n      }\n  ]\n}"
             },
-            "url": "{{invoice_url}}/refunds"
+            "url": "{{order_url}}/refunds"
           },
           "response": []
         },
@@ -2286,49 +2287,49 @@
   ],
   "variable": [
     {
-      "id": "fb9fe2c7-c007-4772-85b4-4c9c13586413",
+      "id": "bd6db8bb-cb55-44e1-ab21-5a1dddb97a47",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "266f705e-595e-4c74-aa88-840ab2544a13",
+      "id": "5a86b0cb-b23d-4965-8db9-93531554ace1",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a79b7aab-61df-4c8b-943d-59191b38b06d",
+      "id": "748f4372-0478-4be7-9974-ea93ca70938a",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6e9b630d-afa7-4c90-b560-e4063a26d9bf",
+      "id": "eaad11c0-104b-4a66-aa02-c745d1accdb9",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "776c811b-0636-4990-a6e0-a8795461f7f3",
+      "id": "e01fb59f-9e9b-4a4d-b134-6bf1a58906f0",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "02d8d1ca-f8b6-4514-a982-5e1dcc1f6d23",
+      "id": "dbbd8ace-6f10-4741-b97b-c69e065a0746",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "804a9ec0-d4b7-4815-8a10-bdfaa07a2e91",
+      "id": "ad14cd2e-037b-4cd4-9c34-708c6441f1eb",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
