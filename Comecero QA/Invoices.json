@@ -1039,10 +1039,10 @@
               "listen": "test",
               "script": {
                 "id": "da696f2d-6cfa-40fd-b2d4-6e60ccb82cfd",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Try to refund shipping when no shipping was paid\"] = responseCode.code === 400;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1062,7 +1062,7 @@
               "mode": "raw",
               "raw": "{\n\t\"shipping\": 15\n}"
             },
-            "url": "{{invoice_url}}/refunds"
+            "url": "{{order_url}}/refunds"
           },
           "response": []
         }
@@ -1137,26 +1137,27 @@
               "listen": "test",
               "script": {
                 "id": "28ac544f-7c8a-4320-84c4-cbd4a055f651",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Total is OK\"] = data.total === 145;",
-                  "tests[\"Status is OK\"] = data.status === \"completed\";"
-                ]
+                  "tests[\"Status is OK\"] = data.status === \"completed\";",
+                  "pm.globals.set(\"order_url\", data.order);"
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "type": "text/javascript",
                 "exec": [
                   "var date = new Date();",
                   "date.setMonth(date.getMonth() + 1);",
                   "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1191,13 +1192,13 @@
               "listen": "test",
               "script": {
                 "id": "bb304b28-607a-4322-ace7-5c69c9484f55",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Refund created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Refund items was successful\"] = data.total === 145 && data.subtotal === 130 && data.shipping === 15 && data.tax === 0;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1217,7 +1218,7 @@
               "mode": "raw",
               "raw": "{\n   \"shipping\": 15,\n   \"items\":[\n      {\n         \"item_id\":\"physical.test\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"1\",\n         \"quantity\":1\n      }\n  ]\n}"
             },
-            "url": "{{invoice_url}}/refunds"
+            "url": "{{order_url}}/refunds"
           },
           "response": []
         },
@@ -2393,49 +2394,49 @@
   ],
   "variable": [
     {
-      "id": "d98ca5d4-4389-4f3c-a302-55f35aa5c09d",
+      "id": "e9b35770-6e43-43d9-9231-bb4d731c5b76",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8f72b4aa-5fab-488d-8614-81ac413e0ac1",
+      "id": "3291317a-fd39-467c-a37c-029d8f1ab957",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4d287e7f-a28c-4001-bb61-ae154ef7c8f9",
+      "id": "f5fe6225-5be6-4c04-8f1f-ba750182ae96",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "058b136f-d7c0-497d-ae5d-4de1b400ce2b",
+      "id": "78fcc0ec-3002-4c74-9482-7f43144cca24",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9a9a7923-360f-4b99-b218-1ed1210d0cb2",
+      "id": "ccaa12a2-14a3-416a-ab32-0708ef36f47d",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0feae825-3ac4-4d10-b3f6-7abf62783cdb",
+      "id": "bf62a050-b966-4978-a401-06a8616f9d6f",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7569df86-b712-4db7-86b4-dca25a710716",
+      "id": "c16d0459-90fa-45d5-bd39-a6379a75e667",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
