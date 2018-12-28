@@ -1311,7 +1311,6 @@
               "listen": "test",
               "script": {
                 "id": "708e5883-1cc6-4b4d-b4e4-4306e97d472d",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
@@ -1319,20 +1318,22 @@
                   "tests[\"Total is OK\"] = data.total === 60;",
                   "tests[\"Status is OK\"] = data.status === \"completed\";",
                   "tests[\"Subscription was created\"] = data.order.items[0].subscription.items[0].reference_price === 20;",
-                  "pm.globals.set(\"subscription_url\", data.order.items[0].subscription.url);"
-                ]
+                  "pm.globals.set(\"subscription_url\", data.order.items[0].subscription.url);",
+                  "pm.globals.set(\"order_url\", data.order);"
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "type": "text/javascript",
                 "exec": [
                   "var date = new Date();",
                   "date.setMonth(date.getMonth() + 1);",
                   "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -2284,49 +2285,49 @@
   ],
   "variable": [
     {
-      "id": "30a30575-74b0-407b-a7b6-7f95eb5c5f8c",
+      "id": "7ee024df-346b-4b9b-a140-baa7eacb3feb",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0a2abeca-b625-47ec-a6ed-c101ad9b377c",
+      "id": "519047cf-8a4f-4ff0-9080-7105ffc9ebf8",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "898b3c55-d604-4b70-8a0d-aa8350028d10",
+      "id": "3692cd24-b077-4bd8-8a80-3c999981e369",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ba0a83e8-7290-490c-af05-e6f8481acc83",
+      "id": "5a6d1bcd-a5e1-4534-a5dd-3b116e067005",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "45a3dd50-cd36-427e-8030-730f7294e60b",
+      "id": "2049548e-505e-4fd9-8075-7c29d97bf0a5",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2f015318-207c-4082-80db-3c1ddf799a1f",
+      "id": "3c4b3a83-83b3-4122-b6ff-b456376d4aef",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "26d54d4e-4d0b-408f-8eec-9465cc4d247b",
+      "id": "2ce47324-1194-44ee-b8b6-09e20a2c41fe",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
