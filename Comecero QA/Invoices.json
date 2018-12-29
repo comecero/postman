@@ -448,6 +448,61 @@
             "url": "{{order_url}}/refunds"
           },
           "response": []
+        },
+        {
+          "_postman_id": "3afb3ea3-d69d-40dd-a04f-a5be07fd1369",
+          "name": "Create Invoice Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
         }
       ]
     },
@@ -1319,7 +1374,7 @@
                   "tests[\"Status is OK\"] = data.status === \"completed\";",
                   "tests[\"Subscription was created\"] = data.order.items[0].subscription.items[0].reference_price === 20;",
                   "pm.globals.set(\"subscription_url\", data.order.items[0].subscription.url);",
-                  "pm.globals.set(\"order_url\", data.order);"
+                  "pm.globals.set(\"order_url\", data.order.url);"
                 ],
                 "type": "text/javascript"
               }
@@ -1908,13 +1963,13 @@
               "listen": "test",
               "script": {
                 "id": "7629114f-f7f1-468f-b4d2-5d4d8f8679a9",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Refund created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Refund shipping was successful\"] = data.total === 5 && data.subtotal === 0 && data.shipping === 5 && data.tax === 0;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1934,7 +1989,7 @@
               "mode": "raw",
               "raw": "{\n\t\"shipping\": 5\n}"
             },
-            "url": "{{invoice_url}}/refunds"
+            "url": "{{order_url}}/refunds"
           },
           "response": []
         }
@@ -2098,6 +2153,12 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "ceaf39b4-e42a-4de5-8a83-2da3d61fadc7",
+      "name": "Multiple Payments",
+      "description": "",
+      "item": []
     },
     {
       "_postman_id": "d4045dc9-bcab-4943-a5e9-0977f416ee51",
@@ -2287,49 +2348,49 @@
   ],
   "variable": [
     {
-      "id": "bd6db8bb-cb55-44e1-ab21-5a1dddb97a47",
+      "id": "7c6eb90c-47b1-4210-9893-3b5aa869cd9f",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5a86b0cb-b23d-4965-8db9-93531554ace1",
+      "id": "a8c8d4a2-db0f-4b87-964a-92b92e728a49",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "748f4372-0478-4be7-9974-ea93ca70938a",
+      "id": "8df3017f-b7a4-4fc9-8acf-6f17f2695677",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eaad11c0-104b-4a66-aa02-c745d1accdb9",
+      "id": "41750af5-1b7b-4ed1-8ab6-059e946818a3",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e01fb59f-9e9b-4a4d-b134-6bf1a58906f0",
+      "id": "67715e67-e490-412e-8cb9-a4c90411d59a",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dbbd8ace-6f10-4741-b97b-c69e065a0746",
+      "id": "fc5d8874-2d1b-404e-8b30-55f1cb773bb9",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ad14cd2e-037b-4cd4-9c34-708c6441f1eb",
+      "id": "128fa531-9d3b-47bf-a2d5-20b832e76b3f",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
