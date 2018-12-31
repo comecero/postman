@@ -3416,47 +3416,6 @@
           "response": []
         },
         {
-          "_postman_id": "75b9f276-cd02-a699-5240-84eab66042ba",
-          "name": "Add Payment Method",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b159a350-83cd-4e5e-87ed-40154a3e57ac",
-                "exec": [
-                  "tests[\"Payment method created\"] = responseCode.code === 201;",
-                  "",
-                  "if (responseCode.code !== 201) {",
-                  "tests[\"IF THIS TEST FAILS you must log into the account as admin and under Settings> Payment and enable 'Allow Saved Credit Cards.'\"] = false;",
-                  "}",
-                  "",
-                  "var data = JSON.parse(responseBody);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"5555666677771111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
-            },
-            "url": "https://{{host}}/api/v1/customers/{{customer_id}}/payment_methods"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "c61b032b-0c13-097a-3604-0d0ce84b7667",
           "name": "Create Customer",
           "event": [
@@ -14688,63 +14647,63 @@
   ],
   "variable": [
     {
-      "id": "0cdfe4d3-dc97-4f89-9b81-c2983a5f187e",
+      "id": "2b2dc1ce-c40d-4c8d-9bc1-0bcfe5a5b220",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ae6f7034-312e-4631-9838-b3812e0f8852",
+      "id": "5e10a012-21ae-4cfe-bf97-d45f123b2e99",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "46c1e802-7ba4-498b-a0a3-4ff356fe568c",
+      "id": "f3a86886-82b8-4d4a-9e82-f54ba1cea45c",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "062a8b4e-eaaf-45b7-8df8-1ec84901b84f",
+      "id": "40919e84-2ea5-43ea-aabb-7639309c27e6",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9b26d8af-9b83-4bfd-9c01-74f56580e869",
+      "id": "c692e508-aff3-4e06-9aa7-c3c392d71086",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1bb6a7fb-cb75-4e06-9b16-6c8b6f18d803",
+      "id": "22336516-98a2-46cd-bae1-247f75aeca5d",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f8131950-4605-400a-ac05-d3c1a9e8c4dc",
+      "id": "977138ef-26b6-48e2-bbcd-5c5e96e25fd2",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "17581fc4-764e-4a70-b87a-8b23029dc12e",
+      "id": "65e057c2-7ea5-4306-a641-585dc99209b1",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1c525b2d-62f0-4b1b-ac16-81d549238aba",
+      "id": "c7ae4942-ef09-4b65-a2f3-8c75c8506997",
       "key": "promotion_code",
       "value": "",
       "type": "string",
