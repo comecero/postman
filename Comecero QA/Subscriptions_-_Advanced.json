@@ -3416,125 +3416,6 @@
           "response": []
         },
         {
-          "_postman_id": "e494fe59-dbb9-d9c8-98df-0147be03b469",
-          "name": "Create Subscription",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4175c4a1-8f96-4b83-b115-7e0ba116ffa9",
-                "exec": [
-                  "// Load the standard tests",
-                  "let utils = {};",
-                  "if (globals.loadUtils) ",
-                  "    utils = eval(globals.loadUtils);",
-                  "",
-                  "tests[\"Status is 201\"] = responseCode.code === 201;",
-                  "",
-                  "var data = JSON.parse(responseBody);",
-                  "var item = data.items[0];",
-                  "var plan = data.subscription_plan;",
-                  "var terms = item.subscription_terms;",
-                  "",
-                  "tests[\"Check item \" + item.name] = true;",
-                  "",
-                  "utils.comparePlanToTerms(plan, terms);",
-                  "",
-                  "tests[\"Item reference price is correct \" + item.reference_price] = parseFloat(item.reference_price) === 10;",
-                  "tests[\"Item reference discount is correct \" + item.reference_discount] = item.reference_discount === 0;",
-                  "tests[\"Subscription item price is correct \" + terms.price] = parseFloat(terms.price) === 10;",
-                  "tests[\"Subscription item discount is correct \" + terms.discount] = terms.discount === 0;",
-                  "",
-                  "tests[\"Name is set \" + item.name] = item.name !== null;",
-                  "tests[\"Type is set \" + item.type] = item.type !== null;",
-                  "tests[\"ID is set \" + item.item_id] = item.item_id !== null;",
-                  "",
-                  "item = data.items[1];",
-                  "plan = data.subscription_plan;",
-                  "terms = item.subscription_terms;",
-                  "",
-                  "tests[\"Check item \" + item.name] = true;",
-                  "",
-                  "tests[\"Item price is correct \" + item.reference_price] = parseFloat(item.reference_price) === 30;",
-                  "tests[\"Item discount is correct \" + item.reference_discount] = item.reference_discount === 0;",
-                  "tests[\"Subscription item price is correct \" + terms.price] = parseFloat(terms.price) === 30;",
-                  "tests[\"Subscription item discount is correct \" + terms.discount] = terms.discount === 0;",
-                  "",
-                  "tests[\"Name is set \" + item.name] = item.name !== null;",
-                  "tests[\"Type is set \" + item.type] = item.type !== null;",
-                  "tests[\"ID is set \" + item.item_id] = item.item_id !== null;",
-                  "tests[\"Item count is correct \" + data.items.length] = data.items.length === 2;",
-                  "",
-                  "// Make sure the first invoice was created",
-                  "var invoice = data.invoices.data[0];",
-                  "tests[\"Invoice was created\"] = invoice.object !== null;",
-                  "tests[\"Invoice has the subscription items\"] = invoice.items.length === 2;",
-                  "tests[\"Item 1 converted price is correct \" + pm.globals.get(\"item_1_converted_price\")] = parseFloat(invoice.items[0].price) === parseFloat(pm.globals.get(\"item_1_converted_price\"));",
-                  "tests[\"Item 2 converted price is correct \" + pm.globals.get(\"item_2_converted_price\")] = parseFloat(invoice.items[1].price) === parseFloat(pm.globals.get(\"item_2_converted_price\"));",
-                  "tests[\"Invoice currency is correct\"] = invoice.currency === \"GBP\";",
-                  "",
-                  "pm.globals.set(\"subscription_12_url\", data.url);",
-                  "pm.globals.set(\"subscription_12_id\", data.subscription_id);"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\",\n  \"currency\": \"GBP\",\n  \"items\": [{\n      \"product_id\": \"digital.test\",\n      \"quantity\": 1\n  },\n  {\n      \"product_id\": \"physical.test\",\n      \"quantity\": 1\n  }\n  ]\n}"
-            },
-            "url": {
-              "raw": "https://{{host}}/api/v1/customers/{{customer_id}}/subscriptions?expand=items.subscription_terms,subscription_plan,invoices",
-              "protocol": "https",
-              "host": [
-                "{{host}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "customers",
-                "{{customer_id}}",
-                "subscriptions"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "items.subscription_terms,subscription_plan,invoices",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "75b9f276-cd02-a699-5240-84eab66042ba",
           "name": "Add Payment Method",
           "event": [
@@ -14807,63 +14688,63 @@
   ],
   "variable": [
     {
-      "id": "7672c960-1c55-495a-8c1b-b26ac4457b2e",
+      "id": "fd625355-6935-4983-afa3-7addcb2af1bb",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ea350ac1-5a20-447e-b2f9-d64f9aac8dbb",
+      "id": "b66b50d9-8931-46bc-bf1d-5752721f4589",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9a902d98-3738-4b49-8151-a2131ddc5094",
+      "id": "f54135ab-74e6-486d-b139-e8e9dbb7df30",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "05950845-d962-4787-a4f1-f94f76f00fac",
+      "id": "bbef498d-373f-4ce9-8314-2b0c3bf0b0eb",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5bc61112-654c-4608-93f0-211881117392",
+      "id": "e638eea7-aa57-447b-977a-067103bde263",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "44c1d70b-5c74-42e1-9a74-86e0b1c93dce",
+      "id": "df6c91a3-de3d-4fe4-9c1a-fc52d2659e89",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ed8b7d8e-95c1-48e2-a5e7-2a2505f11c68",
+      "id": "daff52b6-8256-496c-a42d-54c1a3711cb3",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5ca603b7-1709-464a-a36a-231e2042965d",
+      "id": "2da584e3-62f7-4192-8aaa-71faceae1762",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "84663f62-e41f-411c-b4ef-b551777b094a",
+      "id": "5cf4eef0-4f03-4955-b975-f89e8ddbcbc2",
       "key": "promotion_code",
       "value": "",
       "type": "string",
