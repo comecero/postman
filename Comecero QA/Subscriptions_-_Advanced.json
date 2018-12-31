@@ -3416,57 +3416,6 @@
           "response": []
         },
         {
-          "_postman_id": "c61b032b-0c13-097a-3604-0d0ce84b7667",
-          "name": "Create Customer",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4e7b6d60-0723-4dab-b65f-38cb4181f683",
-                "type": "text/javascript",
-                "exec": [
-                  "tests[\"Customer created\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "pm.globals.set(\"customer_id\", data.customer_id);"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"name\":\"{{name}}\",\r\n   \"email\":\"{{email}}\",\r\n   \"billing_address\":{\r\n      \"address_1\":\"{{address_1}}\",\r\n      \"city\":\"{{city}}\",\r\n      \"state_prov\":\"{{state_prov}}\",\r\n      \"postal_code\":\"{{postal_code}}\",\r\n      \"country\":\"{{country}}\"\r\n   }\r\n}"
-            },
-            "url": "https://{{host}}/api/v1/customers",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "ac805923-4f5a-15e3-32d4-0806226048a0",
           "name": "Get Item 2 Price",
           "event": [
@@ -14647,63 +14596,63 @@
   ],
   "variable": [
     {
-      "id": "2b2dc1ce-c40d-4c8d-9bc1-0bcfe5a5b220",
+      "id": "e50e3b35-d4e5-44f2-8143-33c03913f91b",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5e10a012-21ae-4cfe-bf97-d45f123b2e99",
+      "id": "a10d41d8-33b1-4830-9594-4970b739f220",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f3a86886-82b8-4d4a-9e82-f54ba1cea45c",
+      "id": "a83b2aad-8d7a-4940-82d3-5488e1b6f4e9",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "40919e84-2ea5-43ea-aabb-7639309c27e6",
+      "id": "d4cb95f4-9845-4438-bc40-f7024bce397f",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c692e508-aff3-4e06-9aa7-c3c392d71086",
+      "id": "6728534f-fc3b-4ad6-a581-599029e02a65",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "22336516-98a2-46cd-bae1-247f75aeca5d",
+      "id": "9a244cc1-348a-4523-84aa-c28293780eae",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "977138ef-26b6-48e2-bbcd-5c5e96e25fd2",
+      "id": "25f48957-8d52-44f1-9bf7-9403153af98f",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "65e057c2-7ea5-4306-a641-585dc99209b1",
+      "id": "22dc5a04-dd49-494b-9296-50099a681c4a",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c7ae4942-ef09-4b65-a2f3-8c75c8506997",
+      "id": "97a1a8f0-af5f-48a7-ac81-0ee6a741c7d8",
       "key": "promotion_code",
       "value": "",
       "type": "string",
