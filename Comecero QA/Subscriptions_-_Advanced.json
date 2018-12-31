@@ -3416,88 +3416,6 @@
           "response": []
         },
         {
-          "_postman_id": "4adffd9f-b4eb-5657-42ae-c288d3d2606f",
-          "name": "Get Item 1 Price",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6147bb86-6c4f-4598-9bdb-06006a3c97f5",
-                "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
-                  "",
-                  "var data = JSON.parse(responseBody);",
-                  "pm.globals.set(\"item_1_converted_price\", data.amount);",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"promotion_code\": \"single-product\",  \r\n  \"currency\": \"GBP\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      }      \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
-            },
-            "url": {
-              "raw": "https://{{host}}/api/v1/fx/amount?amount=10&from_currency=USD&to_currency=GBP",
-              "protocol": "https",
-              "host": [
-                "{{host}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "fx",
-                "amount"
-              ],
-              "query": [
-                {
-                  "key": "amount",
-                  "value": "10",
-                  "equals": true
-                },
-                {
-                  "key": "from_currency",
-                  "value": "USD",
-                  "equals": true
-                },
-                {
-                  "key": "to_currency",
-                  "value": "GBP",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "e494fe59-dbb9-d9c8-98df-0147be03b469",
           "name": "Create Subscription",
           "event": [
@@ -3651,7 +3569,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"4444555566661111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
+              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"5555666677771111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
             },
             "url": "https://{{host}}/api/v1/customers/{{customer_id}}/payment_methods"
           },
@@ -14889,63 +14807,63 @@
   ],
   "variable": [
     {
-      "id": "d85156aa-e17a-4e26-bdf4-4b147fde53bc",
+      "id": "7672c960-1c55-495a-8c1b-b26ac4457b2e",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eef403b3-1a08-407d-98ed-13af2428c4a0",
+      "id": "ea350ac1-5a20-447e-b2f9-d64f9aac8dbb",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4050fe2c-7428-4d13-8bd7-c24d53f76ccc",
+      "id": "9a902d98-3738-4b49-8151-a2131ddc5094",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9d0be0c3-57a8-4ca1-bb77-7d2c4a4614dd",
+      "id": "05950845-d962-4787-a4f1-f94f76f00fac",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1b22607a-2124-49b0-80eb-534cacc10cdf",
+      "id": "5bc61112-654c-4608-93f0-211881117392",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3082658a-ac1f-4cf9-a936-94c8b88c6c46",
+      "id": "44c1d70b-5c74-42e1-9a74-86e0b1c93dce",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9939d4a3-1e26-470f-8458-bc4540231cb9",
+      "id": "ed8b7d8e-95c1-48e2-a5e7-2a2505f11c68",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e70df7cb-a319-45f6-ae32-e89d7a38a2c7",
+      "id": "5ca603b7-1709-464a-a36a-231e2042965d",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4b3708b4-98e3-4c01-9376-24ff5ce3d3d8",
+      "id": "84663f62-e41f-411c-b4ef-b551777b094a",
       "key": "promotion_code",
       "value": "",
       "type": "string",
