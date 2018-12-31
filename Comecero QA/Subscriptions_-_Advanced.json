@@ -3414,88 +3414,6 @@
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
-        },
-        {
-          "_postman_id": "ac805923-4f5a-15e3-32d4-0806226048a0",
-          "name": "Get Item 2 Price",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6147bb86-6c4f-4598-9bdb-06006a3c97f5",
-                "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
-                  "",
-                  "var data = JSON.parse(responseBody);",
-                  "pm.globals.set(\"item_2_converted_price\", data.amount);",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"promotion_code\": \"single-product\",  \r\n  \"currency\": \"GBP\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      }      \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
-            },
-            "url": {
-              "raw": "https://{{host}}/api/v1/fx/amount?amount=30&from_currency=USD&to_currency=GBP",
-              "protocol": "https",
-              "host": [
-                "{{host}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "fx",
-                "amount"
-              ],
-              "query": [
-                {
-                  "key": "amount",
-                  "value": "30",
-                  "equals": true
-                },
-                {
-                  "key": "from_currency",
-                  "value": "USD",
-                  "equals": true
-                },
-                {
-                  "key": "to_currency",
-                  "value": "GBP",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
         }
       ]
     },
@@ -14596,63 +14514,63 @@
   ],
   "variable": [
     {
-      "id": "e50e3b35-d4e5-44f2-8143-33c03913f91b",
+      "id": "def5c957-4f63-4c1a-b094-4d9a33d1748f",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a10d41d8-33b1-4830-9594-4970b739f220",
+      "id": "a15479ed-2c6e-4836-8fb0-0ed84532a6c3",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a83b2aad-8d7a-4940-82d3-5488e1b6f4e9",
+      "id": "97c04bde-62b8-4460-983e-11faf1353b0c",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d4cb95f4-9845-4438-bc40-f7024bce397f",
+      "id": "5724003e-9bd2-4215-8a48-ad9148f4f55f",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6728534f-fc3b-4ad6-a581-599029e02a65",
+      "id": "a8304a5b-b798-420f-9bf2-cb9df9b044ae",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9a244cc1-348a-4523-84aa-c28293780eae",
+      "id": "0ba09d5f-2161-47db-aab8-7211ebfdc91b",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "25f48957-8d52-44f1-9bf7-9403153af98f",
+      "id": "9974b2bb-c339-49bb-85a0-811f3b0b2b12",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "22dc5a04-dd49-494b-9296-50099a681c4a",
+      "id": "2bff722f-7603-4cae-a5be-1b982cda653c",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "97a1a8f0-af5f-48a7-ac81-0ee6a741c7d8",
+      "id": "7d3bfea4-ff04-4420-a4f0-7fda83a6a8f0",
       "key": "promotion_code",
       "value": "",
       "type": "string",
