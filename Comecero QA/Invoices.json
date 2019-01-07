@@ -2161,7 +2161,7 @@
         },
         {
           "_postman_id": "cfd2e212-9bfc-4b39-b979-8518e2d4dcdd",
-          "name": "Pay Invoice Copy",
+          "name": "Pay Partial Invoice (1)",
           "event": [
             {
               "listen": "test",
@@ -2404,49 +2404,49 @@
   ],
   "variable": [
     {
-      "id": "417b2209-d294-4bc7-942b-119eda2915e3",
+      "id": "b81a2713-b444-46fd-a64c-fa4559a9796f",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6910cecb-9924-4b53-9187-c1c41faca9d7",
+      "id": "93c44a62-0dc5-482f-8d87-bc8221c79938",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b30500b9-bd62-47c6-86bf-76b1d21cf8a8",
+      "id": "9f520084-7171-4554-a63b-dbe43ab0f7ae",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8b0b7f6d-c9bf-4eda-b2eb-c867a4181936",
+      "id": "66589156-b26c-4dc3-8e01-ebccd5082dd6",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4b1f0385-b5fc-412b-89d7-e4990c2bea8d",
+      "id": "e1de23f7-e0c8-4cc2-acbd-7213b2fe4b64",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d1883c16-b990-4530-bcaf-a0230adfdcbb",
+      "id": "de17a891-eb6e-4adc-b55c-ad291dac9677",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5bd3a1c4-d80a-40e2-ad52-351bc6131935",
+      "id": "49ae908b-d3bf-4759-bb15-e19d77d487dd",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
