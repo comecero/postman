@@ -4110,6 +4110,61 @@
             "url": "{{invoice_url}}/payments"
           },
           "response": []
+        },
+        {
+          "_postman_id": "d974be6f-14f2-42b9-8136-15ecd6721e46",
+          "name": "Get Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "exec": [
+                  "tests[\"Invoice fetched successfully\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total remaining is OK\"] = data.total_remaining === 0;",
+                  "tests[\"Total payments is OK\"] = data.total_payments === 45;",
+                  "tests[\"Payment status is OK\"] = data.payment_status === 'completed';"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "{{invoice_url}}"
+          },
+          "response": []
         }
       ]
     },
@@ -4301,49 +4356,49 @@
   ],
   "variable": [
     {
-      "id": "a0ea2122-353d-4468-9adf-766e45662955",
+      "id": "fa42ae5e-07c4-4392-ad81-fb34c3b88721",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f0de2b03-31f2-4dae-bf48-d20cf9d8ee98",
+      "id": "3838ed6a-48f8-4af7-97cc-90925f946ae1",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ac6b9e8d-a9d7-4559-aaa2-d8bdd62f2459",
+      "id": "34e799e7-c322-4b3b-92dd-bb054012bf00",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "30831262-52a3-4b8c-ba53-f6788f7e9ac9",
+      "id": "298066e8-9138-4e37-92c7-3e1affc2e66a",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9c9b5b4b-1803-4d5e-8012-12cdf69d0fe2",
+      "id": "5543eddd-5589-44f7-8edb-281d37f8ee54",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6111222b-0676-4790-8915-1a7641428c2e",
+      "id": "8912029d-c47f-441a-a57c-0aff2033c1c7",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "140cd696-2e36-481f-a2f2-17c3853bd8af",
+      "id": "b35561e8-6ac8-4c15-9910-59e6adfc8289",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
