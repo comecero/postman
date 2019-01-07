@@ -3904,7 +3904,7 @@
                   "",
                   "tests[\"Total remaining is OK\"] = data.total_remaining === 10;",
                   "tests[\"Total payments is OK\"] = data.total_payments === 35;",
-                  "tests[\"Payment status is OK\"] = data.payment_status === 'completed';"
+                  "tests[\"Payment status is OK\"] = data.payment_status === 'unpaid';"
                 ],
                 "type": "text/javascript"
               }
@@ -4356,49 +4356,49 @@
   ],
   "variable": [
     {
-      "id": "88dbe02d-5009-4909-a5d3-d44694f843b1",
+      "id": "102e262f-2820-4278-8368-97188c7c035f",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "92fad9e0-363c-4634-aef1-e4ea4d73a666",
+      "id": "a01beebb-b1e0-4a44-87da-94759a4917e1",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "04ecf8fb-0207-4b69-82aa-08d3baf5cd61",
+      "id": "1f6e3832-092f-4655-b48b-c4c715db162a",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "13ee78de-3436-45b5-86af-6c74a4a0776e",
+      "id": "d1164008-f834-490e-b715-1bfa88fc0472",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d6d3cda0-2171-4e1d-bcf5-729ac5dfd0fd",
+      "id": "7bc37f68-940f-49b8-9042-7894d2c0eda8",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4525040b-2f90-4a72-803d-bcacd1c7699f",
+      "id": "a587d9dd-d171-4346-a469-caf5b04a8b33",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ffb43ec8-98b7-4c4b-a042-135de230c188",
+      "id": "3e2b7e5a-f755-4685-afea-cbd2b8a35107",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
