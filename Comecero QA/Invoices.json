@@ -2171,9 +2171,9 @@
                   "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Total is OK\"] = data.total === 140;",
+                  "tests[\"Total is OK\"] = data.total === 15;",
                   "tests[\"Status is OK\"] = data.status === \"completed\";",
-                  "pm.globals.set(\"order_url\", data.order);"
+                  "tests[\"No order created\"] = data.order === null;"
                 ],
                 "type": "text/javascript"
               }
@@ -2208,7 +2208,62 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+              "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "dcc2c2e9-a0c5-4aa5-bbf8-a111c8ea19c1",
+          "name": "Pay Partial Invoice (2)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 25;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";",
+                  "tests[\"Order created\"] = data.order !== null;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"total\": 25,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
             "url": "{{invoice_url}}/payments"
           },
@@ -2404,49 +2459,49 @@
   ],
   "variable": [
     {
-      "id": "b81a2713-b444-46fd-a64c-fa4559a9796f",
+      "id": "5d425955-d8fd-4846-b5d5-4be529d334f6",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "93c44a62-0dc5-482f-8d87-bc8221c79938",
+      "id": "e733a6e5-0da4-4136-8a0f-20b81aa0d84e",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9f520084-7171-4554-a63b-dbe43ab0f7ae",
+      "id": "92838bb1-0024-44f5-aaf6-129328398ae6",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "66589156-b26c-4dc3-8e01-ebccd5082dd6",
+      "id": "c7b83585-9c92-4d6b-a9fc-7e2fb4f79256",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e1de23f7-e0c8-4cc2-acbd-7213b2fe4b64",
+      "id": "287a8ec4-d8dd-4578-97f6-537d39d041f8",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "de17a891-eb6e-4adc-b55c-ad291dac9677",
+      "id": "043ee15b-922e-49aa-960b-0b6ba5020afe",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "49ae908b-d3bf-4759-bb15-e19d77d487dd",
+      "id": "61df800e-bedf-4ed0-bbd1-c43237f8033a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
