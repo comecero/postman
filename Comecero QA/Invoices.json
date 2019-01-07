@@ -2450,7 +2450,7 @@
               "script": {
                 "id": "569bae8a-9c34-4322-a80a-d598b789334d",
                 "exec": [
-                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Total is OK\"] = data.total === 15;",
@@ -2560,7 +2560,7 @@
               "script": {
                 "id": "569bae8a-9c34-4322-a80a-d598b789334d",
                 "exec": [
-                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Total is OK\"] = data.total === 30;",
@@ -2877,7 +2877,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"total\": 30,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+              "raw": "{\r\n   \"total\": 100,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
             "url": "{{invoice_url}}/payments"
           },
@@ -3128,49 +3128,49 @@
   ],
   "variable": [
     {
-      "id": "e7150a16-1d21-4e45-9ce1-7dcf9e4b7364",
+      "id": "f23326ce-7534-4c16-80d2-e6907a1429e9",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "76bde2fc-887d-4109-b992-fbc74a72e3fb",
+      "id": "53b13e97-090b-442e-a666-9981a3771a35",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d5f2e6ad-24ad-493f-be07-fbc528c0f04e",
+      "id": "c9e60c82-0239-4fdf-9529-d6c9eb15acd7",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1e379812-e552-4381-a3b8-d096eebfafac",
+      "id": "845a72b2-9a88-4f5b-aded-8153b879222d",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0f3b9cb1-20b7-4976-b052-f1780421811e",
+      "id": "2c77c99a-b702-4c34-b8df-8c544d57fe28",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3baa7cbd-1edd-4ab6-99c8-2864c93cd59a",
+      "id": "5fd2e53b-0b32-4dc1-9758-583f40c35863",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6afda665-5d22-4c0d-89f1-4bcc2c610e1c",
+      "id": "4b14e18a-a17e-4228-aa5b-060ecc64167e",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
