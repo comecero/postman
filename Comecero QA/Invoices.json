@@ -2278,7 +2278,7 @@
               "script": {
                 "id": "569bae8a-9c34-4322-a80a-d598b789334d",
                 "exec": [
-                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Total is OK\"] = data.total === 30;",
@@ -3128,49 +3128,49 @@
   ],
   "variable": [
     {
-      "id": "6c2fa5f6-469c-41d0-b495-8e3d0859987f",
+      "id": "e7150a16-1d21-4e45-9ce1-7dcf9e4b7364",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "47b0bc9b-5e0e-4fd2-a20c-05e66b578b24",
+      "id": "76bde2fc-887d-4109-b992-fbc74a72e3fb",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8eb029ea-0c58-4dbf-9341-8f859be259ef",
+      "id": "d5f2e6ad-24ad-493f-be07-fbc528c0f04e",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "86247f62-baf2-4807-a13f-445f1a8ae932",
+      "id": "1e379812-e552-4381-a3b8-d096eebfafac",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1d05d1fe-5b4f-4d18-958b-c571f4c6f224",
+      "id": "0f3b9cb1-20b7-4976-b052-f1780421811e",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "51d1bd0d-c847-4981-9818-ff482af9f48b",
+      "id": "3baa7cbd-1edd-4ab6-99c8-2864c93cd59a",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2e8cbd15-c1ff-415e-b359-1e1957078de4",
+      "id": "6afda665-5d22-4c0d-89f1-4bcc2c610e1c",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
