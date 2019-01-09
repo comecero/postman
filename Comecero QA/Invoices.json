@@ -5172,59 +5172,6 @@
           "response": []
         },
         {
-          "_postman_id": "9faa8d2b-4f88-43eb-91fd-c323ed592d96",
-          "name": "Change Invoice Currency Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
-                "exec": [
-                  "tests[\"Invoice changed to EUR\"] = responseCode.code === 200;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Currency is correct\"] = data.currency === \"EUR\";"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "exec": [
-                  "var date = new Date();",
-                  "date.setMonth(date.getMonth() + 1);",
-                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"currency\": \"EUR\"\n}"
-            },
-            "url": "{{invoice_url}}"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "17d23373-9573-4774-8d65-b9db43bcc65d",
           "name": "Pay Partial Invoice",
           "event": [
@@ -5519,49 +5466,49 @@
   ],
   "variable": [
     {
-      "id": "e0a3fb9d-9a67-422d-895a-13c47f1cdbfd",
+      "id": "b616a090-84bb-41bd-a4a3-f4b92a3c6855",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "75e8f313-43c6-4fc3-99f4-7bee7c9e6133",
+      "id": "72298684-fd2d-4083-9084-0b76970c3b8d",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8ef4058f-0807-49fd-bcd8-ebc04b05c25c",
+      "id": "33c37e37-c78d-4d5b-b481-8cea7ddd119a",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3a8c7359-45ba-438e-8178-ed5afaeea0d5",
+      "id": "ca957c3b-24a1-46e9-ba0c-48150eff7118",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "04394c66-18af-419a-aaf7-56d19b485f8c",
+      "id": "10462ef2-3095-4aab-b35d-6ab34b1769c8",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7f57d332-7bdb-44eb-9c5e-cc736c67e3ac",
+      "id": "f9f73890-0681-47f1-8962-a7139b4a41fe",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e2146ee2-2118-417b-a8bb-8f02d8cd83bb",
+      "id": "1c4beb97-2a98-476a-8dd1-c438355330e9",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
