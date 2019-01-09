@@ -5222,6 +5222,56 @@
             "url": "{{invoice_url}}"
           },
           "response": []
+        },
+        {
+          "_postman_id": "e69c9816-69d5-4e51-8be0-5982e387d0e5",
+          "name": "Change Invoice Currency Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "exec": [
+                  "tests[\"Invoice can't be changed\"] = responseCode.code === 422;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"currency\": \"EUR\"\n}"
+            },
+            "url": "{{invoice_url}}"
+          },
+          "response": []
         }
       ]
     },
@@ -5413,49 +5463,49 @@
   ],
   "variable": [
     {
-      "id": "5d9b274a-dcf9-41cb-9444-c7abec2e5cd1",
+      "id": "dafb80fe-bb48-4750-8698-5e9617167ef7",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5b72b62e-7fd7-4e63-99f9-fd5059c98c45",
+      "id": "235f7436-4d99-4ba4-b7dd-dc5c7463170f",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b0a7189e-fc56-478b-9415-8e0d16b2921e",
+      "id": "558cc32e-c8a7-489c-8ffd-599ec1b67842",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "149c4fa6-ff08-4948-8984-9cf1ac887a30",
+      "id": "7a233a72-de55-4ac3-ab46-48c01a10dd1a",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d8616037-92da-468c-b1cf-d21dab375b15",
+      "id": "bbfbffec-efe1-4b27-bcbe-2f6ba2f94109",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4f9b10ed-6df1-4ed8-9005-7e39a6950c44",
+      "id": "fb42b218-7f43-4ad1-aaaa-a9fe9a4e31fa",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b2aeeaec-827b-4d2d-8cf1-7031e39f0685",
+      "id": "0f73917f-ae34-4316-b09e-74bffcec15c3",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
