@@ -4627,12 +4627,7 @@
               "script": {
                 "id": "9b52bbf6-8486-4761-9e11-f08ab8d7e82f",
                 "exec": [
-                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Total is OK\"] = data.total === 45;",
-                  "tests[\"Status is OK\"] = data.status === \"completed\";",
-                  "pm.globals.set(\"order_url\", data.order);"
+                  "tests[\"Invoice deleted successfully\"] = responseCode.code === 204;"
                 ],
                 "type": "text/javascript"
               }
@@ -4654,7 +4649,7 @@
             "auth": {
               "type": "noauth"
             },
-            "method": "POST",
+            "method": "DELETE",
             "header": [
               {
                 "key": "Authorization",
@@ -4669,7 +4664,7 @@
               "mode": "raw",
               "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
-            "url": "{{invoice_url}}/payments"
+            "url": "{{invoice_url}}"
           },
           "response": []
         },
@@ -4682,10 +4677,7 @@
               "script": {
                 "id": "7629114f-f7f1-468f-b4d2-5d4d8f8679a9",
                 "exec": [
-                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Refund shipping was successful\"] = data.total === 5 && data.subtotal === 0 && data.shipping === 5 && data.tax === 0;"
+                  "tests[\"Refund is deleted (confirmed)\"] = responseCode.code === 404;"
                 ],
                 "type": "text/javascript"
               }
@@ -4875,6 +4867,208 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "92adb2db-6cf6-4c23-88af-af9acad2e96c",
+      "name": "Delete Invoice with Payments",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "195fdfa1-c51c-4152-8c35-50928edd4437",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b49aa745-1959-4df9-a709-53f4f6255bde",
+          "name": "Pay Partial Invoice (1) Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
+                "exec": [
+                  "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 15;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";",
+                  "tests[\"No order created\"] = data.order === null;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "777480af-def6-4e1c-b2a6-fbc8d78e7c00",
+          "name": "Delete Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9b52bbf6-8486-4761-9e11-f08ab8d7e82f",
+                "exec": [
+                  "tests[\"Invoice deleted successfully\"] = responseCode.code === 204;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f8133e76-73c4-4597-a985-f61c7b0500cd",
+          "name": "Get Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7629114f-f7f1-468f-b4d2-5d4d8f8679a9",
+                "exec": [
+                  "tests[\"Refund is deleted (confirmed)\"] = responseCode.code === 404;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{invoice_url}}"
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "event": [
@@ -4901,49 +5095,49 @@
   ],
   "variable": [
     {
-      "id": "1c153bc6-4a87-4b94-af06-e2ce13ca31a8",
+      "id": "2867b253-464e-427f-aa64-3547cc085e61",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "97227a37-888c-430a-969c-a33fe2aaf99b",
+      "id": "3c21c8a8-a584-4b87-aaa4-54df604234bc",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0047dcb0-262e-4357-84f1-6fe92e51eb5f",
+      "id": "66056807-4101-4f25-a47a-edbeaa25e72d",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5a772e3e-c994-46ea-a13a-7456507dd605",
+      "id": "d107e57d-c24b-4128-8e26-6a3e2cb5e6c9",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b335a3e3-6e33-4123-839f-75bf6fa48438",
+      "id": "7eda4ec9-6d2a-4d46-b9ce-9156efe5ce84",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2181a46c-ea6c-43e8-8978-d106f13dac15",
+      "id": "94cd4090-c269-491e-b4ce-7f7880e669e5",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e61930c1-934d-441c-a0f2-baf5d92f286c",
+      "id": "f00964ee-1404-4b62-96af-a121c1947be4",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
