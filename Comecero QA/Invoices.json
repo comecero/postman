@@ -4930,7 +4930,7 @@
               "script": {
                 "id": "9b52bbf6-8486-4761-9e11-f08ab8d7e82f",
                 "exec": [
-                  "tests[\"Invoice can't be deleted\"] = responseCode.code === 422;"
+                  "tests[\"Invoice has been deleted\"] = responseCode.code === 204;"
                 ],
                 "type": "text/javascript"
               }
@@ -5196,49 +5196,49 @@
   ],
   "variable": [
     {
-      "id": "8edeb4aa-58ac-488a-8c25-39584cc65f9d",
+      "id": "677f5a85-e65e-4282-842a-3d56be905255",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "00ab1a87-1b47-45f2-8ab2-90ce7cd2e83f",
+      "id": "4f139ca3-e26f-4ce2-83c1-d2c4ca733cde",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9bd14e5f-3858-4edb-8c39-4c1cd0158829",
+      "id": "50c3f4ef-23a6-4bd0-ad4f-9318d781fbff",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a0b1b33b-ab23-4ed6-85b8-c0e67438b0b4",
+      "id": "31a707ca-06e0-47a5-9045-aadfc9129556",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9eff1006-1701-4cc1-9b91-fc542bd7fc33",
+      "id": "0cd6f147-0256-4fc1-862b-dd179e1ce593",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a0a1f0d6-a8e6-4785-bdf5-f41116d9b9c7",
+      "id": "37fa5f93-706d-4e6e-85d0-433a38a0cedb",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6c7cba8a-623d-4276-8f66-872708129f39",
+      "id": "9cf5f36a-2b26-441e-9f8d-266afe3f99ea",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
