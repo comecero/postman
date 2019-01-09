@@ -5070,7 +5070,7 @@
         },
         {
           "_postman_id": "17d23373-9573-4774-8d65-b9db43bcc65d",
-          "name": "Pay Invoice",
+          "name": "Pay Partial Invoice",
           "event": [
             {
               "listen": "test",
@@ -5120,44 +5120,6 @@
               "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
             "url": "{{invoice_url}}/payments"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "5311bd0b-a085-434b-a344-aeb01ac20155",
-          "name": "Refund Items",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b1b883bc-4933-4b62-9ae2-aaa13bdb3bfa",
-                "exec": [
-                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Refund items was successful\"] = data.total === 40 && data.subtotal === 40 && data.shipping === 0 && data.tax === 0;"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n   \"items\":[\n      {\n         \"item_id\":\"digital.test\",\n         \"quantity\":1\n      },\n      {\n         \"item_id\":\"physical.test\",\n         \"quantity\":1\n      }\n  ]\n}"
-            },
-            "url": "{{order_url}}/refunds"
           },
           "response": []
         },
@@ -5389,49 +5351,49 @@
   ],
   "variable": [
     {
-      "id": "ff27e5cf-354f-435a-8b8d-c440ce72311d",
+      "id": "8c0d19ea-2420-48c9-bcb7-4883518bdc3b",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0a34da0a-3546-4235-a528-dd6a3c3403f8",
+      "id": "1c031013-4461-4084-9486-489b21bffcdb",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "98d3d163-0f8a-4017-a33a-04231210ed4a",
+      "id": "1e1547b9-33a9-4a27-9ae0-2e579117503e",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "39be10ca-6f5e-457e-a999-a2e7a40558da",
+      "id": "c9598b3d-067a-4812-b00e-6c21aa5cf83f",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "181cf6f6-606f-480c-94ee-87c5eb581e06",
+      "id": "297315c5-424a-4fb6-a71f-c116a8b6c0c6",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "53b88e83-527b-4a50-b2c8-90a25f333d19",
+      "id": "8c6d2924-3b74-4866-99c1-47be93038237",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e5195e00-d4b9-4f02-b5d1-6ab1eedf752a",
+      "id": "145f3cff-80fe-48c3-b7fa-6899a8815101",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
