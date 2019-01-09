@@ -4048,7 +4048,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+              "raw": ""
             },
             "url": "{{invoice_url}}"
           },
@@ -4748,49 +4748,49 @@
   ],
   "variable": [
     {
-      "id": "4ef62b41-3127-4e4f-970a-4d898a08e0d6",
+      "id": "6182ecfc-fd45-450f-8810-e1205d9e42a3",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "78fb092d-d901-40ef-8403-2addbff14071",
+      "id": "e2929cf4-32b1-46b4-ab6c-fe01e7dacac8",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c2410e38-a08e-4f4d-8d5b-c75c920efbda",
+      "id": "40f84620-8280-4c4b-83f3-cd2d45aad206",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3ece0ef0-b2e1-4cb5-9293-a9bee6694e5b",
+      "id": "e03aeb67-420f-4039-b771-336326f29392",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "304981aa-888f-45a8-b72b-59d4e5842a4e",
+      "id": "4388a154-9e4a-44f3-938a-21ac375d6882",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bf8285df-337e-4e56-a0b8-404805a2d2ff",
+      "id": "e5e8304a-09b6-4762-b154-f2188e5c641b",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2ea7e144-1042-4bd9-8a9e-1713dbe56375",
+      "id": "9e282330-b3ba-43ce-b790-27ab1aafd764",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
