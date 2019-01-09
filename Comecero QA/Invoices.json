@@ -4922,41 +4922,6 @@
           "response": []
         },
         {
-          "_postman_id": "f8133e76-73c4-4597-a985-f61c7b0500cd",
-          "name": "Get Invoice",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7629114f-f7f1-468f-b4d2-5d4d8f8679a9",
-                "exec": [
-                  "tests[\"Invoice is still there\"] = responseCode.code === 200;"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{invoice_url}}"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "52336c6e-11a3-427d-8edd-b8ec06e8355e",
           "name": "Delete Invoice Copy",
           "event": [
@@ -5001,6 +4966,41 @@
             "body": {
               "mode": "raw",
               "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f8133e76-73c4-4597-a985-f61c7b0500cd",
+          "name": "Get Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7629114f-f7f1-468f-b4d2-5d4d8f8679a9",
+                "exec": [
+                  "tests[\"Invoice is still there\"] = responseCode.code === 200;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
             },
             "url": "{{invoice_url}}"
           },
@@ -5196,49 +5196,49 @@
   ],
   "variable": [
     {
-      "id": "a971955e-a3a6-45a8-8776-273cc780371e",
+      "id": "23bcf375-f28b-45f8-81e1-10e3d75605d6",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c7f40ae9-1258-4aa4-8640-47db1426d0b9",
+      "id": "0805eed7-92e1-4c4d-ac89-f788d6ae23bd",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "080d8da3-10b2-4779-be8f-587ba15e7e93",
+      "id": "6c8f7f32-628b-4afb-be81-763804e12fe0",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "da53a7bd-a471-489c-9c9f-573948b7c87c",
+      "id": "a44f07ca-1122-47a3-b9ac-9903b244eb2e",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8a5f219d-3cdc-4579-b23e-d043f927e593",
+      "id": "3f2fca37-50f7-47b0-a594-eb4628003cce",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6cd813bd-753e-4a6d-978d-0df5edc34692",
+      "id": "d32ec0a1-af33-4db3-83df-783ba60df5ab",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "adb381d5-f526-46bf-a1c1-a48705996c10",
+      "id": "8edfd8ca-ccb4-460d-b162-7b23c7263e59",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
