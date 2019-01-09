@@ -5131,7 +5131,6 @@
               "listen": "test",
               "script": {
                 "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
@@ -5139,19 +5138,20 @@
                   "tests[\"Total is OK\"] = data.total === 45;",
                   "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
                   "pm.globals.set(\"invoice_url\", data.url);"
-                ]
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "type": "text/javascript",
                 "exec": [
                   "var date = new Date();",
                   "date.setMonth(date.getMonth() + 1);",
                   "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -5172,9 +5172,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+              "raw": "{\n\t\"currency\": \"EUR\"\n}"
             },
-            "url": "https://{{host}}/api/v1/invoices"
+            "url": "{{invoice_url}}"
           },
           "response": []
         }
@@ -5368,49 +5368,49 @@
   ],
   "variable": [
     {
-      "id": "96d9be1d-82cb-41a3-af5e-941fec211100",
+      "id": "e1700ed7-3852-48b2-80c1-b7a224ab8a85",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "60823d7e-a4e8-4855-a8d4-5a8f019f23e2",
+      "id": "5dce7a24-88e0-44af-a573-cc2df3ee02b0",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "49e10ed1-4b71-4718-865f-4b23c9dbff95",
+      "id": "07e5c1e1-9624-412d-8a54-8db6f23d658a",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bf88db38-5069-4bcd-90d0-eace4579ffc0",
+      "id": "e3aa7e46-4106-44e2-859a-d10db62a021e",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d269c965-80db-428c-8dea-ce96fb8019b6",
+      "id": "c766b0e4-db5b-4398-9da2-24bdd03591b9",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0d975bc8-4e38-48c1-91ee-4794702cac45",
+      "id": "13179159-16e2-44a3-ab9b-2ce26fdac5ea",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f4feac8a-ab5d-444f-b40d-d8de8559e066",
+      "id": "f891eef5-0b22-463d-8786-8ff06722b81e",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
