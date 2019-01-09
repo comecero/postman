@@ -4346,11 +4346,11 @@
               "script": {
                 "id": "569bae8a-9c34-4322-a80a-d598b789334d",
                 "exec": [
-                  "tests[\"Payment cancelled successfully\"] = responseCode.code === 200;",
+                  "tests[\"Payment cancelled successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Total is OK\"] = data.total === 15;",
-                  "tests[\"Status is OK\"] = data.status === \"completed\";"
+                  "tests[\"Status is OK\"] = data.status === \"cancelled\";"
                 ],
                 "type": "text/javascript"
               }
@@ -4746,49 +4746,49 @@
   ],
   "variable": [
     {
-      "id": "2de2a325-9229-4eaa-b199-63eb1a24fe7a",
+      "id": "b3f1a0d2-11d4-490a-a018-89100066369a",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dc4cc0a3-b3df-44a8-8ee8-601b14a95a58",
+      "id": "cd05d54b-e071-400a-804b-6202ce9c8b9e",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d25a375a-444d-4aa8-b166-cdbad5cdaaa8",
+      "id": "0804ff50-531a-48ea-afd5-5009fcf0e150",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "068a663e-b98b-4f66-bdfb-287f571ccc03",
+      "id": "f37a1127-06a4-45ea-abc4-3c96f0d94384",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1ea874e1-43b3-4cbd-bf94-8b5a45b509ab",
+      "id": "519ca10f-045b-48f1-af7e-bf18fd92138f",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "547bb7d0-cee4-4137-855a-06bcb1d66d13",
+      "id": "a178d42b-bf0e-4371-9cd8-06c35bf7e356",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b51839fd-254d-4208-bda2-d84ba5b51c6f",
+      "id": "9c86023d-3984-47fd-b7ba-fe924ca55c25",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
