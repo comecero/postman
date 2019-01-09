@@ -5127,7 +5127,10 @@
               "script": {
                 "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
                 "exec": [
-                  "tests[\"Invoice changed to EUR\"] = responseCode.code === 200;"
+                  "tests[\"Invoice changed to EUR\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Currency is correct\"] = data.currency === \"EUR\";"
                 ],
                 "type": "text/javascript"
               }
@@ -5233,6 +5236,59 @@
                 "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
                 "exec": [
                   "tests[\"Invoice can't be changed\"] = responseCode.code === 422;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"currency\": \"EUR\"\n}"
+            },
+            "url": "{{invoice_url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "9faa8d2b-4f88-43eb-91fd-c323ed592d96",
+          "name": "Change Invoice Currency Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "exec": [
+                  "tests[\"Invoice changed to EUR\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Currency is correct\"] = data.currency === \"EUR\";"
                 ],
                 "type": "text/javascript"
               }
@@ -5463,49 +5519,49 @@
   ],
   "variable": [
     {
-      "id": "d9d44528-4bdd-451a-8996-fc3aac35fee6",
+      "id": "a634dcd3-89ab-4b26-a4f6-00503d21427e",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6d8f100b-e250-4f72-aa76-bcf32727e8db",
+      "id": "a9499c81-e5e7-4037-8024-bf18f2c9cea2",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "784d4eff-d73f-47cc-935f-d03b2a69da6f",
+      "id": "4dfde25a-096a-4938-9487-35c38f59252d",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a5a2a1be-c538-47dd-b970-c14c88e1091e",
+      "id": "6ecc5a51-8d93-4600-b1ef-bf2117035ec5",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a79f4581-baba-402f-af11-a0d5688273b8",
+      "id": "b37a78d9-edc6-49c1-924f-e2c794b85437",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e9f21fcb-0216-40fe-98fb-1715b1bab689",
+      "id": "44896ffa-d511-473d-8311-2bd10313fbc8",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3bb2574d-b55f-4bd8-b5b9-140705f5faf0",
+      "id": "a8949207-8ca4-46c5-952a-cb84b4ddab41",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
