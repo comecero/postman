@@ -4879,7 +4879,7 @@
               "script": {
                 "id": "7629114f-f7f1-468f-b4d2-5d4d8f8679a9",
                 "exec": [
-                  "tests[\"Refund is deleted (confirmed)\"] = responseCode.code === 404;"
+                  "tests[\"Invoice is still there\"] = responseCode.code === 200;"
                 ],
                 "type": "text/javascript"
               }
@@ -5095,49 +5095,49 @@
   ],
   "variable": [
     {
-      "id": "126ba5a0-92c2-4b5e-bf72-76f93228fe0a",
+      "id": "f53c2612-bcfa-4822-9599-f60df1adf910",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0ca58cc4-5cf6-4db4-97c3-743e1003f049",
+      "id": "7c9b5360-3aab-4dfe-8132-ef13ebb9a65a",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9ecf9c84-4fc3-4aba-9741-f4ca796a3b09",
+      "id": "666a3711-7878-4acb-a7f1-030865e4c780",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "54cdd6ba-c8ca-4232-a8ec-76d13399d8d6",
+      "id": "48a55d52-347d-4d84-9430-2800e9173e0f",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c4f06104-ad0b-4767-9026-51740279527c",
+      "id": "1068c80a-d20c-4055-8463-5a1505afddc2",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "aaa96d93-4b44-49f6-bb35-efeff081b754",
+      "id": "e07546c1-4bd9-4d70-bc37-7b8a62b81b50",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d4ac62e8-9d93-47c0-a0a9-2d42b2544b76",
+      "id": "6e8e01d8-3618-44cb-8552-c284df600282",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
