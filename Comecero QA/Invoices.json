@@ -5070,7 +5070,7 @@
         },
         {
           "_postman_id": "17d23373-9573-4774-8d65-b9db43bcc65d",
-          "name": "Pay Invoice",
+          "name": "Pay Partial Invoice",
           "event": [
             {
               "listen": "test",
@@ -5117,7 +5117,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+              "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
             "url": "{{invoice_url}}/payments"
           },
@@ -5389,49 +5389,49 @@
   ],
   "variable": [
     {
-      "id": "8d6be77e-e8a9-4986-aec5-302218e72a03",
+      "id": "64e8090b-7a36-4c01-9d3c-b7a66b88853e",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ba8aa81e-5988-4199-bb9f-201671e647f3",
+      "id": "42647e72-2158-4ece-8515-e0fe5b5d45ff",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "33ce0bed-a24f-4414-856a-3452c42487da",
+      "id": "19a1814a-ca31-4cc5-b0c2-a6664637a9f4",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9735f96f-7da4-4288-a089-b7fab3550458",
+      "id": "3e1b2af3-1b97-4572-832c-72e614b2bc9f",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8a43d88a-4785-4523-989a-6740796e173c",
+      "id": "c7faaff6-bb08-4ab1-b51e-4abb9bdb3f1c",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "51ccb99f-9947-4129-b269-79b0f13df9c9",
+      "id": "00deac23-c963-449d-a0a3-18bab1be0294",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0376d65b-b6b7-48de-a8b8-a0fe0c89e74c",
+      "id": "2b455d2f-1676-43db-8627-7f385516ece4",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
