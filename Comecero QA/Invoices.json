@@ -5127,7 +5127,7 @@
               "script": {
                 "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
                 "exec": [
-                  "tests[\"Invoice changed to EUR\"] = responseCode.code === 422;"
+                  "tests[\"Invoice changed to EUR\"] = responseCode.code === 200;"
                 ],
                 "type": "text/javascript"
               }
@@ -5463,49 +5463,49 @@
   ],
   "variable": [
     {
-      "id": "e5e88b2d-5d60-4a74-b16a-aa24a2db7140",
+      "id": "d9d44528-4bdd-451a-8996-fc3aac35fee6",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "efb76e61-f02e-4a4c-b44a-f1c1397dd166",
+      "id": "6d8f100b-e250-4f72-aa76-bcf32727e8db",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a266fa34-e520-4963-b401-8d5cfdd4935b",
+      "id": "784d4eff-d73f-47cc-935f-d03b2a69da6f",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f19be794-593e-49db-a335-22959fb3d273",
+      "id": "a5a2a1be-c538-47dd-b970-c14c88e1091e",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e3f42718-030e-49f1-ab2e-8629460eda29",
+      "id": "a79f4581-baba-402f-af11-a0d5688273b8",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "42e2612c-de6e-46c5-8c62-b1f3f83700d1",
+      "id": "e9f21fcb-0216-40fe-98fb-1715b1bab689",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f7816fde-d2bf-4211-8b56-90e92cea9911",
+      "id": "3bb2574d-b55f-4bd8-b5b9-140705f5faf0",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
