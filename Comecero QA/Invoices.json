@@ -5132,12 +5132,7 @@
               "script": {
                 "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
                 "exec": [
-                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Total is OK\"] = data.total === 45;",
-                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
-                  "pm.globals.set(\"invoice_url\", data.url);"
+                  "tests[\"Invoice can't be changed\"] = responseCode.code === 422;"
                 ],
                 "type": "text/javascript"
               }
@@ -5175,6 +5170,61 @@
               "raw": "{\n\t\"currency\": \"EUR\"\n}"
             },
             "url": "{{invoice_url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "948aed7e-829a-41e5-8753-20e454170351",
+          "name": "Pay Partial Invoice Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9b52bbf6-8486-4761-9e11-f08ab8d7e82f",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";",
+                  "pm.globals.set(\"order_url\", data.order);"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
           },
           "response": []
         }
@@ -5368,49 +5418,49 @@
   ],
   "variable": [
     {
-      "id": "e1700ed7-3852-48b2-80c1-b7a224ab8a85",
+      "id": "42929c8a-1274-488f-8de0-07de87e712d4",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5dce7a24-88e0-44af-a573-cc2df3ee02b0",
+      "id": "fc7a5435-7943-4f25-9e27-ef35e6163613",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "07e5c1e1-9624-412d-8a54-8db6f23d658a",
+      "id": "f7055b39-3335-42dd-aa91-1b6eba89052a",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e3aa7e46-4106-44e2-859a-d10db62a021e",
+      "id": "ee8a3289-2c66-48dc-9c8e-75546c39f13d",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c766b0e4-db5b-4398-9da2-24bdd03591b9",
+      "id": "ab807254-d2c9-4606-bbee-29ddc16d2631",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "13179159-16e2-44a3-ab9b-2ce26fdac5ea",
+      "id": "af95c081-0479-4caa-b098-3d6d1e198911",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f891eef5-0b22-463d-8786-8ff06722b81e",
+      "id": "daa2f0a9-148d-4b6c-9353-758869ea1778",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
