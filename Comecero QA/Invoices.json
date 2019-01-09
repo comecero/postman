@@ -2545,7 +2545,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+              "raw": ""
             },
             "url": "{{invoice_url}}"
           },
@@ -2655,7 +2655,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+              "raw": ""
             },
             "url": "{{invoice_url}}"
           },
@@ -2827,7 +2827,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+              "raw": ""
             },
             "url": "{{invoice_url}}"
           },
@@ -4748,49 +4748,49 @@
   ],
   "variable": [
     {
-      "id": "2a0305c8-214e-4825-8206-869a6dfea026",
+      "id": "f0994086-2d9f-4b1d-8ce3-ecd3274ae97b",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5a7cd526-66eb-46b0-8d80-0fbec765e7e6",
+      "id": "7f77ee4c-f329-4ff0-bb48-075589618b60",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9d56d133-3750-4209-9dbf-09e76c2aff47",
+      "id": "f1140463-1663-4b66-aaaa-9782065ce06a",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f8326c7b-2e74-49c7-870e-c34de9b4e9c6",
+      "id": "1c6d9eca-3010-47f2-a763-3319181fecf5",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "57d02e26-4ed5-44cb-a875-8290b17496d5",
+      "id": "f8ec1b85-44d3-42c6-b343-ac9475df64af",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "665beefa-d906-479b-87f7-1a6e40ed2c8b",
+      "id": "b026bb67-0d6b-49fd-9132-e2fb3a8c3ba9",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f7ca75cc-139c-489c-9893-d8fb272da6cb",
+      "id": "22ee371f-60db-4d6b-8f26-728a0f04f0ee",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
