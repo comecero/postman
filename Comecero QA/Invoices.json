@@ -4283,6 +4283,61 @@
           "response": []
         },
         {
+          "_postman_id": "8c061a98-5665-460c-9e0f-06fa81b76292",
+          "name": "Get Invoice Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "exec": [
+                  "tests[\"Invoice fetched successfully\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total remaining is OK\"] = data.total_remaining === 30;",
+                  "tests[\"Total payments is OK\"] = data.total_payments === 15;",
+                  "tests[\"Payment status is OK\"] = data.payment_status === 'unpaid';"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "{{invoice_url}}"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "234e1527-c887-4ddd-aeec-0df6f5cd4075",
           "name": "Cancel Payment",
           "event": [
@@ -4463,61 +4518,6 @@
                   "tests[\"Total remaining is OK\"] = data.total_remaining === 0;",
                   "tests[\"Total payments is OK\"] = data.total_payments === 45;",
                   "tests[\"Payment status is OK\"] = data.payment_status === 'completed';"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "exec": [
-                  "var date = new Date();",
-                  "date.setMonth(date.getMonth() + 1);",
-                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
-            },
-            "url": "{{invoice_url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8c061a98-5665-460c-9e0f-06fa81b76292",
-          "name": "Get Invoice Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
-                "exec": [
-                  "tests[\"Invoice fetched successfully\"] = responseCode.code === 200;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Total remaining is OK\"] = data.total_remaining === 30;",
-                  "tests[\"Total payments is OK\"] = data.total_payments === 15;",
-                  "tests[\"Payment status is OK\"] = data.payment_status === 'unpaid';"
                 ],
                 "type": "text/javascript"
               }
@@ -4748,49 +4748,49 @@
   ],
   "variable": [
     {
-      "id": "b896ab0e-efbe-4c28-a3e0-e5136b3d5546",
+      "id": "18ac9915-e02d-4c60-859d-acc9770bdd02",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "95351d7b-d9f5-41aa-86f2-a994337fd7bb",
+      "id": "27aafe4a-123f-4648-bde3-5b155ff84d45",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "60bf45ed-1194-484e-80f8-3a66ca86d9a4",
+      "id": "800b0e57-0444-4ac1-a61a-5c94c5e7d787",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dbc6f8a4-a366-4d48-9f0b-dc875571054c",
+      "id": "0bb541b8-4d1e-46d1-adb9-09820230266b",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1f7189fa-be9f-4216-82d6-043e89d71e32",
+      "id": "82ea1d01-6049-4042-b6a5-d5af0de4e4bd",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5891d169-943e-4deb-a75f-4a265ae1c58a",
+      "id": "d3c858e9-8b91-4121-afc8-3581ff92c042",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5b4ccb22-ee18-48dd-af11-9b16cf60dd43",
+      "id": "bd0dae15-a12b-4035-8fe2-2a91c2805cd5",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
