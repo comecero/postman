@@ -5124,56 +5124,6 @@
           "response": []
         },
         {
-          "_postman_id": "64e51015-b54d-4d95-8614-43c93c287eed",
-          "name": "Change Invoice Currency",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
-                "exec": [
-                  "tests[\"Invoice can't be changed\"] = responseCode.code === 422;"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "exec": [
-                  "var date = new Date();",
-                  "date.setMonth(date.getMonth() + 1);",
-                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"currency\": \"EUR\"\n}"
-            },
-            "url": "{{invoice_url}}"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "948aed7e-829a-41e5-8753-20e454170351",
           "name": "Pay Partial Invoice Copy",
           "event": [
@@ -5225,6 +5175,56 @@
               "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
             "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "64e51015-b54d-4d95-8614-43c93c287eed",
+          "name": "Change Invoice Currency",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "exec": [
+                  "tests[\"Invoice can't be changed\"] = responseCode.code === 422;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"currency\": \"EUR\"\n}"
+            },
+            "url": "{{invoice_url}}"
           },
           "response": []
         }
@@ -5418,49 +5418,49 @@
   ],
   "variable": [
     {
-      "id": "42929c8a-1274-488f-8de0-07de87e712d4",
+      "id": "5cdfc86d-c02e-4998-8dce-cda1626d5190",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fc7a5435-7943-4f25-9e27-ef35e6163613",
+      "id": "4b80171e-51e9-4e29-addb-ddbe4070669b",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f7055b39-3335-42dd-aa91-1b6eba89052a",
+      "id": "1acb314c-ad69-4c7d-9c56-6aca8222b4d3",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ee8a3289-2c66-48dc-9c8e-75546c39f13d",
+      "id": "500788b8-46a2-4838-af9a-44a7905cc950",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ab807254-d2c9-4606-bbee-29ddc16d2631",
+      "id": "0abb6f6a-ddc9-4f55-b661-890fc7054a34",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "af95c081-0479-4caa-b098-3d6d1e198911",
+      "id": "e163ce09-a77a-444d-89e5-828232a9cb9d",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "daa2f0a9-148d-4b6c-9353-758869ea1778",
+      "id": "9620e616-9a1c-4dee-a2b0-202012ab00c9",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
