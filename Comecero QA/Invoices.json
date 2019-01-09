@@ -5183,7 +5183,7 @@
                   "tests[\"Invoice changed to EUR\"] = responseCode.code === 200;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Currency is correct\"] = data.currency === \"USD\";"
+                  "tests[\"Currency is correct\"] = data.currency === \"EUR\";"
                 ],
                 "type": "text/javascript"
               }
@@ -5218,7 +5218,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"currency\": \"USD\"\n}"
+              "raw": "{\n\t\"currency\": \"EUR\"\n}"
             },
             "url": "{{invoice_url}}"
           },
@@ -5519,49 +5519,49 @@
   ],
   "variable": [
     {
-      "id": "97241f99-22c0-4212-a244-22b1ecee6c4a",
+      "id": "0ee7c605-41f0-4d62-9d5b-5ec92d633774",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "500fe2e8-3b4f-4ff8-a32a-8195d1dd8f19",
+      "id": "3d784b30-431d-4fe6-a852-6b89326ff386",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0444789c-21ff-4c39-9100-e6f716b4455d",
+      "id": "f15185e0-c1c1-497d-acc3-07ac9150e154",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c75391ee-702e-43e0-85ee-9f4ce59a73b6",
+      "id": "18f8df48-aacf-4a20-8e40-b711cac25fb2",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9f03004e-1036-4066-ba75-2da8a37403c4",
+      "id": "5659cf62-6ff9-4e3e-9c25-b92edb46ee0e",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c7cdd94c-7efe-467c-8b7a-30a0608bcfea",
+      "id": "0b2f3afc-f78e-4a76-9693-2e6674a1b047",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ac23dcc5-ddb2-4bec-ba6f-ecf2f7e20ce9",
+      "id": "6816d7c1-4bf2-4787-92f1-d956fce17645",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
