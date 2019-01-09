@@ -5069,8 +5069,8 @@
           "response": []
         },
         {
-          "_postman_id": "17d23373-9573-4774-8d65-b9db43bcc65d",
-          "name": "Pay Partial Invoice",
+          "_postman_id": "948aed7e-829a-41e5-8753-20e454170351",
+          "name": "Pay Partial Invoice Copy",
           "event": [
             {
               "listen": "test",
@@ -5124,8 +5124,8 @@
           "response": []
         },
         {
-          "_postman_id": "948aed7e-829a-41e5-8753-20e454170351",
-          "name": "Pay Partial Invoice Copy",
+          "_postman_id": "17d23373-9573-4774-8d65-b9db43bcc65d",
+          "name": "Pay Partial Invoice",
           "event": [
             {
               "listen": "test",
@@ -5418,49 +5418,49 @@
   ],
   "variable": [
     {
-      "id": "f53ad5b1-8df9-4d9f-aa00-410b9d127743",
+      "id": "10cc6881-b18a-462b-906f-09fff6d07e3c",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f4dc766f-0776-48b3-b8e7-4c972e584272",
+      "id": "df2a31b7-7334-4e00-8752-2db3cc9ac077",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "23b43d77-6195-4061-9df4-4c71bfdcca7e",
+      "id": "a05f8896-8ad9-4c6a-9b4e-8e37d148b610",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "aaf6fac6-cc3b-4372-aca2-e7dfb4532ad7",
+      "id": "67579048-b4a7-4aa7-96ac-d5aa8d42ce1d",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ab54e159-3911-40b8-8fed-09e537e2bc87",
+      "id": "369547d6-9a29-479a-bf80-400bdbdbe75f",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "da1cf182-51b2-4562-8bb1-1290b7464a22",
+      "id": "0c1ab606-741b-4d15-8818-4528dfdb3988",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e70a3b78-46b6-4591-ac7d-144225848c9d",
+      "id": "b9eea586-13d3-47ff-8bcf-ae731634ad64",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
