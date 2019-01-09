@@ -4822,6 +4822,56 @@
           "response": []
         },
         {
+          "_postman_id": "777480af-def6-4e1c-b2a6-fbc8d78e7c00",
+          "name": "Delete Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9b52bbf6-8486-4761-9e11-f08ab8d7e82f",
+                "exec": [
+                  "tests[\"Invoice can't be deleted\"] = responseCode.code === 422;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "0d91259e-c6d5-4a4e-bcd3-8312842847ca",
           "name": "Pay Partial Invoice Copy",
           "event": [
@@ -4874,56 +4924,6 @@
               "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
             "url": "{{invoice_url}}/payments"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "777480af-def6-4e1c-b2a6-fbc8d78e7c00",
-          "name": "Delete Invoice",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "9b52bbf6-8486-4761-9e11-f08ab8d7e82f",
-                "exec": [
-                  "tests[\"Invoice can't be deleted\"] = responseCode.code === 422;"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "exec": [
-                  "var date = new Date();",
-                  "date.setMonth(date.getMonth() + 1);",
-                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
-            },
-            "url": "{{invoice_url}}"
           },
           "response": []
         },
@@ -5152,49 +5152,49 @@
   ],
   "variable": [
     {
-      "id": "b75670f2-0f4b-466f-85dd-fd2be9168cd2",
+      "id": "2bc8b0e6-25a1-414f-9c38-113e26f1d75e",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "724b1955-8ef3-4aa1-802d-1521f42b0f65",
+      "id": "bdd06371-43f9-49ad-9098-eb762a32a90b",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "32e49107-3b1a-4ea8-8fde-311b1c64c6be",
+      "id": "e0ed3c79-a8b4-4aae-ae60-1238fe913a19",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3be2d890-34ba-4f40-a85c-3d699075ae1b",
+      "id": "6ba03653-ab81-42d8-baf8-fdc7cd7e8761",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "898b6216-a55d-4b9b-be71-6eeec6ad226c",
+      "id": "a729d4e8-f317-4671-823d-ea7034ba06e8",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3d1558e3-b47e-4b4b-a4ff-cf7363c75705",
+      "id": "fdf4c013-b1ed-4b88-9b2b-25f53cfb06d8",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cc80d6d3-f6d7-43e5-9907-483b24dc0993",
+      "id": "6a1a2487-865b-40dc-a1d7-43a7e85cb65a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
