@@ -4334,7 +4334,7 @@
               "mode": "raw",
               "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
-            "url": "{{invoice_url}}/payments"
+            "url": "{{payment_url}}/void"
           },
           "response": []
         },
@@ -4693,49 +4693,49 @@
   ],
   "variable": [
     {
-      "id": "2bece4ed-474e-4daf-a6fc-6bf4a52a18bb",
+      "id": "82600c2b-0604-4d88-82b4-48ce85512491",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1bc95d86-9295-4652-811b-d203358b32d1",
+      "id": "958e20ae-a08d-44b9-89d6-d10ddd171e3e",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2bb5f54e-91c0-407a-9704-8d1828ba49d1",
+      "id": "75d30ffe-dd3e-44e3-b1be-b375fd2e41c1",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8fb229fd-0c90-487b-8767-1eb1493573ef",
+      "id": "39dbe1bf-7776-4338-a4e9-ba1c65e1b158",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0d50730d-c97f-4975-ab62-219c007c5747",
+      "id": "397dbc9a-4bb2-4f5f-b4ab-7fb8bb4d0e9d",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c69c5aa1-0c04-4b31-8b28-45cb61ac98ca",
+      "id": "2f5c0074-e66a-4971-99d1-a99dc1401ebd",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e0a2b9e2-501a-4ad9-a6d3-8ca7219750a1",
+      "id": "492b02c9-5126-4d97-8f14-175a248d61c6",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
