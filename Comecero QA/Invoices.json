@@ -5173,7 +5173,7 @@
         },
         {
           "_postman_id": "9faa8d2b-4f88-43eb-91fd-c323ed592d96",
-          "name": "Change Invoice Currency Back",
+          "name": "Change Invoice Currency Copy",
           "event": [
             {
               "listen": "test",
@@ -5183,7 +5183,7 @@
                   "tests[\"Invoice changed to EUR\"] = responseCode.code === 200;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Currency is correct\"] = data.currency === \"USD\";"
+                  "tests[\"Currency is correct\"] = data.currency === \"EUR\";"
                 ],
                 "type": "text/javascript"
               }
@@ -5218,7 +5218,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"currency\": \"USD\"\n}"
+              "raw": "{\n\t\"currency\": \"EUR\"\n}"
             },
             "url": "{{invoice_url}}"
           },
@@ -5236,8 +5236,9 @@
                   "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Total is OK\"] = data.total === 15;",
-                  "tests[\"Status is OK\"] = data.status === \"unpaid\";"
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";",
+                  "pm.globals.set(\"order_url\", data.order);"
                 ],
                 "type": "text/javascript"
               }
@@ -5518,49 +5519,49 @@
   ],
   "variable": [
     {
-      "id": "d198f66a-f531-40cb-8e13-2eb1d141b58f",
+      "id": "e0a3fb9d-9a67-422d-895a-13c47f1cdbfd",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a7b74ad9-e25a-4fcd-bb87-5ee94f791f07",
+      "id": "75e8f313-43c6-4fc3-99f4-7bee7c9e6133",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0ba723e6-0dd5-44a3-8d24-121d67013663",
+      "id": "8ef4058f-0807-49fd-bcd8-ebc04b05c25c",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a33a4593-ef14-441e-8317-2f4aabdad913",
+      "id": "3a8c7359-45ba-438e-8178-ed5afaeea0d5",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "64d85432-0bbf-4a73-a739-49e6e41d5684",
+      "id": "04394c66-18af-419a-aaf7-56d19b485f8c",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e8defd1c-07ba-48c2-987b-fde7675f7ebf",
+      "id": "7f57d332-7bdb-44eb-9c5e-cc736c67e3ac",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7d0558fd-4be1-4528-a79f-fd2bd4404571",
+      "id": "e2146ee2-2118-417b-a8bb-8f02d8cd83bb",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
