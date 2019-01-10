@@ -6633,9 +6633,7 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Total is OK\"] = data.total === 20;",
-                  "tests[\"Payment list success count is OK\"] = data.success_count === 2 && data.failure_count === 0;",
-                  "tests[\"Number of captures is OK\"] = data.payments.length === 2;",
-                  "tests[\"Payment status is OK\"] = data.payments[0].status === 'completed' && data.payments[1].status === 'completed';"
+                  "tests[\"Status is OK\"] = data.status === 'completed';"
                 ],
                 "type": "text/javascript"
               }
@@ -6735,6 +6733,61 @@
         {
           "_postman_id": "630c958b-d530-4f60-98f1-e4ef1e868168",
           "name": "Get Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "exec": [
+                  "tests[\"Invoice fetched successfully\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total remaining is OK\"] = data.total_remaining === 0;",
+                  "tests[\"Total payments is OK\"] = data.total_payments === 45;",
+                  "tests[\"Payment status is OK\"] = data.payment_status === 'completed';"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{invoice_url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ba535caf-f45b-4b23-9f3a-7a4d9014de8b",
+          "name": "Get Invoice Copy",
           "event": [
             {
               "listen": "test",
@@ -6977,49 +7030,49 @@
   ],
   "variable": [
     {
-      "id": "1350d443-5bae-455c-a83b-f50e7c6ba875",
+      "id": "1dcd9978-bfc2-4d44-81e7-9ff2901b0553",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9ea17708-e70f-4795-b594-76597b2da631",
+      "id": "c8836510-71e1-49c7-bd82-e43461ecd8f8",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "07ecc059-c7d8-47b8-8048-c0e478135306",
+      "id": "f3ef2c32-a61d-49f8-99ce-ad28154c0d5b",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0b041607-a303-405d-bac1-5b0adb7cbc8f",
+      "id": "cccf293e-1175-4fc6-9511-ca8cc028cf74",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f1ed6869-1ea9-4c79-895e-2dfefd6a7ecc",
+      "id": "69431e21-20da-416e-93ed-ead7a770c88d",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a35dd796-02ff-4700-9221-a9864523678c",
+      "id": "9c84a6d4-2dfe-4235-a51a-029903bf69e4",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "58c4cfe8-baf1-4061-a3ab-c454428dcf66",
+      "id": "aee56d53-83d1-4242-969e-d4a4f5001fbf",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
