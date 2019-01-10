@@ -5907,9 +5907,7 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Total is OK\"] = data.total === 10;",
-                  "tests[\"Status is OK\"] = data.status === \"pending\";",
-                  "tests[\"Order created\"] = data.order !== null;",
-                  "pm.globals.set(\"order_url\", data.order);"
+                  "tests[\"Status is OK\"] = data.status === \"pending\";"
                 ],
                 "type": "text/javascript"
               }
@@ -5962,8 +5960,8 @@
                   "tests[\"Invoice fetched successfully\"] = responseCode.code === 200;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Total remaining is OK\"] = data.total_remaining === 0;",
-                  "tests[\"Total payments is OK\"] = data.total_payments === 45;",
+                  "tests[\"Total remaining is OK\"] = data.total_remaining === 20;",
+                  "tests[\"Total payments is OK\"] = data.total_payments === 25;",
                   "tests[\"Payment status is OK\"] = data.payment_status === 'pending';"
                 ],
                 "type": "text/javascript"
@@ -6306,49 +6304,49 @@
   ],
   "variable": [
     {
-      "id": "733726ac-f59a-4989-b204-bb2580c147cb",
+      "id": "27f274b8-e14c-4448-9647-0415a209128a",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "04c617a9-592a-45f4-b9a7-62dfc59493dc",
+      "id": "e0d3550b-0d6f-4ba8-82e9-8f4066fd1231",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "33ec90e2-a2da-4add-9978-ee467599597f",
+      "id": "f8823ebe-07a4-49e1-91d0-02f3bd834749",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f5770c81-e42d-402c-bb55-a34706b5f913",
+      "id": "6e40ca4d-719a-44ab-9e30-60c4e7da62da",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0b914a23-5891-4900-a8e3-ee2f50ce9c59",
+      "id": "7652055f-3f3d-470c-9668-4a42eb8006fb",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9208643f-7f05-4dcc-a08c-9d24f92ee8f3",
+      "id": "1499110f-88c8-4c1c-b99d-9d2e74d5f46d",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f55f1a14-f671-4fa6-aa35-6a263a731985",
+      "id": "7bbea465-208d-4a56-be7f-3a04809f5a60",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
