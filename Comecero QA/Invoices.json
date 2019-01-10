@@ -5907,7 +5907,8 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Total is OK\"] = data.total === 10;",
-                  "tests[\"Status is OK\"] = data.status === \"pending\";"
+                  "tests[\"Status is OK\"] = data.status === \"pending\";",
+                  "tests[\"No order created\"] = data.order === null;"
                 ],
                 "type": "text/javascript"
               }
@@ -6360,49 +6361,49 @@
   ],
   "variable": [
     {
-      "id": "9a3db053-1e85-4923-a905-9314bbaa3c27",
+      "id": "e52b55d2-4d79-40e8-81f6-2c005c7678c8",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d9465a36-6f09-4b7a-bfa6-fa0ed6a923e0",
+      "id": "6b60900e-8582-4776-acf2-6f4d3fe51985",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8212602e-2451-4bae-aa3d-29406ce3448f",
+      "id": "82fe8d60-7650-4106-ba74-94d10a53a0b7",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "14f26979-4553-4cd3-be92-6ebbea5646ff",
+      "id": "97f87ee8-fd53-48e4-ae9c-6c5e0b246031",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "970be1f7-8bfd-4a97-b524-415c104add11",
+      "id": "47713bd6-2c10-4e1a-adbb-eba3d6fd887b",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c2a0460d-a3ef-423b-b828-bcfe8feea593",
+      "id": "8046b0c7-7347-4560-8fee-12660b74da36",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "78fc2fdd-85e8-46d4-9899-dfdd619246b0",
+      "id": "db5d79d9-f967-45ad-a420-9fd0734ac2dd",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
