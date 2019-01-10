@@ -6015,8 +6015,8 @@
                   "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Total is OK\"] = data.total === 10;",
-                  "tests[\"Status is OK\"] = data.status === \"pending\";"
+                  "tests[\"Total is OK\"] = data.total === 20;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";"
                 ],
                 "type": "text/javascript"
               }
@@ -6051,7 +6051,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"total\": 10,\r\n   \"capture\": false,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+              "raw": "{\r\n   \"total\": 10,\r\n   \"capture\": true,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
             "url": "{{invoice_url}}/payments"
           },
@@ -6358,49 +6358,49 @@
   ],
   "variable": [
     {
-      "id": "ed44e55d-8516-4739-ba60-17fa34b23e65",
+      "id": "0d143759-0071-40d7-b109-e4a0e07a7384",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a6a81bf9-293c-49b1-8c7f-c008b7bc9719",
+      "id": "4512ee2f-9f32-495f-a9c0-985ad0aa1c72",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ef830a50-d2df-4738-9402-2fb9bc4f5140",
+      "id": "1d64e7a8-1ec9-4bfa-abe7-31228e1c53c4",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bb1a7b3b-5c8d-4c19-af71-0a87ce4e5249",
+      "id": "91c97364-4ce3-4b77-b0b0-f575be29a85d",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c2354ad0-326b-408d-9571-db1145c8720e",
+      "id": "bcbfbc8b-07e9-4af2-89f1-6008178aa831",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "45f5608e-23fa-4dd6-8cb7-83ea41371652",
+      "id": "88947baa-97b8-4b6e-9305-ddc522db3814",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5c03bcc2-0d51-4609-8165-3aca4f24421b",
+      "id": "41282a90-4224-49cd-8ad5-631d79cfe66d",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
