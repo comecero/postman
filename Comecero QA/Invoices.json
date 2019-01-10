@@ -5514,7 +5514,8 @@
                   "",
                   "tests[\"Total is OK\"] = data.total === 30;",
                   "tests[\"Status is OK\"] = data.status === \"completed\";",
-                  "tests[\"Order created\"] = data.order !== null;"
+                  "tests[\"Order created\"] = data.order !== null;",
+                  "pm.globals.set(\"order_url\", data.order);"
                 ],
                 "type": "text/javascript"
               }
@@ -5612,19 +5613,19 @@
         },
         {
           "_postman_id": "b5abeb05-d888-441f-9031-01b0e2dc593b",
-          "name": "Get Invoice Copy",
+          "name": "Capture Order",
           "event": [
             {
               "listen": "test",
               "script": {
                 "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
                 "exec": [
-                  "tests[\"Invoice fetched successfully\"] = responseCode.code === 200;",
+                  "tests[\"Capture completed successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Total remaining is OK\"] = data.total_remaining === 0;",
-                  "tests[\"Total payments is OK\"] = data.total_payments === 45;",
-                  "tests[\"Payment status is OK\"] = data.payment_status === 'completed';"
+                  "tests[\"Total remaining is OK\"] = data.total === 45;",
+                  "tests[\"Number of captures is OK\"] = data.payments.length === 2;",
+                  "tests[\"Payment status is OK\"] = data.payments[0].status === 'completed' && data.payments[1].status === 'completed';"
                 ],
                 "type": "text/javascript"
               }
@@ -5646,7 +5647,7 @@
             "auth": {
               "type": "noauth"
             },
-            "method": "GET",
+            "method": "POST",
             "header": [
               {
                 "key": "Authorization",
@@ -5661,7 +5662,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{invoice_url}}"
+            "url": "{{order_url}}/capture"
           },
           "response": []
         }
@@ -5855,49 +5856,49 @@
   ],
   "variable": [
     {
-      "id": "a2c3583a-1f52-40ff-aa0a-93bc8b643b80",
+      "id": "ad1581c9-2200-4d5f-b114-96835c9fecaf",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4f2734e0-6954-4af3-be88-15897a071fa5",
+      "id": "54953d86-5638-4287-aa48-75738e79a794",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2925e2a7-c962-462e-b2cf-93d8e002e49c",
+      "id": "4f604f9c-7e20-4a98-a41e-158b8ed6c3a6",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c155102f-5dc0-400c-89e9-9c494d30e827",
+      "id": "fae664a6-400f-444e-870e-1e7ce82f0e3c",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "749a6273-9451-4f4a-8bbd-99a9289d8ec8",
+      "id": "5769365f-2632-466b-ab92-b550f4074788",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0102baeb-ed7e-4632-b448-4e9946df601c",
+      "id": "4c4b7ae2-65f6-4125-8d95-c40c7b750daa",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6916b2cd-0a62-4ab9-94cb-23bac64e4a6b",
+      "id": "f31927bc-9cc2-4008-9be1-2b81da8d6ed0",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
