@@ -5949,60 +5949,6 @@
           "response": []
         },
         {
-          "_postman_id": "6d2ef69a-33c7-40e5-b706-9945ae59f8a5",
-          "name": "Pay Partial Invoice (2) Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
-                "exec": [
-                  "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Total is OK\"] = data.total === 10;",
-                  "tests[\"Status is OK\"] = data.status === \"pending\";"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "exec": [
-                  "var date = new Date();",
-                  "date.setMonth(date.getMonth() + 1);",
-                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"total\": 10,\r\n   \"capture\": false,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
-            },
-            "url": "{{invoice_url}}/payments"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "b5ff461c-45ce-4c5a-b1ad-cb0ba4594f21",
           "name": "Get Invoice",
           "event": [
@@ -6054,6 +6000,60 @@
               "raw": ""
             },
             "url": "{{invoice_url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "6d2ef69a-33c7-40e5-b706-9945ae59f8a5",
+          "name": "Pay Partial Invoice (3)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
+                "exec": [
+                  "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 10;",
+                  "tests[\"Status is OK\"] = data.status === \"pending\";"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"total\": 10,\r\n   \"capture\": false,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
           },
           "response": []
         },
@@ -6358,49 +6358,49 @@
   ],
   "variable": [
     {
-      "id": "582b4f24-b564-4b9a-9d5f-459ec6e412bb",
+      "id": "ed44e55d-8516-4739-ba60-17fa34b23e65",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b7e972b5-6d78-4a85-ba60-0cad09559dd9",
+      "id": "a6a81bf9-293c-49b1-8c7f-c008b7bc9719",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3ce50cd0-3cd3-4b18-b218-905bc94da2c0",
+      "id": "ef830a50-d2df-4738-9402-2fb9bc4f5140",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d20ed913-caec-4e3f-969c-bdd4246f37dd",
+      "id": "bb1a7b3b-5c8d-4c19-af71-0a87ce4e5249",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5d484350-0df5-4239-9c5e-2769be62c7b9",
+      "id": "c2354ad0-326b-408d-9571-db1145c8720e",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8772efe1-3fee-431e-b0f2-93c8ecc9b2f5",
+      "id": "45f5608e-23fa-4dd6-8cb7-83ea41371652",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b149930d-4421-40bc-b126-7ff41bdd5de6",
+      "id": "5c03bcc2-0d51-4609-8165-3aca4f24421b",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
