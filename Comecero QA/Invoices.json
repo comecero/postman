@@ -5513,7 +5513,7 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Total is OK\"] = data.total === 30;",
-                  "tests[\"Status is OK\"] = data.status === \"completed\";",
+                  "tests[\"Status is OK\"] = data.status === \"pending\";",
                   "tests[\"Order created\"] = data.order !== null;",
                   "pm.globals.set(\"order_url\", data.order);"
                 ],
@@ -5912,49 +5912,49 @@
   ],
   "variable": [
     {
-      "id": "5d92d928-e5d9-406c-9bf4-0f7ae67c8112",
+      "id": "d97922d9-1eee-4b3e-b802-83b411d739ad",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "beb0c756-3afd-49d0-9c18-2ec20536053a",
+      "id": "79362c4b-71ca-4f98-a62b-f272cf9f6b81",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f943f8e2-56a5-4100-8c4d-44d75e499e0c",
+      "id": "c76aca0a-7c2e-487e-ace5-9ee47a9a8f45",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cab8fabf-c1e1-495f-b3f6-d9f3f3633ccd",
+      "id": "629ae33e-637c-4f5b-9567-7d29c4ca279e",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ee21ded5-465a-4215-b615-b31844e07c3f",
+      "id": "ba7eff03-01de-4db8-b2de-b435b73cffe6",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7c7a649a-8150-4d6d-a40f-e564820489cc",
+      "id": "b3aef117-8344-4a17-909a-475497169aa7",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ff4285b9-740c-40b4-82dc-e5be4b67e0ab",
+      "id": "0c95bcb9-cd93-4ae5-bb6a-c1bc6d42ed14",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
