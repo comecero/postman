@@ -6054,7 +6054,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"total\": 10,\r\n   \"capture\": true,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+              "raw": "{\r\n   \"capture\": true,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
             "url": "{{invoice_url}}/payments"
           },
@@ -6361,49 +6361,49 @@
   ],
   "variable": [
     {
-      "id": "a2c729f7-2b57-432f-abec-2e5ff6ed4609",
+      "id": "d6b96f1c-37ff-4509-89c1-b4534637d110",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b666dca4-13f6-46be-9ebc-b50a62356b04",
+      "id": "03c57f7b-c08a-4f1e-b57e-d2689ec287ea",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0b73ec75-e9ce-49dc-b80c-4bceb052a067",
+      "id": "f37a1e55-268c-4a06-b25b-05248149c009",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7b5298d8-76e2-4cc1-ac58-c4e8084ebd6b",
+      "id": "32d8594e-d083-4a13-8f45-6585cc873ccb",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e2e5b1ce-a383-421c-9209-0961ada9cdb4",
+      "id": "edb3f472-e5f1-46fd-884a-d0cc1eb8ac09",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bfc9a163-3066-449f-b3c4-9d48ffb5af23",
+      "id": "bceb43f5-a6c6-4ba9-83ce-f855ee543485",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bddac8c6-33f2-4f2e-95e8-63d3a282fa40",
+      "id": "c2028cea-1b0f-4618-a429-ffd99991a75a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
