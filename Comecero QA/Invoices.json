@@ -5963,7 +5963,7 @@
                   "",
                   "tests[\"Total remaining is OK\"] = data.total_remaining === 20;",
                   "tests[\"Total payments is OK\"] = data.total_payments === 25;",
-                  "tests[\"Payment status is OK\"] = data.payment_status === 'pending';"
+                  "tests[\"Payment status is OK\"] = data.payment_status === 'unpaid';"
                 ],
                 "type": "text/javascript"
               }
@@ -6361,49 +6361,49 @@
   ],
   "variable": [
     {
-      "id": "e52b55d2-4d79-40e8-81f6-2c005c7678c8",
+      "id": "a2c729f7-2b57-432f-abec-2e5ff6ed4609",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6b60900e-8582-4776-acf2-6f4d3fe51985",
+      "id": "b666dca4-13f6-46be-9ebc-b50a62356b04",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "82fe8d60-7650-4106-ba74-94d10a53a0b7",
+      "id": "0b73ec75-e9ce-49dc-b80c-4bceb052a067",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "97f87ee8-fd53-48e4-ae9c-6c5e0b246031",
+      "id": "7b5298d8-76e2-4cc1-ac58-c4e8084ebd6b",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "47713bd6-2c10-4e1a-adbb-eba3d6fd887b",
+      "id": "e2e5b1ce-a383-421c-9209-0961ada9cdb4",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8046b0c7-7347-4560-8fee-12660b74da36",
+      "id": "bfc9a163-3066-449f-b3c4-9d48ffb5af23",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "db5d79d9-f967-45ad-a420-9fd0734ac2dd",
+      "id": "bddac8c6-33f2-4f2e-95e8-63d3a282fa40",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
