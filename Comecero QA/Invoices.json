@@ -5623,7 +5623,7 @@
                   "tests[\"Capture completed successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Total remaining is OK\"] = data.total === 45;",
+                  "tests[\"Total is OK\"] = data.total === 45;",
                   "tests[\"Payment list success count is OK\"] = data.success_count === 2 && data.failure_count === 0;",
                   "tests[\"Number of captures is OK\"] = data.payments.length === 2;",
                   "tests[\"Payment status is OK\"] = data.payments[0].status === 'completed' && data.payments[1].status === 'completed';"
@@ -6127,7 +6127,7 @@
                   "tests[\"Capture completed successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Total remaining is OK\"] = data.total === 25;",
+                  "tests[\"Total is OK\"] = data.total === 25;",
                   "tests[\"Payment list success count is OK\"] = data.success_count === 2 && data.failure_count === 0;",
                   "tests[\"Number of captures is OK\"] = data.payments.length === 2;",
                   "tests[\"Payment status is OK\"] = data.payments[0].status === 'completed' && data.payments[1].status === 'completed';"
@@ -6632,7 +6632,7 @@
                   "tests[\"Capture completed successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Total remaining is OK\"] = data.total === 25;",
+                  "tests[\"Total is OK\"] = data.total === 20;",
                   "tests[\"Payment list success count is OK\"] = data.success_count === 2 && data.failure_count === 0;",
                   "tests[\"Number of captures is OK\"] = data.payments.length === 2;",
                   "tests[\"Payment status is OK\"] = data.payments[0].status === 'completed' && data.payments[1].status === 'completed';"
@@ -6688,7 +6688,7 @@
                   "tests[\"Capture completed successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Total remaining is OK\"] = data.total === 25;",
+                  "tests[\"Total is OK\"] = data.total === 25;",
                   "tests[\"Payment list success count is OK\"] = data.success_count === 2 && data.failure_count === 0;",
                   "tests[\"Number of captures is OK\"] = data.payments.length === 2;",
                   "tests[\"Payment status is OK\"] = data.payments[0].status === 'completed' && data.payments[1].status === 'completed';"
@@ -6977,49 +6977,49 @@
   ],
   "variable": [
     {
-      "id": "b0151f50-638d-4cd4-975c-011ddb3a431c",
+      "id": "1350d443-5bae-455c-a83b-f50e7c6ba875",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9dc30358-6cee-4a1f-b9ef-49adc9a282e7",
+      "id": "9ea17708-e70f-4795-b594-76597b2da631",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "89f7e8fc-da24-454b-a45a-17ff2803bbb8",
+      "id": "07ecc059-c7d8-47b8-8048-c0e478135306",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c06c01f0-42b7-4ac5-a2ba-b0ce67bb6e4a",
+      "id": "0b041607-a303-405d-bac1-5b0adb7cbc8f",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1f7f134f-cd63-40fc-9ab7-c8850ababee1",
+      "id": "f1ed6869-1ea9-4c79-895e-2dfefd6a7ecc",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0f8d1aa8-143d-4410-a211-1e5b787cbd87",
+      "id": "a35dd796-02ff-4700-9221-a9864523678c",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7c9db7f6-008a-482a-8305-cc4e07ed325a",
+      "id": "58c4cfe8-baf1-4061-a3ab-c454428dcf66",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
