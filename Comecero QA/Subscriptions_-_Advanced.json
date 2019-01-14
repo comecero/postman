@@ -10541,7 +10541,7 @@
                   "var data = JSON.parse(responseBody);",
                   "var payment = data.payments.data[0];",
                   "",
-                  "tests[\"Invoice status is correct \" + data.status] = data.payment_status === \"completed\";",
+                  "tests[\"Invoice status is correct \" + data.payment_status] = data.payment_status === \"completed\";",
                   "tests[\"Payment total is correct \" + payment.total] = payment.total === data.total;",
                   "tests[\"Payment currency is correct \" + data.currency] = payment.currency === data.currency;",
                   "",
@@ -10612,7 +10612,7 @@
                   "var data = JSON.parse(responseBody);",
                   "var payment = data.payments.data[0];",
                   "",
-                  "tests[\"Invoice status is correct \" + data.status] = data.payment_status === \"completed\";",
+                  "tests[\"Invoice status is correct \" + data.payment_status] = data.payment_status === \"completed\";",
                   "tests[\"Payment total is correct \" + payment.total] = payment.total === data.total;",
                   "tests[\"Payment currency is correct \" + data.currency] = payment.currency === data.currency;",
                   "",
@@ -10683,7 +10683,7 @@
                   "var data = JSON.parse(responseBody);",
                   "var payment = data.payments.data[0];",
                   "",
-                  "tests[\"Invoice status is correct \" + data.status] = data.payment_status === \"completed\";",
+                  "tests[\"Invoice status is correct \" + data.payment_status] = data.payment_status === \"completed\";",
                   "tests[\"Payment total is correct \" + payment.total] = payment.total === data.total;",
                   "tests[\"Payment currency is correct \" + data.currency] = payment.currency === data.currency;",
                   "",
@@ -10754,7 +10754,7 @@
                   "var data = JSON.parse(responseBody);",
                   "var payment = data.payments.data[0];",
                   "",
-                  "tests[\"Invoice status is correct \" + data.status] = data.payment_status === \"completed\";",
+                  "tests[\"Invoice status is correct \" + data.payment_status] = data.payment_status === \"completed\";",
                   "tests[\"Payment total is correct \" + payment.total] = payment.total === data.total;",
                   "tests[\"Payment currency is correct \" + data.currency] = payment.currency === data.currency;",
                   "",
@@ -10825,7 +10825,7 @@
                   "var data = JSON.parse(responseBody);",
                   "var payment = data.payments.data[0];",
                   "",
-                  "tests[\"Invoice status is correct \" + data.status] = data.payment_status === \"completed\";",
+                  "tests[\"Invoice status is correct \" + data.payment_status] = data.payment_status === \"completed\";",
                   "tests[\"Payment total is correct \" + payment.total] = payment.total === data.total;",
                   "tests[\"Payment currency is correct \" + data.currency] = payment.currency === data.currency;",
                   "",
@@ -14523,63 +14523,63 @@
   ],
   "variable": [
     {
-      "id": "f31cd55d-b2ad-4a00-bbf2-262f3297baeb",
+      "id": "5324449d-8885-43d6-8e47-3a02c0dcc06d",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2a998150-236e-4340-b15a-9f630885d602",
+      "id": "910e5356-2e97-4ada-bb19-7adf6c3f1f9e",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1307201c-343a-469b-bf8e-442ca9345ef3",
+      "id": "c843f3b6-f38f-4c8b-af2e-d871a674a95b",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "65c7c52d-642e-4240-bc7a-410dca5eed25",
+      "id": "c24d4a37-dcd7-4bf0-acfa-4d28ec67324b",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "13909db8-f7c7-4482-85ef-9a15b2574f13",
+      "id": "6cdc8587-cc8d-4250-ab6f-0d561afb00fd",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eb819ed1-512f-4dda-815b-b8da055f44fe",
+      "id": "0c1cfd76-98e7-4928-b6e9-13d4c673accc",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d27fd368-bab8-4d42-aa7c-b5469b2d4b3b",
+      "id": "9d752d3a-37df-40d2-8f52-735efeda10a4",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "465acca4-9e7c-4e6d-8007-ff8298e8df0a",
+      "id": "77c15685-4ed2-40bb-82bb-af5ae2e13601",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f03fdf37-8555-443e-9905-48e7b583a01c",
+      "id": "ae362033-5ebb-4bf4-9e8b-8f5d0dd80594",
       "key": "promotion_code",
       "value": "",
       "type": "string",
