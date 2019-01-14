@@ -7565,7 +7565,7 @@
       "item": [
         {
           "_postman_id": "8aab10bf-312e-4c9b-906a-388d02acbf1f",
-          "name": "Wait six minutes",
+          "name": "Wait seven minutes",
           "event": [
             {
               "listen": "test",
@@ -7575,7 +7575,7 @@
                   "tests[\"Status is 200\"] = responseCode.code === 200;",
                   "",
                   "var date = new Date();",
-                  "var waitForMinutes = 6;",
+                  "var waitForMinutes = 7;",
                   "",
                   "tests[\"Waiting a bit more than \" + waitForMinutes + \" minutes for subscriptions to generete rebill invoices. Timer start: \" + date.toString()] = true;",
                   "",
@@ -10319,7 +10319,7 @@
                   "var data = JSON.parse(responseBody);",
                   "var payment = data.payments.data[0];",
                   "",
-                  "tests[\"Invoice status is correct \" + data.status] = data.payment_status === \"completed\";",
+                  "tests[\"Invoice status is correct \" + data.payment_status] = data.payment_status === \"completed\";",
                   "tests[\"Payment total is correct \" + payment.total] = payment.total === data.total;",
                   "tests[\"Payment currency is correct \" + data.currency] = payment.currency === data.currency;",
                   "",
@@ -10359,9 +10359,18 @@
               "raw": "{\r\n  \"promotion_code\": \"{{promotion_code}}\",\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"{{product_id}}\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
             },
             "url": {
-              "raw": "{{invoice_01_url}}?expand=payments",
+              "raw": "https://api-dev.comecero.com/api/v1/invoices/4383-JXTZH-968?expand=payments",
+              "protocol": "https",
               "host": [
-                "{{invoice_01_url}}"
+                "api-dev",
+                "comecero",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "invoices",
+                "4383-JXTZH-968"
               ],
               "query": [
                 {
@@ -14514,63 +14523,63 @@
   ],
   "variable": [
     {
-      "id": "def5c957-4f63-4c1a-b094-4d9a33d1748f",
+      "id": "07f3cb6a-73f3-4457-9be0-d29f5bde2206",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a15479ed-2c6e-4836-8fb0-0ed84532a6c3",
+      "id": "d42e3669-79b5-46a2-a05e-fe2faf0a1521",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "97c04bde-62b8-4460-983e-11faf1353b0c",
+      "id": "6919fccf-aaaa-4424-8768-6f033cd307ab",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5724003e-9bd2-4215-8a48-ad9148f4f55f",
+      "id": "c082a386-1c08-4895-95b2-b59d487895e3",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a8304a5b-b798-420f-9bf2-cb9df9b044ae",
+      "id": "781b8d8b-ea64-4b4f-a6e1-5e8b57c96395",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0ba09d5f-2161-47db-aab8-7211ebfdc91b",
+      "id": "a633c964-7053-4867-a735-e1d262ce25ac",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9974b2bb-c339-49bb-85a0-811f3b0b2b12",
+      "id": "994181f6-1215-48a2-a5e5-eee67579c509",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2bff722f-7603-4cae-a5be-1b982cda653c",
+      "id": "bacbe662-26a4-4ef1-9e4a-eb6a54e95dd8",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7d3bfea4-ff04-4420-a4f0-7fda83a6a8f0",
+      "id": "f7aabc0b-5728-48e8-8a30-b0113215617c",
       "key": "promotion_code",
       "value": "",
       "type": "string",
