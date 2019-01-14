@@ -11535,7 +11535,7 @@
                   "var data = JSON.parse(responseBody);",
                   "var payment = data.payments.data[0];",
                   "",
-                  "tests[\"Invoice status is correct \" + data.status] = data.payment_status === \"completed\";",
+                  "tests[\"Invoice status is correct \" + data.payment_status] = data.payment_status === \"completed\";",
                   "tests[\"Payment total is correct \" + payment.total] = payment.total === data.total;",
                   "tests[\"Payment currency is correct \" + data.currency] = payment.currency === data.currency;",
                   "",
@@ -11606,7 +11606,7 @@
                   "var data = JSON.parse(responseBody);",
                   "var payment = data.payments.data[0];",
                   "",
-                  "tests[\"Invoice status is correct \" + data.status] = data.payment_status === \"completed\";",
+                  "tests[\"Invoice status is correct \" + data.payment_status] = data.payment_status === \"completed\";",
                   "tests[\"Payment total is correct \" + payment.total] = payment.total === data.total;",
                   "tests[\"Payment currency is correct \" + data.currency] = payment.currency === data.currency;",
                   "",
@@ -14523,63 +14523,63 @@
   ],
   "variable": [
     {
-      "id": "61337c68-eaf7-431f-9a59-f7450952d5c3",
+      "id": "b1fa5a57-d7d4-42e1-acda-c783a3da99b9",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "41c32f7f-d5c6-4da6-b408-9b2b67e9bf03",
+      "id": "3bdc0ddd-f412-412f-9d9d-84a544132aa8",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d3d96e7f-9bd9-4db8-9956-e4e86cbb42c1",
+      "id": "4122ca0d-f841-4408-987c-64beae53a46e",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1f5cc211-e313-4010-9f03-e530cac4d14e",
+      "id": "d86d95a6-c831-4b7f-ae39-b5d1d64be1d5",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5e366262-3f82-429f-b9fb-dee689a55b20",
+      "id": "bd56dbe9-b538-492d-8ed6-f78914c5d27e",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1b6d9ff9-d6b6-42a6-aea2-096536faece4",
+      "id": "073273f7-c3b6-4207-95aa-09f18de7c635",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "944c915a-05f5-4e55-9039-cb9fd06b692b",
+      "id": "b7186f3f-1dfd-4e42-9175-1cf6aceda58b",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2f2873ac-df21-4779-a35c-3d57937da604",
+      "id": "f5edae3c-cdc9-4263-81ca-db1b78073a2f",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dfe2ee40-e57c-4e66-8da3-5ca894a5352f",
+      "id": "38015cb8-736d-4df4-91b7-e77b40a3472c",
       "key": "promotion_code",
       "value": "",
       "type": "string",
