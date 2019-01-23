@@ -7559,223 +7559,6 @@
       ]
     },
     {
-      "_postman_id": "615e4b91-7572-496c-bb5c-d13cccaeb947",
-      "name": "Direct with Multiple Products 31 Copy",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "36ecd8a0-1cbf-4f75-8ce7-e5678bc25009",
-          "name": "Create Customer",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4e7b6d60-0723-4dab-b65f-38cb4181f683",
-                "type": "text/javascript",
-                "exec": [
-                  "tests[\"Customer created\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "pm.globals.set(\"customer_id\", data.customer_id);"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"name\":\"{{name}}\",\r\n   \"email\":\"{{email}}\",\r\n   \"billing_address\":{\r\n      \"address_1\":\"{{address_1}}\",\r\n      \"city\":\"{{city}}\",\r\n      \"state_prov\":\"{{state_prov}}\",\r\n      \"postal_code\":\"{{postal_code}}\",\r\n      \"country\":\"{{country}}\"\r\n   }\r\n}"
-            },
-            "url": "https://{{host}}/api/v1/customers",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "9a952ebd-1fc6-4103-8f55-7da7124c5071",
-          "name": "Add Payment Method",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b159a350-83cd-4e5e-87ed-40154a3e57ac",
-                "exec": [
-                  "tests[\"Payment method created\"] = responseCode.code === 201;",
-                  "",
-                  "if (responseCode.code !== 201) {",
-                  "tests[\"IF THIS TEST FAILS you must log into the account as admin and under Settings> Payment and enable 'Allow Saved Credit Cards.'\"] = false;",
-                  "}",
-                  "",
-                  "var data = JSON.parse(responseBody);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"type\":\"credit_card\",\r\n   \"data\":{\r\n      \"number\":\"4444555566661111\",\r\n      \"cvv\":123,\r\n      \"exp_month\":12,\r\n      \"exp_year\":2025\r\n   }\r\n}"
-            },
-            "url": "https://{{host}}/api/v1/customers/{{customer_id}}/payment_methods"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e43bffc9-e9df-4e20-9150-8626671db87e",
-          "name": "Create Subscription",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6091993a-2736-4509-8b55-9ef6d1491832",
-                "exec": [
-                  "// Load the standard tests",
-                  "let utils = {};",
-                  "if (globals.loadUtils) ",
-                  "    utils = eval(globals.loadUtils);",
-                  "",
-                  "",
-                  "tests[\"Status is 201\"] = responseCode.code === 201;",
-                  "",
-                  "var data = JSON.parse(responseBody);",
-                  "var item = data.items[0];",
-                  "var plan = data.subscription_plan;",
-                  "var terms = item.subscription_terms;",
-                  "",
-                  "tests[\"Check item \" + item.name] = true;",
-                  "",
-                  "utils.comparePlanToTerms(plan, terms);",
-                  "",
-                  "tests[\"Item price is correct \" + item.reference_price] = parseFloat(item.reference_price) === 10;",
-                  "tests[\"Item discount is correct \" + item.reference_discount] = item.reference_discount === 0;",
-                  "tests[\"Subscription item price is correct \" + terms.price] = parseFloat(terms.price) === 10;",
-                  "tests[\"Subscription item discount is correct \" + terms.discount] = terms.discount === 0;",
-                  "",
-                  "tests[\"Name is set \" + item.name] = item.name !== null;",
-                  "tests[\"Type is set \" + item.type] = item.type !== null;",
-                  "tests[\"ID is set \" + item.item_id] = item.item_id !== null;",
-                  "",
-                  "item = data.items[1];",
-                  "plan = data.subscription_plan;",
-                  "terms = item.subscription_terms;",
-                  "",
-                  "tests[\"Check item \" + item.name] = true;",
-                  "",
-                  "tests[\"Item price is correct \" + item.reference_price] = parseFloat(item.reference_price) === 30;",
-                  "tests[\"Item discount is correct \" + item.reference_discount] = item.reference_discount === 0;",
-                  "tests[\"Subscription item price is correct \" + terms.price] = parseFloat(terms.price) === 30;",
-                  "tests[\"Subscription item discount is correct \" + terms.discount] = terms.discount === 0;",
-                  "",
-                  "tests[\"Name is set \" + item.name] = item.name !== null;",
-                  "tests[\"Type is set \" + item.type] = item.type !== null;",
-                  "tests[\"ID is set \" + item.item_id] = item.item_id !== null;",
-                  "tests[\"Item count is correct \" + data.items.length] = data.items.length === 2;",
-                  "",
-                  "// Make sure the first invoice was created",
-                  "var invoice = data.invoices.data[0];",
-                  "tests[\"Invoice was created\"] = invoice.object !== null;",
-                  "tests[\"Invoice has the subscription items\"] = invoice.items.length === 2;",
-                  "tests[\"Invoice total is correct\"] = invoice.total === 45;",
-                  "",
-                  "pm.globals.set(\"subscription_31_url\", data.url);",
-                  "pm.globals.set(\"subscription_31_id\", data.subscription_id);"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\",\n  \"currency\": \"USD\",\n  \"items\": [{\n      \"product_id\": \"digital.test\",\n      \"quantity\": 1\n  },\n  {\n      \"product_id\": \"physical.test\",\n      \"quantity\": 1\n  }\n  ]\n}"
-            },
-            "url": {
-              "raw": "https://{{host}}/api/v1/customers/{{customer_id}}/subscriptions?expand=items.subscription_terms,subscription_plan,invoices",
-              "protocol": "https",
-              "host": [
-                "{{host}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "customers",
-                "{{customer_id}}",
-                "subscriptions"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "items.subscription_terms,subscription_plan,invoices",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        }
-      ]
-    },
-    {
       "_postman_id": "b3441851-ce2a-412b-a767-6f7fb5364e4c",
       "name": "Check Rebills",
       "description": "",
@@ -14740,63 +14523,63 @@
   ],
   "variable": [
     {
-      "id": "15829ab1-102d-4bfe-831d-d01374161b2f",
+      "id": "60409170-43f0-4d9d-aec7-1564fed9c8ea",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4b5d7d7a-4e27-4d88-85a0-eb1209ccc17f",
+      "id": "568fe8c5-3da8-4b1d-82ba-b11c3e3a5059",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6295c992-4930-41a8-b5b3-d315443a9319",
+      "id": "56de7a81-65e7-4083-80c8-aa7ef9e5ccec",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "64394fd4-f182-47d4-b3d9-7506bda8c732",
+      "id": "1ecfd498-1190-456b-9074-041200e843cb",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "87b9f148-5b11-4f0e-a594-64e166f30a86",
+      "id": "7498fcbc-b787-4efa-8ea3-19a1ee390091",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dfa47940-bae4-4510-88c3-dcff37be9401",
+      "id": "13700da5-3f6f-4c7f-a6e9-a6f1c027698b",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e6e59d99-05d7-406b-945a-d7c24c5b4ff8",
+      "id": "6be2d9c5-4a4c-4bf4-b185-e3452425cb98",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c770b20d-02c3-43d2-88ac-6465156f6197",
+      "id": "9a0dcc24-894b-4dcf-9464-b4b4f06e3c3f",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "afd9c103-b13b-4a27-8114-17e8766d825a",
+      "id": "234bbf6b-df1b-4616-955e-2b4d9aae2afe",
       "key": "promotion_code",
       "value": "",
       "type": "string",
