@@ -7626,68 +7626,6 @@
           "response": []
         },
         {
-          "_postman_id": "f7837e8c-8b90-440a-a50f-966f57fddbd9",
-          "name": "Wait seven minutes Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a05ebd5c-7c23-42c3-9eb9-63ddde25ee85",
-                "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
-                  "",
-                  "var date = new Date();",
-                  "var waitForMinutes = 7;",
-                  "",
-                  "tests[\"Waiting a bit more than \" + waitForMinutes + \" minutes for subscriptions to generete rebill invoices. Timer start: \" + date.toString()] = true;",
-                  "",
-                  "setTimeout(function() {",
-                  "    tests[\"Timer completed. Testing resuming...\"] = true;",
-                  "    // We add a 30 second buffer to the number of minutes.",
-                  "}, ((waitForMinutes * 60) + 30) * 1000);",
-                  "",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "9751ab2a-b7c5-4e5c-9971-064d19f11c72",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "https://{{host}}/api/v1/subscriptions",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "66294521-e3d4-45df-ae7b-64170364e2ce",
           "name": "Rebill Check - 01",
           "event": [
@@ -14585,63 +14523,63 @@
   ],
   "variable": [
     {
-      "id": "244c1925-df7e-45d3-a677-7e54a49c7a60",
+      "id": "67b16ec1-22c8-4586-8567-ff2d58b2b726",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ad85482e-d072-4041-9e38-eed9a8f9815c",
+      "id": "61aef79b-cd82-42b1-b5db-b57a78c12c61",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3a54691f-e0ab-4ba6-9c86-635b7a72d7d8",
+      "id": "bb6d215a-da5c-4b46-b1bc-4b02d0e35dd2",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6cdcada1-d9b7-4c55-b1ac-828f413c4843",
+      "id": "39573907-9d96-4b94-90f2-ec2b54d72372",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "edbbe9e9-a3f0-4bfd-9aaa-1fdbe1243f91",
+      "id": "376973c0-353f-4722-96a2-a7379cd8a143",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "45330818-f881-47d5-936e-3dcab520127f",
+      "id": "f38c1fc1-bb20-486a-a415-b224860d1e82",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0f8f170f-f0d9-4f5e-94b4-9755c17c7bff",
+      "id": "67d33683-0d98-4940-817f-53aa0aa7d40b",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "abd4532d-6e5e-45b2-a6f5-e332317cf76b",
+      "id": "748c143d-bccb-4bfd-8c42-15fb15d1f0ea",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d613f0f8-144f-4b22-8795-b65aa2649474",
+      "id": "4438d96b-475f-4f8e-a740-3fdf6ae23219",
       "key": "promotion_code",
       "value": "",
       "type": "string",
