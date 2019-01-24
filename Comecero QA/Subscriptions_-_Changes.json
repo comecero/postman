@@ -4621,55 +4621,6 @@
       "description": "",
       "item": [
         {
-          "_postman_id": "ee9c686c-70f2-46be-b6f8-647983bd8cd2",
-          "name": "Update Product Subscription Plan (Physical) Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a7f20a52-80fb-4c20-a8d5-e7c404517d70",
-                "exec": [
-                  "tests[\"Updated subscription plan\"] = responseCode.code === 200;"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
-            },
-            "url": "https://{{host}}/api/v1/products/physical-sub.test",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "ecccf38c-d2e1-4104-a6cd-6103e4723f98",
           "name": "Create Cart",
           "event": [
@@ -4898,6 +4849,55 @@
               "raw": ""
             },
             "url": "https://{{host}}/api/v1/subscriptions",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ee9c686c-70f2-46be-b6f8-647983bd8cd2",
+          "name": "Update Product Subscription Plan (Physical) Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a7f20a52-80fb-4c20-a8d5-e7c404517d70",
+                "exec": [
+                  "tests[\"Updated subscription plan\"] = responseCode.code === 200;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/products/physical-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -5497,56 +5497,56 @@
   ],
   "variable": [
     {
-      "id": "64c2a1a7-2640-4fea-9d60-6593785edd6d",
+      "id": "bbc24543-6a92-4914-9df0-0de16310200c",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fcecef85-63cc-4571-8c2a-3dba6862a0d5",
+      "id": "7b66fae4-8123-40b5-98c3-e9d32604e3c3",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "97f15949-145b-406b-a842-5a0a9ab2b111",
+      "id": "6e3bef90-0ed5-438d-93cc-91d95bce4891",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8106e58f-4efa-4a69-beb1-7986824a235d",
+      "id": "930ba481-f197-44e2-8e46-17db6d318f2e",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8c4f86d5-cb95-4e9c-8ea1-b26e774979d8",
+      "id": "4bea703f-18c1-4d65-89cb-29c8d57a3923",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3391a8fe-4b1d-438b-b85c-28d7584dd155",
+      "id": "cb145ede-d828-4f17-841f-9a3c97a9cfaa",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b564f5e0-6096-45e6-b7da-ab83d07a09f5",
+      "id": "a6d81277-1e29-467f-9723-6870096a1067",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e86ee18f-1b0c-4374-be0e-9a86185dccf2",
+      "id": "f938a12b-8b10-477d-878d-ce5e8bd74474",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
