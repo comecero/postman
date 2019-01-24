@@ -680,6 +680,46 @@
       "response": []
     },
     {
+      "_postman_id": "e814fac5-18b7-45f5-8ff8-fd7c4606c982",
+      "name": "Assign Hourly Subscription (Upgrade)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "1306c13c-9f89-4846-b015-8dc4e649617e",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var data = JSON.parse(responseBody);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"subscription_plan_id\": \"{{hourly_subscription_plan_id}}\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products/{{digital_subscription_product_id}}"
+      },
+      "response": []
+    },
+    {
       "_postman_id": "ba846d37-4748-41fa-814c-0be0be8ccf08",
       "name": "Assign Hourly Trial Subscription",
       "event": [
@@ -1630,46 +1670,6 @@
           "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"weight\":1,\r\n      \"product_id\":\"physical-2.test\",\r\n      \"offer_with_product_ids\":[\r\n         \"physical.test\"\r\n      ]\r\n   },\r\n   \"name\":\"Cross Sell Paper Clips with Stapler (No Discount)\",\r\n   \"type\":\"cross_sell\"\r\n}"
         },
         "url": "https://{{host}}/api/v1/settings/general"
-      },
-      "response": []
-    },
-    {
-      "_postman_id": "e814fac5-18b7-45f5-8ff8-fd7c4606c982",
-      "name": "Assign Hourly Subscription Copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "1306c13c-9f89-4846-b015-8dc4e649617e",
-            "type": "text/javascript",
-            "exec": [
-              "tests[\"Status code is 200\"] = responseCode.code === 200;",
-              "",
-              "var data = JSON.parse(responseBody);"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "auth": {
-          "type": "noauth"
-        },
-        "method": "POST",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          },
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"subscription_plan_id\": \"{{hourly_subscription_plan_id}}\"\r\n}"
-        },
-        "url": "https://{{host}}/api/v1/products/{{digital_subscription_product_id}}"
       },
       "response": []
     }
