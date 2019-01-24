@@ -4056,9 +4056,9 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "// We should have three payments - two by credit card and one by customer account balance.",
-                  "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 1;",
+                  "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 2;",
                   "tests[\"Correct number of customer account balance payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"customer_account_balance\"}).length === 1;",
-                  "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 2;",
+                  "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 3;",
                   "tests[\"Correct number of customer account balance refunds\"] = _.filter(data.refunds.data, function(refund) { return refund.payment_method.type == \"customer_account_balance\"}).length === 1;",
                   "tests[\"Correct number of total refunds\"] = data.refunds.total_items === 1;",
                   "tests[\"Refund total is within range\"] = data.refunds.data[0].total < 20;",
@@ -4978,56 +4978,56 @@
   ],
   "variable": [
     {
-      "id": "bf47d6b3-0cee-424b-9bb7-5ec17a027d01",
+      "id": "cb12e92d-c727-472f-be04-5b411d40bb30",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cb7e3c41-9986-4241-8a5b-e75b4fd3b24e",
+      "id": "40655731-7496-403f-ba1d-24f8aee71dfc",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fbdf275a-9e0a-43e4-b963-d2cd8563c942",
+      "id": "3571286c-f059-4856-9a88-a1b4bb3403a7",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2b3eae34-a094-40de-95f4-fbf391f66bf9",
+      "id": "c67b8610-92fb-4464-a63d-d43fe5c1bd82",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ee196292-ed07-4689-876e-375385884217",
+      "id": "cfe84627-3805-422c-ac53-d86c0b4bb9b4",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3e94a64b-b6e4-4933-ae7a-b5440c37f689",
+      "id": "ca345323-6b29-40a6-8cd2-fcc8b638c6a7",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e24c7554-9693-41a2-861e-77a200c8d041",
+      "id": "72f7d392-1c5f-49f8-8190-ab8e16a9ef69",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "09740870-3e34-473e-8f60-a06ca5b318fc",
+      "id": "978a8b93-0406-4517-81d0-501f01274032",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
