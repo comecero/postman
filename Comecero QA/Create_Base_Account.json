@@ -477,7 +477,7 @@
     },
     {
       "_postman_id": "844d9419-6d0a-4405-bd9a-f8977de0dcee",
-      "name": "Create Physical Subscription Product Copy",
+      "name": "Create Physical Subscription Product (Upgrade)",
       "event": [
         {
           "listen": "test",
@@ -510,7 +510,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n\t\"product_id\": \"physical-sub.test\",\t\r\n    \"name\": \"Flower of the Month\",\r\n    \"description\": \"Get a flower delivered to your mailbox. Sometimes fresh, sometimes dead, but always on time.\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 40,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 38,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+          "raw": "{\r\n\t\"product_id\": \"physical-pro-sub.test\",\t\r\n    \"name\": \"Flower of the Month (Premium)\",\r\n    \"description\": \"Get a flower delivered to your mailbox. Sometimes fresh, sometimes dead, but always on time.\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 80,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 76,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
         },
         "url": "https://{{host}}/api/v1/products"
       },
