@@ -4903,9 +4903,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{hour_subscription_plan_id}}\"   \r\n}"
             },
-            "url": "https://{{host}}/api/v1/products/physical-sub.test",
+            "url": "https://{{host}}/api/v1/products/digital-pro-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -5032,6 +5032,55 @@
                 }
               ]
             },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b90e8141-206e-4f0b-a3c0-88d77a7aef67",
+          "name": "Revert Product Subscription Plan",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a7f20a52-80fb-4c20-a8d5-e7c404517d70",
+                "exec": [
+                  "tests[\"Updated subscription plan\"] = responseCode.code === 200;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/products/digital-pro-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -5501,56 +5550,56 @@
   ],
   "variable": [
     {
-      "id": "c145564e-3cc2-440a-b4d7-651896158431",
+      "id": "e85c103c-2c08-4415-bd83-4fded11592d1",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cd66bb6a-b1f5-4cdf-b949-4b9294d91d38",
+      "id": "ca3ac630-5440-4b6e-a4ec-6c14e89597a1",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "826f4dc5-3341-488e-86be-9505d1cb0b9e",
+      "id": "51dfa5a7-8b22-4e43-add6-1205b17394f9",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "455506aa-cd52-404b-a0b5-32b15b632e48",
+      "id": "fddee2e2-ae7a-446f-a3c8-e716083449cb",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0aadc160-bf81-4583-91e4-1d69b5cb922c",
+      "id": "77a64006-1cef-457c-8fd3-f85dadcab066",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "df16645f-e259-4779-b60d-51cba4d25698",
+      "id": "a546a3e0-0949-4209-86f3-2521ba433ac4",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2c69e663-c023-4a79-97e3-210b6c0ea0ad",
+      "id": "b95282da-17c8-4072-adfb-e51243c73f8a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6b83b429-cefd-421f-9e30-6604a998289c",
+      "id": "bd25f1d5-7bc2-4134-a027-f44d9320e65d",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
