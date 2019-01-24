@@ -4749,7 +4749,7 @@
         },
         {
           "_postman_id": "50a6b537-1134-4ab3-ba98-edbb01d8fed2",
-          "name": "Update Product Subscription Plan Copy",
+          "name": "Revert Product Subscription Plan",
           "event": [
             {
               "listen": "test",
@@ -5648,56 +5648,56 @@
   ],
   "variable": [
     {
-      "id": "8bcf4341-61a6-4b76-8aec-60e5550fa1e3",
+      "id": "0b79270b-e0d5-4e77-8210-709b0e054c17",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a53b37a9-006d-4f45-abfb-37e1e47a828d",
+      "id": "a9ec22d5-80df-430f-866f-732e599b9051",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cedc7e7f-56b1-4fee-a07a-fb5bd7ec4f5a",
+      "id": "0e63cd52-f882-47b4-b078-e40d19599edb",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d414a93d-7db2-4420-b310-30e1891a8920",
+      "id": "eef01f97-3648-47cd-b8ad-ea9dca786170",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5c96b681-1d19-4e46-9c95-9ff9d3c48c0a",
+      "id": "062e87cd-18d5-475d-9073-a1bb00ab69fd",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "489f54a3-05dc-45a7-a6ca-c214c21bbebd",
+      "id": "b662c7a7-3783-446b-a844-c1376ba6e1d9",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ecec36eb-7baf-4803-9a98-1c36ad0060f2",
+      "id": "b4fcf28d-17dd-497a-8961-cdeeabd268ad",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "29ca778c-3034-4521-b1b8-d1d4edbc86dc",
+      "id": "d68a392a-ac49-4812-b1fb-383fe530d788",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
