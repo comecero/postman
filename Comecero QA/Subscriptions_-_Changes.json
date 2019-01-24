@@ -5199,7 +5199,7 @@
                   "tests[\"Order 1 has the correct total\"] = data.orders.data[0].total === 20;",
                   "tests[\"Order 2 has the correct total\"] = data.orders.data[1].total === 40;",
                   "tests[\"Refund has been recorded for the correct amount\"] = data.refunds.total_items == 1 && data.refunds.data[0].total < 20;",
-                  "tests[\"Correct nubmer of subscriptions and cancellations\"] = data.subscriptions.data.total_items === 2 && data.subscriptions.data[0].status === \"cancelled\" && data.subscriptions.data[1].status === \"active\";",
+                  "tests[\"Correct nubmer of subscriptions and cancellations\"] = data.subscriptions.total_items === 2 && data.subscriptions.data[0].status === \"cancelled\" && data.subscriptions.data[1].status === \"active\"",
                   "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 2;",
                   "tests[\"Correct number of customer account balance payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"customer_account_balance\"}).length === 1;",
                   "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 3;",
@@ -5650,56 +5650,56 @@
   ],
   "variable": [
     {
-      "id": "6b5e7d5f-faa1-4ce5-94ee-3c8dde2e5493",
+      "id": "15709892-4048-4631-b298-853d9ed172e2",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c22e444e-1d4a-4c55-b3fb-6a7ebc2d99a9",
+      "id": "59545ed8-4c86-4481-a68a-e027aade3cc9",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9b98c6dc-c3fe-441e-a25f-d240176c40bc",
+      "id": "da29ba71-f9bb-4adf-9b3d-01bb06d0d370",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "061f10fb-83aa-483c-a981-0a96b956ed75",
+      "id": "f8c6ef96-c5bd-41fa-9def-d4068f32d0f7",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e68df70b-c0c1-4ce4-8727-9cfc61ea20bb",
+      "id": "b0e0da13-f40a-4a87-bba7-34fa536e3345",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0850de73-bb0f-4cb2-815d-9ac0c7ac24ab",
+      "id": "c347be7e-ceb5-4f58-87a9-eece2b4b211e",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3939f097-d1a1-4b06-b7a1-bd06e4d2f557",
+      "id": "88830ab7-0812-4da2-9385-7862fb9ae4f6",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "229ce0ef-2b3a-4ad4-9e66-b183579cc78c",
+      "id": "018c673f-1619-45e5-b1e1-4dca68323286",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
