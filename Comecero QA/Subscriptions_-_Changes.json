@@ -5195,22 +5195,17 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "// We should have three payments - two by credit card and one by customer account balance.",
-                  "tests[\"Two orders have been placed\"] = data.orders.total_items ===2;",
+                  "tests[\"Correct number of orders have been placed\"] = data.orders.total_items ===2;",
                   "tests[\"Order 1 has the correct total\"] = data.orders.data[0].total === 20;",
-                  "tests[\"Order 1 has the correct total\"] = data.orders.data[1].total === 40;",
+                  "tests[\"Order 2 has the correct total\"] = data.orders.data[1].total === 40;",
                   "tests[\"Refund has been recorded for the correct amount\"] = data.refunds.total_items == 1 && data.refunds.data[0].total < 20;",
-                  "",
-                  "",
-                  "",
+                  "tests[\"Correct nubmer of subscriptions and cancellations\"] = data.subscriptions.data.total_items == 2 && data.subscriptions.data[0].status === \"cancelled\" && data.subscriptions.data[1].status === \"active\"",
                   "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 2;",
                   "tests[\"Correct number of customer account balance payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"customer_account_balance\"}).length === 1;",
                   "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 3;",
                   "tests[\"Correct number of customer account balance refunds\"] = _.filter(data.refunds.data, function(refund) { return refund.payment_method.type == \"customer_account_balance\"}).length === 1;",
                   "tests[\"Correct number of total refunds\"] = data.refunds.total_items === 1;",
-                  "tests[\"Refund total is within range\"] = data.refunds.data[0].total < 20;",
-                  "tests[\"Correct number of subscriptions\"] = data.subscriptions.total_items === 1;",
-                  "tests[\"Correct number of orders\"] = data.orders.total_items === 2;",
-                  "tests[\"Correct number of invoices\"] = data.invoices.total_items === 1;"
+                  "tests[\"Refund total is within range\"] = data.refunds.data[0].total < 20;"
                 ],
                 "type": "text/javascript"
               }
@@ -5654,56 +5649,56 @@
   ],
   "variable": [
     {
-      "id": "270e2ecb-792f-4eb6-ae7f-569568b3951d",
+      "id": "983476e8-c4d4-44f9-b399-59fa45f46285",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "94ad7c47-1a67-4a89-9b81-1ff22d29646c",
+      "id": "80f15e6b-4366-4cfe-9b8a-4f573d11451e",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b366daee-53fb-49f7-8046-680d5ccf5e7f",
+      "id": "7e6a4a72-277a-442f-a2f5-f642471fbe78",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cec4ce8d-2fd3-42d2-9600-647bd5a296a7",
+      "id": "c1408d5f-6607-4fab-9fe7-c4c91aea3fda",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8899bfba-a8f2-4217-80ac-50997c0a14b6",
+      "id": "ff0255ca-c472-4fb4-aa30-34212eb756ac",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "92256207-7f9b-4d29-91a9-8795482e6163",
+      "id": "6c343055-f380-43e8-a90a-8402a3e7fff1",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5a7334c2-b075-4208-8bcb-e3e050f3298d",
+      "id": "d4ca5ae3-1905-43a3-a57e-0db90717a32c",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "60203220-63a8-4349-8465-f1ee08a21f22",
+      "id": "d4c38c0f-bebf-4bba-bb90-c62c78ba74e6",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
