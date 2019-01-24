@@ -4718,7 +4718,7 @@
               "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
             },
             "url": {
-              "raw": "https://{{host}}/api/v1/products/physical-sub.test?currency=USD",
+              "raw": "https://{{host}}/api/v1/products/digital-pro-sub.test?currency=USD",
               "protocol": "https",
               "host": [
                 "{{host}}"
@@ -4727,7 +4727,7 @@
                 "api",
                 "v1",
                 "products",
-                "physical-sub.test"
+                "digital-pro-sub.test"
               ],
               "query": [
                 {
@@ -4785,7 +4785,7 @@
               "mode": "raw",
               "raw": "{\n    \"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\",\n    \"prices\": [\n        {\n            \"price\": 10,\n            \"currency\": \"USD\"\n        }\n    ]\n}"
             },
-            "url": "https://{{host}}/api/v1/products/physical-sub.test",
+            "url": "https://{{host}}/api/v1/products/digital-pro-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -5370,56 +5370,56 @@
   ],
   "variable": [
     {
-      "id": "ca6e415f-06a3-41e1-89ed-6c66cd29ee2c",
+      "id": "417f8233-fba1-46eb-91cd-a56fec963ec7",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8de021fb-5e6f-451b-bbca-2fe1cdd8abef",
+      "id": "45ca377f-c434-441b-aa48-f1ae1221e806",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d03fa66e-cce1-4b11-b038-171fe1aac965",
+      "id": "4b4ebb7a-552b-4c29-8e7f-85f6b1882969",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "59db5caf-1d79-43b4-98eb-40a2af3d6412",
+      "id": "6d9d44eb-9d57-4ee2-94cf-418faabde9c9",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "acf606ae-d698-4411-a1a3-2608724dd0e5",
+      "id": "403b04e5-69c3-4f8a-8072-954713effbd8",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c157295d-67af-4a9e-acd4-fc13f404b949",
+      "id": "6e3abc64-5d7b-4d4c-8239-4b8b75263f45",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2d4b76cf-c865-4562-ab04-6b2777b0e8e4",
+      "id": "8a66fb06-4d75-4b54-9048-e394584ea6aa",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f15a6356-5e33-4811-8af4-b22dd0a92819",
+      "id": "eac5a4d5-6124-4d8f-a5a5-5e8ad6def315",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
