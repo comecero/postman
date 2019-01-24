@@ -1591,6 +1591,47 @@
         "url": "https://{{host}}/api/v1/settings/general"
       },
       "response": []
+    },
+    {
+      "_postman_id": "844d9419-6d0a-4405-bd9a-f8977de0dcee",
+      "name": "Create Physical Subscription Product Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a01e76b1-3b85-4e32-a1ca-e199be29aabd",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"physical_subscription_product_id\", data.product_id);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"product_id\": \"physical-sub.test\",\t\r\n    \"name\": \"Flower of the Month\",\r\n    \"description\": \"Get a flower delivered to your mailbox. Sometimes fresh, sometimes dead, but always on time.\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 40,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 38,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products"
+      },
+      "response": []
     }
   ],
   "event": [
