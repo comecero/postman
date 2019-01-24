@@ -767,12 +767,12 @@
           "listen": "test",
           "script": {
             "id": "989c03aa-4a47-4ef6-86b4-5544faf24a58",
-            "type": "text/javascript",
             "exec": [
               "tests[\"Status code is 200\"] = responseCode.code === 200;",
               "",
               "var data = JSON.parse(responseBody);"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
@@ -795,7 +795,7 @@
           "mode": "raw",
           "raw": "{\r\n    \"subscription_plan_id\": \"{{hourly_trial_subscription_plan_id}}\"\r\n}"
         },
-        "url": "https://{{host}}/api/v1/products/{{physical_subscription_product_id}}"
+        "url": "https://{{host}}/api/v1/products/{{physical_pro_subscription_product_id}}"
       },
       "response": []
     },
