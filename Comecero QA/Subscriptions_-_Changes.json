@@ -2041,6 +2041,55 @@
           "response": []
         },
         {
+          "_postman_id": "ee9c686c-70f2-46be-b6f8-647983bd8cd2",
+          "name": "Update Product Subscription Plan (Physical) Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a7f20a52-80fb-4c20-a8d5-e7c404517d70",
+                "exec": [
+                  "tests[\"Updated subscription plan\"] = responseCode.code === 200;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/products/physical-sub.test",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
           "_postman_id": "72b3f66d-c093-4c4b-824c-6ffbf390cdb2",
           "name": "Add New Item",
           "event": [
@@ -2238,55 +2287,6 @@
               "raw": "{\r\n   \"status\":\"cancelled\",\r\n   \"cancellation_reason\": \"Cancelled upon completion of an automated test\"\r\n}"
             },
             "url": "{{subscription_url}}",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ee9c686c-70f2-46be-b6f8-647983bd8cd2",
-          "name": "Update Product Subscription Plan (Physical) Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a7f20a52-80fb-4c20-a8d5-e7c404517d70",
-                "exec": [
-                  "tests[\"Updated subscription plan\"] = responseCode.code === 200;"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
-            },
-            "url": "https://{{host}}/api/v1/products/physical-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -5497,56 +5497,56 @@
   ],
   "variable": [
     {
-      "id": "c2f98bd6-9321-45fa-8986-26bd3298a4e7",
+      "id": "4ec19016-1106-4099-b97c-1ae9b4743665",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c8e9d8e0-6a19-4607-aeba-984494d171d3",
+      "id": "b73a113f-c665-4031-aec2-26dc4f4eecfa",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fb56f8b7-b258-4b71-a4cf-528e865ebf72",
+      "id": "0430f64f-c981-4e5e-a36e-4d8ede1c0438",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1a9977d4-2024-42d8-8595-37aad05ce892",
+      "id": "85b3dddc-4dc8-4e9a-8bb2-143efe0f6295",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c2162e71-63d0-4bb2-add3-7d698178ec66",
+      "id": "166a4d79-d68b-4e97-904e-a1d2bda68300",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c5dd53ea-847d-4b0a-8b91-14332c81f935",
+      "id": "23875d02-4362-4acf-b93a-63858c066bdb",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5556882b-e767-4cad-b17d-b4f27cd37c6c",
+      "id": "749d9a09-b638-42a2-a287-5484765056e3",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4ea52b1a-45ab-4b2c-9e19-940b21aa6f68",
+      "id": "fcab4a96-5e4a-49fc-909b-bd1f602aa013",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
