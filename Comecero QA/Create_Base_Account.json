@@ -964,6 +964,46 @@
       "response": []
     },
     {
+      "_postman_id": "b954a9c6-104e-48f0-8883-8b65c255a55e",
+      "name": "Assign Hourly Trial Subscription Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "989c03aa-4a47-4ef6-86b4-5544faf24a58",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var data = JSON.parse(responseBody);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"subscription_plan_id\": \"{{hourly_trial_subscription_plan_id}}\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products/{{physical_subscription_product_id}}"
+      },
+      "response": []
+    },
+    {
       "_postman_id": "529f113a-abfe-4b2e-8264-72d426015456",
       "name": "Assign Hourly Trial Subscription (Upgrade)",
       "event": [
