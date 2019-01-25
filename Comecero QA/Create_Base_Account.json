@@ -1189,6 +1189,47 @@
       "response": []
     },
     {
+      "_postman_id": "52d556d0-fb3e-4e80-b28a-e07aee7b3f87",
+      "name": "Assign Subscription Relations (Digital) Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "e172717b-cf26-4583-850a-f8f47ba6ba58",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"digital_product_id\", data.product_id);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"subscription_term_change_product_ids\": [\"{{digital_term_subscription_product_id}}\"],\n\t\"subscription_change_product_ids\": [\"{{digital_pro_subscription_product_id}}\"]\t\n}"
+        },
+        "url": "https://{{host}}/api/v1/products/{{digital_subscription_product_id}}"
+      },
+      "response": []
+    },
+    {
       "_postman_id": "f5615ed9-e134-480a-8086-fd5bb300f9e9",
       "name": "Set Tax Settings",
       "event": [
