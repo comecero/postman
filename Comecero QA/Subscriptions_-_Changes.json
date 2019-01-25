@@ -5293,11 +5293,11 @@
     },
     {
       "_postman_id": "5fa4fd44-148e-4ef0-a6f3-b179adc26627",
-      "name": "Replace Item, Immediate, Different Plan, Upgrade Copy",
+      "name": "Replace Item, Immediate, Different Plan, Downgrade",
       "description": "",
       "item": [
         {
-          "_postman_id": "59301664-7ae8-4247-b9be-731b575cb792",
+          "_postman_id": "120f2c46-f1a0-4cee-a824-4a4db748db4c",
           "name": "Update Product Subscription Plan",
           "event": [
             {
@@ -5338,9 +5338,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{hour_subscription_plan_id}}\"   \r\n}"
             },
-            "url": "https://{{host}}/api/v1/products/digital-sub.test",
+            "url": "https://{{host}}/api/v1/products/digital-pro-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -5628,7 +5628,7 @@
           "response": []
         },
         {
-          "_postman_id": "120f2c46-f1a0-4cee-a824-4a4db748db4c",
+          "_postman_id": "59301664-7ae8-4247-b9be-731b575cb792",
           "name": "Update Product Subscription Plan",
           "event": [
             {
@@ -5669,9 +5669,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{hour_subscription_plan_id}}\"   \r\n}"
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
             },
-            "url": "https://{{host}}/api/v1/products/digital-pro-sub.test",
+            "url": "https://{{host}}/api/v1/products/digital-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -6318,56 +6318,56 @@
   ],
   "variable": [
     {
-      "id": "9772ec0c-e0e3-448c-a9a7-6f60042bc703",
+      "id": "0783020d-c117-4acc-881b-72af21d7ce78",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "733e1af8-3515-46d4-a313-1383d67103af",
+      "id": "5dce4993-7480-47da-bbe8-08bbe2aef932",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "803ce346-0513-4a53-96d7-af8cb50c4622",
+      "id": "6ab2e155-9ecc-465f-b220-396651815c80",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "188114a2-3e9a-49e7-aa9d-e7f5f266d5d4",
+      "id": "cb031a82-d2c2-4977-84dd-7279592ac7da",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6423b712-89a1-4cb9-a1ef-5340fb24aae4",
+      "id": "f2a54c6d-21b9-4f09-8ccd-87a7393cd4eb",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4f8b003a-2e23-4c2a-aa1b-fc315062da84",
+      "id": "1fca450e-65f4-476e-9e59-0f3497471119",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "28b8e186-110a-4ddb-84ad-e66891dc6b93",
+      "id": "d9559801-d4cb-4ba8-9912-02ddbee49b1b",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f4f9e052-3262-4b49-91ab-6b21d67eca28",
+      "id": "18b79ddd-1728-43dc-b581-cdf3d8b2c851",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
