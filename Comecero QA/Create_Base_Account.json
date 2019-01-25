@@ -1224,44 +1224,6 @@
       "response": []
     },
     {
-      "_postman_id": "53609cb1-a33c-449e-ba5f-7bcd84ad381c",
-      "name": "Assign Subscription Relations (Digital Pro) Copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "e172717b-cf26-4583-850a-f8f47ba6ba58",
-            "exec": [
-              "tests[\"Status code is 201\"] = responseCode.code === 200;"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "request": {
-        "auth": {
-          "type": "noauth"
-        },
-        "method": "POST",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          },
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n\t\"subscription_change_product_ids\": [\"{{digital_subscription_product_id}}\"]\t\n}"
-        },
-        "url": "https://{{host}}/api/v1/products/{{digital_pro_subscription_product_id}}"
-      },
-      "response": []
-    },
-    {
       "_postman_id": "f8035bb3-2040-4cc4-9b6e-947b88108610",
       "name": "Assign Subscription Relations (Physical)",
       "event": [
@@ -1296,6 +1258,44 @@
           "raw": "{\n\t\"subscription_term_change_product_ids\": [\"{{physical_term_subscription_product_id}}\"],\n\t\"subscription_change_product_ids\": [\"{{physical_pro_subscription_product_id}}\"]\t\n}"
         },
         "url": "https://{{host}}/api/v1/products/{{physical_subscription_product_id}}"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "53609cb1-a33c-449e-ba5f-7bcd84ad381c",
+      "name": "Assign Subscription Relations (Digital Pro) Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "e172717b-cf26-4583-850a-f8f47ba6ba58",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 200;"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"subscription_change_product_ids\": [\"{{digital_subscription_product_id}}\"]\t\n}"
+        },
+        "url": "https://{{host}}/api/v1/products/{{digital_pro_subscription_product_id}}"
       },
       "response": []
     },
