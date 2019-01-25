@@ -7530,9 +7530,7 @@
                   "tests[\"Status is 200\"] = responseCode.code === 200;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "// There should be one subscription and the total should be less than the item total",
-                  "tests[\"Change invoice was created\"] = data.subscription.invoices.total_items === 1;",
-                  "tests[\"Invoice amount was pro-rated, total: \" + data.subscription.invoices.data[0].total] = data.subscription.invoices.data[0].total < pm.globals.get(\"item_total\");"
+                  "tests[\"Subscription has been extended\"] = ;"
                 ],
                 "type": "text/javascript"
               }
@@ -7555,21 +7553,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"apply_immediately\": true,\n\t\"quantity\": 2\n}"
+              "raw": "{\n\t\"interval\": 1,\n\t\"interval_unit\": \"year\"\n}"
             },
-            "url": {
-              "raw": "{{subscription_item_url}}?expand=subscription.invoices",
-              "host": [
-                "{{subscription_item_url}}"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
-                }
-              ]
-            },
+            "url": "{{subscription_url}}/extend",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -7976,56 +7962,56 @@
   ],
   "variable": [
     {
-      "id": "4f735d41-cdee-49b8-a176-2506e4d17cbe",
+      "id": "a8c4e0f9-0e5e-4ab6-9a15-3d4c2468f069",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c36df699-d45f-449b-b556-91ab032dfd9a",
+      "id": "7bf4b745-700a-4513-8458-3024c1c690dc",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "da0c1e0c-2db8-4dda-83e0-1182545e40b7",
+      "id": "822d295c-4dba-4065-aa41-5ea452a4444b",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3fc3c42b-f876-4de4-a5ae-bc5ab2dc8a49",
+      "id": "b14c6b2a-ad3b-49f1-8649-5da89a64b2eb",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4f7da82c-a35b-4468-a4da-d9c629c5b8b6",
+      "id": "5ae0c3d6-a84b-49d4-a36b-af99b1b8d59e",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eb977a4d-2137-480c-838b-0d6b37df57f0",
+      "id": "325a5798-4ffc-4798-8594-93ed28252272",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b450b62f-b825-4f2c-a4d9-59f3c85e49e0",
+      "id": "626d8f20-7eaf-427b-8d57-e9eb8376e565",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d1806fc2-ceda-4333-9f2a-32732243b5ec",
+      "id": "a9d15e79-c984-44aa-b98d-2688bb3f4687",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
