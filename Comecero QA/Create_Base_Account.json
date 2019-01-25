@@ -320,13 +320,13 @@
           "listen": "test",
           "script": {
             "id": "20ac27c1-c11f-40a4-a062-c782af218ff6",
-            "type": "text/javascript",
             "exec": [
               "tests[\"Status code is 201\"] = responseCode.code === 201;",
               "",
               "var data = JSON.parse(responseBody);",
               "pm.environment.set(\"digital_subscription_product_id\", data.product_id);"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
@@ -347,7 +347,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n\t\"product_id\": \"digital-sub.test\",\t\r\n    \"name\": \"Monster AV\",\r\n    \"description\": \"An incredibly powerful anti-virus solution for PC and Mac.\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 20,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 18,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+          "raw": "{\r\n\t\"product_id\": \"digital-term-sub.test\",\t\r\n    \"name\": \"Monster AV (Different Term)\",\r\n    \"description\": \"An incredibly powerful anti-virus solution for PC and Mac.\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 20,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 18,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
         },
         "url": "https://{{host}}/api/v1/products"
       },
@@ -511,6 +511,47 @@
         "body": {
           "mode": "raw",
           "raw": "{\r\n\t\"product_id\": \"physical-sub.test\",\t\r\n    \"name\": \"Flower of the Month\",\r\n    \"description\": \"Get a flower delivered to your mailbox. Sometimes fresh, sometimes dead, but always on time.\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 40,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 38,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "40ab218a-6853-457c-ab93-e8d12ef6aba8",
+      "name": "Create Physical Subscription Product (Different Term)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a01e76b1-3b85-4e32-a1ca-e199be29aabd",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"physical_subscription_product_id\", data.product_id);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"product_id\": \"physical-term-sub.test\",\t\r\n    \"name\": \"Flower of the Month (Different Term)\",\r\n    \"description\": \"Get a flower delivered to your mailbox. Sometimes fresh, sometimes dead, but always on time.\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 40,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 38,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
         },
         "url": "https://{{host}}/api/v1/products"
       },
