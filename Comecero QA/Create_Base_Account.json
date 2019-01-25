@@ -1155,13 +1155,13 @@
           "listen": "test",
           "script": {
             "id": "e172717b-cf26-4583-850a-f8f47ba6ba58",
-            "type": "text/javascript",
             "exec": [
               "tests[\"Status code is 201\"] = responseCode.code === 201;",
               "",
               "var data = JSON.parse(responseBody);",
               "pm.environment.set(\"digital_product_id\", data.product_id);"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
@@ -1182,9 +1182,9 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n\t\"product_id\": \"digital.test\",\r\n    \"name\": \"ABC Web Analyzer\",\r\n    \"description\": \"A web analytics product to perform advanced analysis of server log files.\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 10,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 8,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+          "raw": "{\n\t\"subscription_change_product_ids\": [\"digital_term_subscription_product_id\"]\n}"
         },
-        "url": "https://{{host}}/api/v1/products"
+        "url": "https://{{host}}/api/v1/products/{{digital_subscription_product_id}}"
       },
       "response": []
     },
