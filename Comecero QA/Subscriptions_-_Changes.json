@@ -5195,7 +5195,7 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "// We should have three payments - two by credit card and one by customer account balance.",
-                  "tests[\"Correct number of orders have been placed\"] = data.orders.total_items ===2;",
+                  "tests[\"Correct number of orders have been placed\"] = data.orders.total_items === 2;",
                   "tests[\"Order 1 has the correct total\"] = data.orders.data[0].total === 20;",
                   "tests[\"Order 2 has the correct total\"] = data.orders.data[1].total === 40;",
                   "tests[\"Refund has been recorded for the correct amount\"] = data.refunds.total_items == 1 && data.refunds.data[0].total < 20;",
@@ -5750,7 +5750,7 @@
                   "",
                   "// There should be one invoice and the total should be less than the item total",
                   "tests[\"No change invoice was created\"] = data.subscription.invoices.total_items === 0;",
-                  "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-sub.test' && item.cancelled}) !== undefined;",
+                  "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-pro-sub.test' && item.cancelled}) !== undefined;",
                   "tests[\"Original subscription is cancelled\"] = data.subscription.status === \"cancelled\";"
                 ],
                 "type": "text/javascript"
@@ -5843,7 +5843,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{hour_subscription_plan_id}}\"   \r\n}"
             },
             "url": "https://{{host}}/api/v1/products/digital-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -5863,18 +5863,16 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "// We should have three payments - two by credit card and one by customer account balance.",
-                  "tests[\"Correct number of orders have been placed\"] = data.orders.total_items ===2;",
+                  "tests[\"Correct number of orders have been placed\"] = data.orders.total_items === 2;",
                   "tests[\"Order 1 has the correct total\"] = data.orders.data[0].total === 20;",
                   "tests[\"Order 2 has the correct total\"] = data.orders.data[1].total === 40;",
-                  "tests[\"Refund has been recorded for the correct amount\"] = data.refunds.total_items == 1 && data.refunds.data[0].total < 20;",
+                  "tests[\"Refund has been recorded for the correct amount\"] = data.refunds.total_items == 2 && data.refunds.data[0].total < 20 && data.refunds.data[0].total == 20;",
                   "tests[\"Correct nubmer of subscriptions and cancellations\"] = data.subscriptions.total_items === 2 && data.subscriptions.data[0].status === \"cancelled\" && data.subscriptions.data[1].status === \"active\"",
-                  "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 2;",
+                  "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 1;",
                   "tests[\"Correct number of customer account balance payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"customer_account_balance\"}).length === 1;",
-                  "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 3;",
+                  "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 2;",
                   "tests[\"Correct number of customer account balance refunds\"] = _.filter(data.refunds.data, function(refund) { return refund.payment_method.type == \"customer_account_balance\"}).length === 1;",
-                  "tests[\"Correct number of total refunds\"] = data.refunds.total_items === 1;",
-                  "tests[\"Refund total is within range\"] = data.refunds.data[0].total < 20;",
-                  "tests[\"Payments 2 and 3 equal order 2 total\"] = data.payments.data[1].total + data.payments.data[2].total === data.orders.data[1].total;"
+                  "tests[\"Correct number of total refunds\"] = data.refunds.total_items === 2;"
                 ],
                 "type": "text/javascript"
               }
@@ -6318,56 +6316,56 @@
   ],
   "variable": [
     {
-      "id": "89f67db0-8133-4a1d-bef8-d090acf022dd",
+      "id": "a38fdf2d-931a-4e82-a831-8a160eed63a0",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5c0e4a4a-7ebf-4c20-912f-4d71f20b56d3",
+      "id": "d13d26e9-6a6c-4242-810b-8e5bb2478b05",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a2b52a54-7db1-473c-8239-2101f6026a57",
+      "id": "1f8750d5-1229-4bc2-be48-a16e769b1f56",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0cf8dc37-0edb-413f-94bf-1e207a356d1d",
+      "id": "aa132f4c-fe03-4bf9-a1af-f2e070e67a90",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "09e4dce7-6f02-4935-82a1-48f82eb8e6cb",
+      "id": "7c4361be-78a5-47fa-b0ed-e7c7b8b8eccc",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2fd99730-b2ef-4dc1-97b6-7947a0dbb3bc",
+      "id": "e7b5860a-0c23-4529-89e1-0cf910d93684",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eb42ecd2-b10f-47ee-b28e-3b0c477fbacc",
+      "id": "dabd0da0-78f6-4fa6-bd52-f3521a7b3c59",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "370ee2cf-9047-436f-9141-e59afb141d42",
+      "id": "65cefab4-e18a-4049-8577-13b450fc9dd1",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
