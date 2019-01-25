@@ -1182,7 +1182,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n\t\"subscription_term_change_product_ids\": [\"digital_term_subscription_product_id\"],\n\t\"subscription_change_product_ids\": [\"digital_term_subscription_product_id\"]\t\n}"
+          "raw": "{\n\t\"subscription_term_change_product_ids\": [\"{{digital_term_subscription_product_id}}\"],\n\t\"subscription_change_product_ids\": [\"{{digital_pro_subscription_product_id}}\"]\t\n}"
         },
         "url": "https://{{host}}/api/v1/products/{{digital_subscription_product_id}}"
       },
