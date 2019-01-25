@@ -770,13 +770,13 @@
           "listen": "test",
           "script": {
             "id": "f67ed817-32cf-4e35-acfc-eacc31f74459",
-            "type": "text/javascript",
             "exec": [
               "tests[\"Status code is 201\"] = responseCode.code === 201;",
               "",
               "var data = JSON.parse(responseBody);",
               "pm.environment.set(\"hourly_trial_subscription_plan_id\", data.subscription_plan_id);"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
@@ -797,7 +797,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n   \"name\":\"Hourly Subscription with Trial\",\r\n   \"billing_interval\": 1,\r\n   \"billing_interval_unit\": \"hour\",\r\n   \"total_billings\": null,\r\n   \"trial_interval\": 1,\r\n   \"trial_interval_unit\": \"hour\"\r\n}"
+          "raw": "{\r\n   \"name\":\"Two Hourly Subscription with Trial\",\r\n   \"billing_interval\": 2,\r\n   \"billing_interval_unit\": \"hour\",\r\n   \"total_billings\": null,\r\n   \"trial_interval\": 1,\r\n   \"trial_interval_unit\": \"hour\"\r\n}"
         },
         "url": "https://{{host}}/api/v1/subscription_plans"
       },
