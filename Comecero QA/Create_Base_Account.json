@@ -1231,7 +1231,7 @@
     },
     {
       "_postman_id": "f8035bb3-2040-4cc4-9b6e-947b88108610",
-      "name": "Assign Subscription Relations (Digital) Copy",
+      "name": "Assign Subscription Relations (Physical)",
       "event": [
         {
           "listen": "test",
@@ -1266,7 +1266,7 @@
           "mode": "raw",
           "raw": "{\n\t\"subscription_term_change_product_ids\": [\"{{digital_term_subscription_product_id}}\"],\n\t\"subscription_change_product_ids\": [\"{{digital_pro_subscription_product_id}}\"]\t\n}"
         },
-        "url": "https://{{host}}/api/v1/products/{{digital_subscription_product_id}}"
+        "url": "https://{{host}}/api/v1/products/{{physical_subscription_product_id}}"
       },
       "response": []
     },
