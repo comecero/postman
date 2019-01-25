@@ -324,7 +324,7 @@
               "tests[\"Status code is 201\"] = responseCode.code === 201;",
               "",
               "var data = JSON.parse(responseBody);",
-              "pm.environment.set(\"digital_subscription_product_id\", data.product_id);"
+              "pm.environment.set(\"digital_term_subscription_product_id\", data.product_id);"
             ],
             "type": "text/javascript"
           }
@@ -692,7 +692,7 @@
               "tests[\"Status code is 201\"] = responseCode.code === 201;",
               "",
               "var data = JSON.parse(responseBody);",
-              "pm.environment.set(\"hourly_subscription_plan_id\", data.subscription_plan_id);"
+              "pm.environment.set(\"two_hourly_subscription_plan_id\", data.subscription_plan_id);"
             ],
             "type": "text/javascript"
           }
