@@ -1263,7 +1263,7 @@
     },
     {
       "_postman_id": "53609cb1-a33c-449e-ba5f-7bcd84ad381c",
-      "name": "Assign Subscription Relations (Digital Pro) Copy",
+      "name": "Assign Subscription Relations (Physical Pro)",
       "event": [
         {
           "listen": "test",
