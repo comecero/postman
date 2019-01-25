@@ -763,6 +763,47 @@
       "response": []
     },
     {
+      "_postman_id": "aefd04a2-6656-441f-905c-a4e5af18c576",
+      "name": "Create Two Hourly Trial Subscription Plan",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f67ed817-32cf-4e35-acfc-eacc31f74459",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"hourly_trial_subscription_plan_id\", data.subscription_plan_id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"name\":\"Hourly Subscription with Trial\",\r\n   \"billing_interval\": 1,\r\n   \"billing_interval_unit\": \"hour\",\r\n   \"total_billings\": null,\r\n   \"trial_interval\": 1,\r\n   \"trial_interval_unit\": \"hour\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/subscription_plans"
+      },
+      "response": []
+    },
+    {
       "_postman_id": "60a74d93-209b-46e4-84a2-39a0ebddd156",
       "name": "Assign Hourly Subscription",
       "event": [
