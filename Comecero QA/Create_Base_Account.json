@@ -528,7 +528,7 @@
               "tests[\"Status code is 201\"] = responseCode.code === 201;",
               "",
               "var data = JSON.parse(responseBody);",
-              "pm.environment.set(\"physical_subscription_product_id\", data.product_id);"
+              "pm.environment.set(\"physical_term_subscription_product_id\", data.product_id);"
             ],
             "type": "text/javascript"
           }
@@ -799,6 +799,46 @@
           "raw": "{\r\n    \"subscription_plan_id\": \"{{hourly_subscription_plan_id}}\"\r\n}"
         },
         "url": "https://{{host}}/api/v1/products/{{digital_subscription_product_id}}"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "020ef953-a3c4-4a71-9bba-353eadf56223",
+      "name": "Assign Two Hourly Subscription",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "1306c13c-9f89-4846-b015-8dc4e649617e",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var data = JSON.parse(responseBody);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"subscription_plan_id\": \"{{two_hourly_subscription_plan_id}}\"\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products/{{digital_term_subscription_product_id}}"
       },
       "response": []
     },
