@@ -314,7 +314,7 @@
     },
     {
       "_postman_id": "0d786b6d-d0b7-40e8-b230-db79b6bceed6",
-      "name": "Create Digital Subscription Product Copy",
+      "name": "Create Digital Subscription Product (Different Term)",
       "event": [
         {
           "listen": "test",
