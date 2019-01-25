@@ -1238,10 +1238,7 @@
           "script": {
             "id": "e172717b-cf26-4583-850a-f8f47ba6ba58",
             "exec": [
-              "tests[\"Status code is 201\"] = responseCode.code === 201;",
-              "",
-              "var data = JSON.parse(responseBody);",
-              "pm.environment.set(\"digital_product_id\", data.product_id);"
+              "tests[\"Status code is 201\"] = responseCode.code === 200;"
             ],
             "type": "text/javascript"
           }
