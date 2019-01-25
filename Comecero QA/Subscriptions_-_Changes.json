@@ -5862,11 +5862,10 @@
                   "tests[\"Status is 200\"] = responseCode.code === 200;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Correct number of orders have been placed\"] = data.orders.total_items === 2;",
+                  "tests[\"Correct number of orders have been placed\"] = data.orders.total_items === 12;",
                   "tests[\"Order 1 has the correct total\"] = data.orders.data[0].total === 20;",
-                  "tests[\"Order 2 has the correct total\"] = data.orders.data[1].total === 40;",
-                  "tests[\"Refund has been recorded for the correct amount\"] = data.refunds.total_items == 1 && data.refunds.data[0].total < 20;",
-                  "tests[\"Correct nubmer of subscriptions and cancellations\"] = data.subscriptions.total_items === 2 && data.subscriptions.data[0].status === \"cancelled\" && data.subscriptions.data[1].status === \"active\"",
+                  "tests[\"No refunds recorded\"] = data.refunds.total_items === 0;",
+                  "tests[\"Correct nubmer of subscriptions\"] = data.subscriptions.total_items === 1 && data.subscriptions.data[0].status === \"active\";",
                   "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 2;",
                   "tests[\"Correct number of customer account balance payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"customer_account_balance\"}).length === 1;",
                   "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 3;",
@@ -6982,56 +6981,56 @@
   ],
   "variable": [
     {
-      "id": "46125ac0-4fcd-4f87-980d-892dca0cc008",
+      "id": "008ac729-7923-4553-bb02-6f0e0d0f5c52",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "31d9b679-40e2-4f15-aad9-037a46362f65",
+      "id": "51535b5b-3316-43a7-95d2-2b65f310f6ae",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "90289ca9-6ec3-4a72-ad0a-71effebcbd3e",
+      "id": "5721a699-816b-4cc4-86f0-80eaa9734228",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "69058d89-09a8-4453-819a-5b92759725b1",
+      "id": "7dcc870d-eda3-4495-8791-af4abbf925cc",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "575d4519-4fb2-4414-8107-daeb5872a9ef",
+      "id": "127b4fc8-1d9b-4156-8434-78dc7c7bdb54",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "77fb8260-8a94-4669-b713-838272843e70",
+      "id": "cdc5ed66-6f0d-4302-91b7-362854d852d8",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "585b5e75-f5e6-4460-aa8c-5a127a508bf6",
+      "id": "7c3d32be-7aa5-49ea-b60c-d3b2419a644b",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3213c4f3-00fd-4fdd-be27-d26175419488",
+      "id": "57667620-63dd-4980-a716-1e7e105826dd",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
