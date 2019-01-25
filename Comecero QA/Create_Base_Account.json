@@ -688,13 +688,13 @@
           "listen": "test",
           "script": {
             "id": "299c1328-7fdf-47a8-a7d0-7a1d6f93d45e",
-            "type": "text/javascript",
             "exec": [
               "tests[\"Status code is 201\"] = responseCode.code === 201;",
               "",
               "var data = JSON.parse(responseBody);",
               "pm.environment.set(\"hourly_subscription_plan_id\", data.subscription_plan_id);"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
@@ -715,7 +715,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n   \"name\":\"Hourly Subscription\",\r\n   \"billing_interval\": 1,\r\n   \"billing_interval_unit\": \"hour\"\r\n}"
+          "raw": "{\r\n   \"name\":\"Two Hourly Subscription\",\r\n   \"billing_interval\": 2,\r\n   \"billing_interval_unit\": \"hour\"\r\n}"
         },
         "url": "https://{{host}}/api/v1/subscription_plans"
       },
