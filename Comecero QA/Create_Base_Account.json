@@ -1293,9 +1293,9 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n\t\"subscription_change_product_ids\": [\"{{digital_subscription_product_id}}\"]\t\n}"
+          "raw": "{\n\t\"subscription_change_product_ids\": [\"{{physical_subscription_product_id}}\"]\t\n}"
         },
-        "url": "https://{{host}}/api/v1/products/{{digital_pro_subscription_product_id}}"
+        "url": "https://{{host}}/api/v1/products/{{physical_pro_subscription_product_id}}"
       },
       "response": []
     },
