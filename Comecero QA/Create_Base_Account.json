@@ -965,7 +965,7 @@
     },
     {
       "_postman_id": "b954a9c6-104e-48f0-8883-8b65c255a55e",
-      "name": "Assign Hourly Trial Subscription Copy",
+      "name": "Assign Two Hourly Trial Subscription Copy",
       "event": [
         {
           "listen": "test",
