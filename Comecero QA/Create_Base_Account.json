@@ -682,7 +682,7 @@
     },
     {
       "_postman_id": "6e8ec0fd-b169-4df0-91cb-70a62a3083b4",
-      "name": "Create Hourly Subscription Plan Copy",
+      "name": "Create Two Hourly Subscription Plan",
       "event": [
         {
           "listen": "test",
