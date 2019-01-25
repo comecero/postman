@@ -774,7 +774,7 @@
               "tests[\"Status code is 201\"] = responseCode.code === 201;",
               "",
               "var data = JSON.parse(responseBody);",
-              "pm.environment.set(\"hourly_trial_subscription_plan_id\", data.subscription_plan_id);"
+              "pm.environment.set(\"two_hourly_trial_subscription_plan_id\", data.subscription_plan_id);"
             ],
             "type": "text/javascript"
           }
@@ -1954,6 +1954,47 @@
           "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"weight\":1,\r\n      \"product_id\":\"physical-2.test\",\r\n      \"offer_with_product_ids\":[\r\n         \"physical.test\"\r\n      ]\r\n   },\r\n   \"name\":\"Cross Sell Paper Clips with Stapler (No Discount)\",\r\n   \"type\":\"cross_sell\"\r\n}"
         },
         "url": "https://{{host}}/api/v1/settings/general"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "3d0ab6d5-e9b2-438a-84ff-b76677077bbf",
+      "name": "Create Digital Product Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "e172717b-cf26-4583-850a-f8f47ba6ba58",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "pm.environment.set(\"digital_product_id\", data.product_id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"product_id\": \"digital.test\",\r\n    \"name\": \"ABC Web Analyzer\",\r\n    \"description\": \"A web analytics product to perform advanced analysis of server log files.\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 10,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 8,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/products"
       },
       "response": []
     }
