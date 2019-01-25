@@ -7079,7 +7079,7 @@
                   "tests[\"No change invoice was created\"] = data.subscription.invoices.total_items === 0;",
                   "tests[\"The subscription is not cancelled\"] = data.subscription.status === \"active\";",
                   "tests[\"An invoice has not been created\"] = data.subscription.invoices.total_items === 0;",
-                  "tests[\"The replacement item has been scheduled\"] = data.subscription.items[0].replace_at_current_period_end.item_id === \"digital-pro-sub.test\";"
+                  "tests[\"The replacement item has been scheduled\"] = data.subscription.items[0].replace_at_current_period_end.item_id === \"digital-sub.test\";"
                 ],
                 "type": "text/javascript"
               }
@@ -7171,7 +7171,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{hour_subscription_plan_id}}\"   \r\n}"
             },
             "url": "https://{{host}}/api/v1/products/digital-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -7640,56 +7640,56 @@
   ],
   "variable": [
     {
-      "id": "78df0ba4-3979-462b-b8fb-3708f9a99239",
+      "id": "f6f4220b-383f-45ff-b41a-8851ee61aafb",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2b2e0cde-3f10-4b06-bad2-a475ddf065f5",
+      "id": "bd4e0f7f-7bf3-49c5-8495-b6a82b15e074",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1c05a165-acec-471a-ab76-981d0dc397d0",
+      "id": "6441a83a-001e-4fab-b877-9669bb0c38ab",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "633a67a5-bd78-4101-ac0c-86e9d291a066",
+      "id": "3c4119de-9123-4131-8c88-4b925dd75a2e",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b4d6c0a7-d5dd-4a91-a285-63e7eb029747",
+      "id": "2d40140f-a3c1-4630-b16b-6b8146801552",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ac49997a-41e1-4dce-a4df-d39f4ad6ae2d",
+      "id": "adfe61c6-7032-4a4d-9f96-a4e1b8bbd4bd",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "664a54cf-c0c8-4a5b-b05b-ee63614bdc73",
+      "id": "fac90edc-5d2d-4e95-9ead-e2d359f23faa",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "27bdb5f6-c650-444b-8f0b-b74f8c4faf52",
+      "id": "5f256034-7bf5-4019-b018-1d0e2de9d5a9",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
