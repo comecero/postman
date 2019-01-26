@@ -3999,7 +3999,7 @@
                   "",
                   "// There should be one invoice and the total should be less than the item total",
                   "tests[\"Change invoice was created\"] = data.subscription.invoices.total_items === 1;",
-                  "tests[\"Invoice amount was pro-rated, subtotal: \" + data.subscription.invoices.data[0].subtotal] = data.subscription.invoices.data[0].subtotal < 100;",
+                  "tests[\"Invoice amount was pro-rated, subtotal: \" + data.subscription.invoices.data[0].subtotal] = data.subscription.invoices.data[0].subtotal < 20;",
                   "tests[\"Subscription has the added item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-sub.test'}) !== undefined;",
                   "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-pro-sub.test' && item.cancelled}) !== undefined;"
                 ],
@@ -4207,7 +4207,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital-sub.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+              "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital-pro-sub.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
             },
             "url": {
               "raw": "https://{{host}}/api/v1/carts?expand=items.subscription_plan,items.subscription_terms",
@@ -8300,56 +8300,56 @@
   ],
   "variable": [
     {
-      "id": "152a33e6-9b31-421e-b559-63324104a892",
+      "id": "6fdb1a50-7013-4a11-87b9-92d9d5e01648",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "efc2deaf-15c7-4253-917e-0928e18aaf16",
+      "id": "c2863c1b-6c3b-4bdb-b7f2-f2d199889985",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e3e4cd60-367b-4a61-b061-e7f3eb2d8ba2",
+      "id": "38b18998-deea-4acb-b440-512665149b73",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e2782aa9-fb7b-4744-940f-446ed90114ed",
+      "id": "b42fa8fd-93eb-42ea-98ff-37e9b9d0d3a9",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e6057d68-c051-45b4-a22c-a15121a1cbad",
+      "id": "d337a810-c474-492c-97e4-3fb1a60fd154",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8112ed97-13bb-410e-9add-1c5fafa7e061",
+      "id": "913836c4-a72d-4c2d-a472-4fd063f70290",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "08f5d009-c71d-4789-806a-8a3f337a80bc",
+      "id": "999c99fc-2fb3-493c-b6a8-c66da482711a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d34e4971-61a8-4610-b94a-0e577e16b5bd",
+      "id": "9b39e737-6c22-42a3-a269-885a009ffd19",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
