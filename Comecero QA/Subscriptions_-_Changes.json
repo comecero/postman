@@ -4432,7 +4432,7 @@
               "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
             },
             "url": {
-              "raw": "https://{{host}}/api/v1/products/digital-pro-sub.test?currency=USD",
+              "raw": "https://{{host}}/api/v1/products/digital-sub.test?currency=USD",
               "protocol": "https",
               "host": [
                 "{{host}}"
@@ -4441,7 +4441,7 @@
                 "api",
                 "v1",
                 "products",
-                "digital-pro-sub.test"
+                "digital-sub.test"
               ],
               "query": [
                 {
@@ -4469,8 +4469,8 @@
                   "",
                   "// There should be one invoice and the total should be less than the item total",
                   "tests[\"No invoice was created\"] = data.subscription.invoices.total_items === 0;",
-                  "tests[\"Subscription has the correct item pending\"] = data.subscription.items[0].replace_at_current_period_end.item_id === \"digital-pro-sub.test\";",
-                  "tests[\"Pending item has the correct reference price\"] = data.subscription.items[0].replace_at_current_period_end.reference_price === 40;"
+                  "tests[\"Subscription has the correct item pending\"] = data.subscription.items[0].replace_at_current_period_end.item_id === \"digital-sub.test\";",
+                  "tests[\"Pending item has the correct reference price\"] = data.subscription.items[0].replace_at_current_period_end.reference_price === 20;"
                 ],
                 "type": "text/javascript"
               }
@@ -4493,10 +4493,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"apply_immediately\": false,\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
+              "raw": "{\n\t\"apply_immediately\": false,\n\t\"product_id\": \"digital-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items?expand=subscription.invoices&remove=digital-sub.test",
+              "raw": "{{subscription_url}}/items?expand=subscription.invoices&remove=digital-pro-sub.test",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -4511,7 +4511,7 @@
                 },
                 {
                   "key": "remove",
-                  "value": "digital-sub.test",
+                  "value": "digital-pro-sub.test",
                   "equals": true
                 }
               ]
@@ -8300,56 +8300,56 @@
   ],
   "variable": [
     {
-      "id": "6fdb1a50-7013-4a11-87b9-92d9d5e01648",
+      "id": "7d868939-8c35-482e-93cb-e80519207261",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c2863c1b-6c3b-4bdb-b7f2-f2d199889985",
+      "id": "771ba4ba-830d-4ee6-b1d2-aa92f7a444c8",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "38b18998-deea-4acb-b440-512665149b73",
+      "id": "49b08919-92ef-4fad-8915-1b713b4b7623",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b42fa8fd-93eb-42ea-98ff-37e9b9d0d3a9",
+      "id": "5b0fde07-2a95-404f-81b3-6c6feae90a1c",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d337a810-c474-492c-97e4-3fb1a60fd154",
+      "id": "775ebee0-3c79-4ecd-8023-160b7c202721",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "913836c4-a72d-4c2d-a472-4fd063f70290",
+      "id": "c80e6af7-091b-49fd-bbcc-ad58ce34b9c5",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "999c99fc-2fb3-493c-b6a8-c66da482711a",
+      "id": "078e676c-10b3-421b-8bfc-cc8c2c2677e0",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9b39e737-6c22-42a3-a269-885a009ffd19",
+      "id": "e5296a75-c31c-4210-adfd-14e9335cd89a",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
