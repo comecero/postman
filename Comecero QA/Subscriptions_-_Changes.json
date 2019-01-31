@@ -3128,69 +3128,6 @@
           "response": []
         },
         {
-          "_postman_id": "8a1fd539-8737-4bfc-b0a1-0b8ad0fa8b2b",
-          "name": "Replace the Item Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
-                "exec": [
-                  "tests[\"Status is 201\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "// There should be one invoice and the total should be less than the item total",
-                  "tests[\"Change invoice was created\"] = data.subscription.invoices.total_items === 1;",
-                  "tests[\"Invoice amount was pro-rated, subtotal: \" + data.subscription.invoices.data[0].subtotal] = data.subscription.invoices.data[0].subtotal < 100;",
-                  "tests[\"Subscription has the added item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-pro-sub.test'}) !== undefined;",
-                  "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-sub.test' && item.cancelled}) !== undefined;"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
-            },
-            "url": {
-              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices",
-              "host": [
-                "{{subscription_url}}"
-              ],
-              "path": [
-                "items",
-                "digital-sub.test",
-                "replace"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "4b92862e-ed2d-4d4a-8898-0f7f6dcb498f",
           "name": "Get the Customer",
           "event": [
@@ -3290,6 +3227,69 @@
               "raw": "{\r\n   \"status\":\"cancelled\",\r\n   \"cancellation_reason\": \"Cancelled upon completion of an automated test\"\r\n}"
             },
             "url": "{{subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8a1fd539-8737-4bfc-b0a1-0b8ad0fa8b2b",
+          "name": "Replace the Item Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
+                "exec": [
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "// There should be one invoice and the total should be less than the item total",
+                  "tests[\"Change invoice was created\"] = data.subscription.invoices.total_items === 1;",
+                  "tests[\"Invoice amount was pro-rated, subtotal: \" + data.subscription.invoices.data[0].subtotal] = data.subscription.invoices.data[0].subtotal < 100;",
+                  "tests[\"Subscription has the added item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-pro-sub.test'}) !== undefined;",
+                  "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-sub.test' && item.cancelled}) !== undefined;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
+            },
+            "url": {
+              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices",
+              "host": [
+                "{{subscription_url}}"
+              ],
+              "path": [
+                "items",
+                "digital-sub.test",
+                "replace"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "subscription.invoices",
+                  "equals": true
+                }
+              ]
+            },
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -8354,56 +8354,56 @@
   ],
   "variable": [
     {
-      "id": "47f09974-940d-4d87-8120-700b775cc9a2",
+      "id": "ef594a59-d400-497b-ad5f-a36c01823d38",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2d5f18d0-8b8c-4f8c-bdcb-7161769dd85b",
+      "id": "3fbed9f9-6876-4622-863f-a3047fcfe011",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9428d257-bf73-45b2-a26e-8f8d4db7cdbc",
+      "id": "debbd7ff-8a36-49f8-b131-dd88b6096adc",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "18b5396e-440d-4e04-b41a-c5683aa2d2a0",
+      "id": "780d2a37-b05f-462c-a701-b651aa7baab6",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f2694574-ec4a-4ba6-9c4d-70b71cdd0ab5",
+      "id": "ae545b08-dbff-45bd-ba17-36dc9821b12f",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0eaeaea6-167b-432f-955f-f8ee1b101271",
+      "id": "bd5ca30f-4f54-47ed-83b2-80ff1b396eed",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6da2ada2-32b8-41d5-8313-6a093aa73023",
+      "id": "b0dd6746-c572-4559-b6b3-85237fd075d8",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5c8b9cc1-62b2-4c65-9ff0-f8bdab7caa68",
+      "id": "0888ce17-9a2b-4e88-93ae-b806b29330d7",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
