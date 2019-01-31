@@ -3136,8 +3136,9 @@
                   "// Compare with the preview amounts",
                   "tests[\"Invoice total equals the payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");",
                   "",
-                  "// One of the payments must be the amount of the preview payment_total",
-                  "tests[\"Payment amounts are \" + pm.globals.get(\"payment_total\")] = pm.globals.get(\"payment_total\") === data.subscription.customer.payments.data[1].total || pm.globals.get(\"payment_total\") === data.subscription.customer.payments.data[2].total"
+                  "// The external payment should be the same as the net total.",
+                  "var externalPayment = _.find(data.subscription.customer.payments.data, function(payment) { return payment.payment_method.type === \"credit_card\" });",
+                  "tests[\"Credit card payment equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") == externalPayment.total || pm.globals.get(\"net_total\") == externalPayment.total - 0.01;"
                 ],
                 "type": "text/javascript"
               }
@@ -3163,7 +3164,7 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices,subscription.customer.payments",
+              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -3175,7 +3176,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments",
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method",
                   "equals": true
                 }
               ]
@@ -8348,56 +8349,56 @@
   ],
   "variable": [
     {
-      "id": "091264b9-0238-4782-847a-9588751d50c7",
+      "id": "1af43ca0-71dc-49ae-844b-bbbd4c917318",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "805f644f-553d-4249-a90f-fe4a477782fa",
+      "id": "59156884-0f59-4287-8f17-977aea71f56d",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1b32f86f-a187-438a-8b01-dfab21d89a30",
+      "id": "d8d808c6-651d-4467-8c60-f5d3fa1fac84",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0ebedd0c-23bd-4dc6-85db-13e80369de7d",
+      "id": "967c5d50-b3b4-4907-9821-5f1c107423de",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b25e7e7c-64a3-45e9-a324-2093f8b46691",
+      "id": "3a2d7207-44e0-484d-b99d-a3789c072492",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8f9b93aa-a01c-4cb2-98f5-9ed4ceec474e",
+      "id": "28817286-29fd-4173-a690-386607527ff9",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bb70bc8c-c366-4e83-82b2-2b3439803071",
+      "id": "30d5de77-c230-443a-852d-bda444419939",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8f06b13f-ab72-4fbc-a3fd-a6094bf54d31",
+      "id": "8388b46d-d0e1-4284-8396-73b6495c44d7",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
