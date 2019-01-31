@@ -3134,7 +3134,10 @@
                   "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-sub.test' && item.cancelled}) !== undefined;",
                   "",
                   "// Compare with the preview amounts",
-                  "tests[\"Invoice total equals the payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");"
+                  "tests[\"Invoice total equals the payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");",
+                  "",
+                  "// One of the payments must be the amount of the preview payment_total",
+                  "tests[\"Payment amount is correct\"] = pm.globals.get(\"payment_total\") === data.subscription.customer.payments[1].total || pm.globals.get(\"payment_total\") === data.subscription.customer.payments[2].total"
                 ],
                 "type": "text/javascript"
               }
@@ -3160,7 +3163,7 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices,customer.payments",
+              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices,subscription.customer.payments",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -3172,7 +3175,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,customer.payments",
+                  "value": "subscription.invoices,subscription.customer.payments",
                   "equals": true
                 }
               ]
@@ -8345,56 +8348,56 @@
   ],
   "variable": [
     {
-      "id": "3b30fe8e-e10f-4c12-b720-5edacad4776d",
+      "id": "f9f91e2e-f723-4331-a155-58c1444a207d",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ff9d5b95-3f50-4f22-bc2f-63302fc1b8a2",
+      "id": "416a5d02-0f75-4e32-8ac4-594559f09865",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "00fda37c-72ac-4d1a-ac84-93a6c72c0a72",
+      "id": "3bb10ac0-ed6f-486d-b34d-fdaf29e652ba",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "45d4c749-b383-411c-aa53-5adf2f56dcb7",
+      "id": "1937df2b-e017-4b44-a09d-39561b22b1fb",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6e58673e-707d-4570-aa2b-eb9fa1555499",
+      "id": "1b445414-0351-4a5e-bb18-244c560b9970",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e2c68e52-cba1-4525-9d23-7b712af9d71f",
+      "id": "07a2286d-e86b-4a21-bc50-1e10844804c5",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "de6ba92d-e703-411b-9153-b3e0e670928c",
+      "id": "e967947e-c622-44b3-a2b7-5f1674b1ae88",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6a650adb-7203-4c38-aa56-74c954b745ed",
+      "id": "38e27b71-9b1e-41d2-ac57-31b99513dc9a",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
