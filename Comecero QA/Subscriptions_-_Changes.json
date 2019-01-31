@@ -3131,7 +3131,10 @@
                   "tests[\"Change invoice was created\"] = data.subscription.invoices.total_items === 1;",
                   "tests[\"Invoice amount was pro-rated, subtotal: \" + data.subscription.invoices.data[0].subtotal] = data.subscription.invoices.data[0].subtotal < 100;",
                   "tests[\"Subscription has the added item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-pro-sub.test'}) !== undefined;",
-                  "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-sub.test' && item.cancelled}) !== undefined;"
+                  "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-sub.test' && item.cancelled}) !== undefined;",
+                  "",
+                  "// Compare with the preview amounts",
+                  ""
                 ],
                 "type": "text/javascript"
               }
@@ -3157,7 +3160,7 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-sub.test/replace/preview?expand=subscription.invoices&timezone=America/Mountain_Time",
+              "raw": "{{subscription_url}}/items/digital-sub.test/replace/preview?expand=subscription.invoices,customer.payments",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -3170,12 +3173,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
-                },
-                {
-                  "key": "timezone",
-                  "value": "America/Mountain_Time",
+                  "value": "subscription.invoices,customer.payments",
                   "equals": true
                 }
               ]
@@ -8348,56 +8346,56 @@
   ],
   "variable": [
     {
-      "id": "99deb4a2-f381-418f-9b96-bbc6666f3194",
+      "id": "2e93392c-d694-403f-a3e5-4097aada8b0b",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c475153e-cb3b-4ffa-8ba5-5a12729948d4",
+      "id": "ff1603c7-03c8-4ec4-a304-15987a1aebcb",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "84cadafb-6c03-4fca-904a-a3d64b8401a0",
+      "id": "8500f175-50cc-4e94-af31-589063a335a8",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a6f4de84-0af2-498a-b565-3237097d166f",
+      "id": "d14cf2b1-391c-4197-92f9-c08df735451a",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b8a2b0c7-6130-4a86-aacc-c1c2e236acff",
+      "id": "3d8853f7-e1e2-44f7-b44d-9b482215cf93",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b56ddd13-f035-4233-bf5b-62eae53e5886",
+      "id": "7ae3f9f7-3f24-45ab-8402-a0552883c1c8",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "66e3382b-e141-49f6-b169-36e79a296bb7",
+      "id": "be3632da-2ae1-456a-af2d-34e01bb9d1b6",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e6449995-2033-4d43-b311-47c066e834bb",
+      "id": "84c6ca5f-4852-413d-935c-8dedcf115227",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
