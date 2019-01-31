@@ -3572,7 +3572,7 @@
               "raw": "{\n\t\"apply_immediately\": false,\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoice",
+              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -3584,7 +3584,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoice",
+                  "value": "subscription.invoices",
                   "equals": true
                 }
               ]
@@ -6436,22 +6436,19 @@
               "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items?expand=subscription.invoices&remove=digital-pro-sub.test",
+              "raw": "{{subscription_url}}/items/digital-pro-sub.test/replace?expand=subscription.invoices",
               "host": [
                 "{{subscription_url}}"
               ],
               "path": [
-                "items"
+                "items",
+                "digital-pro-sub.test",
+                "replace"
               ],
               "query": [
                 {
                   "key": "expand",
                   "value": "subscription.invoices",
-                  "equals": true
-                },
-                {
-                  "key": "remove",
-                  "value": "digital-pro-sub.test",
                   "equals": true
                 }
               ]
@@ -8297,56 +8294,56 @@
   ],
   "variable": [
     {
-      "id": "aad11dd4-0001-4cd8-926c-7b41fb61dc74",
+      "id": "d0a31342-3439-4cc4-8727-c33cdff9233b",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "36cdfa8a-b7c0-4717-8059-9aa7fbac5329",
+      "id": "19235694-de4f-47d3-a1b9-36ab2cf1984d",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2b3299ea-bc7b-41d6-b9f9-a8b59606d7ea",
+      "id": "725b152f-edf1-4756-a8f3-6c8fc858904c",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "aa9094bf-93e5-4db5-ae2d-6522d174c34a",
+      "id": "6bb6038b-f435-4e4b-ad19-84983ea7c655",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f7b55f43-5d64-4c8b-94a6-3893934df30e",
+      "id": "ef0d6f58-4140-4cbb-b770-11d7ab9a1d0a",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "02182df8-8039-460e-8128-f8a410d81d15",
+      "id": "da1e51d6-e95e-4ce8-98a5-68c37ef630ee",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5957976c-d777-4443-bf10-6ae5462f2933",
+      "id": "278ec3cc-3a8d-473b-b587-5442cc27fd59",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e74db9c0-706c-4af8-8e7c-feb74c0ec409",
+      "id": "3f95c47d-29cb-4a70-964f-72e67db77c7b",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
