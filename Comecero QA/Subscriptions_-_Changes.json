@@ -2072,7 +2072,7 @@
               "script": {
                 "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
                 "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "// There should be one invoice and the total should be less than the item total",
@@ -3073,7 +3073,7 @@
               "script": {
                 "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
                 "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "// There should be one invoice and the total should be less than the item total",
@@ -4003,7 +4003,7 @@
               "script": {
                 "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
                 "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "// There should be one invoice and the total should be less than the item total",
@@ -8291,56 +8291,56 @@
   ],
   "variable": [
     {
-      "id": "00eedb88-5b6e-4c77-84a9-eb14d3843a5c",
+      "id": "75935c52-b9d6-40ae-9c71-79f92f6404b2",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "229b5957-1d18-495c-82f8-6f1a845a7bf2",
+      "id": "e024d796-1f5a-49fd-9486-ec9b12c0456b",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bfa54c6e-bc3b-40f8-bf13-ce1d14d6cb4d",
+      "id": "b0317454-220d-4713-b3e5-742c95ab80cf",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2fb1b1b4-b04f-4d88-9645-b360d8b2456e",
+      "id": "954de7f7-34fa-41ae-b731-da67fe22e790",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "69c64aad-e727-4ce1-aff1-b0fe4cac3bdb",
+      "id": "ccdb03f4-042f-4730-b887-2322ced1e3a9",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "06c99724-a2ef-475a-b455-cff173788520",
+      "id": "5628788d-8f6e-422d-af5b-ac9a09f2cc9f",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a144122d-23c2-4f7b-8224-89cce4f2a6f7",
+      "id": "9dc8be41-34ad-4a7e-8e5b-9642e7f42cb5",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "274e1026-43ea-4fa3-9066-94dcaf0eb563",
+      "id": "85836025-29b7-4d9a-a9c2-5e2476259865",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
