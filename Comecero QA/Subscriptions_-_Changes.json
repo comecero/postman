@@ -3137,6 +3137,7 @@
                   "tests[\"Invoice total equals the payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");",
                   "",
                   "// The external payment should be the same as the net total.",
+                  "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
                   "var externalPayment = _.find(data.subscription.customer.payments.data, function(payment) { return payment.payment_method.type === \"credit_card\" });",
                   "tests[\"Credit card payment equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === externalPayment.total || pm.globals.get(\"net_total\") === externalPayment.total + 0.01;"
                 ],
@@ -8349,56 +8350,56 @@
   ],
   "variable": [
     {
-      "id": "9a1abf1c-5dce-4288-9213-2e05c93f5988",
+      "id": "6eae1ea6-8b07-4f3e-bf2f-7933ae2681c2",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f6128820-7725-4af2-894e-5869b6b91be5",
+      "id": "362a1e8e-aa9e-4fc3-930c-d91252b65fff",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3cbf0d4c-1cff-41c1-a56c-292880493506",
+      "id": "9fe82029-ae0d-4ce3-ac9e-64117318c427",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "76813077-2e7e-4d23-b714-d3c298f61596",
+      "id": "01749f81-bd4b-4317-88fa-3eaf6cc7f1d6",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dcff9c81-801c-4b70-a302-641d5052ef4c",
+      "id": "ada9e0a1-04ca-4657-878a-38b56ae2c19c",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "07eb72bc-91d8-45cb-ab00-bb8a32c2f46c",
+      "id": "dfa0ea26-482a-4f2f-bd0d-79fbe15d1a87",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "38b69bc7-bbc0-4a05-bf8e-4ef33d3aab77",
+      "id": "0623601a-7c81-4a23-82fd-f325adda512f",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "26544352-5f5f-400f-867b-222f316fdd34",
+      "id": "d022c62a-69b8-44b9-9aa4-8f6180fbfcd2",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
