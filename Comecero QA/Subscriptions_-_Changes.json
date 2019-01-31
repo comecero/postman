@@ -3144,7 +3144,9 @@
                   "// The refund should be to customer account balance and be the same as the refund total",
                   "data.subscription.customer.refunds.data = data.subscription.customer.refunds.data.reverse();",
                   "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"customer_account_balance\" });",
-                  "tests[\"Refund equals refund total and is the correct payment method type \" + pm.globals.get(\"refund_total\")] = pm.globals.get(\"refund_total\") === refund.total;"
+                  "tests[\"Refund equals refund total and is the correct payment method type \" + pm.globals.get(\"refund_total\")] = pm.globals.get(\"refund_total\") === refund.total;",
+                  "",
+                  "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.subscription.date_current_period_end === pm.globals.get(\"date_current_period_end\");"
                 ],
                 "type": "text/javascript"
               }
@@ -8355,56 +8357,56 @@
   ],
   "variable": [
     {
-      "id": "4b995fa8-8656-4223-be0a-f0b91b58c739",
+      "id": "c02a18e4-afa3-47f8-a784-4f0ad0b32ac2",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cf3566f8-27a1-4006-b7b4-01d6d859eaef",
+      "id": "e2f49476-82a2-48d3-aa1e-d97a86fbf9fc",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "35971fc8-0270-4674-bf62-2d84e16e0fbe",
+      "id": "1856d285-1da2-47b8-9610-bff1a71f4781",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7c5b75b6-5c92-45ea-a38a-9a2a094895dd",
+      "id": "d2da0de3-acee-4578-b680-1a81365bb18f",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b468bad6-1ce8-468e-9147-4c8b50c56a86",
+      "id": "42a8cbb1-704d-4d2a-afcd-b802ddbf4192",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ff97a82a-eefa-4ad4-8aa1-ca6639d48601",
+      "id": "5992c1b1-f5a3-4b86-8a39-410e0f21d801",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "93e59897-68ed-4c3a-a3ab-b19562ca58c4",
+      "id": "0eb807b9-ee20-45d5-8715-921f44851a0b",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6465ea22-d9ba-495f-ad39-e1a98e7a30c1",
+      "id": "3fcf220c-3a9a-454f-bdb9-2d5531c5028e",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
