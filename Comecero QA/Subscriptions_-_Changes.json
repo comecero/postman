@@ -3138,13 +3138,13 @@
                   "",
                   "// The external payment should be the same as the net total.",
                   "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
-                  "var externalPayment = _.find(data.subscription.customer.payments.data, function(payment) { return payment.payment_method.type === \"credit_card\" });",
-                  "tests[\"Credit card payment equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === externalPayment.total;",
+                  "var payment = _.find(data.subscription.customer.payments.data, function(p) { return p.payment_method.type === \"credit_card\" });",
+                  "tests[\"Credit card payment equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === payment.total;",
                   "",
                   "// The refund should be to customer account balance and be the same as the refund total",
                   "data.subscription.customer.refunds.data = data.subscription.customer.refunds.data.reverse();",
-                  "var externalRefund = _.find(data.subscription.customer.refunds.data, function(refund) { return refund.payment_method.type === \"customer_account_balance\" });",
-                  "tests[\"Refund equals refund total and is the correct payment method type\"] = "
+                  "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"customer_account_balance\" });",
+                  "tests[\"Refund equals refund total and is the correct payment method type \" + pm.globals.get(\"refund_total\")] = pm.globals.get(\"refund_total\") === refund.total;"
                 ],
                 "type": "text/javascript"
               }
@@ -8355,56 +8355,56 @@
   ],
   "variable": [
     {
-      "id": "cbd5c84d-e1d8-4145-94e5-845b60a3f28a",
+      "id": "a0eb0b31-cba3-4e0e-8484-87f963e15385",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4e4bed80-827a-4512-9a60-975fa6cca935",
+      "id": "ac0cf32a-9a96-4852-8659-f92a62b06ee8",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2146b0bb-e4c6-4394-96ef-bb5d8018cd09",
+      "id": "631b85f2-3c37-4219-b39c-d38a751ec070",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8690f963-88f7-4c78-927e-5c8f279baea5",
+      "id": "0d180bc2-2480-423c-9c58-25d874994408",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "157e5104-b6b6-443d-9fcc-58bfb4335904",
+      "id": "3e1dea65-2923-4b07-953e-4eda6ad698a2",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c57b1f18-018e-49e1-8aa2-3fc01302685a",
+      "id": "96573049-873b-4ed2-85dc-d0ec15a82ace",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "78915d60-44d5-432d-8413-6461f3f3217b",
+      "id": "c894d44a-f6dd-4104-8571-ee3e9c5d5e15",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "aff1d2b8-3c11-41c8-863d-bab12bae76a9",
+      "id": "c774da23-57b7-41bd-8d5a-c51eec6d4e5b",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
