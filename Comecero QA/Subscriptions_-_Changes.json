@@ -1031,9 +1031,12 @@
               "raw": "{\n\t\"apply_immediately\": false,\n\t\"quantity\": 2\n}"
             },
             "url": {
-              "raw": "{{subscription_item_url}}?expand=subscription.invoices",
+              "raw": "{{subscription_item_url}}/change_quantity?expand=subscription.invoices",
               "host": [
                 "{{subscription_item_url}}"
+              ],
+              "path": [
+                "change_quantity"
               ],
               "query": [
                 {
@@ -4064,11 +4067,11 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "// We should have three payments - two by credit card and one by customer account balance.",
-                  "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 2;",
+                  "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 1;",
                   "tests[\"Correct number of customer account balance payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"customer_account_balance\"}).length === 1;",
-                  "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 3;",
+                  "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 2;",
                   "tests[\"Correct number of customer account balance refunds\"] = _.filter(data.refunds.data, function(refund) { return refund.payment_method.type == \"customer_account_balance\"}).length === 1;",
-                  "tests[\"Correct number of total refunds\"] = data.refunds.total_items === 1;",
+                  "tests[\"Correct number of total refunds\"] = data.refunds.total_items === 2;",
                   "tests[\"Refund total is within range\"] = data.refunds.data[0].total < 20;",
                   "tests[\"Correct number of subscriptions\"] = data.subscriptions.total_items === 1;",
                   "tests[\"Correct number of orders\"] = data.orders.total_items === 2;",
@@ -8300,56 +8303,56 @@
   ],
   "variable": [
     {
-      "id": "7d868939-8c35-482e-93cb-e80519207261",
+      "id": "a0a68d86-e28e-44c2-991a-cb6aa027a123",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "771ba4ba-830d-4ee6-b1d2-aa92f7a444c8",
+      "id": "6b7b1732-d265-44de-a3ff-3f471c289a0c",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "49b08919-92ef-4fad-8915-1b713b4b7623",
+      "id": "f785c973-83d4-4cc1-a602-7e9c0aab61be",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5b0fde07-2a95-404f-81b3-6c6feae90a1c",
+      "id": "3d4f5520-2ce7-439a-86b5-a8b977467ea6",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "775ebee0-3c79-4ecd-8023-160b7c202721",
+      "id": "308869b0-664a-4b05-b12f-f1d8eda8f0c7",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c80e6af7-091b-49fd-bbcc-ad58ce34b9c5",
+      "id": "d6fee8ec-e2ab-4142-9231-8f21f3b05776",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "078e676c-10b3-421b-8bfc-cc8c2c2677e0",
+      "id": "1236fffa-9f24-4954-b8f6-f4eb7e2d8eb8",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e5296a75-c31c-4210-adfd-14e9335cd89a",
+      "id": "ddf5cecd-5984-47dc-bae4-76d6402f5cd9",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
