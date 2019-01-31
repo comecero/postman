@@ -3128,6 +3128,69 @@
           "response": []
         },
         {
+          "_postman_id": "8a1fd539-8737-4bfc-b0a1-0b8ad0fa8b2b",
+          "name": "Replace the Item Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
+                "exec": [
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "// There should be one invoice and the total should be less than the item total",
+                  "tests[\"Change invoice was created\"] = data.subscription.invoices.total_items === 1;",
+                  "tests[\"Invoice amount was pro-rated, subtotal: \" + data.subscription.invoices.data[0].subtotal] = data.subscription.invoices.data[0].subtotal < 100;",
+                  "tests[\"Subscription has the added item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-pro-sub.test'}) !== undefined;",
+                  "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-sub.test' && item.cancelled}) !== undefined;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
+            },
+            "url": {
+              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices",
+              "host": [
+                "{{subscription_url}}"
+              ],
+              "path": [
+                "items",
+                "digital-sub.test",
+                "replace"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "subscription.invoices",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
           "_postman_id": "4b92862e-ed2d-4d4a-8898-0f7f6dcb498f",
           "name": "Get the Customer",
           "event": [
@@ -6404,7 +6467,7 @@
               "script": {
                 "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
                 "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "// There should be one invoice and the total should be less than the item total",
@@ -8291,56 +8354,56 @@
   ],
   "variable": [
     {
-      "id": "2b7c8122-5a3f-4f1d-8279-d54ce01c24a6",
+      "id": "47f09974-940d-4d87-8120-700b775cc9a2",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d8196d01-05e1-4aa3-8ea6-90f1cc718194",
+      "id": "2d5f18d0-8b8c-4f8c-bdcb-7161769dd85b",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b47e595e-5e16-4001-8125-f1c5ab148dc8",
+      "id": "9428d257-bf73-45b2-a26e-8f8d4db7cdbc",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7338e19a-36d5-4e8d-a1cc-41bcb0ac50bf",
+      "id": "18b5396e-440d-4e04-b41a-c5683aa2d2a0",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dacfc27f-1f5b-4579-bb72-7240a42ffa40",
+      "id": "f2694574-ec4a-4ba6-9c4d-70b71cdd0ab5",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "48e190f8-a1cf-44bd-9175-6e72a0a4e6c0",
+      "id": "0eaeaea6-167b-432f-955f-f8ee1b101271",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4dea8d20-8e5e-4f6f-9dfd-8ee776764446",
+      "id": "6da2ada2-32b8-41d5-8313-6a093aa73023",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1411555a-2379-4274-8f53-33b593800532",
+      "id": "5c8b9cc1-62b2-4c65-9ff0-f8bdab7caa68",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
