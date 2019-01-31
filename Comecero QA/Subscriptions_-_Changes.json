@@ -3137,7 +3137,7 @@
                   "tests[\"Invoice total equals the payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");",
                   "",
                   "// One of the payments must be the amount of the preview payment_total",
-                  "tests[\"Payment amount is correct \" + pm.globals.get(\"payment_total\")] = pm.globals.get(\"payment_total\") === data.subscription.customer.payments.data[1].total || pm.globals.get(\"payment_total\") === data.subscription.customer.payments.data[2].total"
+                  "tests[\"Payment amounts are \" + pm.globals.get(\"payment_total\")] = pm.globals.get(\"payment_total\") === data.subscription.customer.payments.data[1].total || pm.globals.get(\"payment_total\") === data.subscription.customer.payments.data[2].total"
                 ],
                 "type": "text/javascript"
               }
@@ -8348,56 +8348,56 @@
   ],
   "variable": [
     {
-      "id": "fcefd1ba-5ea7-4f28-9f9e-e2a2f5f219aa",
+      "id": "091264b9-0238-4782-847a-9588751d50c7",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2eed1ff3-82a5-4de8-afa6-79131ba26894",
+      "id": "805f644f-553d-4249-a90f-fe4a477782fa",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "32905086-25d9-4c81-8aa6-3670db42971a",
+      "id": "1b32f86f-a187-438a-8b01-dfab21d89a30",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "498af253-e02c-4be6-b61c-330ec93ff5cf",
+      "id": "0ebedd0c-23bd-4dc6-85db-13e80369de7d",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7db2037d-fe9b-4fa2-9192-b4cc098edd32",
+      "id": "b25e7e7c-64a3-45e9-a324-2093f8b46691",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3849c2de-89d3-4ad6-a714-5ae031fc3f67",
+      "id": "8f9b93aa-a01c-4cb2-98f5-9ed4ceec474e",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f2bce718-fab6-4054-a584-9f782bc16dac",
+      "id": "bb70bc8c-c366-4e83-82b2-2b3439803071",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "11b7d818-9a35-42db-8157-3a873cadab8c",
+      "id": "8f06b13f-ab72-4fbc-a3fd-a6094bf54d31",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
