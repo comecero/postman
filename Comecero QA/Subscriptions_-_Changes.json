@@ -3081,7 +3081,15 @@
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
                   "tests[\"Payment total is less than the product price\"] = data.payment_total < 50;",
                   "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
-                  "tests[\"Date effective is OK \" + data.date_effective] = data.date_effective === pm.globals.get(\"date_current_period_end\");",
+                  "",
+                  "var now = new Date();",
+                  "var dateEffective = new Date(data.date_effective);",
+                  "var diff = Math.abs(now - dateEffective);",
+                  "console.log(diff);",
+                  "console.log(now);",
+                  "console.log(dateEffective);",
+                  "",
+                  "tests[\"Date effective is OK \" + data.date_effective] = diff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
                   "pm.globals.set(\"refund_total\", data.refund_total);",
@@ -8410,56 +8418,56 @@
   ],
   "variable": [
     {
-      "id": "884764ba-a563-4fc4-9254-8c2ddcc2c16b",
+      "id": "bb5689a4-0c25-40a2-84f3-52ed862ca8ca",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7c353379-dd8b-47c7-8949-1789b3cbe479",
+      "id": "38445c85-590d-467c-a44e-3c0c1fe5d4e3",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eefc463c-38b5-488d-9353-2c7b3e61e21f",
+      "id": "73972b00-40ee-4f05-bf58-d9cf32d8e77d",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3649d9fa-f572-445e-917d-9828a1afd851",
+      "id": "9a6acfca-f722-4a14-9eaa-882a1fe263f0",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8267fcdc-2483-4031-93d6-2ebbc1d06efd",
+      "id": "cec04889-d060-41e8-8e34-23de528423a5",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c67c3269-b4d7-4f3a-87d0-bec96d5f5041",
+      "id": "e99a2fc8-636f-4d07-aaf9-39aea2fbce53",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0a6b8425-45e5-478f-a26a-30d20ab8a7a8",
+      "id": "04934b8d-ee7c-4886-a359-3d2025c0e7de",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5d2b97e4-a3cb-4f53-9867-5fd04fb730b2",
+      "id": "e9176a10-ed6e-4ecb-bfa0-cbbd1cc8a432",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
