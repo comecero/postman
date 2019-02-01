@@ -4198,18 +4198,10 @@
                   "// Compare with the preview amounts",
                   "tests[\"Invoice total equals the preview payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");",
                   "",
-                  "// There should not be a new external payment",
-                  "var ccPaymentCount = 0;",
-                  "var cabPaymentCount = 0;",
-                  "_.each(data.subscription.customer.payments.data, function(payment) {",
-                  "    if (payment.payment_method.type == \"credit_card\")",
-                  "        ccPaymentCount++;",
-                  "    if (payment.payment_method.type == \"customer_account_balance\")",
-                  "        cabPaymentCount++;        ",
-                  "})",
-                  "",
-                  "tests[\"No new external payment was processed\"] = ccPaymentCount === 1;",
-                  "tests[\"One customer account balance payment was processed\"] = cabPaymentCount === 1;",
+                  "// The external payment should be the same as the net total.",
+                  "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
+                  "var payment = _.find(data.subscription.customer.payments.data, function(p) { return p.payment_method.type === \"credit_card\" });",
+                  "tests[\"Credit card payment equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === payment.total;",
                   "",
                   "// The refund should be to customer account balance and be the same as the refund total",
                   "data.subscription.customer.refunds.data = data.subscription.customer.refunds.data.reverse();",
@@ -4239,7 +4231,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-sub.test\"\n}"
+              "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-sub.test\"\n}"
             },
             "url": {
               "raw": "{{subscription_url}}/items/digital-pro-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
@@ -8497,56 +8489,56 @@
   ],
   "variable": [
     {
-      "id": "7b78c4ba-e64a-4adf-8c72-094d2369fb7a",
+      "id": "c1aad3a2-4e32-478d-a5f5-2b46ee189746",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "35a752b6-bcfd-4d75-a477-e75a954b24b0",
+      "id": "2f4c0cc9-a09e-4053-b916-a53187e43af8",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6ad075b6-0e5a-4a81-a1a8-b0a8550a41f7",
+      "id": "9f74ee01-b385-4441-b059-8d93df2488f7",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6eaeef28-ff77-45b6-9dfb-c721b56d421e",
+      "id": "e4f0ad70-5397-4bd9-90d5-48f371f901ee",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "60c7b9ab-d9c8-45c3-ba9c-8389cdd0c5d1",
+      "id": "539c944f-27c6-4900-87ea-c682eef311a8",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "67609333-9fc0-4a3b-b5b7-8f5fa8d65959",
+      "id": "298f8348-a314-4d99-baac-5ea134108128",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "48eccc68-9d9f-41d6-806c-52ed1f41e71a",
+      "id": "d2982e8c-a471-44ea-ba8a-631a364aad38",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "794c0015-0acf-4d65-9f6a-2524606b1b3f",
+      "id": "a817a025-f203-41ca-828e-1677510b27a7",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
