@@ -551,7 +551,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n\t\"product_id\": \"physical-term-sub.test\",\t\r\n    \"name\": \"Flower of the Month (Different Term)\",\r\n    \"description\": \"Get a flower delivered to your mailbox. Sometimes fresh, sometimes dead, but always on time.\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 40,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 38,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+          "raw": "{\r\n\t\"product_id\": \"physical-term-sub.test\",\t\r\n    \"name\": \"Flower of the Month (Different Term)\",\r\n    \"description\": \"Get a flower delivered to your mailbox. Sometimes fresh, sometimes dead, but always on time.\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 70,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 66,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
         },
         "url": "https://{{host}}/api/v1/products"
       },
