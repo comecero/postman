@@ -4203,10 +4203,10 @@
                   "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"credit_card\" });",
                   "tests[\"Credit card refund equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === refund.total;",
                   "",
-                  "// The refund should be to customer account balance and be the same as the refund total",
-                  "data.subscription.customer.refunds.data = data.subscription.customer.refunds.data.reverse();",
-                  "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"customer_account_balance\" });",
-                  "tests[\"Refund equals refund total and is the correct payment method type \" + pm.globals.get(\"refund_total\")] = pm.globals.get(\"refund_total\") === refund.total;",
+                  "// The payment should be fromt customer account balance and be the same as the payment total",
+                  "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
+                  "var payment = _.find(data.subscription.customer.payments.data, function(p) { return r.payment_method.type === \"customer_account_balance\" });",
+                  "tests[\"Payment equals payment total and is the correct payment method type \" + pm.globals.get(\"payment_total\")] = pm.globals.get(\"payment_total\") === payment.total;",
                   "",
                   "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.subscription.date_current_period_end === pm.globals.get(\"date_current_period_end\");"
                 ],
@@ -8489,56 +8489,56 @@
   ],
   "variable": [
     {
-      "id": "d9be7fee-b536-4e11-9084-2f0fd91f87ac",
+      "id": "6f80323f-cded-4a5f-b75d-02e11f143eca",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "569893b5-969d-4adb-893b-65a2e2d137f2",
+      "id": "7377f912-2080-4658-af94-0e0ec654f4bf",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7196dd95-0ed7-40e6-a368-179c1d88cb82",
+      "id": "a935df37-fee8-438a-9f04-92cd180f128e",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bde44157-61fb-45c9-b844-c1e97bdffa75",
+      "id": "8e5101ba-19bc-4a3b-9bee-049e54dea227",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3f1b688e-7bde-44a7-a168-20aa04ddc692",
+      "id": "46bd0860-f5da-4d82-bd35-08210c382ad3",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d3f7a26b-4aeb-45a8-b256-cf208d78b5e7",
+      "id": "e9a5fee7-905f-4e87-8ccf-a9e75ad49415",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a7e6d89e-b25f-4b0f-9642-eeccffcb460d",
+      "id": "51e8ab05-203f-4396-a373-b700d864cee0",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "89fd38c2-d0bc-43db-a2e9-2227c5d56952",
+      "id": "703589f3-c127-4fbd-9ab3-ecc7f3b5a689",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
