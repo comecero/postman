@@ -4193,7 +4193,30 @@
                   "tests[\"Change invoice was created\"] = data.subscription.invoices.total_items === 1;",
                   "tests[\"Invoice amount was pro-rated, subtotal: \" + data.subscription.invoices.data[0].subtotal] = data.subscription.invoices.data[0].subtotal < 20;",
                   "tests[\"Subscription has the added item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-sub.test'}) !== undefined;",
-                  "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-pro-sub.test' && item.cancelled}) !== undefined;"
+                  "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-pro-sub.test' && item.cancelled}) !== undefined;",
+                  "",
+                  "// Compare with the preview amounts",
+                  "tests[\"Invoice total equals the preview payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");",
+                  "",
+                  "// There should not be a new external payment",
+                  "var ccPaymentCount = 0;",
+                  "var cabPaymentCount = 0;",
+                  "_.each(data.subscription.customer.payments.data, function(payment) {",
+                  "    if (payment.payment_method.type == \"credit_card\")",
+                  "        ccPaymentCount++;",
+                  "    if (payment.payment_method.type == \"customer_account_balance\")",
+                  "        cabPaymentCount++;        ",
+                  "})",
+                  "",
+                  "tests[\"No new external payment was processed\"] = ccPaymentCount === 1;",
+                  "tests[\"One customer account balance payment was processed\"] = cabPaymentCount === 1;",
+                  "",
+                  "// The refund should be to customer account balance and be the same as the refund total",
+                  "data.subscription.customer.refunds.data = data.subscription.customer.refunds.data.reverse();",
+                  "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"customer_account_balance\" });",
+                  "tests[\"Refund equals refund total and is the correct payment method type \" + pm.globals.get(\"refund_total\")] = pm.globals.get(\"refund_total\") === refund.total;",
+                  "",
+                  "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.subscription.date_current_period_end === pm.globals.get(\"date_current_period_end\");"
                 ],
                 "type": "text/javascript"
               }
@@ -4219,7 +4242,7 @@
               "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-pro-sub.test/replace?expand=subscription.invoices",
+              "raw": "{{subscription_url}}/items/digital-pro-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -4231,7 +4254,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
                   "equals": true
                 }
               ]
@@ -8474,56 +8497,56 @@
   ],
   "variable": [
     {
-      "id": "57f33e99-1f98-4541-9c82-c49127bad316",
+      "id": "c222c14a-22b9-416c-83c4-3b16dda2dbee",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a26cdd63-e343-4476-8e72-52cde523a8ca",
+      "id": "fe19204a-d100-48f6-88f0-a458fc627549",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "28fbd32e-b3fb-43ca-8034-da678f70c4f9",
+      "id": "b711d528-9b19-4cb2-b4a0-32bc1de8967e",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3ae8844b-7b49-4373-b8fc-54415d315224",
+      "id": "2cc7816e-fca2-4900-84fc-b614720cda1d",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6a69a3d8-eafd-4c12-aaf7-0db7ac8fe1b5",
+      "id": "554bfb62-c374-46b7-8ca8-9dacee71be69",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d9c9704b-04ff-48de-9772-c3915c9ca38e",
+      "id": "2d165219-8d77-4145-8d30-d4a18cd7db1a",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0ac4deda-e6da-49b4-abf7-f01f0642e387",
+      "id": "c5ce25bd-cc0f-4f9d-a747-e1770ee16ee6",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a83c6508-5e89-4c0d-835a-be59e9cfcb88",
+      "id": "56f28048-0793-4a79-81d4-fb5a1e59efb7",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
