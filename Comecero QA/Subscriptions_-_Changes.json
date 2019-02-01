@@ -6101,7 +6101,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"apply_immediately\": false,\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
+              "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": false,\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
             "url": {
               "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices",
@@ -8618,56 +8618,56 @@
   ],
   "variable": [
     {
-      "id": "0bc47baa-073b-43e1-80f3-0703ea05cbd0",
+      "id": "9a521c2a-467c-4d08-8725-c7c1b415e357",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ac991f5b-0d8b-4b1b-a134-042043a74b52",
+      "id": "a698d57a-ca48-4ad1-83bf-261d69e0b7cc",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0346c07f-c839-4920-bdf1-9584eaa40807",
+      "id": "b01cc33a-83dc-4998-8205-d00469156e25",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f3ed76b6-b709-4852-808e-32a9ce974bc7",
+      "id": "276c8b1d-e6e5-48d6-a0dd-d05156f2a0fe",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9e48c252-4d92-4280-80bc-68683020b4c6",
+      "id": "64636d93-9e60-421d-891e-83e80e071f09",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cded040c-1d30-4d68-8bde-67781cb27727",
+      "id": "35960241-7bb7-41b3-940c-f3a719a27b86",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2b9d93d5-32c5-4d36-8919-969f1ee2d714",
+      "id": "6f00c062-b395-43cc-aacc-0aec0099c9fe",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "561c61f5-526a-4c6b-9289-da8018134ae2",
+      "id": "a4e1e576-fb18-4241-a35b-c952a83042f0",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
