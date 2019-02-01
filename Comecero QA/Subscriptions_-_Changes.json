@@ -3085,9 +3085,6 @@
                   "var now = new Date();",
                   "var dateEffective = new Date(data.date_effective);",
                   "var diff = Math.abs(now - dateEffective);",
-                  "console.log(diff);",
-                  "console.log(now);",
-                  "console.log(dateEffective);",
                   "",
                   "tests[\"Date effective is OK \" + data.date_effective] = diff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
                   "",
@@ -8418,56 +8415,56 @@
   ],
   "variable": [
     {
-      "id": "bb5689a4-0c25-40a2-84f3-52ed862ca8ca",
+      "id": "408e1240-4ed6-4511-ade5-41095524acb2",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "38445c85-590d-467c-a44e-3c0c1fe5d4e3",
+      "id": "b30d8d0f-d9d0-42bb-bec0-37968cf306a6",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "73972b00-40ee-4f05-bf58-d9cf32d8e77d",
+      "id": "38db660b-aee1-4ed0-b4a0-dc4dfe17763c",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9a6acfca-f722-4a14-9eaa-882a1fe263f0",
+      "id": "687a0f8a-07e7-42ab-bb60-61fb231ad853",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cec04889-d060-41e8-8e34-23de528423a5",
+      "id": "4946a2c7-44d3-45bc-8018-2f98b6d3673c",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e99a2fc8-636f-4d07-aaf9-39aea2fbce53",
+      "id": "a2b586d9-70dc-461f-a018-17107def19ca",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "04934b8d-ee7c-4886-a359-3d2025c0e7de",
+      "id": "a7ab7c88-e185-4c4c-a716-0e3b319d270d",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e9176a10-ed6e-4ecb-bfa0-cbbd1cc8a432",
+      "id": "b40dd7ce-e1a7-4a17-a41e-6687919830b8",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
