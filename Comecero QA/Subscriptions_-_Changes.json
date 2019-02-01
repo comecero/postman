@@ -4141,7 +4141,7 @@
                   "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 2;",
                   "tests[\"Correct number of customer account balance refunds\"] = _.filter(data.refunds.data, function(refund) { return refund.payment_method.type == \"customer_account_balance\"}).length === 1;",
                   "tests[\"Correct number of total refunds\"] = data.refunds.total_items === 2;",
-                  "tests[\"Refund total is within range\"] = data.refunds.data[0].total < 20;",
+                  "tests[\"Refund total is within range\"] = data.refunds.data[0].total < 30;",
                   "tests[\"Correct number of subscriptions\"] = data.subscriptions.total_items === 1;",
                   "tests[\"Correct number of orders\"] = data.orders.total_items === 2;",
                   "tests[\"Correct number of invoices\"] = data.invoices.total_items === 1;"
@@ -5262,7 +5262,7 @@
                   "",
                   "tests[\"Correct number of orders have been placed\"] = data.orders.total_items === 2;",
                   "tests[\"Order 1 has the correct total\"] = data.orders.data[0].total === 20;",
-                  "tests[\"Order 2 has the correct total\"] = data.orders.data[1].total === 40;",
+                  "tests[\"Order 2 has the correct total\"] = data.orders.data[1].total === 50;",
                   "tests[\"Refund has been recorded for the correct amount\"] = data.refunds.total_items == 1 && data.refunds.data[0].total < 20;",
                   "tests[\"Correct nubmer of subscriptions and cancellations\"] = data.subscriptions.total_items === 2 && data.subscriptions.data[0].status === \"cancelled\" && data.subscriptions.data[1].status === \"active\";",
                   "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 2;",
@@ -8357,56 +8357,56 @@
   ],
   "variable": [
     {
-      "id": "6fb99253-d48b-4fd5-b10d-ed0d62b8fd58",
+      "id": "090af7fb-b181-472d-8725-466013a58741",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1e5e4f54-fe7a-4de8-827a-e703993b17bb",
+      "id": "0c26e40a-a9fb-4a87-9c39-0b037415f550",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ed93de83-1203-46de-baa2-af71b68d85d1",
+      "id": "e491d5c5-3cfd-4d83-9050-be2c346db2f8",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "43a0ed9a-cf74-40af-b9d1-62adfae9c5bb",
+      "id": "245df150-c4a0-4558-94d5-986695c60704",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "59560cbe-6e29-4e2a-b1f7-c0cf4455eadb",
+      "id": "7f5d42d1-2131-4fd1-9c63-f5449cd0f29d",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6bb2370b-0754-416f-b9e5-3e29f1531b05",
+      "id": "3d88340e-4d2b-40ae-906d-8b6df97a3815",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3154a867-b7ae-4d1f-9645-4418b3d7d556",
+      "id": "35336b94-5333-47a2-a3ae-649c9e852af3",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e11ab3d6-f67f-40a5-b657-3dc0f4f8bfcb",
+      "id": "06c07bfe-aa00-44ca-bb62-2eec426e29e5",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
