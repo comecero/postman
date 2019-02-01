@@ -5286,13 +5286,19 @@
                   "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 5 && data.subscription_terms.billing_interval_unit === \"minute\";",
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
                   "tests[\"Payment total is equal to the product price\"] = data.payment_total === 50;",
-                  "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
                   "",
+                  "",
+                  "var dateEffective = new Date(data.date_effective);",
+                  "var diff = Math.abs(now - dateEffective);",
+                  "",
+                  "var now = new Date();",
                   "var dateNextPayment = new Date(data.date_next_payment);",
                   "var dateEffective = new Date(data.date_effective);",
-                  "var diff = Math.abs(dateNextPayment - dateEffective);",
+                  "var nextPaymentdiff = Math.abs(dateNextPayment - dateEffective);",
+                  "var effectiveDiff = Math.abs(now - dateEffective);",
                   "",
-                  "tests[\"Date effective is OK \" + data.date_effective] = diff === 300000;",
+                  "tests[\"Date next payment is OK \" + data.date_next_payment] = diff === 300000;",
+                  "tests[\"Date effective is OK \" + data.date_effective] = diff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
                   "pm.globals.set(\"refund_total\", data.refund_total);",
@@ -8547,56 +8553,56 @@
   ],
   "variable": [
     {
-      "id": "2b331e5b-028b-4781-aebb-1bdb66b09df5",
+      "id": "914241c5-91e3-48a7-bbc5-9c7f6d47fcb3",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e37bdf90-7e7b-443f-9d55-5526185df6c0",
+      "id": "ae002d52-de97-459f-a009-eb0d7593172a",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f1df8f56-80ad-49aa-b4c4-982aa40f9619",
+      "id": "97d4f283-3212-42aa-9be9-e3acd0499cf9",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "12ea10f3-b20b-44c9-ab40-411654771bac",
+      "id": "7912b69b-fec9-45fc-8c73-56ceea0985ce",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7f3651db-655e-4346-8c99-888ac5b774e9",
+      "id": "306096d6-8706-4930-a081-d0a5ec73915f",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "863b5dbb-09c2-4105-bc97-bc23c3bdea0a",
+      "id": "c2f8ddff-8f36-4689-b6fc-d17be6422930",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e104f143-952e-4452-9489-242ce9d0403b",
+      "id": "e765bdcc-86a8-42e3-aa99-165620fbe8f7",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a86f5f1d-5997-46b9-9b8e-f95208865f04",
+      "id": "9815f03c-e528-43cd-8c0f-3713de88003e",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
