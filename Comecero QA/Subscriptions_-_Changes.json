@@ -3079,7 +3079,7 @@
                   "",
                   "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 5 && data.subscription_terms.billing_interval_unit === \"minute\";",
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
-                  "tests[\"Payment total is less than the product price\"] = data.payment_total < 40;",
+                  "tests[\"Payment total is less than the product price\"] = data.payment_total < 50;",
                   "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
@@ -3612,7 +3612,7 @@
                   "// There should be one invoice and the total should be less than the item total",
                   "tests[\"No invoice was created\"] = data.subscription.invoices.total_items === 0;",
                   "tests[\"Subscription has the correct item pending\"] = data.subscription.items[0].replace_at_current_period_end.item_id === \"digital-pro-sub.test\";",
-                  "tests[\"Pending item has the correct reference price\"] = data.subscription.items[0].replace_at_current_period_end.reference_price === 40;"
+                  "tests[\"Pending item has the correct reference price\"] = data.subscription.items[0].replace_at_current_period_end.reference_price === 50;"
                 ],
                 "type": "text/javascript"
               }
@@ -8357,56 +8357,56 @@
   ],
   "variable": [
     {
-      "id": "23f4acab-b186-44f4-9c1d-986585a752a4",
+      "id": "6fb99253-d48b-4fd5-b10d-ed0d62b8fd58",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "db5fd200-7d4d-44eb-b637-5b55f080e4b7",
+      "id": "1e5e4f54-fe7a-4de8-827a-e703993b17bb",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fd7cff63-a702-4b23-9ce4-5a6f79d35474",
+      "id": "ed93de83-1203-46de-baa2-af71b68d85d1",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ff219372-802d-46d8-ab7e-066fa8805f7a",
+      "id": "43a0ed9a-cf74-40af-b9d1-62adfae9c5bb",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9221f797-2e9e-4b04-b13d-3a16e20620f3",
+      "id": "59560cbe-6e29-4e2a-b1f7-c0cf4455eadb",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "361fa08d-1730-42de-98ba-993f8cd71bd4",
+      "id": "6bb2370b-0754-416f-b9e5-3e29f1531b05",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c03edcbb-cfe8-4406-aca7-7111c508b7e1",
+      "id": "3154a867-b7ae-4d1f-9645-4418b3d7d556",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fa97de3f-7001-414e-9126-6e0b14909f60",
+      "id": "e11ab3d6-f67f-40a5-b657-3dc0f4f8bfcb",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
