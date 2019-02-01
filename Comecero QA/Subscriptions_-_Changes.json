@@ -3081,6 +3081,7 @@
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
                   "tests[\"Payment total is less than the product price\"] = data.payment_total < 50;",
                   "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
+                  "tests[\"Date effective is OK \" + data.date_effective] = data.date_effective === pm.globals.get(\"date_current_period_end\");",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
                   "pm.globals.set(\"refund_total\", data.refund_total);",
@@ -3614,6 +3615,12 @@
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
                   "tests[\"Payment total is 0\"] = data.payment_total === 0;",
                   "tests[\"Date next payment is OK \" + data.date_next_payment] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
+                  "",
+                  "var now = new Date();",
+                  "var dateEffective = new Date(data.date_effective);",
+                  "var diff = Math.abs(newPeriodEnd - previousPeriodEnd);",
+                  "console.log(diff);",
+                  "",
                   "tests[\"Date effective is OK \" + data.date_effective] = data.date_effective === pm.globals.get(\"date_current_period_end\");",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
@@ -8409,56 +8416,56 @@
   ],
   "variable": [
     {
-      "id": "3550beb2-f695-4b96-a5bd-e25772cdcf1d",
+      "id": "c01831ca-1c78-4382-a7a0-150f88f00ee8",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d2e26535-5fc1-40f8-8fe9-a5180bb3a98a",
+      "id": "b1153557-7114-4e0e-928c-53d26548d929",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ec32d032-febf-4bc8-ad30-d117151bf666",
+      "id": "7e273b27-8e6b-4cd2-b055-161833622b51",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2d5ab554-4906-4c1f-af8a-bd82a40aaa53",
+      "id": "3b9e30e6-91b0-450d-9d3e-b4a66dafdda7",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f9835004-3e31-4c5f-9ac7-eca43733d55b",
+      "id": "0066e25c-12d6-48e0-ae3c-a52f022239b8",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a59ccd0b-2fdf-49c5-aa74-1dc0cd15bc53",
+      "id": "17a66400-4f59-4104-911a-18e570eb4d64",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8f961914-cc0b-4d87-bd30-865f464b94c9",
+      "id": "ed3bef08-bc35-4363-b00b-a2502542ce8e",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "30442c0c-25a7-4594-9260-e7440a4fe063",
+      "id": "a64603ea-aebe-4cc4-8336-05b6b588422e",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
