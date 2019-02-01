@@ -5297,8 +5297,8 @@
                   "var nextPaymentdiff = Math.abs(dateNextPayment - dateEffective);",
                   "var effectiveDiff = Math.abs(now - dateEffective);",
                   "",
-                  "tests[\"Date next payment is OK \" + data.date_next_payment] = diff === 300000;",
-                  "tests[\"Date effective is OK \" + data.date_effective] = diff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
+                  "tests[\"Date next payment is OK \" + data.date_next_payment] = nextPaymentdiff === 300000;",
+                  "tests[\"Date effective is OK \" + data.date_effective] = effectiveDiff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
                   "pm.globals.set(\"refund_total\", data.refund_total);",
@@ -5348,7 +5348,22 @@
                   "// There should be one invoice and the total should be less than the item total",
                   "tests[\"No change invoice was created\"] = data.subscription.invoices.total_items === 0;",
                   "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-sub.test' && item.cancelled}) !== undefined;",
-                  "tests[\"Original subscription is cancelled\"] = data.subscription.status === \"cancelled\";"
+                  "tests[\"Original subscription is cancelled\"] = data.subscription.status === \"cancelled\";",
+                  "",
+                  "// Compare with the preview amounts",
+                  "tests[\"Invoice total equals the preview payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");",
+                  "",
+                  "// The external payment should be the same as the net total.",
+                  "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
+                  "var payment = _.find(data.subscription.customer.payments.data, function(p) { return p.payment_method.type === \"credit_card\" });",
+                  "tests[\"Credit card payment equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === payment.total;",
+                  "",
+                  "// The refund should be to customer account balance and be the same as the refund total",
+                  "data.subscription.customer.refunds.data = data.subscription.customer.refunds.data.reverse();",
+                  "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"customer_account_balance\" });",
+                  "tests[\"Refund equals refund total and is the correct payment method type \" + pm.globals.get(\"refund_total\")] = pm.globals.get(\"refund_total\") === refund.total;",
+                  "",
+                  "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.subscription.date_current_period_end === pm.globals.get(\"date_current_period_end\");"
                 ],
                 "type": "text/javascript"
               }
@@ -5371,10 +5386,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
+              "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices",
+              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -5386,7 +5401,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
                   "equals": true
                 }
               ]
@@ -8553,56 +8568,56 @@
   ],
   "variable": [
     {
-      "id": "914241c5-91e3-48a7-bbc5-9c7f6d47fcb3",
+      "id": "bb6b461f-d7fd-4f19-87f7-d7ccf2277be2",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ae002d52-de97-459f-a009-eb0d7593172a",
+      "id": "309738db-9546-427d-b5de-d71ed2869908",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "97d4f283-3212-42aa-9be9-e3acd0499cf9",
+      "id": "7bca00fb-83f0-4a4c-b9f3-17f4c2a07f36",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7912b69b-fec9-45fc-8c73-56ceea0985ce",
+      "id": "9311e4eb-567c-4d04-81a0-4b9577d3597f",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "306096d6-8706-4930-a081-d0a5ec73915f",
+      "id": "0716e1ce-069c-49c9-afe1-6860c9f34b93",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c2f8ddff-8f36-4689-b6fc-d17be6422930",
+      "id": "39511b95-ac18-4d78-a757-0f8f3476d20b",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e765bdcc-86a8-42e3-aa99-165620fbe8f7",
+      "id": "f62e73cc-3970-4fea-97a5-5f9121807bec",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9815f03c-e528-43cd-8c0f-3713de88003e",
+      "id": "c82fc201-4734-4496-87e6-405c85223ce7",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
