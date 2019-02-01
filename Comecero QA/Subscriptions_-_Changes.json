@@ -3122,62 +3122,6 @@
           "response": []
         },
         {
-          "_postman_id": "271cfb07-5631-405d-b82e-1a860eee0fe9",
-          "name": "Run Preview Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
-                "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 5 && data.subscription_terms.billing_interval_unit === \"minute\";",
-                  "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
-                  "tests[\"Payment total is less than the product price\"] = data.payment_total < 50;",
-                  "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
-                  "",
-                  "var now = new Date();",
-                  "var dateEffective = new Date(data.date_effective);",
-                  "var diff = Math.abs(now - dateEffective);",
-                  "",
-                  "tests[\"Date effective is OK \" + data.date_effective] = diff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
-                  "",
-                  "pm.globals.set(\"payment_total\", data.payment_total);",
-                  "pm.globals.set(\"refund_total\", data.refund_total);",
-                  "pm.globals.set(\"net_total\", data.net_total);",
-                  "pm.globals.set(\"date_effective\", data.date_effective);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
-            },
-            "url": "{{subscription_url}}/items/digital-sub.test/replace/preview",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "2ad6ad41-d9c8-478c-826c-d5f998efc1f7",
           "name": "Replace the Item",
           "event": [
@@ -4170,6 +4114,62 @@
                 }
               ]
             },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "271cfb07-5631-405d-b82e-1a860eee0fe9",
+          "name": "Run Preview Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
+                "exec": [
+                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 5 && data.subscription_terms.billing_interval_unit === \"minute\";",
+                  "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
+                  "tests[\"Payment total is less than the product price\"] = data.payment_total < 50;",
+                  "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
+                  "",
+                  "var now = new Date();",
+                  "var dateEffective = new Date(data.date_effective);",
+                  "var diff = Math.abs(now - dateEffective);",
+                  "",
+                  "tests[\"Date effective is OK \" + data.date_effective] = diff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
+                  "",
+                  "pm.globals.set(\"payment_total\", data.payment_total);",
+                  "pm.globals.set(\"refund_total\", data.refund_total);",
+                  "pm.globals.set(\"net_total\", data.net_total);",
+                  "pm.globals.set(\"date_effective\", data.date_effective);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
+            },
+            "url": "{{subscription_url}}/items/digital-sub.test/replace/preview",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -8471,56 +8471,56 @@
   ],
   "variable": [
     {
-      "id": "f972a09d-02e8-4d45-ac6e-c2f8abeaea16",
+      "id": "4c28a493-c4da-4dfb-9c0b-809ef12c5e40",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "346a8ce5-986b-488a-9a10-7d23a144d08f",
+      "id": "9a909647-e78a-4f45-8ae3-c0850e5a880d",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "53c74fb7-cce5-40af-9ec2-e57709f01c73",
+      "id": "7542e181-c7e9-4979-afe7-d4cc6b897e12",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ed081695-dbcc-45c4-8145-0c7da6f47c71",
+      "id": "ea2ee054-ff1b-42a2-a7e0-5f51bd272e76",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "33ca27d5-2a45-4e8d-b0b7-02a1f85d5701",
+      "id": "a9baa62e-2174-4876-b38b-14b92b719ec9",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "71d8b450-8d72-46e1-99c9-4ef3e38f3a79",
+      "id": "3e1ec1b3-7279-4268-827f-1d0e8dc46b2d",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "14c25719-58dd-41a3-a4b1-02fe41e2b899",
+      "id": "5bc792a1-e260-40e0-80dc-ceb70a239fdc",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d7490e8a-2ecf-4bf4-a04b-455c593a9a10",
+      "id": "2fc49fef-a774-4ecb-98c1-339c0350a3db",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
