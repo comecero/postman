@@ -347,7 +347,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n\t\"product_id\": \"digital-term-sub.test\",\t\r\n    \"name\": \"Monster AV (Different Term)\",\r\n    \"description\": \"An incredibly powerful anti-virus solution for PC and Mac.\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 20,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 18,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+          "raw": "{\r\n\t\"product_id\": \"digital-term-sub.test\",\t\r\n    \"name\": \"Monster AV (Different Term)\",\r\n    \"description\": \"An incredibly powerful anti-virus solution for PC and Mac.\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 35,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 32,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
         },
         "url": "https://{{host}}/api/v1/products"
       },
