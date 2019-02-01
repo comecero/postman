@@ -4199,9 +4199,9 @@
                   "tests[\"Invoice total equals the preview payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");",
                   "",
                   "// The external payment should be the same as the net total.",
-                  "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
-                  "var payment = _.find(data.subscription.customer.payments.data, function(p) { return p.payment_method.type === \"credit_card\" });",
-                  "tests[\"Credit card payment equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === payment.total;",
+                  "data.subscription.customer.refunds.data = data.subscription.customer.refunds.data.reverse();",
+                  "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"credit_card\" });",
+                  "tests[\"Credit card refund equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === refund.total;",
                   "",
                   "// The refund should be to customer account balance and be the same as the refund total",
                   "data.subscription.customer.refunds.data = data.subscription.customer.refunds.data.reverse();",
@@ -8489,56 +8489,56 @@
   ],
   "variable": [
     {
-      "id": "c1aad3a2-4e32-478d-a5f5-2b46ee189746",
+      "id": "d9be7fee-b536-4e11-9084-2f0fd91f87ac",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2f4c0cc9-a09e-4053-b916-a53187e43af8",
+      "id": "569893b5-969d-4adb-893b-65a2e2d137f2",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9f74ee01-b385-4441-b059-8d93df2488f7",
+      "id": "7196dd95-0ed7-40e6-a368-179c1d88cb82",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e4f0ad70-5397-4bd9-90d5-48f371f901ee",
+      "id": "bde44157-61fb-45c9-b844-c1e97bdffa75",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "539c944f-27c6-4900-87ea-c682eef311a8",
+      "id": "3f1b688e-7bde-44a7-a168-20aa04ddc692",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "298f8348-a314-4d99-baac-5ea134108128",
+      "id": "d3f7a26b-4aeb-45a8-b256-cf208d78b5e7",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d2982e8c-a471-44ea-ba8a-631a364aad38",
+      "id": "a7e6d89e-b25f-4b0f-9642-eeccffcb460d",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a817a025-f203-41ca-828e-1677510b27a7",
+      "id": "89fd38c2-d0bc-43db-a2e9-2227c5d56952",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
