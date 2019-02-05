@@ -5899,55 +5899,6 @@
           "response": []
         },
         {
-          "_postman_id": "5a52f5aa-a7a7-41d7-9ef3-a9e0f9497872",
-          "name": "Revert Product Subscription Plan (1)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a7f20a52-80fb-4c20-a8d5-e7c404517d70",
-                "exec": [
-                  "tests[\"Updated subscription plan\"] = responseCode.code === 200;"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
-            },
-            "url": "https://{{host}}/api/v1/products/digital-sub.test",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "d805ad96-1dd6-4139-90e4-a6ea294515f3",
           "name": "Revert Product Subscription Plan (2)",
           "event": [
@@ -8184,56 +8135,56 @@
   ],
   "variable": [
     {
-      "id": "249398c0-c16e-4a36-96e0-be0f1666caa1",
+      "id": "0b93b7ba-8258-49d9-85e2-864a2cb7942f",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "50b00478-5ccb-4f02-8aa7-c5cd04763605",
+      "id": "e6ee57dc-39fc-4638-b81a-84a0348a73d8",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a103a845-62a7-460c-abf7-aa09977717f1",
+      "id": "c52b9c38-db37-4202-9ba1-f69f80576ee7",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "60e71dac-4490-4af8-aa2d-d79f8341d1c6",
+      "id": "fca6dc5e-5faf-4849-a2a9-94f0ccc58659",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "634b07b1-bd65-42c2-b723-6db31a39cd6e",
+      "id": "c61934b3-0839-4046-a0d1-e4c9df21dc72",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "026ca025-e0f0-4aef-9bdb-4b6f393eb679",
+      "id": "7492b8e5-7f0d-4e78-98f6-d852661484bf",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3d90bc01-15b7-445e-be13-b3beee9f7934",
+      "id": "01283d68-8b2d-4e52-8a81-349090255a01",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "14cd4bb4-e3ff-4dd2-aa04-570c988c25c8",
+      "id": "0bb1d22e-90be-46cd-9149-bbc3b31add94",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
