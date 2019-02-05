@@ -5148,6 +5148,68 @@
           "response": []
         },
         {
+          "_postman_id": "69ce595e-054c-4eb4-bcb2-d38c44ca2813",
+          "name": "Run Preview Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
+                "exec": [
+                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 2 && data.subscription_terms.billing_interval_unit === \"hour\";",
+                  "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
+                  "tests[\"Payment total equals the product price\"] = data.payment_total === 35;",
+                  "",
+                  "var dateEffective = new Date(data.date_effective);",
+                  "var diff = Math.abs(now - dateEffective);",
+                  "",
+                  "var now = new Date();",
+                  "var dateNextPayment = new Date(data.date_next_payment);",
+                  "var dateEffective = new Date(data.date_effective);",
+                  "var nextPaymentdiff = Math.abs(dateNextPayment - dateEffective);",
+                  "var effectiveDiff = Math.abs(now - dateEffective);",
+                  "",
+                  "tests[\"Date next payment is OK \" + data.date_next_payment] = nextPaymentdiff === 7200000;",
+                  "tests[\"Date effective is OK \" + data.date_effective] = effectiveDiff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
+                  "",
+                  "pm.globals.set(\"payment_total\", data.payment_total);",
+                  "pm.globals.set(\"refund_total\", data.refund_total);",
+                  "pm.globals.set(\"net_total\", data.net_total);",
+                  "pm.globals.set(\"date_effective\", data.date_effective);",
+                  "pm.globals.set(\"date_next_payment\", data.date_next_payment);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-term-sub.test\"\n}"
+            },
+            "url": "{{subscription_url}}/items/digital-sub.test/replace/preview",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
           "_postman_id": "764d2a4d-fd0e-42ee-82b1-f1614b7efb4a",
           "name": "Replace the Item",
           "event": [
@@ -7697,56 +7759,56 @@
   ],
   "variable": [
     {
-      "id": "22bc93ba-f014-47f6-9106-f8b65bccb053",
+      "id": "ffb0c01c-630c-4d5b-a123-8e9a0c1fd8c5",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a2fc6892-4776-4912-b37a-936caea1bc64",
+      "id": "d7915cbb-ae4d-47c7-8b72-e526b2fe7b4b",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "42a852fa-347a-4c5e-a98a-f84a4bc033ac",
+      "id": "940e5165-715e-4beb-99a2-7ea440eec66f",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e71d460a-048d-47b8-aefb-acd8c4018880",
+      "id": "c2c32fb2-3b1a-4431-89cd-066d0f077e46",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a7a5d28c-ca91-4a3c-b011-972a5d76f19d",
+      "id": "ffd78491-59cd-4fa2-b6cd-3983dbd621b4",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dcf3c5ad-92b4-428e-b90a-3b49d1d76e74",
+      "id": "05e8cdd7-a12d-40b3-9b21-629afab809e6",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a0e0d936-b474-421a-8a76-d7d4c9faff41",
+      "id": "285bd3c3-b0c5-4762-9781-a59cbe50dc95",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5205f9a1-1e80-4c20-abe2-8d4196a53bf5",
+      "id": "583df2c6-0488-4e41-8180-44a23158a00b",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
