@@ -6574,13 +6574,13 @@
               "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-pro-sub.test/replace?expand=subscription.invoices",
+              "raw": "{{subscription_url}}/items/digital-term-sub.test/replace?expand=subscription.invoices",
               "host": [
                 "{{subscription_url}}"
               ],
               "path": [
                 "items",
-                "digital-pro-sub.test",
+                "digital-term-sub.test",
                 "replace"
               ],
               "query": [
@@ -8429,56 +8429,56 @@
   ],
   "variable": [
     {
-      "id": "1c442244-cbc4-4d0c-8c23-998a7091c4a8",
+      "id": "304cc8db-501e-4bf9-816a-d25dcfe3db40",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "31fb1925-3f86-4229-94a5-f6d8c31fc446",
+      "id": "4d96f348-77fd-4ae8-a860-bd7e6ec64dbf",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e0d37b90-8e3b-49c2-9013-4c9c03553ee8",
+      "id": "88a8b668-67b2-49d4-8d8c-abb6b4c55e0a",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "03b8dd77-971f-4635-97b8-8e0a0cf6cd79",
+      "id": "be090240-5f92-47e1-84a2-6be9cac72f76",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a34fbb7c-5da5-4894-aafd-82c25b09aff4",
+      "id": "6b2f9c69-2f17-4db9-9c8b-17b896131070",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "de387c1b-f08a-4c6b-adda-eeba485765a5",
+      "id": "c9a1c411-48c7-47c9-a19f-ef6d3d418b70",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "31022af2-d0b8-4c0c-aa83-8e675d1ebed9",
+      "id": "a1d7d98d-3c71-430f-8cb7-807bc41f0735",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9f2796a4-4bb2-498e-ab93-df25d8e922e1",
+      "id": "8258a930-fb46-48db-a71a-67e9985aeca4",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
