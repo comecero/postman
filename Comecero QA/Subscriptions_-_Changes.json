@@ -5263,7 +5263,8 @@
                   "pm.globals.set(\"payment_total\", data.payment_total);",
                   "pm.globals.set(\"refund_total\", data.refund_total);",
                   "pm.globals.set(\"net_total\", data.net_total);",
-                  "pm.globals.set(\"date_effective\", data.date_effective);"
+                  "pm.globals.set(\"date_effective\", data.date_effective);",
+                  "pm.globals.set(\"date_next_payment\", data.date_next_payment);"
                 ],
                 "type": "text/javascript"
               }
@@ -5311,7 +5312,7 @@
                   "tests[\"Original subscription is cancelled\"] = data.subscription.status === \"cancelled\";",
                   "",
                   "// Compare with the preview amounts",
-                  "tests[\"Invoice total equals the preview payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");",
+                  "tests[\"Invoice total equals the preview payment total\"] = data.subscription.customer.invoices.data[0].total == pm.globals.get(\"payment_total\");",
                   "",
                   "// The external payment should be the same as the net total.",
                   "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
@@ -5323,7 +5324,7 @@
                   "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"customer_account_balance\" });",
                   "tests[\"Refund equals refund total and is the correct payment method type \" + pm.globals.get(\"refund_total\")] = pm.globals.get(\"refund_total\") === refund.total;",
                   "",
-                  "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.subscription.date_current_period_end === pm.globals.get(\"date_current_period_end\");"
+                  "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.subscription.customer.subscriptions.data[1].date_current_period_end === pm.globals.get(\"date_current_period_end\");"
                 ],
                 "type": "text/javascript"
               }
@@ -5349,7 +5350,7 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-term-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,customer.invoices,subscription.customer.refunds.payment_method",
+              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.subscriptions,subscription.customer.refunds.payment_method",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -5361,7 +5362,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,customer.invoices,subscription.customer.refunds.payment_method",
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.subscriptions,subscription.customer.refunds.payment_method",
                   "equals": true
                 }
               ]
@@ -8528,56 +8529,56 @@
   ],
   "variable": [
     {
-      "id": "49d8e323-3872-4c57-bb9d-375429bdb6c2",
+      "id": "f12eac69-e6c0-4115-87ea-fff27205a7b7",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7a7f5df5-f1fe-47f8-80a3-7c67a535cdcb",
+      "id": "3d6c76aa-2a4a-4060-a521-fb90972912c3",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3d3cbe62-d1f1-4e36-8092-f0262a8fd326",
+      "id": "5cbc6c9d-d5f5-430d-b64b-ab422b26b624",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "063e67e5-652b-41dc-91b1-c9af5c7df52a",
+      "id": "029e68fd-9b4f-4d2d-a59b-59805da9db10",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "de785a81-7a94-4e56-a913-8ea139bd9d4c",
+      "id": "18ab72ea-438b-48d8-86e0-8b0509d894fe",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4cb626a9-d2ef-4f41-b31d-5da8a26c6311",
+      "id": "45153c23-ca67-4a29-9c9a-168ccaa8d94d",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d9b5ba18-0512-49be-b2a6-767a0425787b",
+      "id": "b7197314-d451-4b08-a67a-29d46fc4d8ce",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d30dc7b1-98b7-459f-9336-77011d0de523",
+      "id": "22bea935-4acb-4dc2-9f6e-237e9638818f",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
