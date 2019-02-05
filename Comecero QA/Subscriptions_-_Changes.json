@@ -5322,9 +5322,7 @@
                   "// The refund should be to customer account balance and be the same as the refund total",
                   "data.subscription.customer.refunds.data = data.subscription.customer.refunds.data.reverse();",
                   "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"customer_account_balance\" });",
-                  "tests[\"Refund equals refund total and is the correct payment method type \" + pm.globals.get(\"refund_total\")] = pm.globals.get(\"refund_total\") === refund.total;",
-                  "",
-                  "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.subscription.customer.subscriptions.data[1].date_current_period_end === pm.globals.get(\"date_current_period_end\");"
+                  "tests[\"Refund equals refund total and is the correct payment method type \" + pm.globals.get(\"refund_total\")] = pm.globals.get(\"refund_total\") === refund.total;"
                 ],
                 "type": "text/javascript"
               }
@@ -5350,7 +5348,7 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-term-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.subscriptions,subscription.customer.refunds.payment_method",
+              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -5362,7 +5360,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.subscriptions,subscription.customer.refunds.payment_method",
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method",
                   "equals": true
                 }
               ]
@@ -5385,9 +5383,9 @@
                   "",
                   "tests[\"Correct number of orders have been placed\"] = data.orders.total_items === 2;",
                   "tests[\"Order 1 has the correct total\"] = data.orders.data[0].total === 20;",
-                  "tests[\"Order 2 has the correct total\"] = data.orders.data[1].total === 50;",
+                  "tests[\"Order 2 has the correct total\"] = data.orders.data[1].total === 35;",
                   "tests[\"Refund has been recorded for the correct amount\"] = data.refunds.total_items == 1 && data.refunds.data[0].total < 20;",
-                  "tests[\"Correct nubmer of subscriptions and cancellations\"] = data.subscriptions.total_items === 2 && data.subscriptions.data[0].status === \"cancelled\" && data.subscriptions.data[1].status === \"active\";",
+                  "tests[\"Correct number of subscriptions and cancellations\"] = data.subscriptions.total_items === 2 && data.subscriptions.data[0].status === \"cancelled\" && data.subscriptions.data[1].status === \"active\";",
                   "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 2;",
                   "tests[\"Correct number of customer account balance payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"customer_account_balance\"}).length === 1;",
                   "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 3;",
@@ -8529,56 +8527,56 @@
   ],
   "variable": [
     {
-      "id": "f12eac69-e6c0-4115-87ea-fff27205a7b7",
+      "id": "70941fb2-644b-4d29-923d-6cf81ba80f40",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3d6c76aa-2a4a-4060-a521-fb90972912c3",
+      "id": "bfb76fcb-0117-4b41-a20a-b7ce99a78184",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5cbc6c9d-d5f5-430d-b64b-ab422b26b624",
+      "id": "d9fe17fc-803d-4f37-bccf-51402394df33",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "029e68fd-9b4f-4d2d-a59b-59805da9db10",
+      "id": "eb450524-9b91-4b18-8e9b-a692a6c3ea73",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "18ab72ea-438b-48d8-86e0-8b0509d894fe",
+      "id": "af76f59d-d047-42bb-8109-d5f9dc8fd8df",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "45153c23-ca67-4a29-9c9a-168ccaa8d94d",
+      "id": "4b1c3aa0-4061-40cb-8b31-13dd9cb7cdde",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b7197314-d451-4b08-a67a-29d46fc4d8ce",
+      "id": "c318b212-b30c-493d-932d-62b724c28642",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "22bea935-4acb-4dc2-9f6e-237e9638818f",
+      "id": "2c67f763-6031-451d-a540-aadb72b6e5af",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
