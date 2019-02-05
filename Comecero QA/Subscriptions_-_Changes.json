@@ -4508,7 +4508,8 @@
                   "var item = data.items[0];",
                   "pm.globals.set(\"subscription_item\", item);",
                   "pm.globals.set(\"subscription_item_url\", item.url);",
-                  "pm.globals.set(\"customer_url\", data.customer);"
+                  "pm.globals.set(\"customer_url\", data.customer);",
+                  "pm.globals.set(\"date_current_period_end\", data.date_current_period_end);"
                 ],
                 "type": "text/javascript"
               }
@@ -4674,8 +4675,8 @@
                   "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 5 && data.subscription_terms.billing_interval_unit === \"minute\";",
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
                   "tests[\"Payment total is 0\"] = data.payment_total === 0;",
-                  "tests[\"Date next payment is OK \" + data.date_next_payment] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
-                  "tests[\"Date effective is OK \" + data.date_effective] = data.date_effective === pm.globals.get(\"date_current_period_end\");",
+                  "tests[\"Date next payment is OK \" + data.date_next_payment + \" \" + pm.globals.get(\"date_current_period_end\")] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
+                  "tests[\"Date effective is OK \" + data.date_effective + \" \" + pm.globals.get(\"date_current_period_end\")] = data.date_effective === pm.globals.get(\"date_current_period_end\");",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
                   "pm.globals.set(\"refund_total\", data.refund_total);",
@@ -5286,7 +5287,7 @@
                   "",
                   "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 5 && data.subscription_terms.billing_interval_unit === \"minute\";",
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
-                  "tests[\"Payment total is equal to the product price\"] = data.payment_total === 50;",
+                  "tests[\"Payment total is less than the product price\"] = data.payment_total < 50;",
                   "",
                   "",
                   "var dateEffective = new Date(data.date_effective);",
@@ -8618,56 +8619,56 @@
   ],
   "variable": [
     {
-      "id": "f933a48a-0cb3-4c24-960a-204bfb5d332f",
+      "id": "3e0dfa70-3426-4005-992a-a9d8f03b8a69",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4fbf5587-cd73-4482-8681-12db4be0262a",
+      "id": "4e414a1f-7ed0-4acb-8907-1f5c9da3393b",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1a55852b-d57f-4a0a-93eb-78760a90a3e4",
+      "id": "d2c44e90-5c28-4579-9d3b-5739880e3675",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c9a1bde3-0429-446b-984d-cb7b67097c1d",
+      "id": "d66a5d92-9ac6-40d4-9291-9fb4741731ec",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "37f7845d-07ee-44a7-be3d-2d18e04973f9",
+      "id": "89434240-9212-447d-be1c-422e21612953",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a4fa156b-470a-4449-8b38-f7f5b4c827d9",
+      "id": "870be034-e698-4b22-b4b4-0e9fe334bd80",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fbdfacad-98a1-4351-9ff2-22bbaf52763c",
+      "id": "8da40fc5-56ac-4f1a-9e67-11b8674dbbd3",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1e1e02f8-f5b0-4d37-a55c-06ee90b07731",
+      "id": "60db0517-1497-4987-9dcf-de74264371ac",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
