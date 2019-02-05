@@ -7728,67 +7728,6 @@
           "response": []
         },
         {
-          "_postman_id": "20c96a4f-af8e-4965-a490-76ad63705bc0",
-          "name": "Wait 3 seconds",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a05ebd5c-7c23-42c3-9eb9-63ddde25ee85",
-                "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
-                  "",
-                  "var date = new Date();",
-                  "var waitForMinutes = 7;",
-                  "",
-                  "tests[\"Waiting a few seconds to burn down subscription used time\"] = true;",
-                  "",
-                  "setTimeout(function() {",
-                  "    tests[\"Timer completed. Testing resuming...\"] = true;",
-                  "}, 3000);",
-                  "",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "9751ab2a-b7c5-4e5c-9971-064d19f11c72",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "https://{{host}}/api/v1/subscriptions",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "e7aa9b3e-36ad-4fbc-8f2a-4307b3346466",
           "name": "Change Item Quantity",
           "event": [
@@ -8205,56 +8144,56 @@
   ],
   "variable": [
     {
-      "id": "0bfa0501-752e-41c0-a05d-e005a1168402",
+      "id": "06c414bf-947b-42e3-b229-82edaa2df3a5",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f732695e-eb73-4926-96e9-89f51592d9fd",
+      "id": "105ad45f-77c4-49c5-b03b-6cdc0b915ae4",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3ac72340-ff7e-48ac-a80f-d3d716a6d8a3",
+      "id": "12f51d88-e04d-4971-88a7-8291176ae532",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2398946c-c5de-464d-a5d9-f20b4d12dc2d",
+      "id": "ca29896d-5c9a-4a09-b8eb-a2ab11ee7f80",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "aac4d06d-cd19-40e9-b130-c1128fe42afd",
+      "id": "4b80658e-b835-40aa-a78e-8df1d0c3d4d8",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b38b57ee-d7c1-45e3-b14c-0ed689fd6d52",
+      "id": "07c53746-9154-4d05-97db-cd9936d6f842",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e0a019f0-4d7a-4c1b-847a-bb8b2917958f",
+      "id": "d9e92d8f-c579-4c3b-9732-d292b4064e7d",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a33e32e3-2590-4e02-bbd0-fdc7d0ae9290",
+      "id": "676f4f63-457e-4966-b3b5-18387b2b3980",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
