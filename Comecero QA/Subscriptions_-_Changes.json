@@ -258,13 +258,21 @@
                   "        pm.globals.set(\"five_minute_subscription_with_trial_plan_id\", item.subscription_plan_id);",
                   "    }",
                   "    ",
-                  "        if (item.billing_interval_unit === \"hour\" && item.billing_interval === 1 && item.trial_interval_unit === null) {",
+                  "    if (item.billing_interval_unit === \"hour\" && item.billing_interval === 1 && item.trial_interval_unit === null) {",
                   "        pm.globals.set(\"hour_subscription_plan_id\", item.subscription_plan_id);",
                   "    }",
                   "    ",
-                  "        if (item.billing_interval_unit === \"hour\" && item.billing_interval === 1 && item.trial_interval_unit === \"hour\") {",
+                  "    if (item.billing_interval_unit === \"hour\" && item.billing_interval === 1 && item.trial_interval_unit === \"hour\") {",
                   "        pm.globals.set(\"hour_subscription_with_trial_plan_id\", item.subscription_plan_id);",
                   "    }",
+                  "    ",
+                  "    if (item.billing_interval_unit === \"hour\" && item.billing_interval === 2 && item.trial_interval_unit === null) {",
+                  "        pm.globals.set(\"two_hour_subscription_plan_id\", item.subscription_plan_id);",
+                  "    }",
+                  "    ",
+                  "    if (item.billing_interval_unit === \"hour\" && item.billing_interval === 2 && item.trial_interval_unit === \"hour\") {",
+                  "        pm.globals.set(\"two_hour_subscription_with_trial_plan_id\", item.subscription_plan_id);",
+                  "    }    ",
                   "    ",
                   "});"
                 ],
@@ -8619,56 +8627,56 @@
   ],
   "variable": [
     {
-      "id": "49aa1a17-9f64-44b6-9b3a-28b25b563099",
+      "id": "31e83ada-2f9f-4f1e-8cb6-fd6ad0a670a3",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7a17fe7e-f231-4d52-9615-659985791334",
+      "id": "a80953d6-4cc6-4c8e-a4e7-a84df9a09569",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f6771690-3e03-4b42-a1de-46203914ffff",
+      "id": "c8003252-4567-4003-98ec-a33058b60d0e",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b661f0da-5651-433a-9f76-6d106e748c4b",
+      "id": "5a1c7c80-d649-4c04-99f7-2c4ac985c2c2",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2f574623-9bdf-44df-80ec-49aab30e294a",
+      "id": "97038f0f-2c30-4ab9-a0ee-81858348953e",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a2ce5270-0ae7-465c-b461-37658aab1e34",
+      "id": "25075881-66a5-452f-ac2c-76690d4e956b",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "01e27d53-496c-4543-866d-d60bef02240e",
+      "id": "86719b4b-a730-41ff-b77f-b8eb98be5dc8",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b80babc1-6256-45bc-ac08-400a5e7c6cc9",
+      "id": "8e4566b3-6964-4ba3-9425-43e667a4f8e3",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
