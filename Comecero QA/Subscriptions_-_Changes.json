@@ -7794,6 +7794,248 @@
       ]
     },
     {
+      "_postman_id": "50b75519-3d2c-4154-8222-72c8a2cf23cd",
+      "name": "Cancel Item, Immediate, Single Item Subscription Copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "6112092a-be1d-4891-a066-1b97e1876a6d",
+          "name": "Create Cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2e45bc1a-8ef7-4349-8712-acfbab72f23e",
+                "exec": [
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cart_url\", data.url);",
+                  "pm.globals.set(\"item_total\", data.items[0].total);"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital-sub.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": {
+              "raw": "https://{{host}}/api/v1/carts?expand=items.subscription_plan,items.subscription_terms",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "carts"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "items.subscription_plan,items.subscription_terms",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "6199d1e0-7c80-4613-a611-6b16b9e6eb55",
+          "name": "Submit Cart Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
+                "exec": [
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "var item = data.order.items[0];",
+                  "tests[\"Subscription was created\"] === item.subcription !== null;",
+                  "pm.globals.set(\"subscription_url\", item.subscription);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+            },
+            "url": {
+              "raw": "{{cart_url}}/payments?expand=order.items",
+              "host": [
+                "{{cart_url}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "order.items",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a57f53f4-91be-4656-98f4-00b98b7623a4",
+          "name": "Cancel Item",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
+                "exec": [
+                  "tests[\"Subscription cancelled successfully\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "tests[\"Subscription cancellation confirmed\"] = data.cancelled === true;",
+                  "tests[\"Date cancelled is filled\"] = data.date_cancelled !== null;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"cancelled\": true,\r\n   \"cancellation_reason\": \"Cancelled upon completion of an automated test\"\r\n}"
+            },
+            "url": "{{subscription_url}}/items/digital-sub.test",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "9b212ee4-adc3-4487-a712-deeb5eef07b6",
+          "name": "Get the Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
+                "exec": [
+                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "tests[\"Subscription is cancelled\"] = data.status === \"cancelled\";",
+                  "tests[\"Date cancelled is filled\"] = data.date_cancelled !== null;",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+            },
+            "url": "{{subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "311bcb93-f574-4cd9-aff4-3b42640899f7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "d66d30d1-858b-49ae-92ff-4073e0510018",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
       "_postman_id": "081be738-4ef8-441b-9812-b62b31139dde",
       "name": "Cancel Item, Period End, Single Item Subscription",
       "description": "",
@@ -8297,56 +8539,56 @@
   ],
   "variable": [
     {
-      "id": "189f0595-1aaf-44e7-9175-0e0a5f62f1b1",
+      "id": "f948e2bf-14c7-4647-9c30-df786a5bc028",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b69e43a5-98b5-449a-b01e-62b21b0d31a8",
+      "id": "82e25efb-0a7d-415d-83b2-9859892ce279",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f69c7e30-00a9-4b26-ae0b-10be48caa221",
+      "id": "5a00c3b3-8e21-469a-afeb-1587ae01084e",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3519e4cb-1aa3-4af1-b05e-7102209031c5",
+      "id": "99e423c2-9cba-4efd-ad74-f03e00b822cf",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fa2605d0-2eb2-453b-a948-36616a3f3160",
+      "id": "c6864863-29dc-480f-9192-494675dae4a1",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e3ab3c09-1f84-464c-8682-0b2b91a2d5c2",
+      "id": "4618c9a3-94cc-4b62-ba38-741b0e9b51cd",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f505f998-84a2-4679-91a7-f2ec2624c795",
+      "id": "b0ce6911-cf78-4970-875c-fbfaa34c618d",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "07dc4031-c3d3-4210-9b34-15192488704f",
+      "id": "f6520197-5727-4f8e-a9d8-c8efd4b55f22",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
