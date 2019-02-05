@@ -7738,7 +7738,7 @@
                   "tests[\"Status is 200\"] = responseCode.code === 200;",
                   "var data = JSON.parse(responseBody);",
                   "tests[\"Subscription is cancelled\"] = data.status === \"cancelled\";",
-                  "tests[\"Date cancelled is filled\"] = data.date_cancelled === true;",
+                  "tests[\"Date cancelled is filled\"] = data.date_cancelled !== null;",
                   ""
                 ],
                 "type": "text/javascript"
@@ -8032,56 +8032,56 @@
   ],
   "variable": [
     {
-      "id": "63a87600-81c9-443f-95c8-bb3a8160a46e",
+      "id": "d31a5a24-ea3d-4cdb-aff5-04351d20f859",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3d8a2401-36e8-4651-91d0-535db838f1e2",
+      "id": "9b8a16c6-e055-4b12-8f76-c977d6914eba",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "68c97a0b-c64d-444b-bdca-677529f17d06",
+      "id": "ec714a11-b2db-4aba-a1d7-2e1781ecd4c1",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4a61f739-0afd-4494-9916-f2b16cd88253",
+      "id": "ff344119-c7f5-4a9c-83c8-f883e1a48531",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "102b3fa7-556b-43c7-9fb3-01c314efa8e1",
+      "id": "10a7970b-081c-42e4-81ed-5589fe57939b",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d3618efa-6f57-4908-9438-28689191fe22",
+      "id": "3655b14f-5a89-48f7-a456-debf1399270f",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2dbec16d-54f6-4a21-b0ec-5863a9be5c5f",
+      "id": "4f0fd7a6-0780-4fab-9b7d-78257dd82847",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4cb848c0-ad06-4709-8a1a-dc8ca472cf9f",
+      "id": "9171af55-2d5a-4bbb-bfd7-6f4b9ef28e4a",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
