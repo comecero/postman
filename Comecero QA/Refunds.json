@@ -2348,7 +2348,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"capture\": true,\n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
+              "raw": "{\n   \"capture\": true,\n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661152\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
             },
             "url": {
               "raw": "{{invoice_url}}/payments?expand=order",
@@ -2672,49 +2672,49 @@
   ],
   "variable": [
     {
-      "id": "52f24794-6576-4e34-91f1-fd55819ff7ea",
+      "id": "d646da46-0d04-490c-9658-0f288f42d815",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a23d0fbb-0280-4b1d-ade1-67d6d907cf8b",
+      "id": "4657abb1-0cff-46fa-ba4b-56fcfe28d331",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cec28393-8e27-417b-8e36-a572060142eb",
+      "id": "be94c6e8-a9f3-4c1b-9b5c-79038fba66ff",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fc5bf1b4-5c8f-4969-a545-2dacb2e23dad",
+      "id": "c26efbcb-dd6c-42fd-b8ac-ddbfdd522a64",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c397ff8f-1aaf-45a5-a1c5-f86e26f809fa",
+      "id": "49bb9109-fed8-490d-bde9-179dbcc225d4",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8f8435f4-8ac7-4580-97b0-5dd1f3727079",
+      "id": "8a45bf27-e4d1-42ce-a1e7-9db034e447cb",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9a87ddc4-c23b-4874-b688-b90945a93af9",
+      "id": "7227fdf8-1a4a-405c-967e-0dd7b962ace5",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
