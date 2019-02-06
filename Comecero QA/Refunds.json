@@ -2381,8 +2381,8 @@
                   "tests[\"Capture request created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Refunds were successful\"] = data.success_count === 2;",
-                  "tests[\"Correct number of refunds processed\"] = data.refunds.length === 2;",
+                  "tests[\"Refund were successful\"] = data.success_count === 1;",
+                  "tests[\"Correct number of refunds attempted\"] = data.refunds.length === 2;",
                   "tests[\"Correct amount was refunded \" + pm.globals.get(\"order_total\")] = pm.globals.get(\"order_total\") === data.total;",
                   "",
                   "tests[\"Refunds processed in the correct order\"] === data.refunds[0].total > data.refunds[1].total;",
@@ -2672,49 +2672,49 @@
   ],
   "variable": [
     {
-      "id": "d646da46-0d04-490c-9658-0f288f42d815",
+      "id": "d48e3963-e70b-4193-9cbe-972f8780db88",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4657abb1-0cff-46fa-ba4b-56fcfe28d331",
+      "id": "7b305c8f-7df1-4b7c-94ef-a1fee2ffe04c",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "be94c6e8-a9f3-4c1b-9b5c-79038fba66ff",
+      "id": "ef03aaa2-3677-476c-a565-fd3845db9890",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c26efbcb-dd6c-42fd-b8ac-ddbfdd522a64",
+      "id": "0141091e-6ef9-4fed-97a5-5da2a710dca2",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "49bb9109-fed8-490d-bde9-179dbcc225d4",
+      "id": "0a0f1d67-3178-43a9-9fd8-ed3c60e9dae7",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8a45bf27-e4d1-42ce-a1e7-9db034e447cb",
+      "id": "a70d799f-e8c8-49a7-b3eb-0a63736d93af",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7227fdf8-1a4a-405c-967e-0dd7b962ace5",
+      "id": "b400286c-6088-4024-a5bc-91c7528f699f",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
