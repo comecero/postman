@@ -2068,7 +2068,7 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Status is pending\"] = data.mata.status === \"failed\";",
-                  "tests[\"Total is OK\"] = data.total === 15;"
+                  "tests[\"Total is OK\"] = data.meta.total === 15;"
                 ],
                 "type": "text/javascript"
               }
@@ -2515,49 +2515,49 @@
   ],
   "variable": [
     {
-      "id": "836de41d-03ac-4730-bbe7-2f9634de8b7f",
+      "id": "955bf98f-9405-4b08-be98-857daa2f2c26",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f293cd25-7eaf-4ccd-86f2-9ef7fc94f1a7",
+      "id": "2b952e82-c6f8-486f-b54a-76862da78f05",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bee51303-d479-4132-beb0-46970ef1238a",
+      "id": "546c016c-1bb0-4bb2-8d9c-3c5f82f7273d",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "64f1e63b-d1f5-422a-a2ea-390fe12ccd61",
+      "id": "29f467c1-5b18-47b5-8274-87b8cefa965d",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d7e8d324-f771-4697-a429-47384a529b5b",
+      "id": "7f613498-85d3-4842-ad14-eac776194368",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "56f0a3ef-b72b-4cef-a756-49d3746b08a8",
+      "id": "75fabd97-31fd-4910-acae-98bce5a9e396",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "950b4823-9b8b-42cc-8bf9-d430e1082884",
+      "id": "15fc8ea3-958e-4d26-a42a-f68c75312fdb",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
