@@ -7004,258 +7004,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "56a9fb14-45a8-4450-a01f-bc20b73df64e",
-      "name": "Pre-request Configurations Copy",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "fc9678fb-d8c7-461b-9276-0a16d738743c",
-          "name": "Get Notification Subscriptions",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2592e172-faa2-4ba6-b188-29c9626dc738",
-                "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
-                  "",
-                  "// Find the payment, order notification subscriptions",
-                  "var notifications = JSON.parse(responseBody);",
-                  "var list = notifications.data;",
-                  "",
-                  "_.each(list, function(item) {",
-                  "    ",
-                  "    if (item.type === \"order:confirmation\")",
-                  "        pm.globals.set(\"order_confirmation_subscription_url\", item.url);",
-                  "        ",
-                  "            if (item.type === \"payment:confirmation\")",
-                  "                pm.globals.set(\"payment_confirmation_subscription_url\", item.url);",
-                  "        ",
-                  "            if (item.type === \"refund:confirmation\")",
-                  "                pm.globals.set(\"refund_confirmation_subscription_url\", item.url);        ",
-                  "    ",
-                  "});",
-                  "",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "https://{{host}}/api/v1/notification_subscriptions",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "da0cf8ac-e701-4cb3-813b-edd2dcefd65e",
-          "name": "Disable Order Notification Subscription",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ec320aec-60a1-416a-8184-2ebe91db1f38",
-                "type": "text/javascript",
-                "exec": [
-                  "tests[\"Order email notifications have been disabled\"] = responseCode.code === 200;",
-                  "",
-                  "",
-                  ""
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"active\": false\n}"
-            },
-            "url": "{{order_confirmation_subscription_url}}",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "7ff4363b-2587-4162-a420-b9a66abd6859",
-          "name": "Disable Payment Notification Subscription",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "82452e4c-9550-4daa-8063-f5b84f40aee0",
-                "type": "text/javascript",
-                "exec": [
-                  "tests[\"Payment email notifications have been disabled\"] = responseCode.code === 200;",
-                  "",
-                  ""
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"active\": false\n}"
-            },
-            "url": "{{payment_confirmation_subscription_url}}",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "9d9c5997-2eaa-43d8-bda1-540d432d0939",
-          "name": "Disable Refund Notification Subscription",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "5de69872-771e-4fc8-8bc0-76c002663061",
-                "type": "text/javascript",
-                "exec": [
-                  "tests[\"Refund email notifications have been disabled\"] = responseCode.code === 200;",
-                  "",
-                  ""
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "7839393f-c627-406f-9af5-43661bffc685",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"active\": false\n}"
-            },
-            "url": "{{refund_confirmation_subscription_url}}",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        }
-      ],
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "db236e77-f986-4125-b356-5008a2e559a8",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "fa8477f9-7918-46af-8244-edb14f473d45",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
     }
   ],
   "event": [
@@ -7282,49 +7030,49 @@
   ],
   "variable": [
     {
-      "id": "82c64717-3641-4f90-a150-b275f60c4296",
+      "id": "05dd6a5f-8c9f-4417-a398-6d7ac64c2702",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6ca7a365-f810-4c2f-8d7e-acbea2a65abd",
+      "id": "41b9c54c-dcf3-4721-be3e-b9bb2b8cc3eb",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8bb899ee-281c-4af3-8889-07d822bb6161",
+      "id": "b0c436fb-567b-458c-8cdf-57f0c0fc03ce",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "aa2b7ac9-1b97-4e5c-a01a-154c8177c141",
+      "id": "deff2064-5806-4dff-be19-07e7d31bb937",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a010c074-9f61-4313-acb1-9698929397b5",
+      "id": "2639797e-e1d6-4736-8a3b-53dec9e5168e",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fc4b619d-f57c-4e87-bc4a-757a81d39726",
+      "id": "b4106871-5252-4e90-89e9-5d87f7531f42",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c228a068-c99f-4aba-a266-74c60f94d111",
+      "id": "61f3faef-c0ef-4f5f-b9aa-7e0c05033f29",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
