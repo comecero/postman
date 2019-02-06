@@ -2049,7 +2049,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"capture\": false,\n   \"total\": 5,\n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
+              "raw": "{\n   \"capture\": true,\n   \"total\": 5,\n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
             },
             "url": "{{invoice_url}}/payments"
           },
@@ -2143,68 +2143,6 @@
                 {
                   "key": "expand",
                   "value": "order",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "a0a812f0-a861-4916-a5ef-9addbbfee2c2",
-          "name": "Capture Payment",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
-                "exec": [
-                  "tests[\"Capture request created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Captures were successful\"] = data.success_count === 2;",
-                  "tests[\"Correct number of payments captured\"] = data.payments.length === 2;",
-                  "tests[\"Correct amount was captured \" + pm.globals.get(\"order_total\")] = pm.globals.get(\"order_total\") === data.total;",
-                  "",
-                  "tests[\"Payments captured in the correct order\"] === data.payments[0].total > data.payments[1].total;",
-                  "",
-                  "tests[\"Payment status is OK\"] = data.payments[0].status === \"completed\";",
-                  "tests[\"Payment 2 status is OK\"] = data.payments[1].status === \"completed\";",
-                  "tests[\"Order status is OK\"] = data.payments[0].order.payment_status === \"completed\";",
-                  "tests[\"Invoice status is OK\"] = data.payments[0].invoice.payment_status === \"completed\";"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{order_url}}/capture?expand=payments.order,payments.invoice",
-              "host": [
-                "{{order_url}}"
-              ],
-              "path": [
-                "capture"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "payments.order,payments.invoice",
                   "equals": true
                 }
               ]
@@ -2515,49 +2453,49 @@
   ],
   "variable": [
     {
-      "id": "22c30c21-6806-4613-9054-e520fa74961a",
+      "id": "37afd899-008d-44cd-988e-b3d9e16f368f",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cebe1664-75c4-4ae5-8366-ac9484653a4c",
+      "id": "f3f3fd60-bf8e-4a5b-9793-56b8b09c1f63",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bedb36e5-b1ac-4cc6-927c-7b09df8664c1",
+      "id": "5e7e8915-2e48-4bb2-bce0-8287e30a8e38",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1c4ea5a0-0cd2-400c-a772-74df1b8a5d61",
+      "id": "7bd81df9-42f2-4737-b5dd-2d48708d5f5e",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "29db417f-8943-4422-b568-c5a0d1c37466",
+      "id": "5c27c5a1-21bb-49e1-9336-d309ffab707c",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4bdede6e-8a34-4a68-9bfd-f00f2654e531",
+      "id": "6fbbd0f1-884f-414d-a2a9-b927510b16f7",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2485883e-192e-4933-8523-084d11536ede",
+      "id": "fe7cdfe5-7cc6-4f2c-9f98-cfab68db59f0",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
