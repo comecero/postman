@@ -2067,8 +2067,8 @@
                   "tests[\"Payment failed\"] = responseCode.code === 402;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Status is pending\"] = data.error.meta.status === \"failed\";",
-                  "tests[\"Total is OK\"] = data.error.meta.total === 15;"
+                  "tests[\"Status is pending\"] = data.error.meta.payment.status === \"failed\";",
+                  "tests[\"Total is OK\"] = data.error.meta.payment.total === 15;"
                 ],
                 "type": "text/javascript"
               }
@@ -2515,49 +2515,49 @@
   ],
   "variable": [
     {
-      "id": "1b29adea-606f-4b14-8c75-5466bf5009bf",
+      "id": "22c30c21-6806-4613-9054-e520fa74961a",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b91afdf1-b960-48cf-acce-26ebb865787f",
+      "id": "cebe1664-75c4-4ae5-8366-ac9484653a4c",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4a7a0b84-7b4f-49a8-afba-c866ba8dc156",
+      "id": "bedb36e5-b1ac-4cc6-927c-7b09df8664c1",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7f3ff46e-62cb-423e-aa6d-a0b7b8990964",
+      "id": "1c4ea5a0-0cd2-400c-a772-74df1b8a5d61",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0185b418-712b-4703-b1ea-8a8116afbf10",
+      "id": "29db417f-8943-4422-b568-c5a0d1c37466",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f46e2096-42cd-4c8d-887f-ccdba09fd5d6",
+      "id": "4bdede6e-8a34-4a68-9bfd-f00f2654e531",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "15488e72-1442-4dda-ae19-a2573d2b44d0",
+      "id": "2485883e-192e-4933-8523-084d11536ede",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
