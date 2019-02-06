@@ -2028,7 +2028,7 @@
                   "tests[\"Payment created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Status is pending\"] = data.status === \"pending\";",
+                  "tests[\"Status is pending\"] = data.status === \"completed\";",
                   "tests[\"Total is OK\"] = data.total === 5;"
                 ],
                 "type": "text/javascript"
@@ -2108,7 +2108,7 @@
                   "pm.globals.set(\"order_url\", data.order.url);",
                   "pm.globals.set(\"order_total\", data.order.total);",
                   "",
-                  "tests[\"Status is pending\"] = data.status === \"pending\";",
+                  "tests[\"Status is pending\"] = data.status === \"completed\";",
                   "tests[\"Total is OK\"] = data.total === 20;"
                 ],
                 "type": "text/javascript"
@@ -2129,7 +2129,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"capture\": false,\n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
+              "raw": "{\n   \"capture\": true,\n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
             },
             "url": {
               "raw": "{{invoice_url}}/payments?expand=order",
@@ -2453,49 +2453,49 @@
   ],
   "variable": [
     {
-      "id": "b4938d8a-26fe-4eeb-80ef-cc8acf85309e",
+      "id": "3b00f2f9-636c-4300-85a8-ad0c2b97b91a",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3e2c3a05-e994-483f-be49-450273ee02b3",
+      "id": "62877bc4-2f1d-4b69-b597-162c0ec3dfaf",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "588f5908-6b0e-4415-b6b3-11f90f3a2c90",
+      "id": "2e4bc523-f710-4ff5-8404-5464a3fcc1e4",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "04162b09-073a-4ca9-816f-e443a05fef01",
+      "id": "f2225ee8-b874-475e-a42a-53ff808f669c",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c988e924-3184-4c83-9c62-3323eb92e862",
+      "id": "4368e98d-3629-4e3b-b127-782499616269",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "363911aa-0ce1-4fe4-b8a6-49faa351692a",
+      "id": "bc87a198-4a88-401e-8b1f-e5e8f3b12b6b",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "009e0107-a40c-407d-b003-fcbb19ff5258",
+      "id": "791100da-d5ff-47c9-95b5-d200cd38fb68",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
