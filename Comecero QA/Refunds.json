@@ -2314,45 +2314,6 @@
           "response": []
         },
         {
-          "_postman_id": "3161fd15-4338-4413-aead-8398aea7cdce",
-          "name": "Create Failed Payment",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
-                "exec": [
-                  "tests[\"Payment failed\"] = responseCode.code === 402;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Status is pending\"] = data.error.meta.payment.status === \"failed\";",
-                  "tests[\"Total is OK\"] = data.error.meta.payment.total === 15;"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n   \"capture\": true,\n   \"total\": 15,\n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566669999\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
-            },
-            "url": "{{invoice_url}}/payments"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "af5b5d7f-21cb-4aaa-bd02-e092de918178",
           "name": "Create Payment (Remainder)",
           "event": [
@@ -2711,49 +2672,49 @@
   ],
   "variable": [
     {
-      "id": "5ea2f5e6-bc9c-4ef7-bb27-18c8e21ea06b",
+      "id": "af08209c-60b1-4a80-a6fd-2d2faf143ad5",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f1840737-63b9-4cdb-89f1-0b5c63ef77b1",
+      "id": "98fdd7e0-6fa1-43e7-b6d5-703975b6cbab",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b896e536-1491-4e12-9db7-326c437ae7af",
+      "id": "5db26058-cf0e-4143-a7c6-a9c094188ca6",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4bee72e9-98f5-4a47-9a13-7e2b10383829",
+      "id": "a67fc59d-f84a-4e1b-b39c-ae0fa1db3286",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "09d3027d-93cb-4c20-b055-b97f1f1af7a0",
+      "id": "5cc8e552-99fa-402f-9280-547b7ace8f81",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3b8efafc-6595-486f-a6c6-8511b51d540c",
+      "id": "85f2894a-fa32-4b8f-b658-f46de15d601d",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "53f56d31-a3f4-450a-8eef-5105765e5152",
+      "id": "4cede166-92b8-4ac0-aaea-de9cd322f31a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
