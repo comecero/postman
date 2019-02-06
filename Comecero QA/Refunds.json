@@ -2378,7 +2378,7 @@
               "script": {
                 "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
                 "exec": [
-                  "tests[\"Capture request created successfully\"] = responseCode.code === 201;",
+                  "tests[\"Refund request created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Refund were successful\"] = data.success_count === 1;",
@@ -2636,7 +2636,7 @@
               "script": {
                 "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
                 "exec": [
-                  "tests[\"Capture request created successfully\"] = responseCode.code === 201;",
+                  "tests[\"Refund request created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Refunds were successful\"] = data.success_count === 2;",
@@ -2894,19 +2894,7 @@
               "script": {
                 "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
                 "exec": [
-                  "tests[\"Capture request created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Refunds were successful\"] = data.success_count === 2;",
-                  "tests[\"Correct number of refunds processed\"] = data.refunds.length === 2;",
-                  "tests[\"Correct amount was refunded\"] = data.total === 35;",
-                  "",
-                  "tests[\"Refunds processed in the correct order\"] === data.refunds[0].total > data.refunds[1].total;",
-                  "",
-                  "tests[\"Refund status is OK\"] = data.refunds[0].status === \"completed\";",
-                  "tests[\"Refund 2 status is OK\"] = data.refunds[1].status === \"completed\";",
-                  "tests[\"Order status is OK\"] = data.refunds[0].order.payment_status === \"pending\";",
-                  "tests[\"Invoice status is OK\"] = data.refunds[0].invoice.payment_status === \"pending\";"
+                  "tests[\"Refund more than captured total\"] = responseCode.code === 400;"
                 ],
                 "type": "text/javascript"
               }
@@ -3188,49 +3176,49 @@
   ],
   "variable": [
     {
-      "id": "641256ce-31c1-41e1-ac45-81da5cf11f12",
+      "id": "10f9956b-bf72-425e-86d6-958d35a473b9",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ff40c2c5-4152-43ef-8cb2-ecce193b25a5",
+      "id": "476a7863-ff9b-448c-922f-74416bc6e4c5",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "13e620df-47cb-4c30-a377-926e931ca575",
+      "id": "ee1f2a88-e5f8-49ef-9f3a-793e6cac1ebd",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "370ff1b0-12e9-479c-b7da-b4fdf8db2e4b",
+      "id": "c778fba0-a0c7-43ba-936d-a77335915c67",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d67c053b-e383-4cd8-b3dc-d04d1eaa8b1d",
+      "id": "4f98af1a-b476-4c5c-bc01-281776be2c0f",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c675d579-7785-4f71-8bf1-414ffe535d4b",
+      "id": "27331536-5fee-4a30-93a7-1ea8271b954e",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5e34c52b-9828-4230-aefa-37901ededdc8",
+      "id": "efedf3f4-4e4a-4564-b711-fe2ec14ca1e5",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
