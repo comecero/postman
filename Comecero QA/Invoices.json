@@ -448,6 +448,61 @@
             "url": "{{order_url}}/refunds"
           },
           "response": []
+        },
+        {
+          "_postman_id": "bdaa8fae-3da1-41da-968c-4293e300752a",
+          "name": "Create Invoice Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
         }
       ]
     },
@@ -7030,49 +7085,49 @@
   ],
   "variable": [
     {
-      "id": "982144db-115c-4338-b3f3-444cfe9140ee",
+      "id": "122d594b-6228-4e6e-813f-3bc7b5dd6338",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cc886dde-b403-447f-9d46-b14283ee7738",
+      "id": "f40d0308-7ca3-418d-8126-c49359ca776b",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "25d84099-e3c8-473d-91fa-7fdecd22541c",
+      "id": "c45b49b1-f788-4532-ab6d-60683a96fb03",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2ad6c81e-e705-4490-9290-c909a210cc12",
+      "id": "4670c51a-b97b-4005-a688-2f5e577ffc28",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bef19a21-eea9-4317-a493-f36d1461cb40",
+      "id": "267df326-6b1e-448c-a9d0-a42c091e15b3",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6aec4fe7-c560-41d5-a3bf-814f0e704d49",
+      "id": "288f3b2a-638c-4163-90ad-b637ec325e18",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8279ca53-0884-4357-9505-c9af8895557e",
+      "id": "c6ae797f-435b-4792-b186-98b5e5a11ece",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
