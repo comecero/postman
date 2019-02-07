@@ -2096,6 +2096,67 @@
             "url": "{{invoice_url}}"
           },
           "response": []
+        },
+        {
+          "_postman_id": "b93edfc4-f42c-470c-8931-f8758032e889",
+          "name": "Wait 3 seconds Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a05ebd5c-7c23-42c3-9eb9-63ddde25ee85",
+                "exec": [
+                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "",
+                  "var date = new Date();",
+                  "var waitForMinutes = 7;",
+                  "",
+                  "tests[\"Waiting a few seconds to burn down subscription used time\"] = true;",
+                  "",
+                  "setTimeout(function() {",
+                  "    tests[\"Timer completed. Testing resuming...\"] = true;",
+                  "}, 3000);",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "9751ab2a-b7c5-4e5c-9971-064d19f11c72",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "https://{{host}}/api/v1/subscriptions",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
         }
       ]
     },
@@ -7030,49 +7091,49 @@
   ],
   "variable": [
     {
-      "id": "4a54d830-2bcd-4734-9781-87fc0ebf2484",
+      "id": "c4090d61-2925-44aa-a70c-42082eb27ca1",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eeeb6273-bb07-4015-babf-4cc9b3614416",
+      "id": "47bb4e30-15c4-41b2-a2bc-9e5d080d9569",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "983087ee-da92-4f34-b724-341fb17a304f",
+      "id": "295c683c-271f-4495-996b-f64e8fd6702f",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5f406603-5547-476a-88f5-c66647c67466",
+      "id": "9bc66a54-b1c4-44b1-b6fe-78488654daf0",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "410a7c26-caab-4e2c-b3fa-996283f27e2a",
+      "id": "15e28f21-1bd3-466c-bea2-a75bf4d872f0",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0e497a7e-0ef4-4060-981d-77a86ea669e0",
+      "id": "6a169d74-c2fd-48f8-94c8-47e9ed8ef369",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2d1a43c9-807f-4406-b748-b813879b1542",
+      "id": "b065b99e-5130-49e7-b66d-e09e9e2d604a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
