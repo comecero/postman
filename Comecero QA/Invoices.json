@@ -4845,6 +4845,61 @@
           "response": []
         },
         {
+          "_postman_id": "ce7d264b-cd2a-48fb-94d1-4855d5d07fc7",
+          "name": "Pay Partial Invoice (2) Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
+                "exec": [
+                  "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 30;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";",
+                  "tests[\"Order created\"] = data.order !== null;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"total\": 30,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "b5de6012-e236-4478-b140-6be16937b989",
           "name": "Get Invoice",
           "event": [
@@ -7373,49 +7428,49 @@
   ],
   "variable": [
     {
-      "id": "8fce629a-620f-4917-8230-cf886013352a",
+      "id": "298f1ec7-92c2-42db-9939-2571ae4231a4",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "23fb8dc2-9298-48a9-adbe-b1654bf6b1d2",
+      "id": "7f9015df-0381-431b-b1a8-bbf44899f4b1",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d018d3fb-9fbf-41a8-ac5e-ae78f1ae87de",
+      "id": "f4869b6d-ce98-4af4-afa6-38278bdd9c64",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "99529f1e-23ab-4bc9-aac1-e3c70b65a595",
+      "id": "244eb4de-54fc-4a7a-8f71-8ea4e3810b34",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8d8dd5bc-8356-4121-8fad-e261c9ac22b9",
+      "id": "4facd319-ea1c-4faa-aca0-b1312b2cfe0c",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e6525cc0-7797-4621-bf9f-234edf4ae398",
+      "id": "0f8b5fb9-0e88-4ab3-a376-42a0b8472392",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a2836840-2735-4b2d-af56-95f10f49d970",
+      "id": "f76f2f8d-c3e3-42d0-b196-0b09fe7ecb60",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
