@@ -5010,6 +5010,61 @@
           "response": []
         },
         {
+          "_postman_id": "22660bc1-1e43-45fe-a8e4-e97373c4f185",
+          "name": "Get Invoice Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "exec": [
+                  "tests[\"Invoice fetched successfully\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total remaining is OK\"] = data.total_remaining === 5;",
+                  "tests[\"Total payments is OK\"] = data.total_payments === 40;",
+                  "tests[\"Payment status is OK\"] = data.payment_status === 'unpaid';"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{invoice_url}}"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "c82327b3-b81e-4b5f-b2a7-4ef6a3c8b739",
           "name": "Pay Partial Invoice (3)",
           "event": [
@@ -7538,49 +7593,49 @@
   ],
   "variable": [
     {
-      "id": "9ed366e8-9c93-41d6-9360-2281e9acf940",
+      "id": "4b0d7ebd-5996-41c1-a73f-bdba8d5f910a",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d79588e7-ebf4-4080-8c43-46f2380c6a15",
+      "id": "71cbdb76-0ab2-41aa-8654-e0e78288af1b",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6078976b-35e4-4c98-9947-87bc91da8b54",
+      "id": "a38fc19f-7530-4faa-b637-ae475b6df49e",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e9aaf8da-f686-4462-8545-546b3f83320f",
+      "id": "c2979807-ff82-490a-b481-f73185263978",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "73f9e85f-460c-490f-8055-c0c59cd03081",
+      "id": "bb65b0ed-8c2f-48d0-8f42-0db8baa2a90e",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "32596d1a-1f9d-4c2e-adf1-9c19af6315a3",
+      "id": "5b228802-5fda-4748-94bb-5b369ed94373",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "639b9deb-8631-41c0-808d-97efa32004d4",
+      "id": "807d771a-8a3e-4f33-855d-1d486e87dd02",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
