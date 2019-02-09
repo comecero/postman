@@ -3431,7 +3431,8 @@
                   "tests[\"Status is pending\"] = data.status === \"completed\";",
                   "tests[\"Total is OK\"] = data.total === 5;",
                   "",
-                  "pm.globals.set(\"payment_url\", data.url);"
+                  "pm.globals.set(\"payment_url\", data.url);",
+                  "pm.globals.set(\"order_url\", data.order);"
                 ],
                 "type": "text/javascript"
               }
@@ -3451,7 +3452,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"capture\": true,\n   \"total\": 5,\n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
+              "raw": "{\n   \"capture\": true,\n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
             },
             "url": "{{invoice_url}}/payments"
           },
@@ -3466,7 +3467,7 @@
               "script": {
                 "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
                 "exec": [
-                  "tests[\"Chargeback failed, can't record against order\"] = responseCode.code === 400;"
+                  "tests[\"Refund failed, can't record 'record only' against order\"] = responseCode.code === 400;"
                 ],
                 "type": "text/javascript"
               }
@@ -3546,6 +3547,48 @@
                 }
               ]
             }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f8964976-4b1d-48cc-8ff6-4454a95e9f45",
+          "name": "Create Payment Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
+                "exec": [
+                  "tests[\"Payment created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Status is pending\"] = data.status === \"completed\";",
+                  "tests[\"Total is OK\"] = data.total === 5;",
+                  "",
+                  "pm.globals.set(\"payment_url\", data.url);",
+                  "pm.globals.set(\"order_url\", data.order);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"capture\": true,\n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
+            },
+            "url": "{{invoice_url}}/payments"
           },
           "response": []
         }
@@ -3790,49 +3833,49 @@
   ],
   "variable": [
     {
-      "id": "c4c0091b-2705-4b64-8f46-50f2249cd6be",
+      "id": "056aa890-5b29-4884-819b-63d16e150db7",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "76c3d349-f827-4969-ac8f-90b10e0e3ce9",
+      "id": "0c6aee0b-8916-4980-8e44-dd888b72b804",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8d4249d8-c011-455e-bcb2-f46fc4aa2b86",
+      "id": "62480fa2-f016-43cb-8b8b-aea5e93c004d",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6a10e447-cd45-49cf-92b4-d4abbb738bb5",
+      "id": "26879342-2e0a-4414-8b09-d03d6a59e462",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7563bdde-0300-4a21-a219-69f27c10c3f3",
+      "id": "304291c4-7daf-4598-84ae-3c5559958368",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "86e9c79f-e9eb-4394-b237-9eeddc136e2a",
+      "id": "0e8719e0-74ab-4420-a033-60f0f034ffd8",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0043327a-2b33-4d28-82de-eabb99c7c6f2",
+      "id": "4d2bc8b3-3ce9-462b-a477-b71aeed16bd9",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
