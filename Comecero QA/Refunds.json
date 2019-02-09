@@ -4362,9 +4362,9 @@
                   "tests[\"Capture request created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Refunds were successful\"] = data.success_count === 2;",
-                  "tests[\"Correct number of refunds processed\"] = data.refunds.length === 2;",
-                  "tests[\"Correct amount was refunded\"] = data.total === 15;",
+                  "tests[\"Refunds were successful\"] = data.success_count === 3;",
+                  "tests[\"Correct number of refunds processed\"] = data.refunds.length === 3;",
+                  "tests[\"Correct amount was refunded\"] = data.total === 38;",
                   "",
                   "tests[\"Refunds processed in the correct order\"] === data.refunds[0].total > data.refunds[1].total;",
                   "",
@@ -4415,7 +4415,7 @@
         },
         {
           "_postman_id": "090c2073-6b77-49c0-9d1e-eda68c1cccc9",
-          "name": "Refund Order Copy",
+          "name": "Refund Order (2)",
           "event": [
             {
               "listen": "test",
@@ -4425,17 +4425,13 @@
                   "tests[\"Capture request created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Refunds were successful\"] = data.success_count === 2;",
-                  "tests[\"Correct number of refunds processed\"] = data.refunds.length === 2;",
-                  "tests[\"Correct amount was refunded\"] = data.total === 15;",
-                  "",
-                  "tests[\"Refunds processed in the correct order\"] === data.refunds[0].total > data.refunds[1].total;",
+                  "tests[\"Refunds were successful\"] = data.success_count === 1;",
+                  "tests[\"Correct number of refunds processed\"] = data.refunds.length === 1;",
+                  "tests[\"Correct amount was refunded\"] = data.total === 1;",
                   "",
                   "tests[\"Refund status is OK\"] = data.refunds[0].status === \"completed\";",
-                  "tests[\"Refund 2 status is OK\"] = data.refunds[1].status === \"completed\";",
-                  "tests[\"Refund 3 status is OK\"] = data.refunds[2].status === \"completed\";",
-                  "tests[\"Order status is OK\"] = data.refunds[0].order.payment_status === \"completed\";",
-                  "tests[\"Invoice status is OK\"] = data.refunds[0].invoice.payment_status === \"completed\";"
+                  "tests[\"Order status is OK\"] = data.refunds[0].order.payment_status === \"refunded\";",
+                  "tests[\"Invoice status is OK\"] = data.refunds[0].invoice.payment_status === \"refunded\";"
                 ],
                 "type": "text/javascript"
               }
@@ -4455,7 +4451,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"total\": 38\n}"
+              "raw": ""
             },
             "url": {
               "raw": "{{order_url}}/refunds?expand=refunds.order,refunds.invoice",
@@ -4473,6 +4469,128 @@
                 }
               ]
             }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "02def655-f40b-4756-8405-efcd1e6d4382",
+      "name": "From Order, Refund to CAB",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "7ed8dbe2-2c7a-4ee8-8e40-d408d3b84623",
+          "name": "Create Cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3a0eecbc-a75e-4942-a4bf-2ee73fe61f21",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Cart created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cart_url\", data.url);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":3\r\n      },   \t\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":2\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/carts"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7a37ecf5-0cba-4cca-92d9-e417a5d8b9c3",
+          "name": "Create Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
+                "exec": [
+                  "tests[\"Payment created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"order_url\", data.order);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"capture\": true,    \n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
+            },
+            "url": "{{cart_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "381f02c5-1d27-46a1-b390-333dc8682d35",
+          "name": "Submit Refund",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund was successful\"] = data.total === 100 && data.subtotal === 90 && data.shipping === 10 && data.tax === 0;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{order_url}}/refunds"
           },
           "response": []
         }
@@ -4717,49 +4835,49 @@
   ],
   "variable": [
     {
-      "id": "698592a0-0cc1-4e61-9576-1b170b1a190a",
+      "id": "bc7ecd72-6fad-4391-8697-e748aa5808a1",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2c17f821-da98-479b-9b39-336c4a65dbc6",
+      "id": "4decc957-2104-46db-9fc7-278f81b2c520",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3fb1f25f-bc9c-4586-868d-bbf33c7768b8",
+      "id": "b8914f9e-32c8-4351-9db1-2be0ca7a8f73",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bbf2ff65-b1b4-4a9a-9b0a-0a807a772154",
+      "id": "9caa6663-da1f-479b-b7dd-c7b2d8b0664f",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a2c554fa-cff3-4684-86e1-88e0a5d0735a",
+      "id": "65445a0c-831a-424a-b966-938e601a9fb4",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ea2286ed-3f8e-4639-8110-6d117ac5bc59",
+      "id": "e0d9560f-3a5f-4860-bfc3-10e5ea887c7b",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b2eca508-0a71-4b04-a2f7-34a4dc528602",
+      "id": "8e7946f0-5960-449c-852d-9f78562e57b0",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
