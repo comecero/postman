@@ -1060,74 +1060,6 @@
           "response": []
         },
         {
-          "_postman_id": "baaa0d6a-9925-4d2c-ba21-10eb30723910",
-          "name": "Preview Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
-                "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 1 && data.subscription_terms.billing_interval_unit === \"hour\";",
-                  "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
-                  "tests[\"Payment total is 0\"] = data.payment_total === 0;",
-                  "tests[\"Net total is 0\"] = data.net_total === 0;",
-                  "tests[\"Date next payment is OK \" + data.date_next_payment] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
-                  "tests[\"Date effective is OK \" + data.date_effective] = data.date_effective === pm.globals.get(\"date_current_period_end\");",
-                  "",
-                  "pm.globals.set(\"payment_total\", data.payment_total);",
-                  "pm.globals.set(\"refund_total\", data.refund_total);",
-                  "pm.globals.set(\"net_total\", data.net_total);",
-                  "pm.globals.set(\"date_effective\", data.date_effective);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"apply_immediately\": false,\n\t\"quantity\": 2\n}"
-            },
-            "url": {
-              "raw": "{{subscription_item_url}}/change_quantity/preview?expand=subscription.invoices",
-              "host": [
-                "{{subscription_item_url}}"
-              ],
-              "path": [
-                "change_quantity",
-                "preview"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "39398421-0b31-4023-9bf3-d6e204c83240",
           "name": "Change Item Quantity",
           "event": [
@@ -2974,6 +2906,74 @@
               "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
             },
             "url": "https://{{host}}/api/v1/products/physical-sub.test",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "baaa0d6a-9925-4d2c-ba21-10eb30723910",
+          "name": "Preview Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
+                "exec": [
+                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 1 && data.subscription_terms.billing_interval_unit === \"hour\";",
+                  "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
+                  "tests[\"Payment total is 0\"] = data.payment_total === 0;",
+                  "tests[\"Net total is 0\"] = data.net_total === 0;",
+                  "tests[\"Date next payment is OK \" + data.date_next_payment] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
+                  "tests[\"Date effective is OK \" + data.date_effective] = data.date_effective === pm.globals.get(\"date_current_period_end\");",
+                  "",
+                  "pm.globals.set(\"payment_total\", data.payment_total);",
+                  "pm.globals.set(\"refund_total\", data.refund_total);",
+                  "pm.globals.set(\"net_total\", data.net_total);",
+                  "pm.globals.set(\"date_effective\", data.date_effective);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"apply_immediately\": false,\n\t\"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "{{subscription_item_url}}/change_quantity/preview?expand=subscription.invoices",
+              "host": [
+                "{{subscription_item_url}}"
+              ],
+              "path": [
+                "change_quantity",
+                "preview"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "subscription.invoices",
+                  "equals": true
+                }
+              ]
+            },
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -8993,56 +8993,56 @@
   ],
   "variable": [
     {
-      "id": "1e496e0f-a7b6-4898-aded-acc67053c33f",
+      "id": "f6c1c622-9bb4-45ab-9644-42416b043e44",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "126e60cd-69e1-449b-bc8b-06bcdc786c65",
+      "id": "8759a035-4278-432e-89ad-f206565134bb",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "286f05f6-5e26-4b9e-8b71-3c3aecf0c0b6",
+      "id": "fd258b56-5614-45fd-bca7-6be81fe61eda",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e2d893d6-47e3-48b6-8430-36eca8f02d1c",
+      "id": "23cdb7b8-32de-42b5-a72e-46fe1941c0d0",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4f76c4f3-5845-46aa-9daa-69afcad58842",
+      "id": "b78c275b-e3c1-42a3-936c-01febaa9fd34",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "670d67fc-648d-452c-9711-5f5935c2af46",
+      "id": "79ebfcde-6284-4670-bd02-d7d49628a717",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8226f0c6-b622-4807-91a4-60e0c176bdaf",
+      "id": "eda545b9-ce5b-42c5-a817-5d69a779322a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5f61c76c-305b-441b-9150-0b633c9fb1a1",
+      "id": "088b0644-bc12-4792-afa0-56ce9be08e1a",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
