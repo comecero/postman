@@ -4588,7 +4588,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\n\t\"payment_method\": {\n\t\t\"type\": \"customer_account_balance\"\n\t}\n}"
             },
             "url": "{{order_url}}/refunds"
           },
@@ -4835,49 +4835,49 @@
   ],
   "variable": [
     {
-      "id": "bc7ecd72-6fad-4391-8697-e748aa5808a1",
+      "id": "136ff44b-e2f7-4c17-aef0-3835348c7345",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4decc957-2104-46db-9fc7-278f81b2c520",
+      "id": "61c747e2-42f2-4bf1-bf8b-885148a2f410",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b8914f9e-32c8-4351-9db1-2be0ca7a8f73",
+      "id": "011c587a-1d59-4209-85e6-056b8f7745af",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9caa6663-da1f-479b-b7dd-c7b2d8b0664f",
+      "id": "2fac96fc-d0ec-4cf4-b596-15fb6eba76c7",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "65445a0c-831a-424a-b966-938e601a9fb4",
+      "id": "97716bb2-9c9d-47b6-a4c9-d4f6c2b9ae52",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e0d9560f-3a5f-4860-bfc3-10e5ea887c7b",
+      "id": "2f527f85-3d18-4181-8bad-eaf29ade2300",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8e7946f0-5960-449c-852d-9f78562e57b0",
+      "id": "761e4bce-f2dd-41d3-aa12-8f71f1b6483a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
