@@ -2270,7 +2270,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{hour_subscription_plan_id}}\"   \r\n}"
             },
             "url": "https://{{host}}/api/v1/products/physical-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -2295,7 +2295,7 @@
                   "",
                   "tests[\"Date effective is OK \" + now + \", \" + data.date_effective + \", \" + diff] = diff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
                   "",
-                  "tests[\"New quantity is in subcription terms\"] = data.subscription_terms.quantity === 2;",
+                  "tests[\"New quantity is in subcription terms\"] = data.subscription_terms.quantity === 1;",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
                   "pm.globals.set(\"refund_total\", data.refund_total);",
@@ -2422,7 +2422,7 @@
         },
         {
           "_postman_id": "7c82ac5d-3ca3-45db-8057-e10a91aec264",
-          "name": "Revert Product Subscription Plan (Physical) Copy",
+          "name": "Revert Product Subscription Plan (Physical)",
           "event": [
             {
               "listen": "test",
@@ -2462,7 +2462,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_with_trial_plan_id}}\"   \r\n}"
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{two_hour_subscription_with_trial_plan_id}}\"   \r\n}"
             },
             "url": "https://{{host}}/api/v1/products/physical-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -2903,7 +2903,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_plan_id}}\"   \r\n}"
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{hour_subscription_plan_id}}\"   \r\n}"
             },
             "url": "https://{{host}}/api/v1/products/physical-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -3081,7 +3081,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"subscription_plan_id\": \"{{five_minute_subscription_with_trial_plan_id}}\"   \r\n}"
+              "raw": "{\r\n\t\"subscription_plan_id\": \"{{two_hour_subscription_with_trial_plan_id}}\"   \r\n}"
             },
             "url": "https://{{host}}/api/v1/products/physical-sub.test",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -8993,56 +8993,56 @@
   ],
   "variable": [
     {
-      "id": "f8a0917f-1f5f-4d3b-ab31-c06570256577",
+      "id": "834f252d-8212-408c-8781-d176605fc3d9",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7e372009-e5f5-450f-8e33-4a1cbcf8240d",
+      "id": "e1ba1dff-4b35-4f48-849b-cb659618ef37",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d8ccdbb8-a8fc-4de4-ba10-7aa14acc7b96",
+      "id": "5eb7c6dd-11e8-4c5a-8329-a97792a46c11",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "97e2fa96-e4f8-418b-b9a3-a7ea71a0467a",
+      "id": "861b148c-6a15-44ca-9258-17dbb6d15e65",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "568f44be-aa68-4abf-8e9e-4eca402ec26e",
+      "id": "1b9564db-b9db-4cd9-ae17-cef1a09a4f1c",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "37e0c0ab-0866-4e48-8b55-a6050b70c0a1",
+      "id": "d17d872d-7d42-4706-9698-357f8883b0a7",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bf4448b0-9ae3-4886-8c4e-78e6d85a7bfb",
+      "id": "4ea75e98-e8df-4680-a279-da084aaad332",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3d4e0145-2aa8-49c3-b5b7-fa22828c0560",
+      "id": "45e2dd9f-46b9-437d-884a-1ed7d3ccaebf",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
