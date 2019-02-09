@@ -3162,7 +3162,9 @@
                   "pm.globals.set(\"order_total\", data.order.total);",
                   "",
                   "tests[\"Status is pending\"] = data.status === \"completed\";",
-                  "tests[\"Total is OK\"] = data.total === 40;"
+                  "tests[\"Total is OK\"] = data.total === 40;",
+                  "",
+                  "pm.globals.set(\"payment_url\", data.url);"
                 ],
                 "type": "text/javascript"
               }
@@ -3253,6 +3255,7 @@
                   "tests[\"Correct amount was refunded\"] = data.total === 5;",
                   "tests[\"Refund marked as chargeback\"] = data.is_chargeback === true;",
                   "tests[\"Refund status is OK\"] = data.status === \"completed\";",
+                  "tests[\"Payment status is OK\"] = data.payment.status === \"refunded\";",
                   "tests[\"Order status is OK\"] = data.order.payment_status === \"completed\";"
                 ],
                 "type": "text/javascript"
@@ -3276,7 +3279,7 @@
               "raw": "{\n\t\"total\": 5,\n\t\"is_chargeback\": true\n}"
             },
             "url": {
-              "raw": "{{payment_url}}/refunds?expand=order",
+              "raw": "{{payment_url}}/refunds?expand=order,payment",
               "host": [
                 "{{payment_url}}"
               ],
@@ -3286,7 +3289,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order",
+                  "value": "order,payment",
                   "equals": true
                 }
               ]
@@ -3535,49 +3538,49 @@
   ],
   "variable": [
     {
-      "id": "c02fcd3c-7239-4582-8b3b-042b7794adf0",
+      "id": "886e4f18-d975-4f46-80c9-0851477c9eee",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d0bd7779-70ac-4228-afff-72bbd157d1a7",
+      "id": "ea7abf19-3add-41a3-9fdd-a8a63df0ecc0",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3569d6d2-9f60-408b-b224-9f0db18c5397",
+      "id": "cd23f9d3-4bdd-4ddb-bcb1-99553291bf20",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0ae45ee5-6ac0-455e-96a7-3c2083e503aa",
+      "id": "f7030f56-5dff-4847-9857-5a19273e7923",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "716ffa59-5bae-470b-9b8e-31b90226ebf3",
+      "id": "704218a9-4727-48a5-82c0-62e94258be1c",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3243a4a1-a261-45a3-b6fd-ddad40412f8f",
+      "id": "438c93e6-b69a-4e00-986f-d9644759a43f",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4dafe428-20fd-4217-9554-cee17741b695",
+      "id": "d5b56f83-6cbf-408f-9a82-cadcb84942b3",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
