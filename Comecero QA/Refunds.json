@@ -3240,7 +3240,7 @@
         },
         {
           "_postman_id": "174a3a20-75a4-4f27-aa7b-1d2bc5604f81",
-          "name": "Refund Order Copy",
+          "name": "Refund Payment",
           "event": [
             {
               "listen": "test",
@@ -3250,9 +3250,7 @@
                   "tests[\"Capture request created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Refunds were successful\"] = data.success_count === 2;",
-                  "tests[\"Correct number of refunds processed\"] = data.refunds.length === 2;",
-                  "tests[\"Correct amount was refunded \" + pm.globals.get(\"order_total\")] = pm.globals.get(\"order_total\") === data.total;",
+                  "tests[\"Correct amount was refunded\"] = data.total === 5;",
                   "",
                   "tests[\"Refunds processed in the correct order\"] === data.refunds[0].total > data.refunds[1].total;",
                   "",
@@ -3279,20 +3277,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\n\t\"total\": 5,\n\t\"is_chargeback\": true\n}"
             },
             "url": {
-              "raw": "{{order_url}}/refunds?expand=refunds.order,refunds.invoice",
+              "raw": "{{payment_url}}?expand=order",
               "host": [
-                "{{order_url}}"
-              ],
-              "path": [
-                "refunds"
+                "{{payment_url}}"
               ],
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.order,refunds.invoice",
+                  "value": "order",
                   "equals": true
                 }
               ]
@@ -3541,49 +3536,49 @@
   ],
   "variable": [
     {
-      "id": "8524ea98-26a6-4255-a854-fcb040b4a0ae",
+      "id": "55c4b101-01b2-48f8-8d66-a86bdeb60dea",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a3e97736-5fc4-4dd3-a521-75bedb4a1127",
+      "id": "7f31ad63-2d23-48ee-89ce-a19b07e1bfab",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5b2d4230-9a52-4349-8e3a-3ef062ba8806",
+      "id": "3d84fb45-e2b1-40af-9c79-41bbb65e531b",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "54f8570b-8ab0-4042-8cc1-ef616ffa22c0",
+      "id": "55591897-8fd6-4cdc-80a1-7bf62f34eaf0",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dfede2f3-5618-4301-bb95-69a5fa0ec51c",
+      "id": "a30a1821-199b-4438-ad78-244a62594fa0",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2b2c7edb-cccd-4f0b-b701-5ea793a4e747",
+      "id": "05e35764-72c7-47ec-b67e-e3ca354bc6d5",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fe57613e-66e3-47bf-bfa3-14fc85f1eb6c",
+      "id": "37f7e9b8-59e2-4535-83e2-4a946871b14e",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
