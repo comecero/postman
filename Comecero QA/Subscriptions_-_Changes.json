@@ -576,6 +576,66 @@
           "response": []
         },
         {
+          "_postman_id": "6b0dc3ff-ae74-408e-bd54-db5b3e384d41",
+          "name": "Preview",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
+                "exec": [
+                  "tests[\"Status is 200\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "// There should be one subscription and the total should be less than the item total",
+                  "tests[\"Change invoice was created\"] = data.subscription.invoices.total_items === 1;",
+                  "tests[\"Invoice amount was pro-rated, total: \" + data.subscription.invoices.data[0].total] = data.subscription.invoices.data[0].total < pm.globals.get(\"item_total\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"apply_immediately\": true,\n\t\"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "{{subscription_item_url}}/change_quantity/preview?expand=subscription.invoices",
+              "host": [
+                "{{subscription_item_url}}"
+              ],
+              "path": [
+                "change_quantity",
+                "preview"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "subscription.invoices",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
           "_postman_id": "af24adca-2be2-4ad5-9cbc-772391651d51",
           "name": "Change Item Quantity",
           "event": [
@@ -8538,56 +8598,56 @@
   ],
   "variable": [
     {
-      "id": "a13c85cd-ea33-49c3-99e2-fdedf3baaf0f",
+      "id": "a0f90477-6e93-4e2d-97f1-c799e9ecf18a",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3e6fa751-a5d5-4259-bae2-434495c1f6a3",
+      "id": "0ecf236a-f463-4894-a110-5c97a57aeebd",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3e38653c-77c3-47b6-9595-003237738aaa",
+      "id": "7f240945-9a75-4096-a890-b8850ca25c82",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "38b63273-05f4-4f2f-a790-891912ea70e2",
+      "id": "a717a094-1cdf-4ff9-9f83-e128c53ac1f6",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e6eae742-3bc2-40c3-bc88-e2cbfc600a79",
+      "id": "3f46228e-7672-4c70-b6dd-92cb0fc881e9",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "93b8aefb-e684-48b9-a4a9-c28f347cd66f",
+      "id": "7d7d42f2-2420-4546-9107-ae6cf1792304",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7f0af956-8ff1-4e5d-8397-55b910a9f680",
+      "id": "984dc58a-b713-4b32-b1b2-5f7d7d05387c",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7dd6a322-f9df-4e48-abf7-87a6e32a2f4f",
+      "id": "42052073-da04-4d59-bdf4-2a40ee655136",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
