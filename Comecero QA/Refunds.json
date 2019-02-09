@@ -3018,7 +3018,7 @@
                   "tests[\"Refund created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Refund was successful\"] = data.total === 30;"
+                  "tests[\"Refund was successful\"] = data.total === 10;"
                 ],
                 "type": "text/javascript"
               }
@@ -3038,7 +3038,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"total\": 70\n}"
+              "raw": "{\n\t\"total\": 10\n}"
             },
             "url": "{{order_url}}/refunds"
           },
@@ -3285,49 +3285,49 @@
   ],
   "variable": [
     {
-      "id": "22add74a-30cd-4f1b-9045-63fcd7155159",
+      "id": "4a644411-3ee8-41b1-8aaf-a2b65b3177fd",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "413554b8-dfc1-4311-8a2f-930a5371325e",
+      "id": "0801156f-9418-4261-a87e-4a0a2feb4a48",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c230e49c-ea9a-4e2f-8177-108eb013eccb",
+      "id": "d70c867d-1f83-4ca3-bfb7-1e509999b999",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "563180e6-6b56-478c-8d42-94267b25a15d",
+      "id": "6966a218-3dbd-46c4-b900-07de16650f54",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4cd75462-997b-4db6-b201-aae874d94a93",
+      "id": "a7851505-32d8-4c3b-8c24-6e886f95ac24",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0066e005-42e5-4952-9882-d33f641a17e6",
+      "id": "4728ce7d-8466-485d-b1a6-babbb61bb925",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0077e844-4c6f-434a-a248-4aeb368bf098",
+      "id": "3cd5f74a-5a50-46dc-b424-c7c3207f63d0",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
