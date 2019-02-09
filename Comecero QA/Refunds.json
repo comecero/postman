@@ -3164,7 +3164,7 @@
                   "tests[\"Status is pending\"] = data.status === \"completed\";",
                   "tests[\"Total is OK\"] = data.total === 40;",
                   "",
-                  "pm.globals.set(\"payment_url\", data.url);"
+                  "pm.globals.set(\"payment_2_url\", data.url);"
                 ],
                 "type": "text/javascript"
               }
@@ -3333,12 +3333,207 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"is_chargeback\": true\n}"
+              "raw": "{\n\t\"total\": 40,\n\t\"is_chargeback\": true\n}"
             },
             "url": {
               "raw": "{{payment_2_url}}/refunds?expand=order,payment",
               "host": [
                 "{{payment_2_url}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "order,payment",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "1e4ec435-bfd8-4b53-ab56-74d35c11a35e",
+      "name": "From Order, Record Only",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2103f64d-10bf-4f61-bea8-94d51cb6c4f5",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "624dfec3-c2b8-45a0-954d-3a7bf0406a3d",
+          "name": "Create Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
+                "exec": [
+                  "tests[\"Payment created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Status is pending\"] = data.status === \"completed\";",
+                  "tests[\"Total is OK\"] = data.total === 5;",
+                  "",
+                  "pm.globals.set(\"payment_url\", data.url);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"capture\": true,\n   \"total\": 5,\n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d4aed47f-8d66-4c81-95d3-c8964eaaa515",
+          "name": "Refund Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
+                "exec": [
+                  "tests[\"Chargeback failed, can't record against order\"] = responseCode.code === 400;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"total\": 5,\n\t\"record_only\": true,\n\t\"record_only_memo\": \"Refund as part of an automated test\"\n}"
+            },
+            "url": "{{order_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b5aec1f1-ac22-462a-bc68-9e595d94c1e9",
+          "name": "Refund Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
+                "exec": [
+                  "tests[\"Capture request created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Correct amount was refunded\"] = data.total === 5;",
+                  "tests[\"Refund marked as chargeback\"] = data.is_chargeback === true;",
+                  "tests[\"Refund status is OK\"] = data.status === \"completed\";",
+                  "tests[\"Payment status is OK\"] = data.payment.status === \"refunded\";",
+                  "tests[\"Order status is OK\"] = data.order.payment_status === \"completed\";"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"total\": 5,\n\t\"record_only\": true,\n\t\"record_only_memo\": \"Refund as part of an automated test\"\n}"
+            },
+            "url": {
+              "raw": "{{payment_url}}/refunds?expand=order,payment",
+              "host": [
+                "{{payment_url}}"
               ],
               "path": [
                 "refunds"
@@ -3595,49 +3790,49 @@
   ],
   "variable": [
     {
-      "id": "7458f7b2-21de-48c1-a5ba-d741c606c70a",
+      "id": "c4c0091b-2705-4b64-8f46-50f2249cd6be",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e9e8af53-e2d3-4aab-845f-b6e69d2d1399",
+      "id": "76c3d349-f827-4969-ac8f-90b10e0e3ce9",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "df76d0a8-4342-4e60-8ad5-c65f8ffd8734",
+      "id": "8d4249d8-c011-455e-bcb2-f46fc4aa2b86",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8f2656df-54cf-4470-9f9b-73cdfff060d7",
+      "id": "6a10e447-cd45-49cf-92b4-d4abbb738bb5",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a9509329-2dd0-413f-a312-4a683a5794f4",
+      "id": "7563bdde-0300-4a21-a219-69f27c10c3f3",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a34e7b46-8926-4eae-97a5-e92378b74469",
+      "id": "86e9c79f-e9eb-4394-b237-9eeddc136e2a",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e8eea394-e0b0-4334-8f10-8d77ad878c3b",
+      "id": "0043327a-2b33-4d28-82de-eabb99c7c6f2",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
