@@ -4613,6 +4613,61 @@
           "response": []
         },
         {
+          "_postman_id": "7286811a-f611-4225-9cb3-42dd05affa16",
+          "name": "Submit Refund Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund was successful\"] = data.total === 100 && data.subtotal === 90 && data.shipping === 10 && data.tax === 0;",
+                  "",
+                  "pm.globals.set(\"customer_url\", data.customer);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"payment_method\": {\n\t\t\"type\": \"customer_account_balance\"\n\t}\n}"
+            },
+            "url": {
+              "raw": "{{order_url}}/refunds?expand=refunds.payment_method",
+              "host": [
+                "{{order_url}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "refunds.payment_method",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "e16956bf-6c6e-461d-8e1f-4d26e8f5507c",
           "name": "Check CAB",
           "event": [
@@ -4891,49 +4946,49 @@
   ],
   "variable": [
     {
-      "id": "ddf5468a-517a-4145-beda-c1d9acfd94b1",
+      "id": "490c3866-740c-4358-a417-bb32f9f2fda9",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2ce2950c-f8c6-48f6-93f8-a54921ac70d9",
+      "id": "539741da-5998-443c-928a-b4616e18faf4",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4ef59f2c-2bd1-4a31-b25c-b787f5187191",
+      "id": "230a18cd-827c-4f6b-b7d8-c9ffdfccade8",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2711d49a-87b4-49e7-aa7a-605568482495",
+      "id": "7ac25533-ad3b-4a22-a704-723e05c3f80b",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "62f781fa-8c45-44c0-bbe9-6842aea7bc16",
+      "id": "6c79d330-e582-4e1b-8eb0-fa9446f1b84b",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0b22f938-fe09-4d2a-83f3-460ab1b0c9f9",
+      "id": "f14e3e27-facb-4cb2-a2e6-63735d3a6688",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "760d7996-7f4a-4292-b09d-9baa4f7c01c0",
+      "id": "99cee460-320b-4762-8f78-867fcedcd7a1",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
