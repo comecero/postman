@@ -484,7 +484,8 @@
                   "var data = JSON.parse(responseBody);",
                   "var item = data.items[0];",
                   "pm.globals.set(\"subscription_item\", item);",
-                  "pm.globals.set(\"subscription_item_url\", item.url);"
+                  "pm.globals.set(\"subscription_item_url\", item.url);",
+                  "pm.globals.set(\"date_current_period_end\", data.date_current_period_end);"
                 ],
                 "type": "text/javascript"
               }
@@ -587,9 +588,18 @@
                   "tests[\"Status is 200\"] = responseCode.code === 200;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "// There should be one subscription and the total should be less than the item total",
-                  "tests[\"Change invoice was created\"] = data.subscription.invoices.total_items === 1;",
-                  "tests[\"Invoice amount was pro-rated, total: \" + data.subscription.invoices.data[0].total] = data.subscription.invoices.data[0].total < pm.globals.get(\"item_total\");"
+                  "var now = new Date();",
+                  "var dateEffective = new Date(data.date_effective);",
+                  "var diff = Math.abs(now - dateEffective);",
+                  "",
+                  "tests[\"Date effective is OK \" + now + \", \" + data.date_effective + \", \" + diff] = diff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
+                  "",
+                  "tests[\"New quantity is in subcription terms\"] = data.subscription_terms.quantity === 2;",
+                  "",
+                  "pm.globals.set(\"payment_total\", data.payment_total);",
+                  "pm.globals.set(\"refund_total\", data.refund_total);",
+                  "pm.globals.set(\"net_total\", data.net_total);",
+                  "pm.globals.set(\"date_effective\", data.date_effective);"
                 ],
                 "type": "text/javascript"
               }
@@ -649,7 +659,20 @@
                   "",
                   "// There should be one subscription and the total should be less than the item total",
                   "tests[\"Change invoice was created\"] = data.subscription.invoices.total_items === 1;",
-                  "tests[\"Invoice amount was pro-rated, total: \" + data.subscription.invoices.data[0].total] = data.subscription.invoices.data[0].total < pm.globals.get(\"item_total\");"
+                  "tests[\"Invoice amount was pro-rated, total: \" + data.subscription.invoices.data[0].total] = data.subscription.invoices.data[0].total < pm.globals.get(\"item_total\") * 2; // Multiply by the new quantity",
+                  "",
+                  "// Compare with the preview amounts",
+                  "tests[\"Invoice total equals the preview payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");",
+                  "",
+                  "// The external payment should be the same as the net total.",
+                  "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
+                  "var payment = _.find(data.subscription.customer.payments.data, function(p) { return p.payment_method.type === \"credit_card\" });",
+                  "tests[\"Credit card payment equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === payment.total;",
+                  "",
+                  "// The refund should be to customer account balance and be the same as the refund total",
+                  "tests[\"No refund has been processed\"] = data.subscription.customer.refunds.data.length === 0;",
+                  "",
+                  "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.subscription.date_current_period_end === pm.globals.get(\"date_current_period_end\");"
                 ],
                 "type": "text/javascript"
               }
@@ -672,10 +695,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"apply_immediately\": true,\n\t\"quantity\": 2\n}"
+              "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\t\n\t\"apply_immediately\": true,\n\t\"quantity\": 2\n}"
             },
             "url": {
-              "raw": "{{subscription_item_url}}/change_quantity?expand=subscription.invoices",
+              "raw": "{{subscription_item_url}}/change_quantity?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
               "host": [
                 "{{subscription_item_url}}"
               ],
@@ -685,7 +708,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
                   "equals": true
                 }
               ]
@@ -937,7 +960,8 @@
                   "var data = JSON.parse(responseBody);",
                   "var item = data.items[0];",
                   "pm.globals.set(\"subscription_item\", item);",
-                  "pm.globals.set(\"subscription_item_url\", item.url);"
+                  "pm.globals.set(\"subscription_item_url\", item.url);",
+                  "pm.globals.set(\"date_current_period_end\", data.date_current_period_end);"
                 ],
                 "type": "text/javascript"
               }
@@ -8598,56 +8622,56 @@
   ],
   "variable": [
     {
-      "id": "a0f90477-6e93-4e2d-97f1-c799e9ecf18a",
+      "id": "b3a9a20e-4a83-453a-a16e-82282e4e6618",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0ecf236a-f463-4894-a110-5c97a57aeebd",
+      "id": "89428f13-a740-4433-bfd8-11b99d206d12",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7f240945-9a75-4096-a890-b8850ca25c82",
+      "id": "cfabae8a-8910-4d76-9cd6-a12613d800e0",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a717a094-1cdf-4ff9-9f83-e128c53ac1f6",
+      "id": "7cd30583-730a-4826-a387-fe8282c0a201",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3f46228e-7672-4c70-b6dd-92cb0fc881e9",
+      "id": "0da097cf-d199-4d91-9350-27920c6a17f6",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7d7d42f2-2420-4546-9107-ae6cf1792304",
+      "id": "bfa60196-10d8-4f41-9513-c4068e2ab495",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "984dc58a-b713-4b32-b1b2-5f7d7d05387c",
+      "id": "a06db77f-e64e-427a-aef6-2ca29885f1ac",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "42052073-da04-4d59-bdf4-2a40ee655136",
+      "id": "91c7a1a4-95a0-4657-8b6b-60ac62364dc1",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
