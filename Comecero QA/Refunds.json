@@ -2869,7 +2869,7 @@
               "script": {
                 "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
                 "exec": [
-                  "tests[\"Payment created successfully\"] = responseCode.code === 402;"
+                  "tests[\"Payment failed\"] = responseCode.code === 402;"
                 ],
                 "type": "text/javascript"
               }
@@ -2974,6 +2974,41 @@
         {
           "_postman_id": "b8a57a37-0034-4090-aee4-be8f53bc15ad",
           "name": "Submit Refund (Overflow)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Refund failed\"] = responseCode.code === 400;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"total\": 31\n}"
+            },
+            "url": "{{order_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e31feab2-365e-4dd5-99cf-0543c331c3c5",
+          "name": "Submit Refund (Remainder)",
           "event": [
             {
               "listen": "test",
@@ -3250,49 +3285,49 @@
   ],
   "variable": [
     {
-      "id": "28513fdb-0682-4f1a-8706-d2eb91d66b95",
+      "id": "debf3c1a-1249-4254-9513-eb5dbbbe6e64",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "36747ee3-3ba0-4151-aca2-f8b51d8a42c9",
+      "id": "02def6c0-6e53-4d7a-b894-f2c63a012395",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c98aa210-8a4a-4e23-8c92-fd6f15617eec",
+      "id": "824657ad-e078-4ec5-a5a0-2d350f4fdb2b",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f8bdad55-06fc-40fd-b7be-46c41e412cdd",
+      "id": "d5a76931-56ad-4371-b983-870b69e0b28e",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "be8cae8a-a9ad-48c3-b8f9-9adb9c97dc3b",
+      "id": "fdfa34ff-e4cc-47f7-8be4-700cdfbd6346",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "55f496de-8376-469d-9cec-f99801673359",
+      "id": "03604d0c-d6a4-413e-b550-16bdfd691fcb",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b9e4e5db-26df-4efd-8250-33a3cb02f703",
+      "id": "4be66c8a-ac26-4ee4-a3e5-1d42f161cd14",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
