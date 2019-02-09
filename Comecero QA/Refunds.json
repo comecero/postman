@@ -4412,69 +4412,6 @@
             }
           },
           "response": []
-        },
-        {
-          "_postman_id": "ea299239-f0ae-4fb0-bc01-ed8e0513286e",
-          "name": "Refund Order Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
-                "exec": [
-                  "tests[\"Capture request created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Refunds were successful\"] = data.success_count === 2;",
-                  "tests[\"Correct number of refunds processed\"] = data.refunds.length === 2;",
-                  "tests[\"Correct amount was refunded\"] = data.total === 15;",
-                  "",
-                  "tests[\"Refunds processed in the correct order\"] === data.refunds[0].total > data.refunds[1].total;",
-                  "",
-                  "tests[\"Refund status is OK\"] = data.refunds[0].status === \"completed\";",
-                  "tests[\"Refund 2 status is OK\"] = data.refunds[1].status === \"completed\";",
-                  "tests[\"Refund 3 status is OK\"] = data.refunds[2].status === \"completed\";",
-                  "tests[\"Order status is OK\"] = data.refunds[0].order.payment_status === \"completed\";",
-                  "tests[\"Invoice status is OK\"] = data.refunds[0].invoice.payment_status === \"completed\";"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"total\": 38\n}"
-            },
-            "url": {
-              "raw": "{{order_url}}/refunds?expand=refunds.order,refunds.invoice",
-              "host": [
-                "{{order_url}}"
-              ],
-              "path": [
-                "refunds"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "refunds.order,refunds.invoice",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
         }
       ]
     },
@@ -4717,49 +4654,49 @@
   ],
   "variable": [
     {
-      "id": "e25236b3-5038-454a-b6d1-7c3730326737",
+      "id": "870b01a0-677e-42d2-9bd2-2bfd03fdc55b",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f7928fc7-2879-4d1b-a1e8-d74ca0decfd5",
+      "id": "348a663d-3004-4816-845f-91b2c889f1a1",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "29598134-dc5a-40ec-9460-78fd6a0c559f",
+      "id": "ddb912c3-1b0f-4286-8377-e55fd3ce7ef4",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d40cbe60-1298-4d58-8b7b-2853a7641be0",
+      "id": "1a1e8ec1-34c0-49e9-8295-81b99b22d606",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1fc039da-e683-4a2f-9fa9-b0d239c05027",
+      "id": "ea86c3d6-bc07-44d0-8356-3d8a816054bd",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bb51bd7c-6f79-4811-be8c-43a0e4aa2ec6",
+      "id": "0ab51ccd-494b-4627-a81e-2bc29b0d1711",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "716362ec-2143-4a3d-ab1d-4dfd17c525be",
+      "id": "377f18a1-50e3-4c0b-be07-c52e59df37da",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
