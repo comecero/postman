@@ -4530,7 +4530,8 @@
                 "exec": [
                   "tests[\"Payment created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
-                  "pm.globals.set(\"order_url\", data.order);"
+                  "pm.globals.set(\"order_url\", data.order);",
+                  "pm.globals.set(\"payment_url\", data.url);"
                 ],
                 "type": "text/javascript"
               }
@@ -4890,49 +4891,49 @@
   ],
   "variable": [
     {
-      "id": "c059b0c5-412b-40aa-8ed3-7d5e386658f1",
+      "id": "ddf5468a-517a-4145-beda-c1d9acfd94b1",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f6eca0f4-7cee-40bb-948c-64728f800f55",
+      "id": "2ce2950c-f8c6-48f6-93f8-a54921ac70d9",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "371f4d4c-50b7-42c3-9220-47bc708ec8e0",
+      "id": "4ef59f2c-2bd1-4a31-b25c-b787f5187191",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9045ceb4-b1b7-43b9-99da-b4e61ea50404",
+      "id": "2711d49a-87b4-49e7-aa7a-605568482495",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "892bf126-1f85-4c5a-a586-8c032b3cf58c",
+      "id": "62f781fa-8c45-44c0-bbe9-6842aea7bc16",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "96836666-87e7-4d2e-9fe4-0d20b005fdd8",
+      "id": "0b22f938-fe09-4d2a-83f3-460ab1b0c9f9",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cd450721-0c99-4ad1-9c60-c6185e668caa",
+      "id": "760d7996-7f4a-4292-b09d-9baa4f7c01c0",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
