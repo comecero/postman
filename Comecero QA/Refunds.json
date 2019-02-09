@@ -3800,7 +3800,64 @@
               "script": {
                 "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
                 "exec": [
-                  "tests[\"Capture request created successfully\"] = responseCode.code === 201;",
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Correct amount was refunded\"] = data.total === 5;",
+                  "tests[\"Refund marked as chargeback\"] = data.is_chargeback === true;",
+                  "tests[\"Refund status is OK\"] = data.status === \"completed\";",
+                  "tests[\"Payment status is OK\"] = data.payment.status === \"completed\";",
+                  "tests[\"Order status is OK\"] = data.order.payment_status === \"completed\";"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"total\": 10\n}"
+            },
+            "url": {
+              "raw": "{{payment_url}}/refunds?expand=order,payment",
+              "host": [
+                "{{payment_url}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "order,payment",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f9ec1b7d-19ee-4c9a-807c-d7f934360d24",
+          "name": "Partial Refund Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Correct amount was refunded\"] = data.total === 5;",
@@ -4151,49 +4208,49 @@
   ],
   "variable": [
     {
-      "id": "dcfdeda5-1eef-40dc-b899-b5dcd21620c1",
+      "id": "f160ef2a-7ef9-4f28-be42-3fecb29bc572",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "55099bd2-913a-4f83-86e6-c7d27ff97c19",
+      "id": "dd808743-64f1-47ce-b1e2-724b582ea2b7",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "853bee61-97c0-4d23-b9f4-f1715c64e780",
+      "id": "6b40b7da-fddb-4274-bc29-17b8078180f8",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "94136aae-aadf-468f-81a2-e9a0eb54f49f",
+      "id": "417bb5f5-56b6-4692-8b16-c49456c3bd00",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7254b980-cb54-4e0f-8cdd-95ba12b0fc69",
+      "id": "5893331c-2e05-47d3-bd94-38b9fb77c3db",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6721235f-4d2c-419e-893c-8d3836544f03",
+      "id": "6583b35a-de58-4b87-a9de-d5c2399cbc6c",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9f02e422-0f6b-4cf4-8f02-7586eb7682b3",
+      "id": "7b755550-9c59-4165-b1e5-95dc6a1db364",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
