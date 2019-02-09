@@ -4590,7 +4590,75 @@
               "mode": "raw",
               "raw": "{\n\t\"payment_method\": {\n\t\t\"type\": \"customer_account_balance\"\n\t}\n}"
             },
-            "url": "{{order_url}}/refunds"
+            "url": {
+              "raw": "{{order_url}}/refunds?expand=refunds.payment_method",
+              "host": [
+                "{{order_url}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "refunds.payment_method",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e16956bf-6c6e-461d-8e1f-4d26e8f5507c",
+          "name": "Submit Refund Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund was successful\"] = data.total === 100 && data.subtotal === 90 && data.shipping === 10 && data.tax === 0;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"payment_method\": {\n\t\t\"type\": \"customer_account_balance\"\n\t}\n}"
+            },
+            "url": {
+              "raw": "{{order_url}}/refunds?expand=refunds.payment_method",
+              "host": [
+                "{{order_url}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "refunds.payment_method",
+                  "equals": true
+                }
+              ]
+            }
           },
           "response": []
         }
@@ -4835,49 +4903,49 @@
   ],
   "variable": [
     {
-      "id": "136ff44b-e2f7-4c17-aef0-3835348c7345",
+      "id": "fdabd2f4-af6b-4818-9688-aa5d54f81cb9",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "61c747e2-42f2-4bf1-bf8b-885148a2f410",
+      "id": "44dfe1ca-cbb1-40c1-be1e-9c0509767be9",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "011c587a-1d59-4209-85e6-056b8f7745af",
+      "id": "c6019d96-8964-4b53-9b6e-bebef2666c8c",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2fac96fc-d0ec-4cf4-b596-15fb6eba76c7",
+      "id": "79fa0639-7126-46a1-9c0e-3f9aaa2301cf",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "97716bb2-9c9d-47b6-a4c9-d4f6c2b9ae52",
+      "id": "e2ca057c-97af-4ed7-8c2f-083879524343",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2f527f85-3d18-4181-8bad-eaf29ade2300",
+      "id": "39647b3b-9e40-46a9-b918-2928a68d6971",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "761e4bce-f2dd-41d3-aa12-8f71f1b6483a",
+      "id": "c99ecd17-d1d2-4f17-ae0c-a9d6f5403c5c",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
