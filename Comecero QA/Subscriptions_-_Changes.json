@@ -1415,8 +1415,9 @@
                   "var diff = Math.abs(now - dateEffective);",
                   "",
                   "tests[\"Date effective is OK \" + now + \", \" + data.date_effective + \", \" + diff] = diff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
-                  "",
-                  "tests[\"New quantity is in subcription terms\"] = data.subscription_terms.quantity === 2;",
+                  "tests[\"New quantity is in subcription terms\"] = data.subscription_terms.quantity === 1;",
+                  "tests[\"Payment total is 0\"] = data.payment_total === 0;",
+                  "tests[\"There will be a refund\"] = data.refund_total < 0;",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
                   "pm.globals.set(\"refund_total\", data.refund_total);",
@@ -1482,7 +1483,20 @@
                   "// There should be one subscription and the total should be less than the item total",
                   "tests[\"No invoices were created\"] = data.subscription.invoices.total_items === 0;",
                   "tests[\"Refund was submited\"] = data.subscription.customer.refunds.total_items === 1;",
-                  "tests[\"Refund was the expected amount, total: \" + data.subscription.customer.refunds.data[0].total] = data.subscription.customer.refunds.data[0].total < (pm.globals.get(\"item_total\") / 2);"
+                  "tests[\"Refund was the expected amount, total: \" + data.subscription.customer.refunds.data[0].total] = data.subscription.customer.refunds.data[0].total < (pm.globals.get(\"item_total\") / 2);",
+                  "",
+                  "// Compare with the preview amounts",
+                  "tests[\"Invoice total equals the preview payment total\"] = data.subscription.invoices.data[0].total == pm.globals.get(\"payment_total\");",
+                  "",
+                  "// The external payment should be the same as the net total.",
+                  "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
+                  "var payment = _.find(data.subscription.customer.payments.data, function(p) { return p.payment_method.type === \"credit_card\" });",
+                  "tests[\"Credit card payment equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === payment.total;",
+                  "",
+                  "// The refund should be to customer account balance and be the same as the refund total",
+                  "tests[\"No refund has been processed\"] = data.subscription.customer.refunds.data.length === 0;",
+                  "",
+                  "tests[\"Date next payment is OK \" + pm.globals.get(\"date_current_period_end\")] = data.subscription.date_current_period_end === pm.globals.get(\"date_current_period_end\");"
                 ],
                 "type": "text/javascript"
               }
@@ -8762,56 +8776,56 @@
   ],
   "variable": [
     {
-      "id": "21358c31-760d-46c7-be5d-8474c3442bc3",
+      "id": "ffede967-dd8d-41bd-9a92-c7fc09c6d280",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ef74f654-bcca-4fb3-8c92-e166764d6d8a",
+      "id": "87680d8f-754f-4b46-9c33-4d108111e450",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "547df0cc-471a-4ad4-b3bf-b51e6df3c2fb",
+      "id": "ac2de965-f254-4b3a-b383-c45e168bb670",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a2faa94c-0cdf-4925-9a7a-bd39cec660e7",
+      "id": "9e45a69b-5bcc-451a-bc60-926e120d6f87",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3c24a040-99b8-4484-a829-91516ff99bfb",
+      "id": "f77955ed-32f1-4546-a72f-10c703e0c547",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a102a19b-4af9-4db0-9588-757d0c32ac41",
+      "id": "8de4ec7c-02ad-474c-9e43-5ecba00b9dba",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "39303ec0-5149-40b9-be13-92fc62881d7d",
+      "id": "7ca78f36-dbf8-4526-aae8-54764f8c35c0",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7a107216-8cba-4663-b4f3-b5e489436416",
+      "id": "a79aaaac-8021-449d-8e63-308a5a8afb2a",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
