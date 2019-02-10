@@ -5028,6 +5028,61 @@
           "response": []
         },
         {
+          "_postman_id": "137fb08f-2e0a-4c32-9f72-f273d227b224",
+          "name": "Process Chargeback Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Chargeback created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Chargeback was successful\"] = data.total === 100 && data.subtotal === 90 && data.shipping === 10 && data.tax === 0;",
+                  "",
+                  "pm.globals.set(\"customer_url\", data.customer);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"is_chargeback\": true,\n\t\"total\": 60\n}"
+            },
+            "url": {
+              "raw": "{{payment_url}}/refunds?expand=refunds.payment_method",
+              "host": [
+                "{{payment_url}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "refunds.payment_method",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "1cfaa0e8-6233-48d7-ae2b-8ba4475c490a",
           "name": "Check CAB (2)",
           "event": [
@@ -5306,49 +5361,49 @@
   ],
   "variable": [
     {
-      "id": "9e100d16-0ccf-458e-aea0-2a1463552b9e",
+      "id": "1884390a-ce9c-4c08-9a1f-334b076e90bf",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "895e45fc-3658-4d5e-b2c3-385f20d8c934",
+      "id": "ad4927d1-113e-4ab1-bd71-3b4e8c720b86",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b1f771e0-f84a-48c1-ae33-d8845a76cdc9",
+      "id": "eb3507eb-52f6-40e9-b306-148c5031baff",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2a0b3deb-2ae0-4b7e-a047-b1606743b088",
+      "id": "211557e2-9e35-42be-97a1-a00112dc81c5",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2555eb25-fc45-47e3-bb21-1a30b4bbe924",
+      "id": "e9187c78-3257-4ee4-82db-45a42cf91468",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cd846828-95db-414b-a492-6883948af076",
+      "id": "3023ddd6-737d-49cb-90d8-6c1d00e826ae",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b6ea0284-9ab6-43b4-8443-e0a111c8b0ec",
+      "id": "ac523ba5-cf63-4b86-ab07-26a546c6010d",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
