@@ -5064,56 +5064,6 @@
             "url": "{{customer_url}}/balance"
           },
           "response": []
-        },
-        {
-          "_postman_id": "8180f92e-5ef8-466d-aacd-59cd5c164e42",
-          "name": "Process Chargeback (2) Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
-                "exec": [
-                  "tests[\"Chargeback cannot be created\"] = responseCode.code === 400;"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"is_chargeback\": true,\n\t\"total\": 100\n}"
-            },
-            "url": {
-              "raw": "{{payment_url}}/refunds?expand=refunds.payment_method",
-              "host": [
-                "{{payment_url}}"
-              ],
-              "path": [
-                "refunds"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "refunds.payment_method",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
         }
       ]
     },
@@ -5356,49 +5306,49 @@
   ],
   "variable": [
     {
-      "id": "84e050c5-8730-4fa3-b4c9-d5932d71810b",
+      "id": "9e100d16-0ccf-458e-aea0-2a1463552b9e",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a3ecc61c-f0d3-4cd7-aeff-d504739276d6",
+      "id": "895e45fc-3658-4d5e-b2c3-385f20d8c934",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3bd8a04a-f062-4a54-be5c-324af28106dc",
+      "id": "b1f771e0-f84a-48c1-ae33-d8845a76cdc9",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2c1b02b7-ee54-470d-9ffe-9d6bff4ecd9e",
+      "id": "2a0b3deb-2ae0-4b7e-a047-b1606743b088",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6fc90a0d-678d-4cc5-8c8a-112c1396d4ca",
+      "id": "2555eb25-fc45-47e3-bb21-1a30b4bbe924",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "95b0780d-e6e7-416f-b1d2-4d31d485335e",
+      "id": "cd846828-95db-414b-a492-6883948af076",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4c8e834b-351b-40ce-847e-6fcf946f757c",
+      "id": "b6ea0284-9ab6-43b4-8443-e0a111c8b0ec",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
