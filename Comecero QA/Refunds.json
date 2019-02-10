@@ -3472,7 +3472,7 @@
                   "tests[\"Status is pending\"] = data.status === \"completed\";",
                   "tests[\"Total is OK\"] = data.total === 40;",
                   "",
-                  "pm.globals.set(\"payment_url\", data.url);",
+                  "pm.globals.set(\"payment_2_url\", data.url);",
                   "pm.globals.set(\"order_url\", data.order);"
                 ],
                 "type": "text/javascript"
@@ -4477,7 +4477,7 @@
     },
     {
       "_postman_id": "02def655-f40b-4756-8405-efcd1e6d4382",
-      "name": "From Order, Refund to CAB",
+      "name": "From Order, Refund to CAB, with Chargeback",
       "description": "",
       "item": [
         {
@@ -5009,6 +5009,327 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "6a86a0eb-a28d-44ef-9fe6-2f3580cea443",
+      "name": "From Order, Refund to CAB, with Chargeback Copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "a4d97d9e-6cbd-4277-b7ff-cd1a3f80e6a4",
+          "name": "Create Cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3a0eecbc-a75e-4942-a4bf-2ee73fe61f21",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Cart created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cart_url\", data.url);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":3\r\n      },   \t\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":2\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/carts"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "44d20936-4c8e-4546-a834-61b7eb79cb87",
+          "name": "Create Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
+                "exec": [
+                  "tests[\"Payment created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"order_url\", data.order);",
+                  "pm.globals.set(\"payment_url\", data.url);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"capture\": true,    \n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
+            },
+            "url": "{{cart_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "45866749-11d4-407a-8ced-39a0f7e9fa4a",
+          "name": "Submit Refund",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund was successful\"] = data.total === 100 && data.subtotal === 90 && data.shipping === 10 && data.tax === 0;",
+                  "",
+                  "pm.globals.set(\"customer_url\", data.refunds[0].customer);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"payment_method\": {\n        \"type\": \"customer_account_balance\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{order_url}}/refunds?expand=refunds.payment_method",
+              "host": [
+                "{{order_url}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "refunds.payment_method",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d229054e-3d16-456a-be19-6a3694ffcfd3",
+          "name": "Check CAB",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Balance fetched successfully\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Balance is correct\"] = data.amount === 100;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"payment_method\": {\n\t\t\"type\": \"customer_account_balance\"\n\t}\n}"
+            },
+            "url": "{{customer_url}}/balance"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "62b4ac60-4ed1-411c-bba5-20e18fe8096f",
+          "name": "Process Chargeback",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Chargeback created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Chargeback was successful\"] = data.total === 100 && data.subtotal === 90 && data.shipping === 10 && data.tax === 0;",
+                  "",
+                  "pm.globals.set(\"customer_url\", data.customer);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"is_chargeback\": true,\n\t\"total\": 100\n}"
+            },
+            "url": {
+              "raw": "{{payment_url}}/refunds?expand=refunds.payment_method",
+              "host": [
+                "{{payment_url}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "refunds.payment_method",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1cfaa0e8-6233-48d7-ae2b-8ba4475c490a",
+          "name": "Check CAB (2)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Balance fetched successfully\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Balance is correct\"] = data.amount === 0;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"payment_method\": {\n\t\t\"type\": \"customer_account_balance\"\n\t}\n}"
+            },
+            "url": "{{customer_url}}/balance"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5cfbf18f-8f3c-4db0-910b-1afd624bf663",
+          "name": "Process Chargeback (2)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Chargeback cannot be created\"] = responseCode.code === 400;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"is_chargeback\": true,\n\t\"total\": 100\n}"
+            },
+            "url": {
+              "raw": "{{payment_url}}/refunds?expand=refunds.payment_method",
+              "host": [
+                "{{payment_url}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "refunds.payment_method",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "event": [
@@ -5035,49 +5356,49 @@
   ],
   "variable": [
     {
-      "id": "7a7a5592-2ae2-41c9-a64d-76f9c662b97c",
+      "id": "3577e982-414e-403c-8a9d-ac933bd004b7",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f294a7d8-2c33-49cd-8cf0-d7cbb1ed40fb",
+      "id": "fdcc66f4-03ae-40ce-bc7f-affd5ac2effd",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9de938cd-d21d-4491-bf4f-428d995a12f4",
+      "id": "458c3676-6397-406f-9bef-a0fd3e180b30",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "be707f4b-4c8b-4328-bdb8-0b47dab74bb2",
+      "id": "6cc31b67-d98f-4538-83a0-730f0902692b",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eb17bb8b-ce79-4a97-89e4-7eb83173f440",
+      "id": "d8783b0b-f272-41d5-b331-90f7bb2e11ce",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e6c3ee37-67b2-4345-b8f3-c99337b4e215",
+      "id": "179248a4-03ef-442d-be7e-e0b26c085ce0",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2f5d8add-1538-422b-97f6-364d6c412b93",
+      "id": "88c5d2ed-bca6-40dc-9cfc-1fd882a43e76",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
