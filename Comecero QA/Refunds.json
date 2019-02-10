@@ -4613,61 +4613,6 @@
           "response": []
         },
         {
-          "_postman_id": "7286811a-f611-4225-9cb3-42dd05affa16",
-          "name": "Submit Refund Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
-                "exec": [
-                  "tests[\"Refund created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Refund was successful\"] = data.total === 100 && data.subtotal === 90 && data.shipping === 10 && data.tax === 0;",
-                  "",
-                  "pm.globals.set(\"customer_url\", data.customer);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"payment_method\": {\n\t\t\"type\": \"customer_account_balance\"\n\t}\n}"
-            },
-            "url": {
-              "raw": "{{order_url}}/refunds?expand=refunds.payment_method",
-              "host": [
-                "{{order_url}}"
-              ],
-              "path": [
-                "refunds"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "refunds.payment_method",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "e16956bf-6c6e-461d-8e1f-4d26e8f5507c",
           "name": "Check CAB",
           "event": [
@@ -4702,6 +4647,99 @@
               "raw": "{\n\t\"payment_method\": {\n\t\t\"type\": \"customer_account_balance\"\n\t}\n}"
             },
             "url": "{{customer_url}}/balance"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3ccd42da-ac8d-4104-950a-5c98b503d19b",
+          "name": "Check CAB Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Balance fetched successfully\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Balance is correct\"] = data.amount === 100;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"payment_method\": {\n\t\t\"type\": \"customer_account_balance\"\n\t}\n}"
+            },
+            "url": "{{customer_url}}/balance"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7286811a-f611-4225-9cb3-42dd05affa16",
+          "name": "Process Chargeback",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Chargeback created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Chargeback was successful\"] = data.total === 100 && data.subtotal === 90 && data.shipping === 10 && data.tax === 0;",
+                  "",
+                  "pm.globals.set(\"customer_url\", data.customer);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"is_chargeback\": true\n}"
+            },
+            "url": {
+              "raw": "{{payment_url}}/refunds?expand=refunds.payment_method",
+              "host": [
+                "{{payment_url}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "refunds.payment_method",
+                  "equals": true
+                }
+              ]
+            }
           },
           "response": []
         }
@@ -4946,49 +4984,49 @@
   ],
   "variable": [
     {
-      "id": "490c3866-740c-4358-a417-bb32f9f2fda9",
+      "id": "68f789df-7bb7-4175-a306-979b872baef3",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "539741da-5998-443c-928a-b4616e18faf4",
+      "id": "15e0fe7a-0ff4-4448-b82c-d6921550fd91",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "230a18cd-827c-4f6b-b7d8-c9ffdfccade8",
+      "id": "7fd1192f-f63f-4afa-84ed-4b89818a148c",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7ac25533-ad3b-4a22-a704-723e05c3f80b",
+      "id": "bdee76b1-78cd-4575-931d-6eba69b0a26b",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6c79d330-e582-4e1b-8eb0-fa9446f1b84b",
+      "id": "b4c0bd41-8b5f-44f7-8c7d-09dc51636a4b",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f14e3e27-facb-4cb2-a2e6-63735d3a6688",
+      "id": "254d7240-6415-4a41-bfa4-1e7ee256dd92",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "99cee460-320b-4762-8f78-867fcedcd7a1",
+      "id": "d4ad4476-364f-4325-aaf5-8fa85101e0d1",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
