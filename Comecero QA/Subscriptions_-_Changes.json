@@ -760,8 +760,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+            }
           },
           "response": []
         },
@@ -801,8 +800,7 @@
               "mode": "raw",
               "raw": "{\r\n   \"status\":\"cancelled\",\r\n   \"cancellation_reason\": \"Cancelled upon completion of an automated test\"\r\n}"
             },
-            "url": "{{subscription_url}}",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+            "url": "{{subscription_url}}"
           },
           "response": []
         }
@@ -9554,56 +9552,56 @@
   ],
   "variable": [
     {
-      "id": "cb6cc1ac-a077-4ac7-a227-69c5c08900b2",
+      "id": "0bc01a2f-0467-4491-a8d3-59afab74f4cf",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cb46fa98-910b-415c-85be-db3c81cd58e2",
+      "id": "a7ec7ebc-362f-4c27-a832-0335600c13dc",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f7521215-cf32-4662-b873-912490537717",
+      "id": "559d251e-e7e4-41be-b68a-5dc7d1f34b07",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5dc84abf-393c-4886-b641-5f5dc457ad40",
+      "id": "bc5d92af-9ff3-4b93-a22c-dc011c409682",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b6a9ecb7-96ef-47d2-bba0-85d370dd804e",
+      "id": "f7aeff85-ce6d-455c-8aac-83074569b88f",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9bbaae18-d347-4796-966d-a8d7a4334000",
+      "id": "baf429f0-efc7-46e7-9225-a652c7281d66",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bf9b70d4-964d-4887-9736-1cbd46f72d29",
+      "id": "4245ab25-1e7e-4a7a-bf48-a4a49b93a8ea",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "768f0b9c-19e8-4f17-a1b0-64ad085b1372",
+      "id": "57fc2227-0ab4-4be7-9d6a-0dc074b40664",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
