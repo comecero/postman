@@ -408,8 +408,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+            }
           },
           "response": []
         },
@@ -1331,7 +1330,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": ""
             },
             "url": "{{subscription_url}}",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -1753,7 +1752,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": ""
             },
             "url": "{{subscription_url}}",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -2100,7 +2099,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": ""
             },
             "url": "{{subscription_url}}",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -2202,7 +2201,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": ""
             },
             "url": {
               "raw": "https://{{host}}/api/v1/products/physical-sub.test?currency=USD",
@@ -9560,56 +9559,56 @@
   ],
   "variable": [
     {
-      "id": "09b1733c-d351-4064-8403-8b8f7ac6a8bd",
+      "id": "8f82b4c3-8c9e-48e5-87d7-482b503e4dd0",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f2bfd918-53fc-4d4e-a3b1-e57fa5b7b527",
+      "id": "e73a304c-9669-42f4-877c-484e1a9b06c9",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "628e94f4-0216-4bfd-8f8a-fe6de6b22d21",
+      "id": "9f5f3d2d-23be-4009-94a9-d3c07cd7a12b",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0ce9eea8-a7c7-479a-9f68-c5e537b8280e",
+      "id": "01e9d080-a1d8-4cd1-ae4f-1335eccba052",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "48a3ca5d-96a8-46e2-963e-f6810019f6b5",
+      "id": "ace8ee53-af6e-44ca-a1ea-90f0f6133f95",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "364f006e-3920-48bd-a2d2-60259ec770d4",
+      "id": "8dd965df-c5eb-4f57-8224-34ac8932fd4a",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e83fa964-fd6a-41aa-8cc4-b85267df7d32",
+      "id": "f2dc9b08-892f-436f-8b81-21d0861345a6",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0c518b09-7c30-48ac-a22e-b46ca993a33e",
+      "id": "2ff5f093-c432-4a66-8a57-8f3a1a2ba1dd",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
