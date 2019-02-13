@@ -6686,15 +6686,15 @@
                   "// Compare with the preview amounts",
                   "tests[\"Invoice total equals the preview payment total\"] = data.subscription.customer.invoices.data[0].total == pm.globals.get(\"payment_total\");",
                   "",
-                  "// The external payment should be the same as the net total.",
+                  "// The external refund should be the same as the net total.",
                   "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
-                  "var payment = _.find(data.subscription.customer.payments.data, function(p) { return p.payment_method.type === \"credit_card\" });",
-                  "tests[\"Credit card payment equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === payment.total;",
+                  "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"credit_card\" });",
+                  "tests[\"Credit card refund equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === refund.total;",
                   "",
-                  "// The refund should be to customer account balance and be the same as the refund total",
-                  "data.subscription.customer.refunds.data = data.subscription.customer.refunds.data.reverse();",
-                  "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"customer_account_balance\" });",
-                  "tests[\"Refund equals refund total and is the correct payment method type \" + pm.globals.get(\"refund_total\")] = pm.globals.get(\"refund_total\") === refund.total;"
+                  "// The payment should be from customer account balance and be the same as the payment total",
+                  "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
+                  "var payment = _.find(data.subscription.customer.payments.data, function(p) { return p.payment_method.type === \"customer_account_balance\" });",
+                  "tests[\"Payment equals payment total and is the correct payment method type \" + pm.globals.get(\"payment_total\")] = pm.globals.get(\"payment_total\") === payment.total;"
                 ],
                 "type": "text/javascript"
               }
@@ -6720,7 +6720,7 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\t\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-term-sub.test/replace?expand=subscription.invoices",
+              "raw": "{{subscription_url}}/items/digital-term-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -6732,7 +6732,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method",
                   "equals": true
                 }
               ]
@@ -9560,56 +9560,56 @@
   ],
   "variable": [
     {
-      "id": "3d133c96-08ad-43be-949e-a36f0115fe30",
+      "id": "ffc620e6-9eed-45d2-ae17-e0329a7f0e0b",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0b365de9-3f7c-4a3f-8428-7b8a5c056d4a",
+      "id": "4256738b-67c5-4eeb-b253-e11110db5f2b",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7f7ce401-6cf5-4cda-b71a-a4e36b17a4ff",
+      "id": "c8662629-a8f8-4718-a89a-b84a23326419",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "33f665c3-911b-41bc-8620-1ca87c9f4588",
+      "id": "6ab9121f-59c4-4f76-99cd-3e49d77f6075",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6fb9b464-367c-4719-9c8a-5306fd98d16f",
+      "id": "dbf06751-7d2c-43bd-9707-3cb2dcfb76fb",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "af3d3455-d5de-42da-8a1f-f43d6f0e4718",
+      "id": "7aec79de-0d79-4bac-a7ce-178ba4314ac4",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8a47dd2c-1e86-467a-8802-ec2b49b2dfd7",
+      "id": "f1b77d82-399a-42fc-9700-3ee8da7e17d3",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a7a190c0-91d6-4667-afca-09636e1c6323",
+      "id": "c1033653-df38-4c50-9c65-5ec557ffb2cc",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
