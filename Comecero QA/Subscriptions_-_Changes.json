@@ -7347,7 +7347,7 @@
     },
     {
       "_postman_id": "2c40ffaf-30a7-44fe-a6f4-b5b840d66ce9",
-      "name": "Replace Item, Immediate, Different Plan, Upgrade, Trial",
+      "name": "Replace Item, Immediate, Different Plan, Upgrade, Both Trial",
       "description": "",
       "item": [
         {
@@ -7663,18 +7663,16 @@
                   "",
                   "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 1 && data.subscription_terms.billing_interval_unit === \"hour\";",
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === 1 && data.subscription_terms.trial_interval_unit === \"hour\";",
-                  "tests[\"Payment total equals the product price\"] = data.payment_total === 35;",
+                  "tests[\"Payment total equals 0\"] = data.payment_total === 0;",
                   "",
                   "var dateEffective = new Date(data.date_effective);",
                   "var diff = Math.abs(now - dateEffective);",
                   "",
                   "var now = new Date();",
-                  "var dateNextPayment = new Date(data.date_next_payment);",
                   "var dateEffective = new Date(data.date_effective);",
-                  "var nextPaymentdiff = Math.abs(dateNextPayment - dateEffective);",
                   "var effectiveDiff = Math.abs(now - dateEffective);",
                   "",
-                  "tests[\"Date next payment is OK \" + data.date_next_payment] = nextPaymentdiff === 7200000;",
+                  "tests[\"Date next payment is OK \" + data.date_next_payment] = data.date_next_payment === pm.globals.get(\"date_current_period_end\"); // Should be the same time as the end of the current trial period.",
                   "tests[\"Date effective is OK \" + data.date_effective] = effectiveDiff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
@@ -7891,6 +7889,28 @@
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "f6325fbe-21e3-4345-bbb2-bf987f6a110e",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "7573f906-8a97-4b68-9f4e-adb179803d1f",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
         }
       ]
     },
@@ -9542,56 +9562,56 @@
   ],
   "variable": [
     {
-      "id": "50e7f0ab-7d91-4a66-a64f-57a961485bd9",
+      "id": "af0e30a1-0340-41e5-a867-3ea2d9c97747",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5f3063f1-4d0a-4008-909c-430cc6aecba6",
+      "id": "e3b2ca5b-dbb4-4189-9d4a-8181366ecdf0",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "464b562a-84d9-4529-aafa-07c03acb531d",
+      "id": "93226c72-59b2-4396-b9b3-f953538f25ff",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "060c8e40-0b3a-4b94-9292-5d0876265206",
+      "id": "ba2008a4-ea61-4f21-8e8c-9790aa066af9",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9cf93d15-6ce3-4140-b254-9135ee846b00",
+      "id": "4cc207c4-25a8-47db-a485-91a4ed826a52",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1dd1a28f-9a2b-4781-911a-015b93f7bd92",
+      "id": "a00e236a-c79a-4c97-8492-1b89fd047985",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e4ab5bfa-18df-49a4-ab44-f8c0e71da4b5",
+      "id": "f01ce807-af03-45b4-9247-713a76c8936a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e370e4b5-cc3a-46f1-9f5b-1fccd10ce08c",
+      "id": "16e45c7b-9532-4713-8c8e-aaff751daabd",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
