@@ -508,7 +508,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": ""
             },
             "url": "{{subscription_url}}",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -984,7 +984,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+              "raw": ""
             },
             "url": "{{subscription_url}}",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
@@ -6689,7 +6689,7 @@
                   "// The external refund should be the same as the net total.",
                   "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
                   "var refund = _.find(data.subscription.customer.refunds.data, function(r) { return r.payment_method.type === \"credit_card\" });",
-                  "tests[\"Credit card refund equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === refund.total;",
+                  "tests[\"Credit card refund equals net total \" + pm.globals.get(\"net_total\")] = pm.globals.get(\"net_total\") === refund.total * -1;",
                   "",
                   "// The payment should be from customer account balance and be the same as the payment total",
                   "data.subscription.customer.payments.data = data.subscription.customer.payments.data.reverse();",
@@ -9560,56 +9560,56 @@
   ],
   "variable": [
     {
-      "id": "d5bb170a-f301-44fb-93b0-5e3303a09f95",
+      "id": "09b1733c-d351-4064-8403-8b8f7ac6a8bd",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1aae1eee-bc6f-4ee8-89d5-9b786b21fe69",
+      "id": "f2bfd918-53fc-4d4e-a3b1-e57fa5b7b527",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d4ae72c9-3d6a-4ae9-8df3-c588deda40c1",
+      "id": "628e94f4-0216-4bfd-8f8a-fe6de6b22d21",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "44806235-df40-497e-9bcf-c162edd50c1a",
+      "id": "0ce9eea8-a7c7-479a-9f68-c5e537b8280e",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "70b963f3-9b6b-4ac8-a023-9a75969389c0",
+      "id": "48a3ca5d-96a8-46e2-963e-f6810019f6b5",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "50813cea-3403-40a1-b9af-24dcf4431cbe",
+      "id": "364f006e-3920-48bd-a2d2-60259ec770d4",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "82bc70bd-d83a-40cb-9ca6-017ab80730f7",
+      "id": "e83fa964-fd6a-41aa-8cc4-b85267df7d32",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c8e87e55-1060-4381-bcce-f351247ab6a4",
+      "id": "0c518b09-7c30-48ac-a22e-b46ca993a33e",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
