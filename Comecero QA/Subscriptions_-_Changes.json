@@ -7722,7 +7722,7 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "// There should be no invoice created",
-                  "tests[\"No change invoice was created\"] = data.subscription.invoices.total_items === 0;",
+                  "tests[\"No change invoice was created\"] = data.subscription.customer.invoices.total_items === 0;",
                   "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'physical-term-sub.test' && item.cancelled}) !== undefined;",
                   "tests[\"Original subscription is cancelled\"] = data.subscription.status === \"cancelled\";",
                   "",
@@ -9554,56 +9554,56 @@
   ],
   "variable": [
     {
-      "id": "20a92ef9-27fe-4a19-b4e8-56e48f5fe45f",
+      "id": "5def3d64-6023-446c-8784-41b262396d0e",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1686256d-b89d-43e0-9635-d261642a3bbf",
+      "id": "94c0410b-9d67-4127-89ec-0078dbc04cc9",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0a3507dd-89bf-4aa1-a077-687130151a37",
+      "id": "46b6007c-da22-4925-8ac9-267f98fb9c25",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0e55ac31-4f13-40f8-a985-2f72451713bd",
+      "id": "a225bf15-c39c-4a39-9f7a-23c733b813ce",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3d40695c-42b8-4ee2-ba52-21633bcccd51",
+      "id": "e1868031-3135-48b9-9d8c-d744ab1a6cd3",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "aa04fb95-46a0-4b2d-89a3-bd7bc5cf77d5",
+      "id": "15268893-d5b8-4f06-97dd-99a080dd2b4f",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1bd76dc0-f57c-4c76-bdb4-f5d8ab9aac45",
+      "id": "417cc481-ec7b-4a89-8cc8-0354715f1a0a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "74ddf750-2fe3-419c-a0ff-8e5190d29153",
+      "id": "83e231dc-0ca6-4628-879d-d6f5c8320dd2",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
