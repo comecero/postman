@@ -7852,7 +7852,7 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-term-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscriptions",
+              "raw": "{{subscription_url}}/items/digital-term-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscription.customer.subscriptions",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -7864,7 +7864,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscriptions",
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscription.customer.subscriptions",
                   "equals": true
                 }
               ]
@@ -9661,56 +9661,56 @@
   ],
   "variable": [
     {
-      "id": "b4110219-1c80-47bf-9251-13a8d500ae39",
+      "id": "7b2ae186-20c5-4d6f-a7f2-dae96e023fd8",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "83fc5599-d5af-4d3d-8d31-529671709936",
+      "id": "dfb0be23-6560-4c42-ba2f-4576e206c5ec",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bf9b3ae9-9a80-410a-bed7-e78b55e6ba01",
+      "id": "eb0dcc87-d0ec-4ccb-9e2f-e07fd4c21f5c",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c648095d-b04c-414a-9bfa-903a08bef1be",
+      "id": "15a1f476-4ace-409d-a2fb-17c36ebad635",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2b9c256a-0917-421b-abf0-861a459160d5",
+      "id": "47d50c5d-daa7-47b8-9f1c-13e6009a01a1",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "75d0e411-2574-47ba-9659-c57102fb8fc3",
+      "id": "792062dd-c105-495c-83c9-7f73efcf330e",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "244f790c-139c-489f-9865-3be041bdcfd3",
+      "id": "973fc66a-29b1-4cde-8550-25582e9c92aa",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e1bdac8d-2b7c-47a2-9e9f-dd62e89b6021",
+      "id": "d8b8199f-ccf5-422d-8191-d16b29c3c029",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
