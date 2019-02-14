@@ -388,7 +388,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n\t\"product_id\": \"digital-pro-sub.test\",\t\r\n    \"name\": \"Monster AV Pro\",\r\n    \"description\": \"An incredibly powerful anti-virus solution for PC and Mac. (Professional Version)\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 40,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 36,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+          "raw": "{\r\n\t\"product_id\": \"digital-pro-sub.test\",\t\r\n    \"name\": \"Monster AV Pro\",\r\n    \"description\": \"An incredibly powerful anti-virus solution for PC and Mac. (Professional Version)\",\r\n    \"type\": \"digital\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 50,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 46,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
         },
         "url": "https://{{host}}/api/v1/products"
       },
@@ -592,7 +592,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n\t\"product_id\": \"physical-pro-sub.test\",\t\r\n    \"name\": \"Flower of the Month (Premium)\",\r\n    \"description\": \"Get a flower delivered to your mailbox. Sometimes fresh, sometimes dead, but always on time.\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 80,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 76,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
+          "raw": "{\r\n\t\"product_id\": \"physical-pro-sub.test\",\t\r\n    \"name\": \"Flower of the Month (Premium)\",\r\n    \"description\": \"Get a flower delivered to your mailbox. Sometimes fresh, sometimes dead, but always on time.\",\r\n    \"type\": \"physical\",\r\n    \"prices\": [\r\n        {\r\n            \"price\": 90,\r\n            \"currency\": \"USD\"\r\n        },\r\n        {\r\n            \"price\": 86,\r\n            \"currency\": \"EUR\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}"
         },
         "url": "https://{{host}}/api/v1/products"
       },
