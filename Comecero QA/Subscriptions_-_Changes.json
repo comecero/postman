@@ -7649,7 +7649,8 @@
                   "pm.globals.set(\"subscription_item\", item);",
                   "pm.globals.set(\"subscription_item_url\", item.url);",
                   "pm.globals.set(\"customer_url\", data.customer);",
-                  "pm.globals.set(\"date_current_period_end\", data.date_current_period_end);"
+                  "pm.globals.set(\"date_current_period_end\", data.date_current_period_end);",
+                  "pm.globals.set(\"date_trial_end\", data.date_trial_end);"
                 ],
                 "type": "text/javascript"
               }
@@ -7753,7 +7754,7 @@
                   "var data = JSON.parse(responseBody);",
                   "",
                   "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 1 && data.subscription_terms.billing_interval_unit === \"hour\";",
-                  "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === 1 && data.subscription_terms.trial_interval_unit === \"hour\";",
+                  "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === 2 && data.subscription_terms.trial_interval_unit === \"hour\";",
                   "tests[\"Payment total is correct\"] = data.payment_total === 0;",
                   "",
                   "var dateEffective = new Date(data.date_effective);",
@@ -7814,14 +7815,18 @@
                   "",
                   "// There should be no invoice created",
                   "tests[\"A change invoice was created\"] = data.subscription.customer.invoices.total_items === 1;",
-                  "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'physical-term-sub.test' && item.cancelled}) !== undefined;",
+                  "tests[\"Subscription has the cancelled the other item\"] = _.find(data.subscription.items, function(item) {return item.item_id == 'digital-term-sub.test' && item.cancelled}) !== undefined;",
                   "tests[\"Original subscription is cancelled\"] = data.subscription.status === \"cancelled\";",
                   "",
                   "// There should be no payments",
                   "tests[\"A new payment was created\"] = data.subscription.customer.payments.total_items === 2;",
                   "",
                   "// There should be no refunds",
-                  "tests[\"No refund was created\"] = data.subscription.customer.refunds.total_items === 0;"
+                  "tests[\"No refund was created\"] = data.subscription.customer.refunds.total_items === 0;",
+                  "",
+                  "// The new subscription should have the same trial end date as the first subscription",
+                  "var subscription = data.subscription.customer.subscriptions.data[1];",
+                  "tests[\"The new subscription has the correct trial end date\"] = data.subscription.customer.subscriptions.data[1].date_trial_end === pm.globals.get(\"date_trial_end\");"
                 ],
                 "type": "text/javascript"
               }
@@ -7847,7 +7852,7 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-term-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method",
+              "raw": "{{subscription_url}}/items/digital-term-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscriptions",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -7859,7 +7864,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method",
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscriptions",
                   "equals": true
                 }
               ]
@@ -9656,56 +9661,56 @@
   ],
   "variable": [
     {
-      "id": "4bd8b5d1-54fb-4a73-b7ea-af2ff6356c1d",
+      "id": "b4110219-1c80-47bf-9251-13a8d500ae39",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "baadc335-ca20-474b-8dca-c75b1f5f2466",
+      "id": "83fc5599-d5af-4d3d-8d31-529671709936",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8c61a340-bf0c-4f10-98f9-6562c7b0b3f6",
+      "id": "bf9b3ae9-9a80-410a-bed7-e78b55e6ba01",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "89b6ca7b-dbd7-4c8b-8689-603a963e94a1",
+      "id": "c648095d-b04c-414a-9bfa-903a08bef1be",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4409ccf0-e87e-4992-b19e-3b3a4cce5021",
+      "id": "2b9c256a-0917-421b-abf0-861a459160d5",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2f4d9b94-4fef-4065-831d-d2ee4367a341",
+      "id": "75d0e411-2574-47ba-9659-c57102fb8fc3",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a60943f1-f1f1-4f99-a4c4-b321fa882fb6",
+      "id": "244f790c-139c-489f-9865-3be041bdcfd3",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9bae6b86-86ab-4eb5-8832-c673aeab6a23",
+      "id": "e1bdac8d-2b7c-47a2-9e9f-dd62e89b6021",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
