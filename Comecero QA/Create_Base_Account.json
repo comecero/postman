@@ -2108,6 +2108,44 @@
         "url": "https://{{host}}/api/v1/settings/general"
       },
       "response": []
+    },
+    {
+      "_postman_id": "8792fc53-5ea6-47ab-97d5-c970fbbfc307",
+      "name": "Add Worldwide Shipping Method Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "9ac0fffb-9b7f-44df-bbab-7670e58552f9",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 201\"] = responseCode.code === 201;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"subtotal_config\":{\r\n      \"rules\":[\r\n         {\r\n            \"ranges\":[\r\n               {\r\n                  \"minimum\":\"0\",\r\n                  \"maximum\":\"999999\",\r\n                  \"price\":\"4.00\"\r\n               }\r\n            ],\r\n            \"currency\":\"EUR\"\r\n         },\r\n         {\r\n            \"ranges\":[\r\n               {\r\n                  \"minimum\":\"0\",\r\n                  \"maximum\":\"999999\",\r\n                  \"price\":\"5.00\"\r\n               }\r\n            ],\r\n            \"currency\":\"USD\"\r\n         }\r\n      ],\r\n      \"percent_of_subtotal\":\"0.00\"\r\n   },\r\n   \"description\":\"Worldwide\",\r\n   \"details\":\"Worldwide shipping\",\r\n   \"countries\":[\r\n      \"*\"\r\n   ]\r\n}"
+        },
+        "url": "https://{{host}}/api/v1/shipping_methods"
+      },
+      "response": []
     }
   ],
   "event": [
