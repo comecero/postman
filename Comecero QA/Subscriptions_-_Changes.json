@@ -7820,6 +7820,7 @@
                   "",
                   "// There should be no payments",
                   "tests[\"A new payment was created\"] = data.subscription.customer.payments.total_items === 2;",
+                  "tests[\"New payment total was correct\"] = data.subscription.customer.payments.data[1].total === 0;",
                   "",
                   "// There should be no refunds",
                   "tests[\"No refund was created\"] = data.subscription.customer.refunds.total_items === 0;",
@@ -8387,7 +8388,7 @@
                   "",
                   "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 1 && data.subscription_terms.billing_interval_unit === \"hour\";",
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
-                  "tests[\"Payment total is correct\"] = data.payment_total === 50;",
+                  "tests[\"Payment total is correct\"] = data.payment_total === 50; // You pay for the new item now because it doesn't have a trial, and the old item is in trial so there is no refund.",
                   "",
                   "var dateEffective = new Date(data.date_effective);",
                   "var diff = Math.abs(now - dateEffective);",
@@ -8396,7 +8397,7 @@
                   "var dateEffective = new Date(data.date_effective);",
                   "var effectiveDiff = Math.abs(now - dateEffective);",
                   "",
-                  "tests[\"Date next payment is OK \" + data.date_next_payment] = data.date_next_payment === pm.globals.get(\"date_current_period_end\"); // Should be the same time as the end of the current trial period.",
+                  "tests[\"Date next payment is OK \" + data.date_next_payment] = data.date_next_payment === data.date_effective;",
                   "tests[\"Date effective is OK \" + data.date_effective] = effectiveDiff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
@@ -10297,56 +10298,56 @@
   ],
   "variable": [
     {
-      "id": "a4e93eb5-9d23-481f-a807-d53f1acdbe52",
+      "id": "3a993070-18cc-4432-a8ce-7d089aa343f1",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f86d29ce-1cf0-49c9-a82f-db89d721a37b",
+      "id": "068c26ae-bc3f-46ab-8b71-5ca236a0ffbc",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2b849bb5-f5ff-47e7-9569-78b3c86411a9",
+      "id": "6c20e3c8-dd8c-47c2-b29e-47acf212f1b4",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c30e0f57-3128-451d-bcf5-dfcde935b0a9",
+      "id": "776a98d4-f37c-4759-96dd-2eb24a847db8",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ac40fdb1-f078-4e96-9ea6-3a448c71562f",
+      "id": "443a6bdf-f663-4981-b204-a21ab03f9c04",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "535ff960-dba2-4bd5-b48f-7b98c16013d5",
+      "id": "e86ab6aa-0b0b-47ec-9192-e704272ec86a",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7e07d6bb-fb7c-4eb5-bee0-e745b4c5a30b",
+      "id": "2a39a247-4a17-4ae4-baf5-708d0a5dbc8b",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "887a545e-1571-4d2a-95bc-9511f1845572",
+      "id": "8906276f-745f-438b-a391-2c9eb021c3b0",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
