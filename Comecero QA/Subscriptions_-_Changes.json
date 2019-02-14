@@ -7395,7 +7395,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"physical-term-sub.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+              "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital-term-sub.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
             },
             "url": {
               "raw": "https://{{host}}/api/v1/carts?expand=items.subscription_plan,items.subscription_terms",
@@ -7663,7 +7663,7 @@
                   "",
                   "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 1 && data.subscription_terms.billing_interval_unit === \"hour\";",
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === 1 && data.subscription_terms.trial_interval_unit === \"hour\";",
-                  "tests[\"Payment total equals 0\"] = data.payment_total === 0;",
+                  "tests[\"Payment total is correct\"] = data.payment_total === 0;",
                   "",
                   "var dateEffective = new Date(data.date_effective);",
                   "var diff = Math.abs(now - dateEffective);",
@@ -9489,56 +9489,56 @@
   ],
   "variable": [
     {
-      "id": "832cb204-2cbd-4e3c-ba0f-a241b6104dc6",
+      "id": "23a45adc-280d-4750-a940-feda50cfa7e2",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2814d290-53cc-49a2-b658-963841426c54",
+      "id": "2a2d00c1-0aac-4058-8830-09aeec96fe15",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6d337f04-e505-4f21-8178-796ebe4e31b5",
+      "id": "b2e74a9f-3626-4c1b-ba06-e94899007cb4",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "687a81dd-3faf-4953-bb63-2e2787d39409",
+      "id": "c89912b6-ca5e-4900-bf6b-4e3c1caa6fb2",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cc508c2e-066d-45f9-9f5f-b08d2cfe1f3f",
+      "id": "59bbc8d3-9931-4cd5-bcbd-72194accc389",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "301c6e56-e084-46fb-94f3-9d00fab16cbe",
+      "id": "d617d4c4-a1b1-4eac-a4f0-418fcc952a91",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "63a42d7f-28d2-4191-aac2-d80a47e4e96b",
+      "id": "fc6f12df-97c6-4238-8b3f-9193297de81d",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "23facf1b-7114-42d9-989c-16b1be3d944f",
+      "id": "fa44770e-b857-4267-bd3e-d419112034b6",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
