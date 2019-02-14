@@ -8353,10 +8353,12 @@
                   "var diff = Math.abs(now - dateEffective);",
                   "",
                   "var now = new Date();",
+                  "var dateNextPayment = new Date(data.date_next_payment);",
                   "var dateEffective = new Date(data.date_effective);",
+                  "var nextPaymentdiff = Math.abs(dateNextPayment - dateEffective);",
                   "var effectiveDiff = Math.abs(now - dateEffective);",
                   "",
-                  "tests[\"Date next payment is OK \" + data.date_next_payment] = data.date_next_payment === data.date_effective;",
+                  "tests[\"Date next payment is OK \" + data.date_next_payment] = nextPaymentdiff === 3600000;",
                   "tests[\"Date effective is OK \" + data.date_effective] = effectiveDiff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
@@ -8907,10 +8909,12 @@
                   "var diff = Math.abs(now - dateEffective);",
                   "",
                   "var now = new Date();",
+                  "var dateNextPayment = new Date(data.date_next_payment);",
                   "var dateEffective = new Date(data.date_effective);",
+                  "var nextPaymentdiff = Math.abs(dateNextPayment - dateEffective);",
                   "var effectiveDiff = Math.abs(now - dateEffective);",
                   "",
-                  "tests[\"Date next payment is OK \" + data.date_next_payment] = data.date_next_payment === data.date_effective;",
+                  "tests[\"Date next payment is OK \" + data.date_next_payment] = nextPaymentdiff === 3600000;",
                   "tests[\"Date effective is OK \" + data.date_effective] = effectiveDiff < 60000; // Should be \"now\", basically but we'll give a bit of a buffer to handle any time differences between client and server.",
                   "",
                   "pm.globals.set(\"payment_total\", data.payment_total);",
@@ -10772,56 +10776,56 @@
   ],
   "variable": [
     {
-      "id": "f94adac8-996b-4ae6-b35e-3cc7d4808752",
+      "id": "3647dfb4-f991-4bc1-9401-b10a212d428e",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d32706bf-4782-4be0-94fd-a0bf2078b022",
+      "id": "171f63e9-7e5b-437f-9286-6c204570191a",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "88a53272-f9c2-410c-8a16-a5ed789ec3f8",
+      "id": "ed6c0f14-e8d4-4bc8-8c66-e134ad02e0e8",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fb02a056-f62f-442c-94eb-5c022652e5ff",
+      "id": "3a916558-0688-40b8-b824-df47429c6a3b",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "877a3887-638d-4add-8aa4-5e79fee7817b",
+      "id": "f7caf014-6df1-4dae-8ff8-cb328d9931de",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "62e2a4c3-46a5-4c6e-ba89-1d0963a5144b",
+      "id": "e5cf97e8-40ec-4a88-b198-c2a544a0c2b9",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ac59737b-3c9d-4fc3-8e86-8772dd765634",
+      "id": "20e55e60-2c2c-49e9-81cb-cf00dffd9145",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9149cbd0-d2c6-4657-9590-d71d11a166bb",
+      "id": "63ce59c3-363e-48cb-ad76-9ce56bc852eb",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
