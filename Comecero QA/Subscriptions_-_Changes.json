@@ -7827,7 +7827,7 @@
                   "",
                   "// The new subscription should have the same trial end date as the first subscription",
                   "var subscription = data.subscription.customer.subscriptions.data[1];",
-                  "tests[\"The new subscription has the correct trial end date\"] = data.subscription.customer.subscriptions.data[1].date_trial_end === pm.globals.get(\"date_trial_end\");",
+                  "tests[\"The new subscription has the correct trial end date\"] = data.subscription.customer.subscriptions.data[1].date_trial_end === data.subscription.customer.subscriptions.data[1].date_current_period_end === pm.globals.get(\"date_trial_end\");",
                   "pm.globals.set(\"subscription_2_url\", subscription.url);"
                 ],
                 "type": "text/javascript"
@@ -10776,56 +10776,56 @@
   ],
   "variable": [
     {
-      "id": "3647dfb4-f991-4bc1-9401-b10a212d428e",
+      "id": "7b57509d-681a-41bf-9f51-b435dd5183a1",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "171f63e9-7e5b-437f-9286-6c204570191a",
+      "id": "e57c75cd-101f-4362-b664-024b4905b377",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ed6c0f14-e8d4-4bc8-8c66-e134ad02e0e8",
+      "id": "f217ebe7-59a8-4cc8-9b7c-7bf3fab095aa",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3a916558-0688-40b8-b824-df47429c6a3b",
+      "id": "d126977d-274c-400d-9c50-556b2179a33d",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f7caf014-6df1-4dae-8ff8-cb328d9931de",
+      "id": "0b934851-84e5-4ee7-96ab-d18a603da987",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e5cf97e8-40ec-4a88-b198-c2a544a0c2b9",
+      "id": "bfe033d8-9f01-4670-9c26-2695b794a923",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "20e55e60-2c2c-49e9-81cb-cf00dffd9145",
+      "id": "37de4920-b739-49bd-9930-68bd5f0ec89e",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "63ce59c3-363e-48cb-ad76-9ce56bc852eb",
+      "id": "59dc0184-ff3f-463e-814c-fce106b014e6",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
