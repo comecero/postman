@@ -6857,47 +6857,6 @@
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
-        },
-        {
-          "_postman_id": "e6256dca-c3db-41b0-9f62-a4c6feeb25c5",
-          "name": "Cancel Subscription",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
-                "exec": [
-                  "tests[\"Subscription cancelled successfully\"] = responseCode.code === 200;",
-                  "var data = JSON.parse(responseBody);",
-                  "tests[\"Subscription cancellation confirmed\"] = data.status === \"cancelled\";"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"cancel_at_current_period_end\": false,\n    \"cancellation_reason\": \"Cancelled upon completion of an automated test\"\n}"
-            },
-            "url": "{{subscription_url}}/cancel",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
         }
       ]
     },
@@ -10925,56 +10884,56 @@
   ],
   "variable": [
     {
-      "id": "67f45d90-2853-49aa-b6b0-db950a415205",
+      "id": "345c5f2e-4cf9-4937-b932-10520774c89a",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "33d25fef-b5b4-41b7-9136-4f7ce1656a8b",
+      "id": "f05d88dc-9e9b-42f5-ad19-6c52940a177f",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "05109de4-4932-4876-8432-684b343fe13b",
+      "id": "b413d4e5-1a9d-4df4-a597-e956d36cef34",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3da73274-9cc9-4db9-a5ed-e3c0b16ec009",
+      "id": "5ddb04e5-24b1-4832-a604-13f8280f70b1",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c6912d38-0059-4736-945e-8341609c0750",
+      "id": "c8a7410c-d6bc-47ab-ae97-6a9188c16ff5",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2e59ba6a-4d67-4c2d-b6ad-cc0a0b52286c",
+      "id": "86a16bf6-d641-4a53-b852-6a9b79d4c529",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fafbe2d0-41fb-4855-95bb-ec766f4738b8",
+      "id": "a2a1d094-4d21-4818-b42d-836265d200d8",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0bb05510-52bb-41cd-ac6b-da562c70c71e",
+      "id": "69d56472-7804-486f-baf7-2f6454fe7ef0",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
