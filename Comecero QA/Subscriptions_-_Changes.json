@@ -7929,7 +7929,23 @@
               "mode": "raw",
               "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
-            "url": "{{subscription_url}}/items/digital-term-sub.test/replace/preview",
+            "url": {
+              "raw": "{{subscription_url}}/items/preview?remove_item_id=digital-term-sub.test",
+              "host": [
+                "{{subscription_url}}"
+              ],
+              "path": [
+                "items",
+                "preview"
+              ],
+              "query": [
+                {
+                  "key": "remove_item_id",
+                  "value": "digital-term-sub.test",
+                  "equals": true
+                }
+              ]
+            },
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -7988,16 +8004,19 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-term-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscription.customer.subscriptions",
+              "raw": "{{subscription_url}}/items?remove_item_id=digital-term-sub.test&expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscription.customer.subscriptions",
               "host": [
                 "{{subscription_url}}"
               ],
               "path": [
-                "items",
-                "digital-term-sub.test",
-                "replace"
+                "items"
               ],
               "query": [
+                {
+                  "key": "remove_item_id",
+                  "value": "digital-term-sub.test",
+                  "equals": true
+                },
                 {
                   "key": "expand",
                   "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscription.customer.subscriptions",
@@ -10910,56 +10929,56 @@
   ],
   "variable": [
     {
-      "id": "729bebeb-d7b2-42e9-894d-8968a25085eb",
+      "id": "60ce0a14-ef77-4a0e-95b4-74f64e5c9477",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2a74ed46-5470-4a64-a0e6-71ae150046c3",
+      "id": "0322980c-1ed5-4206-a06b-5506906518b7",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "70c2d5db-810c-4e29-8bae-fae5bed64d60",
+      "id": "59ec2d9a-fb14-4e3d-a5f1-bfb89668bca2",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3f778750-5006-4b6c-8c2f-d4b9b5edfe0d",
+      "id": "bfcf9c79-bc98-4337-822b-8f3a5a035d2e",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b8e1faae-39cb-433f-b126-93882f50b792",
+      "id": "1402242c-ca13-441e-b7ac-71942854eb37",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3701a050-49d5-4e9f-87e5-9e8fca21f505",
+      "id": "c9cb5ab1-72a3-4db1-957e-eb61a81b0189",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ab71b410-c6fc-44b9-a1b8-09d6cd0d076e",
+      "id": "0763af81-a88b-43fa-b786-848e9f725c78",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "28c35718-e100-48ee-a527-2b68f9a85400",
+      "id": "1bc1e3b2-eb89-4f1e-a226-252410541d00",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
