@@ -621,12 +621,11 @@
               "raw": "{\n\t\"apply_immediately\": true,\n\t\"quantity\": 2\n}"
             },
             "url": {
-              "raw": "{{subscription_item_url}}/change_quantity/preview?expand=subscription.invoices",
+              "raw": "{{subscription_item_url}}/preview?expand=subscription.invoices",
               "host": [
                 "{{subscription_item_url}}"
               ],
               "path": [
-                "change_quantity",
                 "preview"
               ],
               "query": [
@@ -693,12 +692,9 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\t\n\t\"apply_immediately\": true,\n\t\"quantity\": 2\n}"
             },
             "url": {
-              "raw": "{{subscription_item_url}}/change_quantity?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
+              "raw": "{{subscription_item_url}}?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
               "host": [
                 "{{subscription_item_url}}"
-              ],
-              "path": [
-                "change_quantity"
               ],
               "query": [
                 {
@@ -746,12 +742,9 @@
               "raw": "{\n\t\"quantity\": 2\n}"
             },
             "url": {
-              "raw": "{{subscription_item_url}}xxx/change_quantity?expand=subscription.invoices",
+              "raw": "{{subscription_item_url}}xxx?expand=subscription.invoices",
               "host": [
                 "{{subscription_item_url}}xxx"
-              ],
-              "path": [
-                "change_quantity"
               ],
               "query": [
                 {
@@ -7827,7 +7820,8 @@
                   "",
                   "// The new subscription should have the same trial end date as the first subscription",
                   "var subscription = data.subscription.customer.subscriptions.data[1];",
-                  "tests[\"The new subscription has the correct trial end date\"] = data.subscription.customer.subscriptions.data[1].date_trial_end === data.subscription.customer.subscriptions.data[1].date_current_period_end === pm.globals.get(\"date_trial_end\");",
+                  "tests[\"The new subscription has the correct trial end date\"] = data.subscription.customer.subscriptions.data[1].date_trial_end === pm.globals.get(\"date_trial_end\");",
+                  "tests[\"The new subscription has the correct period end date\"] = data.subscription.customer.subscriptions.data[1].date_current_period_end === pm.globals.get(\"date_trial_end\");",
                   "pm.globals.set(\"subscription_2_url\", subscription.url);"
                 ],
                 "type": "text/javascript"
@@ -10776,56 +10770,56 @@
   ],
   "variable": [
     {
-      "id": "7b57509d-681a-41bf-9f51-b435dd5183a1",
+      "id": "1e06f092-af94-4877-8003-8b0b9d755b49",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e57c75cd-101f-4362-b664-024b4905b377",
+      "id": "92b5a030-5dd7-4d11-95da-430cfce96cf0",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f217ebe7-59a8-4cc8-9b7c-7bf3fab095aa",
+      "id": "50be1b3b-4f40-438d-9941-068582b08959",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d126977d-274c-400d-9c50-556b2179a33d",
+      "id": "702004c1-21bd-4a9e-9726-754b6290fd4f",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0b934851-84e5-4ee7-96ab-d18a603da987",
+      "id": "3090b14f-2c41-4a7f-876b-90a2bd6df6d6",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bfe033d8-9f01-4670-9c26-2695b794a923",
+      "id": "86b7ab9e-88aa-48b7-9f64-aa44c1564050",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "37de4920-b739-49bd-9930-68bd5f0ec89e",
+      "id": "5cca5ecc-3dd4-4448-a092-f33f5d87da54",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "59dc0184-ff3f-463e-814c-fce106b014e6",
+      "id": "054a8674-eef3-4117-adc3-efd43cbc0fa5",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
