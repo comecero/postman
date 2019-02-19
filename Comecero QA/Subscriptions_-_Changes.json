@@ -6230,7 +6230,7 @@
                   "tests[\"No change invoice was created\"] = data.subscription.invoices.total_items === 0;",
                   "tests[\"The subscription is not cancelled\"] = data.subscription.status === \"active\";",
                   "tests[\"An invoice has not been created\"] = data.subscription.invoices.total_items === 0;",
-                  "tests[\"The replacement item has been scheduled\"] = data.subscription.items[0].replace_at_current_period_end.item_id === \"digital-term-sub.test\";"
+                  "tests[\"The replacement item has been scheduled\"] = data.subscription.items[0].change_at_current_period_end.item_id === \"digital-term-sub.test\";"
                 ],
                 "type": "text/javascript"
               }
@@ -6256,16 +6256,19 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": false,\n\t\"product_id\": \"digital-term-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices",
+              "raw": "{{subscription_url}}/items?remove_item_id=digital-sub.test&expand=subscription.invoices",
               "host": [
                 "{{subscription_url}}"
               ],
               "path": [
-                "items",
-                "digital-sub.test",
-                "replace"
+                "items"
               ],
               "query": [
+                {
+                  "key": "remove_item_id",
+                  "value": "digital-sub.test",
+                  "equals": true
+                },
                 {
                   "key": "expand",
                   "value": "subscription.invoices",
@@ -6735,7 +6738,23 @@
               "mode": "raw",
               "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-sub.test\"\n}"
             },
-            "url": "{{subscription_url}}/items/digital-term-sub.test/replace/preview",
+            "url": {
+              "raw": "{{subscription_url}}/items/preview?remove_item_id=digital-term-sub.test",
+              "host": [
+                "{{subscription_url}}"
+              ],
+              "path": [
+                "items",
+                "preview"
+              ],
+              "query": [
+                {
+                  "key": "remove_item_id",
+                  "value": "digital-term-sub.test",
+                  "equals": true
+                }
+              ]
+            },
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -6794,16 +6813,19 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\t\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-term-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method",
+              "raw": "{{subscription_url}}/items?remove_item_id=digital-term-sub.test&expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method",
               "host": [
                 "{{subscription_url}}"
               ],
               "path": [
-                "items",
-                "digital-term-sub.test",
-                "replace"
+                "items"
               ],
               "query": [
+                {
+                  "key": "remove_item_id",
+                  "value": "digital-term-sub.test",
+                  "equals": true
+                },
                 {
                   "key": "expand",
                   "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method",
@@ -7266,7 +7288,23 @@
               "mode": "raw",
               "raw": "{\n\t\"apply_immediately\": false,\t\n\t\"product_id\": \"digital-sub.test\"\n}"
             },
-            "url": "{{subscription_url}}/items/digital-term-sub.test/replace/preview",
+            "url": {
+              "raw": "{{subscription_url}}/items/preview?remove_item_id=digital-term-sub.test",
+              "host": [
+                "{{subscription_url}}"
+              ],
+              "path": [
+                "items",
+                "preview"
+              ],
+              "query": [
+                {
+                  "key": "remove_item_id",
+                  "value": "digital-term-sub.test",
+                  "equals": true
+                }
+              ]
+            },
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -7287,7 +7325,7 @@
                   "tests[\"No change invoice was created\"] = data.subscription.invoices.total_items === 0;",
                   "tests[\"The subscription is not cancelled\"] = data.subscription.status === \"active\";",
                   "tests[\"An invoice has not been created\"] = data.subscription.invoices.total_items === 0;",
-                  "tests[\"The replacement item has been scheduled\"] = data.subscription.items[0].replace_at_current_period_end.item_id === \"digital-sub.test\";"
+                  "tests[\"The replacement item has been scheduled\"] = data.subscription.items[0].change_at_current_period_end.item_id === \"digital-sub.test\";"
                 ],
                 "type": "text/javascript"
               }
@@ -7313,16 +7351,19 @@
               "raw": "{\n\t\"apply_immediately\": false,\n\t\"product_id\": \"digital-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-term-sub.test/replace?expand=subscription.invoices",
+              "raw": "{{subscription_url}}/items?remove_item_id=digital-term-sub.test&expand=subscription.invoices",
               "host": [
                 "{{subscription_url}}"
               ],
               "path": [
-                "items",
-                "digital-term-sub.test",
-                "replace"
+                "items"
               ],
               "query": [
+                {
+                  "key": "remove_item_id",
+                  "value": "digital-term-sub.test",
+                  "equals": true
+                },
                 {
                   "key": "expand",
                   "value": "subscription.invoices",
@@ -10869,56 +10910,56 @@
   ],
   "variable": [
     {
-      "id": "bddde7f9-b38c-4a16-a5ad-25f1b06cb375",
+      "id": "729bebeb-d7b2-42e9-894d-8968a25085eb",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2f5bdbd1-0a81-4688-bff7-a1991553d73e",
+      "id": "2a74ed46-5470-4a64-a0e6-71ae150046c3",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "abe86982-d9f7-4696-ae84-8163d653e8ef",
+      "id": "70c2d5db-810c-4e29-8bae-fae5bed64d60",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d43ebbcc-27a1-4c7f-bda7-e1c3d633c7e5",
+      "id": "3f778750-5006-4b6c-8c2f-d4b9b5edfe0d",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "461e3129-6aef-489b-a3c7-0c91cfa2e468",
+      "id": "b8e1faae-39cb-433f-b126-93882f50b792",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6aacb04a-52b8-4063-a6a3-5de19f6ffdc7",
+      "id": "3701a050-49d5-4e9f-87e5-9e8fca21f505",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6ef16fb3-7c20-45d1-9c7b-8e52d8704438",
+      "id": "ab71b410-c6fc-44b9-a1b8-09d6cd0d076e",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a06210ac-59ad-4511-8b7a-fd4a460f68be",
+      "id": "28c35718-e100-48ee-a527-2b68f9a85400",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
