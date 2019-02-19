@@ -3444,7 +3444,23 @@
               "mode": "raw",
               "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
-            "url": "{{subscription_url}}/items/digital-sub.test/preview",
+            "url": {
+              "raw": "{{subscription_url}}/items/preview?remove_product_id=digital-sub.test",
+              "host": [
+                "{{subscription_url}}"
+              ],
+              "path": [
+                "items",
+                "preview"
+              ],
+              "query": [
+                {
+                  "key": "remove_product_id",
+                  "value": "digital-sub.test",
+                  "equals": true
+                }
+              ]
+            },
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -3506,16 +3522,19 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items/digital-sub.test/replace?expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
+              "raw": "{{subscription_url}}/items?remove_product_id=digital-sub.test&expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
               "host": [
                 "{{subscription_url}}"
               ],
               "path": [
-                "items",
-                "digital-sub.test",
-                "replace"
+                "items"
               ],
               "query": [
+                {
+                  "key": "remove_product_id",
+                  "value": "digital-sub.test",
+                  "equals": true
+                },
                 {
                   "key": "expand",
                   "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
@@ -10758,56 +10777,56 @@
   ],
   "variable": [
     {
-      "id": "34e463ac-af6d-4235-815f-b07817dc3717",
+      "id": "e595295d-d933-4336-8203-bdfeacc073b5",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2476f36f-0cd3-4220-b4b0-fef696dd17df",
+      "id": "e1ca2e5c-21b9-4c1d-91d5-fc9ebc874951",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6160d76b-6c6f-4c07-b6a5-f37fa72d137c",
+      "id": "fbd59450-63d8-4890-ac54-df4622f7b122",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ab6b5efb-27a0-42d0-b65c-c962168ca92b",
+      "id": "6db0d6b5-ab17-4e25-8289-17273679526a",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "718624d0-4ad7-4f62-a493-0e1beb40b1a5",
+      "id": "ae42fb50-d2e1-4781-bb33-c2738484cbed",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d1997a61-1dd3-4b33-b3d3-f2e9fd7f5711",
+      "id": "bf36ab55-9f17-4ab0-a115-1d23bf31edee",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7d5f3029-0e19-4348-a382-68441a89ca75",
+      "id": "914571c6-71dc-4757-836c-323c68e9921a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b924ff84-8869-484c-aad5-a036fc230509",
+      "id": "a4216fdd-9fae-46b8-8711-038cc66ec81b",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
