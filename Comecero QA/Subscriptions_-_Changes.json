@@ -3522,7 +3522,7 @@
               "raw": "{\n\t\"date_effective\": \"{{date_effective}}\",\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\"\n}"
             },
             "url": {
-              "raw": "{{subscription_url}}/items?remove_product_id=digital-sub.test&expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
+              "raw": "{{subscription_url}}/items?remove_item_id=digital-sub.test&expand=subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
               "host": [
                 "{{subscription_url}}"
               ],
@@ -3531,7 +3531,7 @@
               ],
               "query": [
                 {
-                  "key": "remove_product_id",
+                  "key": "remove_item_id",
                   "value": "digital-sub.test",
                   "equals": true
                 },
@@ -10777,56 +10777,56 @@
   ],
   "variable": [
     {
-      "id": "795f0d18-4d59-480f-bd25-3e749effb47f",
+      "id": "58a461cd-c111-4735-9220-937cda950afe",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9f033b84-7a47-4a41-9a41-1e9c48056a80",
+      "id": "c39ff773-1ad5-4f00-9344-05c57e2eb64d",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "15dc7299-595d-4edb-980f-05e9192ef148",
+      "id": "074fe97d-90b4-456d-99e5-f846ef96b52a",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1a25acb7-d95f-42f1-abef-ce93b19e9bc9",
+      "id": "2f5777dc-2014-4cbc-9f26-7e9c195fcc50",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "09b4d654-d7bf-436b-a6b5-470b47135928",
+      "id": "b4cd0949-3865-492c-922d-d2dbc9718b4a",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "809e6f76-2791-485a-9ff0-43d0827f90ea",
+      "id": "63e3d85b-6b5d-4db9-a476-21ff3a37f144",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c94cca79-7274-499e-ab01-11ab4b82e21d",
+      "id": "85415dfe-c583-49ee-8f0a-d7e93abf89c7",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a2409677-8909-40e6-8009-0de1e0e83bab",
+      "id": "a14e05b4-7c53-4bbc-aa7e-bcc26c4a45c8",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
