@@ -9409,66 +9409,6 @@
           "response": []
         },
         {
-          "_postman_id": "366e2b8c-9438-4bb7-9d45-25dc4bc496fe",
-          "name": "Get the Product",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
-                "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
-                  "var data = JSON.parse(responseBody);",
-                  "pm.globals.set(\"product_price\", data.price);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
-            },
-            "url": {
-              "raw": "https://{{host}}/api/v1/products/digital-pro-sub.test?currency=USD",
-              "protocol": "https",
-              "host": [
-                "{{host}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "products",
-                "digital-pro-sub.test"
-              ],
-              "query": [
-                {
-                  "key": "currency",
-                  "value": "USD",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "6f55465e-035d-4d04-b157-19f61780f0cd",
           "name": "Run Preview",
           "event": [
@@ -11375,56 +11315,56 @@
   ],
   "variable": [
     {
-      "id": "05c0ba7d-8f0b-493d-9183-c9eb3b516f5d",
+      "id": "9e9b93e7-93df-4b3f-b083-57cbf87d63e3",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f9b3675c-4497-4d2f-9c4e-c3f8c5b72fed",
+      "id": "2b48ab04-80bb-4c5f-9dfc-ac845afabcd5",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5ad99c4a-8868-4ab7-a551-4ec22e0fa212",
+      "id": "ecdfbdd8-eb55-461c-8c89-460f935678ad",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5a1e6aa8-76ce-4913-8e1b-840fe2fc5e59",
+      "id": "52062cca-6c48-4a17-97fb-6361aa02d39d",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d6063923-5cb0-493f-a7e6-acaf8cda1d00",
+      "id": "3cad2652-d6cb-4b43-961f-df5810a49494",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8cead9c4-8b6c-4a0e-99b0-6fe35b0070e2",
+      "id": "95ab5e1b-2846-469d-8b75-c5fd8039071c",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "98a0dfb0-b943-40db-b924-e6c5412953e5",
+      "id": "c50b23c7-340f-4493-b94d-1c103309a20a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "21aab81d-ffc0-43fd-bf67-fc014bc58a4e",
+      "id": "4fcd95c6-79fc-437a-879e-2b315b2f4831",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
