@@ -9484,6 +9484,60 @@
           "response": []
         },
         {
+          "_postman_id": "e89c36ad-7167-450f-9784-ec5d3890c461",
+          "name": "Change Price Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
+                "exec": [
+                  "tests[\"Status is 400\"] = responseCode.code === 400;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{limited_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"product_id\": \"digital-pro-sub.test\",\n\t\"reference_price\": 1\n}"
+            },
+            "url": {
+              "raw": "{{subscription_url}}/items?remove_item_id=digital-sub.test",
+              "host": [
+                "{{subscription_url}}"
+              ],
+              "path": [
+                "items"
+              ],
+              "query": [
+                {
+                  "key": "remove_item_id",
+                  "value": "digital-sub.test",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
           "_postman_id": "587de319-986f-451c-89ab-5dc5d43c8234",
           "name": "Change Currency",
           "event": [
@@ -9623,7 +9677,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\",\n\t\"discount_apply_count\": 1\n}"
+              "raw": "{\n\t\"product_id\": \"digital-pro-sub.test\",\n\t\"reference_discount\": 1\n}"
             },
             "url": {
               "raw": "{{subscription_url}}/items?remove_item_id=digital-sub.test",
@@ -11336,56 +11390,56 @@
   ],
   "variable": [
     {
-      "id": "dff12e20-49ef-495d-986e-ca877d101c45",
+      "id": "74eee947-5ed9-41af-a43c-6a18006db90c",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6d23658e-7c94-4b94-bca7-e87e001556a9",
+      "id": "63322839-b353-415f-9fdc-2a50beb5025a",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4571295d-522b-46b6-b23c-2578e25b48f0",
+      "id": "e771d9ef-ea9c-4793-91a3-8d92e0b634a6",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fb1b2e8f-e74f-41c0-9a62-e5c19509a576",
+      "id": "6641a6ae-6b4b-4f3c-ba79-f0418e4eddbd",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a44db11c-849c-4fec-8cb1-3415693f9577",
+      "id": "b323f6ff-2b64-4336-9b01-e7614035bc01",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "81fed08f-c009-4865-b3b2-7508a19e9be9",
+      "id": "10ceae84-1d1a-4840-abf2-39e7117bbdef",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "559a0adc-6a30-4152-801f-c5b734a767e0",
+      "id": "404be292-b40e-48ba-9267-f905334d5353",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5cfba090-d0d5-4cc6-8b79-6a54b19a0d00",
+      "id": "94fe46cf-5d10-4dc5-b972-aff3ceacdca6",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
