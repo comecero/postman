@@ -9461,7 +9461,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"apply_immediately\": true,\t\n\t\"product_id\": \"digital-pro-sub.test\",\n\t\"reference_price\": 1\n}"
+              "raw": "{\n\t\"product_id\": \"digital-pro-sub.test\",\n\t\"reference_price\": 1\n}"
             },
             "url": {
               "raw": "{{subscription_url}}/items?remove_item_id=digital-sub.test",
@@ -9593,7 +9593,7 @@
         },
         {
           "_postman_id": "64adf09d-7d2d-4077-950f-83d35e4ed7cf",
-          "name": "Change Discount Apply Count, Replace Item",
+          "name": "Change Discount Apply Count",
           "event": [
             {
               "listen": "test",
@@ -11336,56 +11336,56 @@
   ],
   "variable": [
     {
-      "id": "918d26cb-796d-4b22-b52d-ad65f63e7025",
+      "id": "70830a3f-fe22-4c44-8ddf-c2fe875da274",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7ff7fbb3-d71f-462b-a4a2-00f565af7c02",
+      "id": "c91f5d02-41c0-4ef7-9f0c-a11cccf429a7",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "48301365-8cf9-43d9-b498-71f3027dc294",
+      "id": "e1df4884-17d9-4769-89cb-b61c616416b3",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0e4a55fa-9ff6-46cb-900f-3f0e2f5324b3",
+      "id": "88ea3831-7982-4bff-9adb-6b60ed1a7092",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "227094d4-34b3-46ce-b5d7-fc545f4f7102",
+      "id": "5df6b592-525b-439e-b2dc-0f8c900a5b5e",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1dd85542-57a5-4610-8d24-1836a0adbbeb",
+      "id": "5dc8ecb0-6565-400a-953d-cdfd7454901d",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8605606a-2ed6-447d-a4e4-8b5db90cbb45",
+      "id": "a02b5808-19d6-4c9b-a002-2075064035d9",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "90be851b-8815-48b7-b07c-d30524ed362f",
+      "id": "118b9cc0-3d6c-4163-9738-e5635975c17c",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
