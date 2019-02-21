@@ -9539,7 +9539,7 @@
         },
         {
           "_postman_id": "64adf09d-7d2d-4077-950f-83d35e4ed7cf",
-          "name": "Change Discount, Replace Item Copy",
+          "name": "Change Discount Apply Count, Replace Item",
           "event": [
             {
               "listen": "test",
@@ -11282,56 +11282,56 @@
   ],
   "variable": [
     {
-      "id": "90548a0d-5567-42f6-96b0-cc7a67ef9a98",
+      "id": "7fe0a8bd-3efb-411c-86fe-7d9114fd8cfc",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2d20bdd8-8c4b-48dd-9b1d-78dc716d20a8",
+      "id": "b8201768-0ba5-48f0-a2a8-876cbc57935a",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9d9e6eb2-0784-464f-b66d-8588a3b7fbf7",
+      "id": "3f5a880d-9435-4dde-9765-b27d80f177c6",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7718a5ba-089a-4b9a-ac02-99ebec308a05",
+      "id": "d5354670-3763-439d-80cd-45b3557d4ca7",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "562a0f0d-96b3-450b-abaf-b78063146ff2",
+      "id": "b3182344-2b8e-4ec2-b384-b6b57bb2b40d",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5028633b-2e3d-4e90-a4d7-c12bb8b16eff",
+      "id": "0d1a7897-e94b-45da-b9cd-4d0d52c9bd3f",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eec74fe4-cd4b-4691-9743-3238cb98d593",
+      "id": "eb404944-cf8f-434e-830a-3ef55348b8b6",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c2c7fe4b-bd4b-4489-8ce4-c9c62c2c0ae4",
+      "id": "616c73e3-c0a1-4fee-86ad-62f488f7b0d4",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
