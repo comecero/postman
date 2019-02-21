@@ -9523,69 +9523,6 @@
           "response": []
         },
         {
-          "_postman_id": "8037b583-d087-4f23-8fec-8f6a48b86949",
-          "name": "Get the Customer",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
-                "exec": [
-                  "tests[\"Status is 200\"] = responseCode.code === 200;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "// We should have three payments - two by credit card and one by customer account balance.",
-                  "tests[\"Correct number of credit card payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"credit_card\"}).length === 2;",
-                  "tests[\"Correct number of customer account balance payments\"] = _.filter(data.payments.data, function(payment) { return payment.payment_method.type == \"customer_account_balance\"}).length === 1;",
-                  "tests[\"All payments are completed\"] = _.filter(data.payments.data, function(payment) { return payment.status == \"completed\"}).length === 3;",
-                  "tests[\"Correct number of customer account balance refunds\"] = _.filter(data.refunds.data, function(refund) { return refund.payment_method.type == \"customer_account_balance\"}).length === 1;",
-                  "tests[\"Correct number of total refunds\"] = data.refunds.total_items === 1;",
-                  "tests[\"Refund total is within range\"] = data.refunds.data[0].total < 20;",
-                  "tests[\"Correct number of subscriptions\"] = data.subscriptions.total_items === 1;",
-                  "tests[\"Correct number of orders\"] = data.orders.total_items === 2;",
-                  "tests[\"Correct number of invoices\"] = data.invoices.total_items === 1;"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
-            },
-            "url": {
-              "raw": "{{customer_url}}?expand=refunds.payment_method,payments.payment_method,subscriptions,invoices,orders",
-              "host": [
-                "{{customer_url}}"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "21d05034-c9f8-44ad-b827-ce920bc54bc6",
           "name": "Cancel Subscription",
           "event": [
@@ -11276,56 +11213,56 @@
   ],
   "variable": [
     {
-      "id": "bd2050e9-1adb-4c49-a5fa-bea179519af8",
+      "id": "1177f1bc-c7f9-40e1-af52-e021b73c6702",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "251fbf72-bbcf-4696-9ee4-434483a55a03",
+      "id": "88993e63-1415-4694-bfd7-4f8b0b2a4c75",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "114d113a-7af5-4c9e-9bd7-f4c74141dcbd",
+      "id": "16193d2e-91a9-4ea0-944c-0b173cd5e35c",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5e8c2153-2a9f-467d-8118-f0dda93b8092",
+      "id": "e644a352-d310-489a-bf14-98da3a64fa91",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "42b87b0f-847a-45ab-a0e1-4a7987646e26",
+      "id": "ec976c65-6cf4-4378-b5cd-5b68bd0790bc",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "238c207b-ab71-4777-a282-da14316e5f73",
+      "id": "04f0c0c8-7180-47cd-85df-3924771d2c39",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4e84f243-31fc-4417-818b-02cd98273c6e",
+      "id": "eb82c98b-b8ee-4cb2-bb79-66a2c79f29d3",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ea701aac-19e0-4477-a3d6-ac8d94d54390",
+      "id": "7ca4271a-5623-4cbd-9e27-cb442e6748d0",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
