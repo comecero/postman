@@ -1407,7 +1407,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"payment_method_type\": \"amazon_pay\",\r\n    \"provider_id\": \"amazon_pay\",\r\n    \"currencies\": [\r\n        \"USD\"\r\n    ],\r\n    \"active\": true,\r\n    \"comments\": \"Amazon Pay Sandbox Account for QA testing\",\r\n    \"fields\": {\r\n        \"seller_id\": \"{{ap_seller_id}}\",\r\n        \"access_key\": \"{{ap_access_key}}\",\r\n        \"secret_key\": \"{{ap_secret_key}}\",\r\n        \"client_id\": \"{{ap_client_id}}\",\r\n        \"client_secret\": \"{{ap_client_secret}}\"\r\n    }\r\n}"
+          "raw": "{\r\n    \"payment_method_types\": [\"amazon_pay\"],\r\n    \"provider_id\": \"amazon_pay\",\r\n    \"currencies\": [\r\n        \"USD\"\r\n    ],\r\n    \"active\": true,\r\n    \"comments\": \"Amazon Pay Sandbox Account for QA testing\",\r\n    \"fields\": {\r\n        \"seller_id\": \"{{ap_seller_id}}\",\r\n        \"access_key\": \"{{ap_access_key}}\",\r\n        \"secret_key\": \"{{ap_secret_key}}\",\r\n        \"client_id\": \"{{ap_client_id}}\",\r\n        \"client_secret\": \"{{ap_client_secret}}\"\r\n    }\r\n}"
         },
         "url": "https://{{host}}/api/v1/gateways"
       },
@@ -1445,7 +1445,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"payment_method_type\": \"paypal\",\r\n    \"provider_id\": \"paypal\",\r\n    \"currencies\": [\r\n        \"USD\",\r\n        \"EUR\",\r\n        \"GBP\"\r\n    ],\r\n    \"active\": true,\r\n    \"comments\": \"PayPal Sandbox Account for QA testing\",\r\n    \"fields\": {\r\n        \"username\": \"{{pp_username}}\",\r\n        \"client_id\": \"{{pp_client_id}}\",\r\n        \"client_secret\": \"{{pp_client_secret}}\",\r\n        \"username_nvp\": \"{{pp_username_nvp}}\",\r\n        \"password_nvp\": \"{{pp_password_nvp}}\",\r\n        \"signature_nvp\": \"{{pp_signature_nvp}}\"\r\n    }\r\n}"
+          "raw": "{\r\n    \"payment_method_types\": [\"paypal\"],\r\n    \"provider_id\": \"paypal\",\r\n    \"currencies\": [\r\n        \"USD\",\r\n        \"EUR\",\r\n        \"GBP\"\r\n    ],\r\n    \"active\": true,\r\n    \"comments\": \"PayPal Sandbox Account for QA testing\",\r\n    \"fields\": {\r\n        \"username\": \"{{pp_username}}\",\r\n        \"client_id\": \"{{pp_client_id}}\",\r\n        \"client_secret\": \"{{pp_client_secret}}\",\r\n        \"username_nvp\": \"{{pp_username_nvp}}\",\r\n        \"password_nvp\": \"{{pp_password_nvp}}\",\r\n        \"signature_nvp\": \"{{pp_signature_nvp}}\"\r\n    }\r\n}"
         },
         "url": "https://{{host}}/api/v1/gateways"
       },
@@ -2106,44 +2106,6 @@
           "raw": "{\r\n   \"apply_to_recurring\":false,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"weight\":1,\r\n      \"product_id\":\"physical-2.test\",\r\n      \"offer_with_product_ids\":[\r\n         \"physical.test\"\r\n      ]\r\n   },\r\n   \"name\":\"Cross Sell Paper Clips with Stapler (No Discount)\",\r\n   \"type\":\"cross_sell\"\r\n}"
         },
         "url": "https://{{host}}/api/v1/settings/general"
-      },
-      "response": []
-    },
-    {
-      "_postman_id": "8792fc53-5ea6-47ab-97d5-c970fbbfc307",
-      "name": "Add Worldwide Shipping Method Copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "9ac0fffb-9b7f-44df-bbab-7670e58552f9",
-            "type": "text/javascript",
-            "exec": [
-              "tests[\"Status code is 201\"] = responseCode.code === 201;"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "auth": {
-          "type": "noauth"
-        },
-        "method": "POST",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          },
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n   \"subtotal_config\":{\r\n      \"rules\":[\r\n         {\r\n            \"ranges\":[\r\n               {\r\n                  \"minimum\":\"0\",\r\n                  \"maximum\":\"999999\",\r\n                  \"price\":\"4.00\"\r\n               }\r\n            ],\r\n            \"currency\":\"EUR\"\r\n         },\r\n         {\r\n            \"ranges\":[\r\n               {\r\n                  \"minimum\":\"0\",\r\n                  \"maximum\":\"999999\",\r\n                  \"price\":\"5.00\"\r\n               }\r\n            ],\r\n            \"currency\":\"USD\"\r\n         }\r\n      ],\r\n      \"percent_of_subtotal\":\"0.00\"\r\n   },\r\n   \"description\":\"Worldwide\",\r\n   \"details\":\"Worldwide shipping\",\r\n   \"countries\":[\r\n      \"*\"\r\n   ]\r\n}"
-        },
-        "url": "https://{{host}}/api/v1/shipping_methods"
       },
       "response": []
     }
