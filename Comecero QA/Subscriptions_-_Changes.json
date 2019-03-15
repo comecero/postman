@@ -6117,7 +6117,7 @@
                   "tests[\"Status is 200\"] = responseCode.code === 200;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 1 && data.subscription_terms.billing_interval_unit === \"hour\";",
+                  "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 2 && data.subscription_terms.billing_interval_unit === \"hour\";",
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
                   "tests[\"Payment total is 0\"] = data.payment_total === 0;",
                   "tests[\"Date next payment is OK \" + data.date_next_payment + \" \" + pm.globals.get(\"date_current_period_end\")] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
@@ -7171,7 +7171,7 @@
                   "tests[\"Status is 200\"] = responseCode.code === 200;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 2 && data.subscription_terms.billing_interval_unit === \"hour\";",
+                  "tests[\"Subscription term is OK\"] = data.subscription_terms.billing_interval === 1 && data.subscription_terms.billing_interval_unit === \"hour\";",
                   "tests[\"Trial term is OK\"] = data.subscription_terms.trial_interval === null && data.subscription_terms.trial_interval_unit === null;",
                   "tests[\"Payment total is 0\"] = data.payment_total === 0;",
                   "tests[\"Date next payment is OK \" + data.date_next_payment + \" \" + pm.globals.get(\"date_current_period_end\")] = data.date_next_payment === pm.globals.get(\"date_current_period_end\");",
@@ -11390,56 +11390,56 @@
   ],
   "variable": [
     {
-      "id": "73b4964a-fc63-4946-8818-1948a7f6d621",
+      "id": "2b1d0185-10b8-48a3-b60c-bb582d389082",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "af800f3a-cd0f-4bf6-b8ea-099555fcc931",
+      "id": "c1d6e56c-8419-49a2-ad54-a99f6abf1f8f",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "48b4c52a-fb52-475d-a397-7750ee66ed78",
+      "id": "24658eec-8837-489d-9c3c-9ec45f7d1058",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e4d938dd-bd92-4f57-9100-6b33d4405314",
+      "id": "553d8e97-9aff-4eb0-9f90-eda72d165015",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bc6197fe-c94d-42fe-a5a1-cdb8716fd0dd",
+      "id": "67a50b9c-250d-4b53-8b93-7c2aaccb343e",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1d7b6a33-d244-4821-8e3d-e373e2981ecf",
+      "id": "7cd81c27-db37-429b-9077-8e4b2a5a0ea5",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "27cd0575-475a-4212-8c58-32f20c330032",
+      "id": "e69afd5d-707c-4b0f-bdc3-e9cfd00e7407",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f7001d61-654d-4d26-bea2-889e98cd3b1d",
+      "id": "090b1367-e0e8-4914-9b70-bcb50a98b0ee",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string",
