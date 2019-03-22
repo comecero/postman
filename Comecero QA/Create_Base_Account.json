@@ -1483,7 +1483,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n\t\"payment_method_types\": [\"credit_card\"],\r\n    \"provider_id\": \"braintree\",\r\n    \"currencies\": [\r\n        \"USD\",\r\n        \"CAD\",\r\n        \"EUR\",\r\n        \"GBP\"\r\n    ],\r\n    \"card_types\": [\r\n        \"Visa\",\r\n        \"MasterCard\",\r\n        \"Discover\",\r\n        \"Diners Club\",\r\n        \"American Express\"\r\n    ],\r\n        \"fields\": {\r\n        \"merchant_id\": \"{{bt_merchant_ID}}\",\r\n        \"public_key\": \"{{bt_public_key}}\",\r\n        \"private_key\": \"{{bt_private_key}}\"\r\n    },\r\n    \"active\": false,\r\n    \"weight\": 0,\r\n    \"comments\": \"Braintree Sandbox Account for QA testing. Not active and weight of 0 on creation. Also needs currencies created on the sandbox side.\"\r\n}\r\n"
+          "raw": "{\r\n\t\"payment_method_types\": [\"credit_card\"],\r\n    \"provider_id\": \"braintree\",\r\n    \"currencies\": [\r\n        \"USD\",\r\n        \"EUR\"\r\n    ],\r\n    \"card_types\": [\r\n        \"Visa\",\r\n        \"MasterCard\",\r\n        \"Discover\",\r\n        \"Diners Club\",\r\n        \"American Express\"\r\n    ],\r\n        \"fields\": {\r\n        \"merchant_id\": \"{{bt_merchant_ID}}\",\r\n        \"public_key\": \"{{bt_public_key}}\",\r\n        \"private_key\": \"{{bt_private_key}}\"\r\n    },\r\n    \"active\": false,\r\n    \"weight\": 0,\r\n    \"comments\": \"Braintree Sandbox Account for QA testing. Not active and weight of 0 on creation. Also needs currencies created on the sandbox side.\"\r\n}\r\n"
         },
         "url": "https://{{host}}/api/v1/gateways"
       },
