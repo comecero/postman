@@ -5251,7 +5251,7 @@
         },
         {
           "_postman_id": "342bb27c-6e02-43be-9bd2-cef330f82483",
-          "name": "Create Payment Copy",
+          "name": "Create Payment",
           "event": [
             {
               "listen": "test",
@@ -5603,49 +5603,49 @@
   ],
   "variable": [
     {
-      "id": "5e69c4c1-06be-46df-9a7b-b798949b619d",
+      "id": "155bafcd-8309-4b51-9e51-4c5f64297c8f",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f9567569-868f-4a64-862c-25944e5c819f",
+      "id": "a4bccb3d-3205-4c55-ba93-8b268bcfbbf0",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "84df3cdb-4c3b-42f0-bb1a-77930806936f",
+      "id": "f3a74b50-be13-46e8-9b7d-dd881e283472",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a5dfe17d-15f7-4d3d-85a7-e24fbd6b40f7",
+      "id": "b893b5bd-8c99-4909-9001-13652106b1df",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "527aa146-5409-4c8d-87f2-1750dfb22ab0",
+      "id": "1d832850-b0ea-4be8-a436-3ac36ab7c410",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c0a46324-79a2-425f-9cc2-c09770214127",
+      "id": "d0a4e56a-ad34-4aca-8494-452f09c60e1e",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d38e3fce-4987-4eb2-b341-7f78dfd13e91",
+      "id": "49ae6e98-9e0b-476a-8e66-bb1924accf1a",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
