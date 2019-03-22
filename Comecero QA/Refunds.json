@@ -1078,6 +1078,46 @@
           "response": []
         },
         {
+          "_postman_id": "0b9362c0-bffa-4b5f-94cc-49d5065d80da",
+          "name": "Create Cart Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3a0eecbc-a75e-4942-a4bf-2ee73fe61f21",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Cart created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cart_url\", data.url);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":3\r\n      },   \t\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":2\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/carts"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "f746f38a-fe61-4b97-8be4-226f393d6761",
           "name": "Create Payment",
           "event": [
@@ -1149,46 +1189,6 @@
               "raw": ""
             },
             "url": "{{order_url}}/refunds"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "0b9362c0-bffa-4b5f-94cc-49d5065d80da",
-          "name": "Create Cart Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "3a0eecbc-a75e-4942-a4bf-2ee73fe61f21",
-                "type": "text/javascript",
-                "exec": [
-                  "tests[\"Cart created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "pm.globals.set(\"cart_url\", data.url);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":3\r\n      },   \t\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":2\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }\r\n}"
-            },
-            "url": "https://{{host}}/api/v1/carts"
           },
           "response": []
         }
@@ -5528,49 +5528,49 @@
   ],
   "variable": [
     {
-      "id": "b942a888-8e8f-434a-8584-cd6e0e2c6f40",
+      "id": "93cce7ac-6bdd-4713-a2a9-4ca2f7f8bee5",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f1dc1104-e76e-48b7-9022-4a68c0c053c1",
+      "id": "92d9f997-688d-46a3-b788-a266dbe4f308",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3641dfe9-f23c-464d-9a86-b56da16f9022",
+      "id": "7cf11488-902c-4b7e-9ace-761e98aa5e98",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0c02dc60-c91e-41d5-9ee3-fe3a585340f1",
+      "id": "474f6e86-3f73-4efe-9de3-75485474acff",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8a6fd890-5c4a-4283-95e4-506047b1d5bc",
+      "id": "7ff2a940-d0f9-4809-bb55-bcda6bbcd28f",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "be9f56e2-48e9-4fc5-89ee-18b7fab0ffc6",
+      "id": "d53a56f4-b58d-439d-a625-3dbafe141a7c",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e8791f1f-2b0a-43c6-9c62-b4d2e931417e",
+      "id": "ea04209b-8e67-4cb9-a6bd-0578b1ab6de6",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
