@@ -5210,44 +5210,6 @@
           "response": []
         },
         {
-          "_postman_id": "bfa27727-3b28-4692-8582-9b63817216c4",
-          "name": "Delete Coupon",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "11f7ecaf-d06d-4487-b346-967fa0f15101",
-                "exec": [
-                  "tests[\"Status code is 204\"] = responseCode.code === 204;"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{coupon_url}}"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "0b9362c0-bffa-4b5f-94cc-49d5065d80da",
           "name": "Create Cart Copy",
           "event": [
@@ -5284,6 +5246,44 @@
               "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":3\r\n      },   \t\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":2\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }\r\n}"
             },
             "url": "https://{{host}}/api/v1/carts"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "bfa27727-3b28-4692-8582-9b63817216c4",
+          "name": "Delete Coupon",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "11f7ecaf-d06d-4487-b346-967fa0f15101",
+                "exec": [
+                  "tests[\"Status code is 204\"] = responseCode.code === 204;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{coupon_url}}"
           },
           "response": []
         }
@@ -5528,49 +5528,49 @@
   ],
   "variable": [
     {
-      "id": "d2eb5466-496a-4cb0-b00f-be4cd510178a",
+      "id": "462004b8-e363-4aa5-a590-dd83d9215375",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "efd94a38-9c0f-43e4-87fe-491adab24ff4",
+      "id": "59044dcb-c5d9-4dbf-bda4-5c542ddcb45e",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "fec6e4e4-ab8e-45e3-9d7b-b10c447e6c6c",
+      "id": "8112600a-a8b6-416b-a793-6dffe95048f2",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "804d540f-43a4-40ba-8139-70f7d607de18",
+      "id": "7adeccc8-88df-474b-ac21-42696b461e97",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4b9a4faa-b2c1-43d6-b1c1-14d3d5d54352",
+      "id": "c44026c9-b7cb-4135-919b-82ba92e37c54",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9bb98913-32fe-4dbe-9529-0cfac25888a8",
+      "id": "8f84ec4e-a18e-4287-a38a-7cbfad4ea519",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eca2fae1-e43b-4107-af65-82302fcd7c87",
+      "id": "bad4c162-f8a4-4d47-bfb0-e70215505928",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
