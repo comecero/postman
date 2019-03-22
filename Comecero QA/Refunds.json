@@ -4984,62 +4984,7 @@
                   "tests[\"Chargeback created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Chargeback was successful\"] = data.total === 100 && data.subtotal === 90 && data.shipping === 10 && data.tax === 0;",
-                  "",
-                  "pm.globals.set(\"customer_url\", data.customer);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"is_chargeback\": true,\n\t\"total\": 60\n}"
-            },
-            "url": {
-              "raw": "{{payment_url}}/refunds?expand=refunds.payment_method",
-              "host": [
-                "{{payment_url}}"
-              ],
-              "path": [
-                "refunds"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "refunds.payment_method",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "137fb08f-2e0a-4c32-9f72-f273d227b224",
-          "name": "Process Chargeback Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
-                "exec": [
-                  "tests[\"Chargeback created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Chargeback was successful\"] = data.total === 100 && data.subtotal === 90 && data.shipping === 10 && data.tax === 0;",
+                  "tests[\"Chargeback was successful\"] = data.total === 60;",
                   "",
                   "pm.globals.set(\"customer_url\", data.customer);"
                 ],
@@ -5085,6 +5030,99 @@
         {
           "_postman_id": "1cfaa0e8-6233-48d7-ae2b-8ba4475c490a",
           "name": "Check CAB (2)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Balance fetched successfully\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Balance is correct\"] = data.amount === 40;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"payment_method\": {\n\t\t\"type\": \"customer_account_balance\"\n\t}\n}"
+            },
+            "url": "{{customer_url}}/balance"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "137fb08f-2e0a-4c32-9f72-f273d227b224",
+          "name": "Process Chargeback (2)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "466c1548-eabb-4a62-96f5-df16d621b469",
+                "exec": [
+                  "tests[\"Chargeback created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Chargeback was successful\"] = data.total === 40;",
+                  "",
+                  "pm.globals.set(\"customer_url\", data.customer);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"is_chargeback\": true,\n\t\"total\": 40\n}"
+            },
+            "url": {
+              "raw": "{{payment_url}}/refunds?expand=refunds.payment_method",
+              "host": [
+                "{{payment_url}}"
+              ],
+              "path": [
+                "refunds"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "refunds.payment_method",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d13c191a-a154-4727-ac97-2f6b99814664",
+          "name": "Check CAB (3)",
           "event": [
             {
               "listen": "test",
@@ -5335,6 +5373,12 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "6873f127-04fa-496e-a6e0-cb167de4ff26",
+      "name": "From Order, Single Payment, Order Level Discount",
+      "description": "",
+      "item": []
     }
   ],
   "event": [
@@ -5361,49 +5405,49 @@
   ],
   "variable": [
     {
-      "id": "1884390a-ce9c-4c08-9a1f-334b076e90bf",
+      "id": "0add2878-cc00-4b19-aa7f-28aa1eafe38b",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ad4927d1-113e-4ab1-bd71-3b4e8c720b86",
+      "id": "7eba2d57-5d82-47a8-a512-8105e8cbf595",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eb3507eb-52f6-40e9-b306-148c5031baff",
+      "id": "ad1b536f-ab25-48a2-be0e-58c7e919f336",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "211557e2-9e35-42be-97a1-a00112dc81c5",
+      "id": "08c1e46d-f830-4058-b756-8165e456a5a7",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e9187c78-3257-4ee4-82db-45a42cf91468",
+      "id": "78d0c3c8-ee4e-46f8-9ab6-b4dd0979a5cd",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3023ddd6-737d-49cb-90d8-6c1d00e826ae",
+      "id": "dac61391-4b76-4320-b2f2-2e929c5204f3",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ac523ba5-cf63-4b86-ab07-26a546c6010d",
+      "id": "bab7699d-880f-40b0-9ed5-8779781d15d6",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
