@@ -501,50 +501,6 @@
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
-        },
-        {
-          "_postman_id": "96db7e55-4203-4a9f-b6e3-92215001485c",
-          "name": "Create Coupon: Huge Off Items Fixed Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "11f7ecaf-d06d-4487-b346-967fa0f15101",
-                "type": "text/javascript",
-                "exec": [
-                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
-                  "",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "if (data.url) {",
-                  "    pm.globals.set(\"coupon_url\", data.url);",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"apply_to_recurring\":true,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"product\",\r\n      \"product_ids\":[\r\n         \"digital.test\",\r\n         \"digital-vol.test\",         \r\n         \"physical-sub.test\",\r\n         \"digital-sub.test\",\r\n         \"service.test\",\r\n         \"physical.test\"\r\n      ],\r\n      \"code\":\"huge-off-items-fixed\",\r\n      \"discount_amount\":[\r\n         {\r\n            \"price\":\"99000.00\",\r\n            \"currency\":\"USD\"\r\n         },\r\n         {\r\n            \"price\":\"99000.00\",\r\n            \"currency\":\"EUR\"\r\n         }\r\n      ]\r\n   },\r\n   \"name\":\"Huge off items fixed\",\r\n   \"type\":\"coupon\"\r\n}"
-            },
-            "url": "https://{{host}}/api/v1/promotions"
-          },
-          "response": []
         }
       ]
     },
@@ -1804,49 +1760,49 @@
   ],
   "variable": [
     {
-      "id": "537bf182-81f2-4330-9525-23c1b5ca0af9",
+      "id": "c6236d44-772a-4642-88e2-6ead1ed1deda",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "159f7984-c3dd-4ba2-b2b2-0ad9cfa8904a",
+      "id": "9b560354-2875-41ca-b80b-56e581ff3684",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3102a90c-2a01-44d7-84e1-3cd12393c63c",
+      "id": "101f31fd-abd3-4f5b-aefd-bab930992323",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dd090088-63be-4fc1-a514-8e1d3dd019e2",
+      "id": "2feffce5-0f16-4cbb-b42a-2ca2e9cea970",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "440285f9-910f-40aa-8954-704804fac212",
+      "id": "085c5d55-df54-4431-8bf8-eca173921bb5",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8460e622-a5c4-4899-b0d6-47d2e0ad8506",
+      "id": "eca9bd3c-bd05-4f1c-a136-912bb0e7cd0e",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0079300b-7035-4789-a473-4645d5fa2d84",
+      "id": "040aba79-0113-4d9b-8cc8-f4fd01bf68a7",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
