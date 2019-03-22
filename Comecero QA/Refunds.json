@@ -5298,7 +5298,7 @@
                   "tests[\"Payment created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Refund was successful\"] = data.total === 20 && data.subtotal === 20 && data.tax === 0 && data.shipping === 0;"
+                  "tests[\"Refund was successful\"] = data.total === 5 && data.subtotal === 5 && data.tax === 0 && data.shipping === 0;"
                 ],
                 "type": "text/javascript"
               }
@@ -5603,49 +5603,49 @@
   ],
   "variable": [
     {
-      "id": "ee68b219-f268-47d4-863a-51a85dc625eb",
+      "id": "c430072f-b9da-452f-9e2b-009e30d88a78",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cb7a4547-bb0c-4827-ad95-b4a8e0569418",
+      "id": "ebe7b46c-08ca-4d4f-bc16-f234e8611411",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a85e311c-9b64-4740-84ce-fa710ab79beb",
+      "id": "85054577-4f5c-4a3d-b930-735f789c156f",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "20995664-53f0-40c9-a183-f8a4c559e37a",
+      "id": "dcdb3b20-31e0-49e5-a1c2-17d3921aaef3",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6b88bfd0-c32f-46bb-8fc5-dac37724ccbb",
+      "id": "9c0fd6fa-c691-4f34-a2bd-e259ae22a8f2",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bcfbc7ca-477a-4e48-ac4d-53c69990a788",
+      "id": "07c24dc0-90ee-4ced-a8eb-723c6eca4409",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f077248f-817a-4cb0-a397-31cc3eef48a1",
+      "id": "8879b650-41df-478d-ab2b-3c76eecbece0",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
