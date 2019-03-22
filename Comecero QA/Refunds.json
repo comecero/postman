@@ -5173,7 +5173,6 @@
               "listen": "test",
               "script": {
                 "id": "11f7ecaf-d06d-4487-b346-967fa0f15101",
-                "type": "text/javascript",
                 "exec": [
                   "tests[\"Status code is 201\"] = responseCode.code === 201;",
                   "",
@@ -5182,7 +5181,8 @@
                   "if (data.url) {",
                   "    pm.globals.set(\"coupon_url\", data.url);",
                   "}"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -5203,7 +5203,51 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n   \"apply_to_recurring\":true,\r\n   \"active\":true,\r\n   \"config\":{\r\n      \"type\":\"product\",\r\n      \"product_ids\":[\r\n         \"digital.test\",\r\n         \"digital-vol.test\",         \r\n         \"physical-sub.test\",\r\n         \"digital-sub.test\",\r\n         \"service.test\",\r\n         \"physical.test\"\r\n      ],\r\n      \"code\":\"huge-off-items-fixed\",\r\n      \"discount_amount\":[\r\n         {\r\n            \"price\":\"99000.00\",\r\n            \"currency\":\"USD\"\r\n         },\r\n         {\r\n            \"price\":\"99000.00\",\r\n            \"currency\":\"EUR\"\r\n         }\r\n      ]\r\n   },\r\n   \"name\":\"Huge off items fixed\",\r\n   \"type\":\"coupon\"\r\n}"
+              "raw": "{\n    \"apply_to_recurring\": false,\n    \"active\": true,\n    \"config\": {\n        \"type\": \"order\",\n        \"code\": \"half-off-order\",\n        \"discount_percent\": 0.4\n    },\n    \"name\": \"40% off Order\",\n    \"type\": \"coupon\"\n}"
+            },
+            "url": "https://{{host}}/api/v1/promotions"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "bfa27727-3b28-4692-8582-9b63817216c4",
+          "name": "Create Coupon: 40% off Order Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "11f7ecaf-d06d-4487-b346-967fa0f15101",
+                "exec": [
+                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
+                  "",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "if (data.url) {",
+                  "    pm.globals.set(\"coupon_url\", data.url);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"apply_to_recurring\": false,\n    \"active\": true,\n    \"config\": {\n        \"type\": \"order\",\n        \"code\": \"half-off-order\",\n        \"discount_percent\": 0.4\n    },\n    \"name\": \"40% off Order\",\n    \"type\": \"coupon\"\n}"
             },
             "url": "https://{{host}}/api/v1/promotions"
           },
@@ -5450,49 +5494,49 @@
   ],
   "variable": [
     {
-      "id": "9f6e8793-9fa3-414e-ac8e-20667176a5ec",
+      "id": "d3562027-65e1-4b55-b509-fd9a21aaf729",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2bb963d3-22ec-4f0b-9ec8-d9e3b2dc6798",
+      "id": "c95831d5-818d-4c2b-8583-d495bb42fff8",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5853dcec-ad29-4929-a067-8d644c6f1bf1",
+      "id": "697ecf7b-3377-418c-ba3d-7c246267fe19",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9fe43ff1-1b97-4a29-bb30-b1387a9a17d6",
+      "id": "678c6d45-571d-4f78-b254-976f49467fd6",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "95c77efc-906e-4d12-951b-bd94ba48cce1",
+      "id": "880ecf8d-7518-417c-b843-41fc676a5f0b",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d30eb6c4-e75d-4d4e-8644-18b3f372e970",
+      "id": "50fcec67-78b5-4b2b-b3e2-4bfe110aeff5",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "57e8d403-e25c-4fd5-a50e-3c5c7970ddc9",
+      "id": "b0fa70a1-03af-487c-975d-8e7fc8ffb903",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
