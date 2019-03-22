@@ -5167,7 +5167,7 @@
       "item": [
         {
           "_postman_id": "dc9dfc60-1370-4431-9fd4-5373ef19b112",
-          "name": "Create Coupon: Huge Off Items Fixed Copy",
+          "name": "Create Coupon: 40% off Order",
           "event": [
             {
               "listen": "test",
@@ -5450,49 +5450,49 @@
   ],
   "variable": [
     {
-      "id": "586b88ea-57b3-4f1d-bcb3-4b9588b609e1",
+      "id": "9f6e8793-9fa3-414e-ac8e-20667176a5ec",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "44e3ecea-05e5-4919-bae8-e95cd78dacd7",
+      "id": "2bb963d3-22ec-4f0b-9ec8-d9e3b2dc6798",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d4cf61d4-42d8-46b5-afc0-e498335911c1",
+      "id": "5853dcec-ad29-4929-a067-8d644c6f1bf1",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ae74a466-f0dc-4629-b611-eae3f2546bda",
+      "id": "9fe43ff1-1b97-4a29-bb30-b1387a9a17d6",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f01c9a0e-3df5-4982-b3c7-f2517b8e5d25",
+      "id": "95c77efc-906e-4d12-951b-bd94ba48cce1",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2612911d-128f-46aa-8ab2-2c2ba8e8320b",
+      "id": "d30eb6c4-e75d-4d4e-8644-18b3f372e970",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1ea34331-bf3b-43c4-be3f-3aa024233910",
+      "id": "57e8d403-e25c-4fd5-a50e-3c5c7970ddc9",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
