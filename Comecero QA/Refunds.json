@@ -1151,6 +1151,46 @@
             "url": "{{order_url}}/refunds"
           },
           "response": []
+        },
+        {
+          "_postman_id": "0b9362c0-bffa-4b5f-94cc-49d5065d80da",
+          "name": "Create Cart Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3a0eecbc-a75e-4942-a4bf-2ee73fe61f21",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Cart created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"cart_url\", data.url);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":3\r\n      },   \t\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":2\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }\r\n}"
+            },
+            "url": "https://{{host}}/api/v1/carts"
+          },
+          "response": []
         }
       ]
     },
@@ -5211,20 +5251,14 @@
         },
         {
           "_postman_id": "bfa27727-3b28-4692-8582-9b63817216c4",
-          "name": "Create Coupon: 40% off Order Copy",
+          "name": "Delete Coupon",
           "event": [
             {
               "listen": "test",
               "script": {
                 "id": "11f7ecaf-d06d-4487-b346-967fa0f15101",
                 "exec": [
-                  "tests[\"Status code is 201\"] = responseCode.code === 201;",
-                  "",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "if (data.url) {",
-                  "    pm.globals.set(\"coupon_url\", data.url);",
-                  "}"
+                  "tests[\"Status code is 204\"] = responseCode.code === 204;"
                 ],
                 "type": "text/javascript"
               }
@@ -5234,7 +5268,7 @@
             "auth": {
               "type": "noauth"
             },
-            "method": "POST",
+            "method": "DELETE",
             "header": [
               {
                 "key": "Authorization",
@@ -5247,9 +5281,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"apply_to_recurring\": false,\n    \"active\": true,\n    \"config\": {\n        \"type\": \"order\",\n        \"code\": \"half-off-order\",\n        \"discount_percent\": 0.4\n    },\n    \"name\": \"40% off Order\",\n    \"type\": \"coupon\"\n}"
+              "raw": ""
             },
-            "url": "https://{{host}}/api/v1/promotions"
+            "url": "{{coupon_url}}"
           },
           "response": []
         }
@@ -5494,49 +5528,49 @@
   ],
   "variable": [
     {
-      "id": "2398b45a-100c-48a4-95ca-1eceb8795cb5",
+      "id": "b942a888-8e8f-434a-8584-cd6e0e2c6f40",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "708ad248-4ee6-4fef-b98e-0749d7179daf",
+      "id": "f1dc1104-e76e-48b7-9022-4a68c0c053c1",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "39a7f157-4486-4d2f-8bba-3040b7706383",
+      "id": "3641dfe9-f23c-464d-9a86-b56da16f9022",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "40828b22-67bf-4c80-95db-b4a090f486e2",
+      "id": "0c02dc60-c91e-41d5-9ee3-fe3a585340f1",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "30efe4b6-b4f9-46ab-a5fb-46290ae00651",
+      "id": "8a6fd890-5c4a-4283-95e4-506047b1d5bc",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d5e4a6b3-23af-46f4-80f8-9f1ce1bb546e",
+      "id": "be9f56e2-48e9-4fc5-89ee-18b7fab0ffc6",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "153c3ec4-dbcc-4cc7-b59e-fb9fd6611394",
+      "id": "e8791f1f-2b0a-43c6-9c62-b4d2e931417e",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
