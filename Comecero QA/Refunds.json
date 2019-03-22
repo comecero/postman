@@ -5250,44 +5250,6 @@
           "response": []
         },
         {
-          "_postman_id": "bfa27727-3b28-4692-8582-9b63817216c4",
-          "name": "Delete Coupon",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "11f7ecaf-d06d-4487-b346-967fa0f15101",
-                "exec": [
-                  "tests[\"Status code is 204\"] = responseCode.code === 204;"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{coupon_url}}"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "74bbd129-7f90-40f9-b805-ef6037708989",
           "name": "Submit Refund Copy",
           "event": [
@@ -5322,6 +5284,44 @@
               "raw": "{\n\t\"total\": 20\n}"
             },
             "url": "{{payment_url}}/refunds"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "bfa27727-3b28-4692-8582-9b63817216c4",
+          "name": "Delete Coupon",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "11f7ecaf-d06d-4487-b346-967fa0f15101",
+                "exec": [
+                  "tests[\"Status code is 204\"] = responseCode.code === 204;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{coupon_url}}"
           },
           "response": []
         }
@@ -5566,49 +5566,49 @@
   ],
   "variable": [
     {
-      "id": "fb5e23ff-5a2e-4f87-a119-64da884ca44b",
+      "id": "a7e50361-b96a-4869-a06c-4d11ffe7b7de",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5800e8d8-c510-4064-93ce-3902e0a9b67a",
+      "id": "7e366bf2-e636-4f17-9bdc-fcfdb859fa57",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2f4bb337-9725-42e5-ba71-2011c8e3b124",
+      "id": "aa7e2908-6b30-4f96-ad40-81a9c5d19f42",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "82d4b646-943f-48f7-99ec-f177c8aea17e",
+      "id": "cb6daacb-15a8-4789-aa2f-f897931903f0",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bde999cd-ac19-4a52-a92f-b7e5e3c384bb",
+      "id": "5859183b-6f71-46ad-8287-409fc4d4b8a4",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "687d5bb3-7f20-4829-9d52-d3d3bc64ab9b",
+      "id": "30aaea87-7c66-4577-8afd-0251611943eb",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "745e4cb3-1f32-4eb9-8f6b-973aca2b300e",
+      "id": "db5e6520-bd26-421d-a586-e2a99d317c0c",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
