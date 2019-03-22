@@ -5325,44 +5325,6 @@
           "response": []
         },
         {
-          "_postman_id": "99bd71e2-127f-47c5-a088-8adb20f3cc85",
-          "name": "Submit Refund Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "3c71742a-d648-4a47-8acf-1ea1c2532396",
-                "exec": [
-                  "tests[\"Payment created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Refund was successful\"] = data.total === 5 && data.subtotal === 5 && data.tax === 0 && data.shipping === 0;"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"total\": 5\n}"
-            },
-            "url": "{{order_url}}/refunds"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "091876e5-f94c-48cc-b5ed-95efaf2ff0f9",
           "name": "Create Cart w/ Tax",
           "event": [
@@ -5436,6 +5398,44 @@
               "raw": "{\n   \"capture\": true,    \n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
             },
             "url": "{{cart_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "99bd71e2-127f-47c5-a088-8adb20f3cc85",
+          "name": "Submit Refund Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3c71742a-d648-4a47-8acf-1ea1c2532396",
+                "exec": [
+                  "tests[\"Payment created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund was successful\"] = data.total === 5 && data.subtotal === 5 && data.tax === 0 && data.shipping === 0;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"total\": 5\n}"
+            },
+            "url": "{{order_url}}/refunds"
           },
           "response": []
         },
@@ -5718,49 +5718,49 @@
   ],
   "variable": [
     {
-      "id": "3615cffd-e81c-44f7-8dfa-4df61e26a192",
+      "id": "bbbc9ba2-c36d-49ba-9553-a360d9c592f1",
       "key": "name",
       "value": "James Smith",
       "type": "string",
       "description": ""
     },
     {
-      "id": "30215f43-53cb-4fc0-b7f4-5a18013e3f1a",
+      "id": "8d1674f8-8518-4cc0-8950-09427165cd16",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string",
       "description": ""
     },
     {
-      "id": "dacd6cef-cdf0-41a1-af01-7a218d370d35",
+      "id": "bdde0938-4129-44f4-8035-c1d0118aa282",
       "key": "city",
       "value": "Westerville",
       "type": "string",
       "description": ""
     },
     {
-      "id": "96fee157-39b4-4d01-a306-fdd3d2acaeb8",
+      "id": "72c20da1-3678-42d0-936d-bad8c68c4061",
       "key": "state_prov",
       "value": "OH",
       "type": "string",
       "description": ""
     },
     {
-      "id": "17e12845-96fa-4791-ab28-0c17c82dc161",
+      "id": "b6c248d6-01a8-440e-9848-f865dd409e9b",
       "key": "postal_code",
       "value": "43081",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a14c20df-5dc4-4311-9cb7-b94c269df401",
+      "id": "f58d9a14-8c28-4e79-99e8-103db0bdb6e5",
       "key": "country",
       "value": "US",
       "type": "string",
       "description": ""
     },
     {
-      "id": "59dea0a8-c536-49de-aa3c-7440a14c9585",
+      "id": "a1760e44-1066-49c4-ac94-2b57ac05acdc",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string",
