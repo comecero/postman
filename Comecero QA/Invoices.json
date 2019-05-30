@@ -7,12 +7,9 @@
   },
   "item": [
     {
-      "_postman_id": "7bbc2aae-4c9e-4566-961e-7cc050c6e1e2",
       "name": "Pre-request Configurations",
-      "description": "",
       "item": [
         {
-          "_postman_id": "5646a6c5-cb1a-4508-8a8a-ba8055306f3b",
           "name": "Get Notification Subscriptions",
           "event": [
             {
@@ -56,6 +53,7 @@
               }
             }
           ],
+          "_postman_id": "5646a6c5-cb1a-4508-8a8a-ba8055306f3b",
           "request": {
             "auth": {
               "type": "noauth"
@@ -71,17 +69,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"promotion_code\": \"{{promotion_code}}\",\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"{{product_id}}\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
-            },
             "url": "https://{{host}}/api/v1/notification_subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "afaaf08c-dd30-4239-a728-1b2cec90ca27",
           "name": "Disable Order Notification Subscription",
           "event": [
             {
@@ -108,6 +101,7 @@
               }
             }
           ],
+          "_postman_id": "afaaf08c-dd30-4239-a728-1b2cec90ca27",
           "request": {
             "auth": {
               "type": "noauth"
@@ -133,7 +127,6 @@
           "response": []
         },
         {
-          "_postman_id": "64318bd1-b85c-4437-b9c3-8d22df5ed11c",
           "name": "Disable Payment Notification Subscription",
           "event": [
             {
@@ -159,6 +152,7 @@
               }
             }
           ],
+          "_postman_id": "64318bd1-b85c-4437-b9c3-8d22df5ed11c",
           "request": {
             "auth": {
               "type": "noauth"
@@ -184,7 +178,6 @@
           "response": []
         },
         {
-          "_postman_id": "ac00a4c2-e33c-4bda-8b13-670b080c258e",
           "name": "Disable Refund Notification Subscription",
           "event": [
             {
@@ -210,6 +203,7 @@
               }
             }
           ],
+          "_postman_id": "ac00a4c2-e33c-4bda-8b13-670b080c258e",
           "request": {
             "auth": {
               "type": "noauth"
@@ -235,6 +229,7 @@
           "response": []
         }
       ],
+      "_postman_id": "7bbc2aae-4c9e-4566-961e-7cc050c6e1e2",
       "event": [
         {
           "listen": "prerequest",
@@ -259,12 +254,9 @@
       ]
     },
     {
-      "_postman_id": "a69e21a4-6090-4ad2-aa29-bc92f04167c8",
       "name": "With Products",
-      "description": "",
       "item": [
         {
-          "_postman_id": "28494fce-e67d-4024-a9d9-7e250e69d633",
           "name": "Create Invoice",
           "event": [
             {
@@ -295,6 +287,7 @@
               }
             }
           ],
+          "_postman_id": "28494fce-e67d-4024-a9d9-7e250e69d633",
           "request": {
             "auth": {
               "type": "noauth"
@@ -319,7 +312,6 @@
           "response": []
         },
         {
-          "_postman_id": "ff5e800c-63e9-428b-91a3-bb3e754ccca8",
           "name": "Pay Invoice",
           "event": [
             {
@@ -350,6 +342,7 @@
               }
             }
           ],
+          "_postman_id": "ff5e800c-63e9-428b-91a3-bb3e754ccca8",
           "request": {
             "auth": {
               "type": "noauth"
@@ -374,7 +367,6 @@
           "response": []
         },
         {
-          "_postman_id": "f6ba8916-a802-41d4-8d3c-613e183f5d2d",
           "name": "Refund Items",
           "event": [
             {
@@ -391,6 +383,7 @@
               }
             }
           ],
+          "_postman_id": "f6ba8916-a802-41d4-8d3c-613e183f5d2d",
           "request": {
             "method": "POST",
             "header": [
@@ -412,7 +405,6 @@
           "response": []
         },
         {
-          "_postman_id": "b10880eb-9788-410c-b2de-71625e57935e",
           "name": "Refund Shipping",
           "event": [
             {
@@ -429,6 +421,7 @@
               }
             }
           ],
+          "_postman_id": "b10880eb-9788-410c-b2de-71625e57935e",
           "request": {
             "method": "POST",
             "header": [
@@ -449,15 +442,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "a69e21a4-6090-4ad2-aa29-bc92f04167c8"
     },
     {
-      "_postman_id": "faad3afe-4667-4c23-bafe-00d1b7e27e5e",
       "name": "With Items",
-      "description": "",
       "item": [
         {
-          "_postman_id": "0017d9c5-234b-4c6d-a0d2-77326ef37dad",
           "name": "Create Invoice",
           "event": [
             {
@@ -489,6 +480,7 @@
               }
             }
           ],
+          "_postman_id": "0017d9c5-234b-4c6d-a0d2-77326ef37dad",
           "request": {
             "auth": {
               "type": "noauth"
@@ -513,7 +505,6 @@
           "response": []
         },
         {
-          "_postman_id": "f7e19049-baed-432e-8868-f62b36e57e7b",
           "name": "Pay Invoice",
           "event": [
             {
@@ -544,6 +535,7 @@
               }
             }
           ],
+          "_postman_id": "f7e19049-baed-432e-8868-f62b36e57e7b",
           "request": {
             "auth": {
               "type": "noauth"
@@ -568,7 +560,6 @@
           "response": []
         },
         {
-          "_postman_id": "dd1e86ab-7baa-4ba0-9b98-072b1ec03769",
           "name": "Refund Items",
           "event": [
             {
@@ -585,6 +576,7 @@
               }
             }
           ],
+          "_postman_id": "dd1e86ab-7baa-4ba0-9b98-072b1ec03769",
           "request": {
             "method": "POST",
             "header": [
@@ -606,7 +598,6 @@
           "response": []
         },
         {
-          "_postman_id": "6fcd6d76-c1e2-4ef5-8649-b63fd9c3724d",
           "name": "Refund Shipping",
           "event": [
             {
@@ -623,6 +614,7 @@
               }
             }
           ],
+          "_postman_id": "6fcd6d76-c1e2-4ef5-8649-b63fd9c3724d",
           "request": {
             "method": "POST",
             "header": [
@@ -643,15 +635,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "faad3afe-4667-4c23-bafe-00d1b7e27e5e"
     },
     {
-      "_postman_id": "a5552dd1-266e-4f19-aba0-8ea74326c244",
       "name": "With Items, Custom ID",
-      "description": "",
       "item": [
         {
-          "_postman_id": "ab741227-4f8a-4f19-9c95-30cdc36eb679",
           "name": "Create Invoice",
           "event": [
             {
@@ -683,6 +673,7 @@
               }
             }
           ],
+          "_postman_id": "ab741227-4f8a-4f19-9c95-30cdc36eb679",
           "request": {
             "auth": {
               "type": "noauth"
@@ -707,7 +698,6 @@
           "response": []
         },
         {
-          "_postman_id": "ee3bf2e2-51f6-4f00-a54a-56a8419ce810",
           "name": "Pay Invoice",
           "event": [
             {
@@ -738,6 +728,7 @@
               }
             }
           ],
+          "_postman_id": "ee3bf2e2-51f6-4f00-a54a-56a8419ce810",
           "request": {
             "auth": {
               "type": "noauth"
@@ -762,7 +753,6 @@
           "response": []
         },
         {
-          "_postman_id": "936bdd5f-c1f4-44f4-9eef-94a95f19690c",
           "name": "Refund Items",
           "event": [
             {
@@ -779,6 +769,7 @@
               }
             }
           ],
+          "_postman_id": "936bdd5f-c1f4-44f4-9eef-94a95f19690c",
           "request": {
             "method": "POST",
             "header": [
@@ -800,7 +791,6 @@
           "response": []
         },
         {
-          "_postman_id": "b02fe3e8-b473-46d4-a006-d55e88b796a7",
           "name": "Refund Shipping",
           "event": [
             {
@@ -817,6 +807,7 @@
               }
             }
           ],
+          "_postman_id": "b02fe3e8-b473-46d4-a006-d55e88b796a7",
           "request": {
             "method": "POST",
             "header": [
@@ -837,15 +828,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "a5552dd1-266e-4f19-aba0-8ea74326c244"
     },
     {
-      "_postman_id": "fd3c4f3c-b7df-4845-9320-0134838d45d7",
       "name": "With Items, Digital",
-      "description": "",
       "item": [
         {
-          "_postman_id": "62ca9398-ea59-4200-bb55-618adea6b9d9",
           "name": "Create Invoice",
           "event": [
             {
@@ -877,6 +866,7 @@
               }
             }
           ],
+          "_postman_id": "62ca9398-ea59-4200-bb55-618adea6b9d9",
           "request": {
             "auth": {
               "type": "noauth"
@@ -901,7 +891,6 @@
           "response": []
         },
         {
-          "_postman_id": "a56b5c39-a0e5-485f-860d-66a94e4cb527",
           "name": "Pay Invoice",
           "event": [
             {
@@ -932,6 +921,7 @@
               }
             }
           ],
+          "_postman_id": "a56b5c39-a0e5-485f-860d-66a94e4cb527",
           "request": {
             "auth": {
               "type": "noauth"
@@ -956,7 +946,6 @@
           "response": []
         },
         {
-          "_postman_id": "d34314e1-6549-4bf5-90b3-c5a8449e10bd",
           "name": "Refund Items",
           "event": [
             {
@@ -973,6 +962,7 @@
               }
             }
           ],
+          "_postman_id": "d34314e1-6549-4bf5-90b3-c5a8449e10bd",
           "request": {
             "method": "POST",
             "header": [
@@ -994,7 +984,6 @@
           "response": []
         },
         {
-          "_postman_id": "171be27b-de92-431b-a975-921870dd1830",
           "name": "Refund Remaining Items",
           "event": [
             {
@@ -1011,6 +1000,7 @@
               }
             }
           ],
+          "_postman_id": "171be27b-de92-431b-a975-921870dd1830",
           "request": {
             "method": "POST",
             "header": [
@@ -1032,7 +1022,6 @@
           "response": []
         },
         {
-          "_postman_id": "8bb177c8-f4ea-4493-9789-b0050bb57dee",
           "name": "Refund Shipping",
           "event": [
             {
@@ -1046,6 +1035,7 @@
               }
             }
           ],
+          "_postman_id": "8bb177c8-f4ea-4493-9789-b0050bb57dee",
           "request": {
             "method": "POST",
             "header": [
@@ -1066,15 +1056,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "fd3c4f3c-b7df-4845-9320-0134838d45d7"
     },
     {
-      "_postman_id": "8732f557-0d23-40f1-8ad6-d7b0c4d1e0be",
       "name": "With Product and Item",
-      "description": "",
       "item": [
         {
-          "_postman_id": "b6d5eda6-a442-4a05-a7e0-8f3c335e9cd4",
           "name": "Create Invoice",
           "event": [
             {
@@ -1106,6 +1094,7 @@
               }
             }
           ],
+          "_postman_id": "b6d5eda6-a442-4a05-a7e0-8f3c335e9cd4",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1130,7 +1119,6 @@
           "response": []
         },
         {
-          "_postman_id": "ece8d4c1-f14b-4f32-ae4d-8f37995c68a6",
           "name": "Pay Invoice",
           "event": [
             {
@@ -1161,6 +1149,7 @@
               }
             }
           ],
+          "_postman_id": "ece8d4c1-f14b-4f32-ae4d-8f37995c68a6",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1185,7 +1174,6 @@
           "response": []
         },
         {
-          "_postman_id": "6c711e05-e3f1-4b8f-bb4d-21eb0c193c8d",
           "name": "Refund Items and Shipping",
           "event": [
             {
@@ -1202,6 +1190,7 @@
               }
             }
           ],
+          "_postman_id": "6c711e05-e3f1-4b8f-bb4d-21eb0c193c8d",
           "request": {
             "method": "POST",
             "header": [
@@ -1222,15 +1211,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "8732f557-0d23-40f1-8ad6-d7b0c4d1e0be"
     },
     {
-      "_postman_id": "abb77c8e-6335-4cd1-a12f-c97d7225d3a2",
       "name": "With Subscription Product",
-      "description": "",
       "item": [
         {
-          "_postman_id": "4d0eac35-2d2a-4df3-be7a-fc42fcbd41d1",
           "name": "Create Invoice",
           "event": [
             {
@@ -1262,6 +1249,7 @@
               }
             }
           ],
+          "_postman_id": "4d0eac35-2d2a-4df3-be7a-fc42fcbd41d1",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1295,8 +1283,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan",
-                  "equals": true
+                  "value": "items.subscription_plan"
                 }
               ]
             }
@@ -1304,7 +1291,6 @@
           "response": []
         },
         {
-          "_postman_id": "495dc63b-a5e6-499f-84d4-cc12ea3b435b",
           "name": "Pay Invoice",
           "event": [
             {
@@ -1337,6 +1323,7 @@
               }
             }
           ],
+          "_postman_id": "495dc63b-a5e6-499f-84d4-cc12ea3b435b",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1367,8 +1354,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             }
@@ -1376,7 +1362,6 @@
           "response": []
         },
         {
-          "_postman_id": "72940f99-8109-4ec7-b440-e40b88bc6e90",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -1402,6 +1387,7 @@
               }
             }
           ],
+          "_postman_id": "72940f99-8109-4ec7-b440-e40b88bc6e90",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1426,7 +1412,6 @@
           "response": []
         },
         {
-          "_postman_id": "4965d619-cd50-4f5d-ab83-825ea13c3e58",
           "name": "Refund Items",
           "event": [
             {
@@ -1443,6 +1428,7 @@
               }
             }
           ],
+          "_postman_id": "4965d619-cd50-4f5d-ab83-825ea13c3e58",
           "request": {
             "method": "POST",
             "header": [
@@ -1464,7 +1450,6 @@
           "response": []
         },
         {
-          "_postman_id": "324f4e7e-e3c3-45b8-8f1b-3cbdcc363d36",
           "name": "Refund Shipping",
           "event": [
             {
@@ -1481,6 +1466,7 @@
               }
             }
           ],
+          "_postman_id": "324f4e7e-e3c3-45b8-8f1b-3cbdcc363d36",
           "request": {
             "method": "POST",
             "header": [
@@ -1501,15 +1487,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "abb77c8e-6335-4cd1-a12f-c97d7225d3a2"
     },
     {
-      "_postman_id": "3cb6e348-a37c-4668-80a6-51a4fef378fe",
       "name": "With Custom Invoice ID",
-      "description": "",
       "item": [
         {
-          "_postman_id": "9c705ee6-f21f-40c8-a334-622c55050c7e",
           "name": "Create Invoice",
           "event": [
             {
@@ -1541,6 +1525,7 @@
               }
             }
           ],
+          "_postman_id": "9c705ee6-f21f-40c8-a334-622c55050c7e",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1565,7 +1550,6 @@
           "response": []
         },
         {
-          "_postman_id": "9004203f-5be6-41e5-813f-105ab47af3a1",
           "name": "Pay Invoice",
           "event": [
             {
@@ -1596,6 +1580,7 @@
               }
             }
           ],
+          "_postman_id": "9004203f-5be6-41e5-813f-105ab47af3a1",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1620,7 +1605,6 @@
           "response": []
         },
         {
-          "_postman_id": "45a5b1bd-a7fe-411d-83ae-83dc63f33224",
           "name": "Refund Items",
           "event": [
             {
@@ -1637,6 +1621,7 @@
               }
             }
           ],
+          "_postman_id": "45a5b1bd-a7fe-411d-83ae-83dc63f33224",
           "request": {
             "method": "POST",
             "header": [
@@ -1658,7 +1643,6 @@
           "response": []
         },
         {
-          "_postman_id": "199027d4-2ade-4582-ba3e-8d2d9a6c867f",
           "name": "Refund Shipping",
           "event": [
             {
@@ -1675,6 +1659,7 @@
               }
             }
           ],
+          "_postman_id": "199027d4-2ade-4582-ba3e-8d2d9a6c867f",
           "request": {
             "method": "POST",
             "header": [
@@ -1696,7 +1681,6 @@
           "response": []
         },
         {
-          "_postman_id": "83fde426-70de-45a9-ab47-e8062bbbdfc7",
           "name": "Re-use Same Custom Invoice ID",
           "event": [
             {
@@ -1722,6 +1706,7 @@
               }
             }
           ],
+          "_postman_id": "83fde426-70de-45a9-ab47-e8062bbbdfc7",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1745,15 +1730,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "3cb6e348-a37c-4668-80a6-51a4fef378fe"
     },
     {
-      "_postman_id": "edf0efb2-1d0f-4d69-a714-320f7cb4118b",
       "name": "With Promotion Code",
-      "description": "",
       "item": [
         {
-          "_postman_id": "0c71a59c-e638-46d5-b056-a096d1a9d3a0",
           "name": "Create Invoice",
           "event": [
             {
@@ -1784,6 +1767,7 @@
               }
             }
           ],
+          "_postman_id": "0c71a59c-e638-46d5-b056-a096d1a9d3a0",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1808,7 +1792,6 @@
           "response": []
         },
         {
-          "_postman_id": "a6b7ebed-4ce0-4d1c-a39c-043995b5ab53",
           "name": "Pay Invoice",
           "event": [
             {
@@ -1839,6 +1822,7 @@
               }
             }
           ],
+          "_postman_id": "a6b7ebed-4ce0-4d1c-a39c-043995b5ab53",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1863,7 +1847,6 @@
           "response": []
         },
         {
-          "_postman_id": "f009db89-9d71-44b0-ba98-e6effeb6c65f",
           "name": "Refund Items",
           "event": [
             {
@@ -1880,6 +1863,7 @@
               }
             }
           ],
+          "_postman_id": "f009db89-9d71-44b0-ba98-e6effeb6c65f",
           "request": {
             "method": "POST",
             "header": [
@@ -1901,7 +1885,6 @@
           "response": []
         },
         {
-          "_postman_id": "94e00e77-2ac1-48aa-bdc0-fad69474dc1a",
           "name": "Refund Shipping",
           "event": [
             {
@@ -1918,6 +1901,7 @@
               }
             }
           ],
+          "_postman_id": "94e00e77-2ac1-48aa-bdc0-fad69474dc1a",
           "request": {
             "method": "POST",
             "header": [
@@ -1938,15 +1922,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "edf0efb2-1d0f-4d69-a714-320f7cb4118b"
     },
     {
-      "_postman_id": "9920bbac-997d-4385-8577-f22267ab44da",
       "name": "With Notification",
-      "description": "",
       "item": [
         {
-          "_postman_id": "3e0aec61-b4ca-4e4e-9a33-2ad6f936cce9",
           "name": "Create Invoice",
           "event": [
             {
@@ -1977,6 +1959,7 @@
               }
             }
           ],
+          "_postman_id": "3e0aec61-b4ca-4e4e-9a33-2ad6f936cce9",
           "request": {
             "auth": {
               "type": "noauth"
@@ -2001,7 +1984,6 @@
           "response": []
         },
         {
-          "_postman_id": "b93edfc4-f42c-470c-8931-f8758032e889",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -2037,6 +2019,10 @@
               }
             }
           ],
+          "_postman_id": "b93edfc4-f42c-470c-8931-f8758032e889",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2052,17 +2038,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/invoices",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "5b6ac161-af6b-4c53-b0c9-3e49897bd57e",
           "name": "Get Notifications",
           "event": [
             {
@@ -2087,6 +2068,7 @@
               }
             }
           ],
+          "_postman_id": "5b6ac161-af6b-4c53-b0c9-3e49897bd57e",
           "request": {
             "auth": {
               "type": "noauth"
@@ -2111,7 +2093,6 @@
           "response": []
         },
         {
-          "_postman_id": "defbaa86-e5b2-4387-95ba-0c64325f050b",
           "name": "Delete Invoice",
           "event": [
             {
@@ -2135,6 +2116,7 @@
               }
             }
           ],
+          "_postman_id": "defbaa86-e5b2-4387-95ba-0c64325f050b",
           "request": {
             "auth": {
               "type": "noauth"
@@ -2158,15 +2140,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "9920bbac-997d-4385-8577-f22267ab44da"
     },
     {
-      "_postman_id": "ceaf39b4-e42a-4de5-8a83-2da3d61fadc7",
       "name": "Multiple Payments",
-      "description": "",
       "item": [
         {
-          "_postman_id": "3afb3ea3-d69d-40dd-a04f-a5be07fd1369",
           "name": "Create Invoice",
           "event": [
             {
@@ -2197,6 +2177,10 @@
               }
             }
           ],
+          "_postman_id": "3afb3ea3-d69d-40dd-a04f-a5be07fd1369",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2221,7 +2205,6 @@
           "response": []
         },
         {
-          "_postman_id": "cfd2e212-9bfc-4b39-b979-8518e2d4dcdd",
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -2252,6 +2235,10 @@
               }
             }
           ],
+          "_postman_id": "cfd2e212-9bfc-4b39-b979-8518e2d4dcdd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2276,7 +2263,6 @@
           "response": []
         },
         {
-          "_postman_id": "e50d7e26-1fbe-4e59-bf3e-8ac26bbd60c3",
           "name": "Get Invoice",
           "event": [
             {
@@ -2307,6 +2293,10 @@
               }
             }
           ],
+          "_postman_id": "e50d7e26-1fbe-4e59-bf3e-8ac26bbd60c3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2331,7 +2321,6 @@
           "response": []
         },
         {
-          "_postman_id": "dcc2c2e9-a0c5-4aa5-bbf8-a111c8ea19c1",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -2362,6 +2351,10 @@
               }
             }
           ],
+          "_postman_id": "dcc2c2e9-a0c5-4aa5-bbf8-a111c8ea19c1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2386,7 +2379,6 @@
           "response": []
         },
         {
-          "_postman_id": "74e5eaa1-71d4-462b-9a1d-b535b4212f07",
           "name": "Get Invoice",
           "event": [
             {
@@ -2417,6 +2409,10 @@
               }
             }
           ],
+          "_postman_id": "74e5eaa1-71d4-462b-9a1d-b535b4212f07",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2440,15 +2436,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "ceaf39b4-e42a-4de5-8a83-2da3d61fadc7"
     },
     {
-      "_postman_id": "c2eda99e-0ebe-4855-b67e-60ad2245053f",
       "name": "Multiple Payments, Don't Capture All",
-      "description": "",
       "item": [
         {
-          "_postman_id": "c73bab58-744d-4561-940d-772ffcdb782b",
           "name": "Create Invoice",
           "event": [
             {
@@ -2479,6 +2473,10 @@
               }
             }
           ],
+          "_postman_id": "c73bab58-744d-4561-940d-772ffcdb782b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2503,7 +2501,6 @@
           "response": []
         },
         {
-          "_postman_id": "516d7520-7634-4ee4-b7b0-94bf69c4d532",
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -2534,6 +2531,10 @@
               }
             }
           ],
+          "_postman_id": "516d7520-7634-4ee4-b7b0-94bf69c4d532",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2558,7 +2559,6 @@
           "response": []
         },
         {
-          "_postman_id": "f43ad350-a026-448d-bb3f-d607f2f9d8d0",
           "name": "Get Invoice",
           "event": [
             {
@@ -2589,6 +2589,10 @@
               }
             }
           ],
+          "_postman_id": "f43ad350-a026-448d-bb3f-d607f2f9d8d0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2613,7 +2617,6 @@
           "response": []
         },
         {
-          "_postman_id": "1c61c1ec-b26e-4d3d-b85e-18f501095a70",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -2644,6 +2647,10 @@
               }
             }
           ],
+          "_postman_id": "1c61c1ec-b26e-4d3d-b85e-18f501095a70",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2668,7 +2675,6 @@
           "response": []
         },
         {
-          "_postman_id": "930569f8-7516-4938-b1dc-ef4109bedde7",
           "name": "Get Invoice",
           "event": [
             {
@@ -2699,6 +2705,10 @@
               }
             }
           ],
+          "_postman_id": "930569f8-7516-4938-b1dc-ef4109bedde7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2722,15 +2732,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "c2eda99e-0ebe-4855-b67e-60ad2245053f"
     },
     {
-      "_postman_id": "81ad70b3-8c2f-487e-8138-c4815a139bf8",
       "name": "Multiple Payments, Exceed Total",
-      "description": "",
       "item": [
         {
-          "_postman_id": "64e8ef8f-883b-46c9-b005-1013bf23f30b",
           "name": "Create Invoice",
           "event": [
             {
@@ -2761,6 +2769,10 @@
               }
             }
           ],
+          "_postman_id": "64e8ef8f-883b-46c9-b005-1013bf23f30b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2785,7 +2797,6 @@
           "response": []
         },
         {
-          "_postman_id": "b5483525-0ebc-4781-aad5-419364ce18df",
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -2816,6 +2827,10 @@
               }
             }
           ],
+          "_postman_id": "b5483525-0ebc-4781-aad5-419364ce18df",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2840,7 +2855,6 @@
           "response": []
         },
         {
-          "_postman_id": "35f9e488-a177-4da1-ad0d-a2d3f06712e9",
           "name": "Get Invoice",
           "event": [
             {
@@ -2871,6 +2885,10 @@
               }
             }
           ],
+          "_postman_id": "35f9e488-a177-4da1-ad0d-a2d3f06712e9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2895,7 +2913,6 @@
           "response": []
         },
         {
-          "_postman_id": "bb7095d4-16bb-4d6b-943f-c8d81a9a9045",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -2921,6 +2938,10 @@
               }
             }
           ],
+          "_postman_id": "bb7095d4-16bb-4d6b-943f-c8d81a9a9045",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2945,7 +2966,6 @@
           "response": []
         },
         {
-          "_postman_id": "4ab7c192-6509-4171-addc-7b8f4c9754f6",
           "name": "Get Invoice",
           "event": [
             {
@@ -2976,6 +2996,10 @@
               }
             }
           ],
+          "_postman_id": "4ab7c192-6509-4171-addc-7b8f4c9754f6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2999,15 +3023,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "81ad70b3-8c2f-487e-8138-c4815a139bf8"
     },
     {
-      "_postman_id": "b1fa82ff-c7dd-4737-87a8-5ddd9510e4f3",
       "name": "Multiple Payments, Total Calculated",
-      "description": "",
       "item": [
         {
-          "_postman_id": "582620b1-48b5-4347-9d07-385b5e8b5672",
           "name": "Create Invoice",
           "event": [
             {
@@ -3038,6 +3060,10 @@
               }
             }
           ],
+          "_postman_id": "582620b1-48b5-4347-9d07-385b5e8b5672",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3062,7 +3088,6 @@
           "response": []
         },
         {
-          "_postman_id": "6a8ad38e-8f65-41d4-bf63-635042ca430a",
           "name": "Pay Full Invoice",
           "event": [
             {
@@ -3093,6 +3118,10 @@
               }
             }
           ],
+          "_postman_id": "6a8ad38e-8f65-41d4-bf63-635042ca430a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3117,7 +3146,6 @@
           "response": []
         },
         {
-          "_postman_id": "c0bd635e-65e3-4048-aa75-82caa3bdbc1e",
           "name": "Create Invoice",
           "event": [
             {
@@ -3148,6 +3176,10 @@
               }
             }
           ],
+          "_postman_id": "c0bd635e-65e3-4048-aa75-82caa3bdbc1e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3172,7 +3204,6 @@
           "response": []
         },
         {
-          "_postman_id": "fe9f02b2-ab35-43e3-8064-f9c82bb9212e",
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -3203,6 +3234,10 @@
               }
             }
           ],
+          "_postman_id": "fe9f02b2-ab35-43e3-8064-f9c82bb9212e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3227,7 +3262,6 @@
           "response": []
         },
         {
-          "_postman_id": "e997f1ed-25ca-4fd4-af9f-7b1927ea57c8",
           "name": "Get Invoice",
           "event": [
             {
@@ -3258,6 +3292,10 @@
               }
             }
           ],
+          "_postman_id": "e997f1ed-25ca-4fd4-af9f-7b1927ea57c8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3282,7 +3320,6 @@
           "response": []
         },
         {
-          "_postman_id": "7368ec11-f09d-48a3-9b4a-dfa6ec92f73e",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -3313,6 +3350,10 @@
               }
             }
           ],
+          "_postman_id": "7368ec11-f09d-48a3-9b4a-dfa6ec92f73e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3337,7 +3378,6 @@
           "response": []
         },
         {
-          "_postman_id": "c9f44dd1-7a37-463a-becf-e1b382e557b7",
           "name": "Get Invoice",
           "event": [
             {
@@ -3368,6 +3408,10 @@
               }
             }
           ],
+          "_postman_id": "c9f44dd1-7a37-463a-becf-e1b382e557b7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3391,15 +3435,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "b1fa82ff-c7dd-4737-87a8-5ddd9510e4f3"
     },
     {
-      "_postman_id": "7e16961e-19fc-4a44-a8ec-0163ee6e855f",
       "name": "Multiple Payments, Failed and Successful Payments",
-      "description": "",
       "item": [
         {
-          "_postman_id": "e9b9fe66-df58-497c-aca9-ef7a523fa3fe",
           "name": "Create Invoice",
           "event": [
             {
@@ -3430,6 +3472,10 @@
               }
             }
           ],
+          "_postman_id": "e9b9fe66-df58-497c-aca9-ef7a523fa3fe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3454,7 +3500,64 @@
           "response": []
         },
         {
-          "_postman_id": "09dcfd45-1ce4-4b72-8193-c5d1fe74389b",
+          "name": "Pay Partial Invoice (1)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
+                "exec": [
+                  "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 15;",
+                  "tests[\"Status is OK\"] = data.status === \"completed\";",
+                  "tests[\"No order created\"] = data.order === null;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "933da159-6344-4d90-b4fd-2d964038b383",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
           "name": "Pay Partial Invoice, Failed",
           "event": [
             {
@@ -3480,6 +3583,10 @@
               }
             }
           ],
+          "_postman_id": "09dcfd45-1ce4-4b72-8193-c5d1fe74389b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3504,62 +3611,6 @@
           "response": []
         },
         {
-          "_postman_id": "933da159-6344-4d90-b4fd-2d964038b383",
-          "name": "Pay Partial Invoice (1)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
-                "exec": [
-                  "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Total is OK\"] = data.total === 15;",
-                  "tests[\"Status is OK\"] = data.status === \"completed\";",
-                  "tests[\"No order created\"] = data.order === null;"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "exec": [
-                  "var date = new Date();",
-                  "date.setMonth(date.getMonth() + 1);",
-                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
-            },
-            "url": "{{invoice_url}}/payments"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "820d4a4b-d412-4a91-af83-fcf9f33a7f59",
           "name": "Get Invoice",
           "event": [
             {
@@ -3590,6 +3641,10 @@
               }
             }
           ],
+          "_postman_id": "820d4a4b-d412-4a91-af83-fcf9f33a7f59",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3614,7 +3669,6 @@
           "response": []
         },
         {
-          "_postman_id": "c5bc1fb6-4365-4ff0-b035-9004ff54aa0c",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -3645,6 +3699,10 @@
               }
             }
           ],
+          "_postman_id": "c5bc1fb6-4365-4ff0-b035-9004ff54aa0c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3669,7 +3727,6 @@
           "response": []
         },
         {
-          "_postman_id": "992449a0-ff3a-4b50-ab7e-b3e6fb2c7693",
           "name": "Get Invoice",
           "event": [
             {
@@ -3700,6 +3757,10 @@
               }
             }
           ],
+          "_postman_id": "992449a0-ff3a-4b50-ab7e-b3e6fb2c7693",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3723,15 +3784,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "7e16961e-19fc-4a44-a8ec-0163ee6e855f"
     },
     {
-      "_postman_id": "88aee671-1c86-4c6b-a29f-0bcfc10f52bd",
       "name": "Multiple Payments, Refund before Paid",
-      "description": "",
       "item": [
         {
-          "_postman_id": "2cec7277-ba7c-4d4f-8fa3-66e475207af6",
           "name": "Create Invoice",
           "event": [
             {
@@ -3762,6 +3821,10 @@
               }
             }
           ],
+          "_postman_id": "2cec7277-ba7c-4d4f-8fa3-66e475207af6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3786,7 +3849,6 @@
           "response": []
         },
         {
-          "_postman_id": "3c98ae74-cf71-4fb1-add7-baf4b4d2c28a",
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -3817,6 +3879,10 @@
               }
             }
           ],
+          "_postman_id": "3c98ae74-cf71-4fb1-add7-baf4b4d2c28a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3841,7 +3907,6 @@
           "response": []
         },
         {
-          "_postman_id": "607955d2-79f7-4cea-a313-b44899dc12ee",
           "name": "Get Invoice",
           "event": [
             {
@@ -3872,6 +3937,10 @@
               }
             }
           ],
+          "_postman_id": "607955d2-79f7-4cea-a313-b44899dc12ee",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3896,7 +3965,6 @@
           "response": []
         },
         {
-          "_postman_id": "7aca2273-e2a6-4a34-9778-5185d729d477",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -3928,6 +3996,10 @@
               }
             }
           ],
+          "_postman_id": "7aca2273-e2a6-4a34-9778-5185d729d477",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3952,7 +4024,6 @@
           "response": []
         },
         {
-          "_postman_id": "349b3f84-1014-4ed6-a3dd-e3f3eaf237d7",
           "name": "Get Invoice",
           "event": [
             {
@@ -3983,6 +4054,10 @@
               }
             }
           ],
+          "_postman_id": "349b3f84-1014-4ed6-a3dd-e3f3eaf237d7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4007,7 +4082,6 @@
           "response": []
         },
         {
-          "_postman_id": "9fca0a2a-33b6-405c-bc1a-ca067b351728",
           "name": "Refund Payment",
           "event": [
             {
@@ -4037,6 +4111,10 @@
               }
             }
           ],
+          "_postman_id": "9fca0a2a-33b6-405c-bc1a-ca067b351728",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4061,7 +4139,6 @@
           "response": []
         },
         {
-          "_postman_id": "25dee15e-0cea-4fff-84b8-3dc3ce411d5a",
           "name": "Get Invoice",
           "event": [
             {
@@ -4092,6 +4169,10 @@
               }
             }
           ],
+          "_postman_id": "25dee15e-0cea-4fff-84b8-3dc3ce411d5a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4116,7 +4197,6 @@
           "response": []
         },
         {
-          "_postman_id": "ffc2a34a-a94f-4a5b-8495-bb2f4e35aa5e",
           "name": "Pay Partial Invoice (3)",
           "event": [
             {
@@ -4147,6 +4227,10 @@
               }
             }
           ],
+          "_postman_id": "ffc2a34a-a94f-4a5b-8495-bb2f4e35aa5e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4171,7 +4255,6 @@
           "response": []
         },
         {
-          "_postman_id": "d974be6f-14f2-42b9-8136-15ecd6721e46",
           "name": "Get Invoice",
           "event": [
             {
@@ -4202,6 +4285,10 @@
               }
             }
           ],
+          "_postman_id": "d974be6f-14f2-42b9-8136-15ecd6721e46",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4225,15 +4312,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "88aee671-1c86-4c6b-a29f-0bcfc10f52bd"
     },
     {
-      "_postman_id": "6182d619-f85b-43ce-83c5-20a1ed87ea25",
       "name": "Multiple Payments, Cancel Payment before Invoice Paid",
-      "description": "",
       "item": [
         {
-          "_postman_id": "726e0b25-6477-481b-a6ec-38504bdc1986",
           "name": "Create Invoice",
           "event": [
             {
@@ -4264,6 +4349,10 @@
               }
             }
           ],
+          "_postman_id": "726e0b25-6477-481b-a6ec-38504bdc1986",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4288,7 +4377,6 @@
           "response": []
         },
         {
-          "_postman_id": "52269344-f3ff-4f64-8275-95a3cab6a302",
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -4320,6 +4408,10 @@
               }
             }
           ],
+          "_postman_id": "52269344-f3ff-4f64-8275-95a3cab6a302",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4344,7 +4436,6 @@
           "response": []
         },
         {
-          "_postman_id": "8c061a98-5665-460c-9e0f-06fa81b76292",
           "name": "Get Invoice",
           "event": [
             {
@@ -4375,6 +4466,10 @@
               }
             }
           ],
+          "_postman_id": "8c061a98-5665-460c-9e0f-06fa81b76292",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4399,7 +4494,6 @@
           "response": []
         },
         {
-          "_postman_id": "234e1527-c887-4ddd-aeec-0df6f5cd4075",
           "name": "Cancel Payment",
           "event": [
             {
@@ -4429,6 +4523,10 @@
               }
             }
           ],
+          "_postman_id": "234e1527-c887-4ddd-aeec-0df6f5cd4075",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4453,7 +4551,6 @@
           "response": []
         },
         {
-          "_postman_id": "9c82fb71-948a-42d7-bec6-1d94c828bcb5",
           "name": "Get Invoice",
           "event": [
             {
@@ -4484,6 +4581,10 @@
               }
             }
           ],
+          "_postman_id": "9c82fb71-948a-42d7-bec6-1d94c828bcb5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4508,7 +4609,6 @@
           "response": []
         },
         {
-          "_postman_id": "deb2dedd-3049-4359-9350-e1c1c6391e0c",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -4539,6 +4639,10 @@
               }
             }
           ],
+          "_postman_id": "deb2dedd-3049-4359-9350-e1c1c6391e0c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4563,7 +4667,6 @@
           "response": []
         },
         {
-          "_postman_id": "df696bd1-1497-417b-809f-b850ee8f335c",
           "name": "Get Invoice",
           "event": [
             {
@@ -4594,6 +4697,10 @@
               }
             }
           ],
+          "_postman_id": "df696bd1-1497-417b-809f-b850ee8f335c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4617,15 +4724,71 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "6182d619-f85b-43ce-83c5-20a1ed87ea25"
     },
     {
-      "_postman_id": "b5e9f7d5-feb7-4e3a-8857-05887a53e6cd",
       "name": "Multiple Payments, Partial Refund",
-      "description": "",
       "item": [
         {
-          "_postman_id": "db1ce7d5-fbed-4452-8519-e3c1bf21c3a4",
+          "name": "Create Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 45;",
+                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
+                  "pm.globals.set(\"invoice_url\", data.url);"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "type": "text/javascript",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ]
+              }
+            }
+          ],
+          "_postman_id": "ce70fc7c-d690-42d1-bfbb-a29e90963c89",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
+            },
+            "url": "https://{{host}}/api/v1/invoices"
+          },
+          "response": []
+        },
+        {
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -4657,6 +4820,10 @@
               }
             }
           ],
+          "_postman_id": "db1ce7d5-fbed-4452-8519-e3c1bf21c3a4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4681,62 +4848,6 @@
           "response": []
         },
         {
-          "_postman_id": "ce70fc7c-d690-42d1-bfbb-a29e90963c89",
-          "name": "Create Invoice",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
-                "type": "text/javascript",
-                "exec": [
-                  "tests[\"Invoice created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Total is OK\"] = data.total === 45;",
-                  "tests[\"Item count is OK\"] = data.items_count === data.items.length && data.items_count === 2;",
-                  "pm.globals.set(\"invoice_url\", data.url);"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "type": "text/javascript",
-                "exec": [
-                  "var date = new Date();",
-                  "date.setMonth(date.getMonth() + 1);",
-                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"date_due\": \"{{date_due}}\",\r\n  \"draft\": false,\r\n  \"suppress_customer_notification\": true,\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"digital.test\",\r\n         \"quantity\":1\r\n      },\r\n      {\r\n         \"product_id\":\"physical.test\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
-            },
-            "url": "https://{{host}}/api/v1/invoices"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "201f16c2-fcf6-444b-8e46-c0ea241ef503",
           "name": "Get Invoice",
           "event": [
             {
@@ -4767,6 +4878,10 @@
               }
             }
           ],
+          "_postman_id": "201f16c2-fcf6-444b-8e46-c0ea241ef503",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4791,7 +4906,6 @@
           "response": []
         },
         {
-          "_postman_id": "ce7d264b-cd2a-48fb-94d1-4855d5d07fc7",
           "name": "Process Partial Refund",
           "event": [
             {
@@ -4821,6 +4935,10 @@
               }
             }
           ],
+          "_postman_id": "ce7d264b-cd2a-48fb-94d1-4855d5d07fc7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4845,7 +4963,6 @@
           "response": []
         },
         {
-          "_postman_id": "8a48bfa5-b81f-48c2-8e91-11e10cd95d3e",
           "name": "Get Invoice",
           "event": [
             {
@@ -4876,6 +4993,10 @@
               }
             }
           ],
+          "_postman_id": "8a48bfa5-b81f-48c2-8e91-11e10cd95d3e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4900,7 +5021,6 @@
           "response": []
         },
         {
-          "_postman_id": "f441e956-bedc-48e9-9bac-4eed0fa49853",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -4930,6 +5050,10 @@
               }
             }
           ],
+          "_postman_id": "f441e956-bedc-48e9-9bac-4eed0fa49853",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4954,7 +5078,6 @@
           "response": []
         },
         {
-          "_postman_id": "b5de6012-e236-4478-b140-6be16937b989",
           "name": "Get Invoice",
           "event": [
             {
@@ -4985,6 +5108,10 @@
               }
             }
           ],
+          "_postman_id": "b5de6012-e236-4478-b140-6be16937b989",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5009,7 +5136,6 @@
           "response": []
         },
         {
-          "_postman_id": "c82327b3-b81e-4b5f-b2a7-4ef6a3c8b739",
           "name": "Pay Partial Invoice (3)",
           "event": [
             {
@@ -5040,6 +5166,10 @@
               }
             }
           ],
+          "_postman_id": "c82327b3-b81e-4b5f-b2a7-4ef6a3c8b739",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5064,7 +5194,6 @@
           "response": []
         },
         {
-          "_postman_id": "22660bc1-1e43-45fe-a8e4-e97373c4f185",
           "name": "Get Invoice",
           "event": [
             {
@@ -5095,6 +5224,10 @@
               }
             }
           ],
+          "_postman_id": "22660bc1-1e43-45fe-a8e4-e97373c4f185",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5118,15 +5251,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "b5e9f7d5-feb7-4e3a-8857-05887a53e6cd"
     },
     {
-      "_postman_id": "90ba4444-420d-4393-ae2f-be5c972f0809",
       "name": "Multiple Payments, Partial Refund, Calculate Total",
-      "description": "",
       "item": [
         {
-          "_postman_id": "f573f3ad-a399-453a-be33-ab52f7ce7fba",
           "name": "Create Invoice",
           "event": [
             {
@@ -5157,6 +5288,10 @@
               }
             }
           ],
+          "_postman_id": "f573f3ad-a399-453a-be33-ab52f7ce7fba",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5181,7 +5316,6 @@
           "response": []
         },
         {
-          "_postman_id": "f815c3c7-5962-4e9c-9cc5-ec9534738fa6",
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -5213,6 +5347,10 @@
               }
             }
           ],
+          "_postman_id": "f815c3c7-5962-4e9c-9cc5-ec9534738fa6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5237,7 +5375,6 @@
           "response": []
         },
         {
-          "_postman_id": "876b93d5-2c7f-4579-a9cb-3aba604ee09f",
           "name": "Get Invoice",
           "event": [
             {
@@ -5268,6 +5405,10 @@
               }
             }
           ],
+          "_postman_id": "876b93d5-2c7f-4579-a9cb-3aba604ee09f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5292,7 +5433,6 @@
           "response": []
         },
         {
-          "_postman_id": "f352e81f-a9e8-4af3-aeb1-b513e4e8cb1b",
           "name": "Process Partial Refund",
           "event": [
             {
@@ -5322,6 +5462,10 @@
               }
             }
           ],
+          "_postman_id": "f352e81f-a9e8-4af3-aeb1-b513e4e8cb1b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5346,7 +5490,6 @@
           "response": []
         },
         {
-          "_postman_id": "116400cc-45c4-4806-aa29-a06ed07a2248",
           "name": "Get Invoice",
           "event": [
             {
@@ -5377,6 +5520,10 @@
               }
             }
           ],
+          "_postman_id": "116400cc-45c4-4806-aa29-a06ed07a2248",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5401,7 +5548,6 @@
           "response": []
         },
         {
-          "_postman_id": "72be4388-155f-4e3d-9a76-c87e45c9df92",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -5432,6 +5578,10 @@
               }
             }
           ],
+          "_postman_id": "72be4388-155f-4e3d-9a76-c87e45c9df92",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5456,7 +5606,6 @@
           "response": []
         },
         {
-          "_postman_id": "1642c0ae-be26-473a-88a5-e8540b869722",
           "name": "Get Invoice",
           "event": [
             {
@@ -5487,6 +5636,10 @@
               }
             }
           ],
+          "_postman_id": "1642c0ae-be26-473a-88a5-e8540b869722",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5510,15 +5663,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "90ba4444-420d-4393-ae2f-be5c972f0809"
     },
     {
-      "_postman_id": "c3f2a14c-ab63-45c0-8125-1c42caa3b432",
       "name": "Delete Invoice",
-      "description": "",
       "item": [
         {
-          "_postman_id": "a9795175-01da-4ada-af10-ae9894215891",
           "name": "Create Invoice",
           "event": [
             {
@@ -5549,6 +5700,10 @@
               }
             }
           ],
+          "_postman_id": "a9795175-01da-4ada-af10-ae9894215891",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5573,7 +5728,6 @@
           "response": []
         },
         {
-          "_postman_id": "e6a99164-1957-4a6b-b572-860467cf2d85",
           "name": "Delete Invoice",
           "event": [
             {
@@ -5599,6 +5753,10 @@
               }
             }
           ],
+          "_postman_id": "e6a99164-1957-4a6b-b572-860467cf2d85",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5623,7 +5781,6 @@
           "response": []
         },
         {
-          "_postman_id": "fa7ce68b-b305-4b24-8137-653eb2614799",
           "name": "Get Invoice",
           "event": [
             {
@@ -5637,6 +5794,10 @@
               }
             }
           ],
+          "_postman_id": "fa7ce68b-b305-4b24-8137-653eb2614799",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -5657,15 +5818,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "c3f2a14c-ab63-45c0-8125-1c42caa3b432"
     },
     {
-      "_postman_id": "92adb2db-6cf6-4c23-88af-af9acad2e96c",
       "name": "Delete Invoice with Payments",
-      "description": "",
       "item": [
         {
-          "_postman_id": "195fdfa1-c51c-4152-8c35-50928edd4437",
           "name": "Create Invoice",
           "event": [
             {
@@ -5696,6 +5855,10 @@
               }
             }
           ],
+          "_postman_id": "195fdfa1-c51c-4152-8c35-50928edd4437",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5720,7 +5883,6 @@
           "response": []
         },
         {
-          "_postman_id": "b49aa745-1959-4df9-a709-53f4f6255bde",
           "name": "Pay Partial Invoice",
           "event": [
             {
@@ -5752,6 +5914,10 @@
               }
             }
           ],
+          "_postman_id": "b49aa745-1959-4df9-a709-53f4f6255bde",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5776,7 +5942,6 @@
           "response": []
         },
         {
-          "_postman_id": "777480af-def6-4e1c-b2a6-fbc8d78e7c00",
           "name": "Delete Invoice",
           "event": [
             {
@@ -5802,6 +5967,10 @@
               }
             }
           ],
+          "_postman_id": "777480af-def6-4e1c-b2a6-fbc8d78e7c00",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5826,7 +5995,6 @@
           "response": []
         },
         {
-          "_postman_id": "0d91259e-c6d5-4a4e-bcd3-8312842847ca",
           "name": "Refund Payment",
           "event": [
             {
@@ -5852,6 +6020,10 @@
               }
             }
           ],
+          "_postman_id": "0d91259e-c6d5-4a4e-bcd3-8312842847ca",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5876,7 +6048,6 @@
           "response": []
         },
         {
-          "_postman_id": "52336c6e-11a3-427d-8edd-b8ec06e8355e",
           "name": "Delete Invoice",
           "event": [
             {
@@ -5902,6 +6073,10 @@
               }
             }
           ],
+          "_postman_id": "52336c6e-11a3-427d-8edd-b8ec06e8355e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5926,7 +6101,6 @@
           "response": []
         },
         {
-          "_postman_id": "f8133e76-73c4-4597-a985-f61c7b0500cd",
           "name": "Get Invoice",
           "event": [
             {
@@ -5940,6 +6114,10 @@
               }
             }
           ],
+          "_postman_id": "f8133e76-73c4-4597-a985-f61c7b0500cd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -5960,15 +6138,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "92adb2db-6cf6-4c23-88af-af9acad2e96c"
     },
     {
-      "_postman_id": "79640793-6a86-4cfd-88eb-7adb0f1f202f",
       "name": "Can't Change with Successful Payments",
-      "description": "",
       "item": [
         {
-          "_postman_id": "719a574e-ff0f-4657-a477-cb16542b09f3",
           "name": "Create Invoice",
           "event": [
             {
@@ -5999,6 +6175,10 @@
               }
             }
           ],
+          "_postman_id": "719a574e-ff0f-4657-a477-cb16542b09f3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6023,7 +6203,6 @@
           "response": []
         },
         {
-          "_postman_id": "948aed7e-829a-41e5-8753-20e454170351",
           "name": "Pay Partial Invoice (failed)",
           "event": [
             {
@@ -6049,6 +6228,10 @@
               }
             }
           ],
+          "_postman_id": "948aed7e-829a-41e5-8753-20e454170351",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6073,7 +6256,6 @@
           "response": []
         },
         {
-          "_postman_id": "e69c9816-69d5-4e51-8be0-5982e387d0e5",
           "name": "Change Invoice Currency",
           "event": [
             {
@@ -6102,6 +6284,10 @@
               }
             }
           ],
+          "_postman_id": "e69c9816-69d5-4e51-8be0-5982e387d0e5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6126,7 +6312,6 @@
           "response": []
         },
         {
-          "_postman_id": "9faa8d2b-4f88-43eb-91fd-c323ed592d96",
           "name": "Change Invoice Currency Back",
           "event": [
             {
@@ -6155,6 +6340,10 @@
               }
             }
           ],
+          "_postman_id": "9faa8d2b-4f88-43eb-91fd-c323ed592d96",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6179,7 +6368,6 @@
           "response": []
         },
         {
-          "_postman_id": "17d23373-9573-4774-8d65-b9db43bcc65d",
           "name": "Pay Partial Invoice",
           "event": [
             {
@@ -6209,6 +6397,10 @@
               }
             }
           ],
+          "_postman_id": "17d23373-9573-4774-8d65-b9db43bcc65d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6233,7 +6425,6 @@
           "response": []
         },
         {
-          "_postman_id": "64e51015-b54d-4d95-8614-43c93c287eed",
           "name": "Change Invoice Currency",
           "event": [
             {
@@ -6259,6 +6450,10 @@
               }
             }
           ],
+          "_postman_id": "64e51015-b54d-4d95-8614-43c93c287eed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6282,15 +6477,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "79640793-6a86-4cfd-88eb-7adb0f1f202f"
     },
     {
-      "_postman_id": "b02eb496-8ad4-42e0-8b2b-2347a70b5b8b",
       "name": "Multiple Payments, Single Capture",
-      "description": "",
       "item": [
         {
-          "_postman_id": "4b4d3bbd-8d50-433f-a2c8-8f6cb3cd97e0",
           "name": "Create Invoice",
           "event": [
             {
@@ -6321,6 +6514,10 @@
               }
             }
           ],
+          "_postman_id": "4b4d3bbd-8d50-433f-a2c8-8f6cb3cd97e0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6345,7 +6542,6 @@
           "response": []
         },
         {
-          "_postman_id": "0792fe4b-57d6-4232-87be-ab7b85ef240c",
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -6376,6 +6572,10 @@
               }
             }
           ],
+          "_postman_id": "0792fe4b-57d6-4232-87be-ab7b85ef240c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6400,7 +6600,6 @@
           "response": []
         },
         {
-          "_postman_id": "1a7cad6a-a921-45df-bd1c-d055961dc5d9",
           "name": "Get Invoice",
           "event": [
             {
@@ -6431,6 +6630,10 @@
               }
             }
           ],
+          "_postman_id": "1a7cad6a-a921-45df-bd1c-d055961dc5d9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6455,7 +6658,6 @@
           "response": []
         },
         {
-          "_postman_id": "ba7050c6-bd53-4b3b-8f10-416647fd6559",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -6487,6 +6689,10 @@
               }
             }
           ],
+          "_postman_id": "ba7050c6-bd53-4b3b-8f10-416647fd6559",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6511,7 +6717,6 @@
           "response": []
         },
         {
-          "_postman_id": "472a3797-6e50-427d-89cd-624c6a63181c",
           "name": "Get Invoice",
           "event": [
             {
@@ -6542,6 +6747,10 @@
               }
             }
           ],
+          "_postman_id": "472a3797-6e50-427d-89cd-624c6a63181c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6566,7 +6775,6 @@
           "response": []
         },
         {
-          "_postman_id": "b5abeb05-d888-441f-9031-01b0e2dc593b",
           "name": "Capture Order",
           "event": [
             {
@@ -6598,6 +6806,10 @@
               }
             }
           ],
+          "_postman_id": "b5abeb05-d888-441f-9031-01b0e2dc593b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6622,7 +6834,6 @@
           "response": []
         },
         {
-          "_postman_id": "a1da0b75-910d-437a-aa45-3eabf7b2f9d1",
           "name": "Get Invoice",
           "event": [
             {
@@ -6653,6 +6864,10 @@
               }
             }
           ],
+          "_postman_id": "a1da0b75-910d-437a-aa45-3eabf7b2f9d1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6676,15 +6891,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "b02eb496-8ad4-42e0-8b2b-2347a70b5b8b"
     },
     {
-      "_postman_id": "0f369769-3a57-4a62-8d04-c8806f0391ae",
       "name": "Multiple Payments, Some Completed, Single Capture",
-      "description": "",
       "item": [
         {
-          "_postman_id": "02d94622-c680-43df-8404-97a8d9f93ddc",
           "name": "Create Invoice",
           "event": [
             {
@@ -6715,6 +6928,10 @@
               }
             }
           ],
+          "_postman_id": "02d94622-c680-43df-8404-97a8d9f93ddc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6739,7 +6956,6 @@
           "response": []
         },
         {
-          "_postman_id": "e7aa4075-1ce3-473f-a9c7-488da3759923",
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -6770,6 +6986,10 @@
               }
             }
           ],
+          "_postman_id": "e7aa4075-1ce3-473f-a9c7-488da3759923",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6794,7 +7014,6 @@
           "response": []
         },
         {
-          "_postman_id": "640095b2-afcb-4300-8694-25c42a7a158b",
           "name": "Get Invoice",
           "event": [
             {
@@ -6825,6 +7044,10 @@
               }
             }
           ],
+          "_postman_id": "640095b2-afcb-4300-8694-25c42a7a158b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6849,7 +7072,6 @@
           "response": []
         },
         {
-          "_postman_id": "42483d4b-6dde-4f16-9966-ceaa58be777f",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -6880,6 +7102,10 @@
               }
             }
           ],
+          "_postman_id": "42483d4b-6dde-4f16-9966-ceaa58be777f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6904,7 +7130,6 @@
           "response": []
         },
         {
-          "_postman_id": "b5ff461c-45ce-4c5a-b1ad-cb0ba4594f21",
           "name": "Get Invoice",
           "event": [
             {
@@ -6935,6 +7160,10 @@
               }
             }
           ],
+          "_postman_id": "b5ff461c-45ce-4c5a-b1ad-cb0ba4594f21",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6959,7 +7188,6 @@
           "response": []
         },
         {
-          "_postman_id": "6d2ef69a-33c7-40e5-b706-9945ae59f8a5",
           "name": "Pay Partial Invoice (3)",
           "event": [
             {
@@ -6991,6 +7219,10 @@
               }
             }
           ],
+          "_postman_id": "6d2ef69a-33c7-40e5-b706-9945ae59f8a5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7015,7 +7247,6 @@
           "response": []
         },
         {
-          "_postman_id": "7e55ebbe-dfe8-4f0e-acdb-f49b437e5384",
           "name": "Get Invoice",
           "event": [
             {
@@ -7046,6 +7277,10 @@
               }
             }
           ],
+          "_postman_id": "7e55ebbe-dfe8-4f0e-acdb-f49b437e5384",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7070,7 +7305,6 @@
           "response": []
         },
         {
-          "_postman_id": "064c672e-9934-4ca9-88b5-b7e09c95098c",
           "name": "Capture Order",
           "event": [
             {
@@ -7102,6 +7336,10 @@
               }
             }
           ],
+          "_postman_id": "064c672e-9934-4ca9-88b5-b7e09c95098c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7126,7 +7364,6 @@
           "response": []
         },
         {
-          "_postman_id": "462f6965-8fb4-4522-aa62-412e14973ec6",
           "name": "Get Invoice",
           "event": [
             {
@@ -7157,6 +7394,10 @@
               }
             }
           ],
+          "_postman_id": "462f6965-8fb4-4522-aa62-412e14973ec6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7180,15 +7421,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "0f369769-3a57-4a62-8d04-c8806f0391ae"
     },
     {
-      "_postman_id": "e7c2d0c9-f9e6-48c1-b81a-7b821744b344",
       "name": "Multiple Payments, Some Completed, Multiple Captures",
-      "description": "",
       "item": [
         {
-          "_postman_id": "78dd98e7-0002-4bd8-a552-f2aab0d69a18",
           "name": "Create Invoice",
           "event": [
             {
@@ -7219,6 +7458,10 @@
               }
             }
           ],
+          "_postman_id": "78dd98e7-0002-4bd8-a552-f2aab0d69a18",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7243,7 +7486,6 @@
           "response": []
         },
         {
-          "_postman_id": "51989733-9e8e-4d98-abe8-4143d9569a56",
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -7274,6 +7516,10 @@
               }
             }
           ],
+          "_postman_id": "51989733-9e8e-4d98-abe8-4143d9569a56",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7298,7 +7544,6 @@
           "response": []
         },
         {
-          "_postman_id": "2a30a6ca-ffc3-4d27-8ce8-746d9d42481d",
           "name": "Get Invoice",
           "event": [
             {
@@ -7329,6 +7574,10 @@
               }
             }
           ],
+          "_postman_id": "2a30a6ca-ffc3-4d27-8ce8-746d9d42481d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7353,7 +7602,6 @@
           "response": []
         },
         {
-          "_postman_id": "2f110693-f8bf-4048-8b17-43477c413cd8",
           "name": "Pay Partial Invoice (2)",
           "event": [
             {
@@ -7384,6 +7632,10 @@
               }
             }
           ],
+          "_postman_id": "2f110693-f8bf-4048-8b17-43477c413cd8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7408,7 +7660,6 @@
           "response": []
         },
         {
-          "_postman_id": "91fb55c7-e3af-44f1-92eb-b7e9d9f4ded2",
           "name": "Get Invoice",
           "event": [
             {
@@ -7439,6 +7690,10 @@
               }
             }
           ],
+          "_postman_id": "91fb55c7-e3af-44f1-92eb-b7e9d9f4ded2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7463,7 +7718,6 @@
           "response": []
         },
         {
-          "_postman_id": "58cb1d44-e66b-4d7e-86c9-0fc8a94ec2ad",
           "name": "Pay Partial Invoice (3)",
           "event": [
             {
@@ -7496,6 +7750,10 @@
               }
             }
           ],
+          "_postman_id": "58cb1d44-e66b-4d7e-86c9-0fc8a94ec2ad",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7520,7 +7778,6 @@
           "response": []
         },
         {
-          "_postman_id": "b66d2d30-879b-462b-8aa8-12dfc4e2561a",
           "name": "Get Invoice",
           "event": [
             {
@@ -7551,6 +7808,10 @@
               }
             }
           ],
+          "_postman_id": "b66d2d30-879b-462b-8aa8-12dfc4e2561a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7575,7 +7836,6 @@
           "response": []
         },
         {
-          "_postman_id": "f2a23cd3-6389-4e98-84a8-2020781bb94d",
           "name": "Capture Payment Directly",
           "event": [
             {
@@ -7605,6 +7865,10 @@
               }
             }
           ],
+          "_postman_id": "f2a23cd3-6389-4e98-84a8-2020781bb94d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7629,7 +7893,6 @@
           "response": []
         },
         {
-          "_postman_id": "198e089d-40de-44dc-b2d1-50221df144d5",
           "name": "Get Invoice",
           "event": [
             {
@@ -7660,6 +7923,10 @@
               }
             }
           ],
+          "_postman_id": "198e089d-40de-44dc-b2d1-50221df144d5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7684,7 +7951,6 @@
           "response": []
         },
         {
-          "_postman_id": "dbf6d039-d2fe-43f7-a4c8-93a78bc15c45",
           "name": "Capture Order",
           "event": [
             {
@@ -7716,6 +7982,10 @@
               }
             }
           ],
+          "_postman_id": "dbf6d039-d2fe-43f7-a4c8-93a78bc15c45",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7740,7 +8010,6 @@
           "response": []
         },
         {
-          "_postman_id": "630c958b-d530-4f60-98f1-e4ef1e868168",
           "name": "Get Invoice",
           "event": [
             {
@@ -7771,6 +8040,10 @@
               }
             }
           ],
+          "_postman_id": "630c958b-d530-4f60-98f1-e4ef1e868168",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7794,15 +8067,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "e7c2d0c9-f9e6-48c1-b81a-7b821744b344"
     },
     {
-      "_postman_id": "d4045dc9-bcab-4943-a5e9-0977f416ee51",
       "name": "Post-request Cleanup",
-      "description": "",
       "item": [
         {
-          "_postman_id": "b0a617ff-0a62-482b-bf87-54ff4d71e659",
           "name": "Enable Order Notification Subscription",
           "event": [
             {
@@ -7826,6 +8097,7 @@
               }
             }
           ],
+          "_postman_id": "b0a617ff-0a62-482b-bf87-54ff4d71e659",
           "request": {
             "auth": {
               "type": "noauth"
@@ -7851,7 +8123,6 @@
           "response": []
         },
         {
-          "_postman_id": "d019a512-805b-4cc5-9ac9-95783a2de581",
           "name": "Enable Payment Notification Subscription",
           "event": [
             {
@@ -7877,6 +8148,7 @@
               }
             }
           ],
+          "_postman_id": "d019a512-805b-4cc5-9ac9-95783a2de581",
           "request": {
             "auth": {
               "type": "noauth"
@@ -7902,7 +8174,6 @@
           "response": []
         },
         {
-          "_postman_id": "8474ad73-f02e-4e92-8452-f6c886b536c4",
           "name": "Enable Refund Notification Subscription Copy",
           "event": [
             {
@@ -7933,6 +8204,7 @@
               }
             }
           ],
+          "_postman_id": "8474ad73-f02e-4e92-8452-f6c886b536c4",
           "request": {
             "auth": {
               "type": "noauth"
@@ -7957,7 +8229,8 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "d4045dc9-bcab-4943-a5e9-0977f416ee51"
     }
   ],
   "event": [
@@ -7984,53 +8257,46 @@
   ],
   "variable": [
     {
-      "id": "d8ccfc76-6c63-4858-a869-5a1b2f288f51",
+      "id": "3e69776a-05b0-409d-a6f4-473854e86043",
       "key": "name",
       "value": "James Smith",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "3bded59f-70f7-44e6-b2ab-cb9e4f94603f",
+      "id": "488cc594-cd06-466f-84a5-a3cacf9cf59d",
       "key": "address_1",
       "value": "648 Broad St",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "2c9c01cc-cf1b-4413-9c85-b92bcc51ffad",
+      "id": "9ad9b1fb-1530-4a59-8b3c-a0eeee583b80",
       "key": "city",
       "value": "Westerville",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "dd2f8c99-fda8-4e32-908c-18482558ba55",
+      "id": "37712228-3741-4108-a86f-319ee2e0f8ac",
       "key": "state_prov",
       "value": "OH",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "1f309220-6a15-462f-8e51-330edaaf359f",
+      "id": "37317685-8ff7-4566-807c-6a24b3f88a24",
       "key": "postal_code",
       "value": "43081",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "6660cee1-8c61-4b4e-952c-184f2ca5aab0",
+      "id": "e1eb6f6a-e0c9-4bc3-b368-5920c8e37e65",
       "key": "country",
       "value": "US",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "26379aca-93dc-4367-9a47-3ebf552c4757",
+      "id": "2c916a58-3c5f-4256-99ed-b000b6efec83",
       "key": "phone",
       "value": "614-555-0191",
-      "type": "string",
-      "description": ""
+      "type": "string"
     }
   ]
 }
