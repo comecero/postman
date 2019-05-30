@@ -3500,6 +3500,59 @@
           "response": []
         },
         {
+          "name": "Pay Partial Invoice, Failed",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
+                "exec": [
+                  "tests[\"Payment failed\"] = responseCode.code === 402;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "09dcfd45-1ce4-4b72-8193-c5d1fe74389b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566669999\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
           "name": "Pay Partial Invoice (1)",
           "event": [
             {
@@ -3552,59 +3605,6 @@
             "body": {
               "mode": "raw",
               "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
-            },
-            "url": "{{invoice_url}}/payments"
-          },
-          "response": []
-        },
-        {
-          "name": "Pay Partial Invoice, Failed",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
-                "exec": [
-                  "tests[\"Payment failed\"] = responseCode.code === 402;"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "exec": [
-                  "var date = new Date();",
-                  "date.setMonth(date.getMonth() + 1);",
-                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "09dcfd45-1ce4-4b72-8193-c5d1fe74389b",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"total\": 15,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566669999\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
             "url": "{{invoice_url}}/payments"
           },
@@ -8257,43 +8257,43 @@
   ],
   "variable": [
     {
-      "id": "3e69776a-05b0-409d-a6f4-473854e86043",
+      "id": "23c119f6-eebf-4476-92ed-490218f967be",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "488cc594-cd06-466f-84a5-a3cacf9cf59d",
+      "id": "6c67e7f2-7410-4bf3-9538-e3fad1b33003",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string"
     },
     {
-      "id": "9ad9b1fb-1530-4a59-8b3c-a0eeee583b80",
+      "id": "a521048e-f146-4d21-8d25-44d167f87621",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "37712228-3741-4108-a86f-319ee2e0f8ac",
+      "id": "0697245d-3547-4d0c-aced-5aeaa6084433",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "37317685-8ff7-4566-807c-6a24b3f88a24",
+      "id": "5ccd13f9-06c7-4f1b-96aa-091ec00842d4",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "e1eb6f6a-e0c9-4bc3-b368-5920c8e37e65",
+      "id": "673ad28c-d41b-4099-94e4-8c3c90e809c2",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "2c916a58-3c5f-4256-99ed-b000b6efec83",
+      "id": "62903b5a-8c7e-455f-8c1f-1f7c6187c201",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
