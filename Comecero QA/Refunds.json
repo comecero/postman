@@ -7,12 +7,9 @@
   },
   "item": [
     {
-      "_postman_id": "60ac07b8-fe67-4652-ab82-ddd3907ab9d1",
       "name": "Pre-request Configurations",
-      "description": "",
       "item": [
         {
-          "_postman_id": "c45b703f-34a2-4e9d-aacf-fb5400bba520",
           "name": "Disable Duplicate Payment Checker",
           "event": [
             {
@@ -38,6 +35,7 @@
               }
             }
           ],
+          "_postman_id": "c45b703f-34a2-4e9d-aacf-fb5400bba520",
           "request": {
             "auth": {
               "type": "noauth"
@@ -63,7 +61,6 @@
           "response": []
         },
         {
-          "_postman_id": "878f9fa6-7bda-47a6-a2ad-e7e7730f757a",
           "name": "Get Notification Subscriptions",
           "event": [
             {
@@ -107,6 +104,7 @@
               }
             }
           ],
+          "_postman_id": "878f9fa6-7bda-47a6-a2ad-e7e7730f757a",
           "request": {
             "auth": {
               "type": "noauth"
@@ -132,7 +130,6 @@
           "response": []
         },
         {
-          "_postman_id": "33ccc4eb-0166-4842-a906-a4abec9d13e4",
           "name": "Disable Order Notification Subscription",
           "event": [
             {
@@ -159,6 +156,7 @@
               }
             }
           ],
+          "_postman_id": "33ccc4eb-0166-4842-a906-a4abec9d13e4",
           "request": {
             "auth": {
               "type": "noauth"
@@ -184,7 +182,6 @@
           "response": []
         },
         {
-          "_postman_id": "efdb5aaa-4982-4e49-91c3-f9eac20b7302",
           "name": "Disable Payment Notification Subscription",
           "event": [
             {
@@ -210,6 +207,7 @@
               }
             }
           ],
+          "_postman_id": "efdb5aaa-4982-4e49-91c3-f9eac20b7302",
           "request": {
             "auth": {
               "type": "noauth"
@@ -235,7 +233,6 @@
           "response": []
         },
         {
-          "_postman_id": "ecbc5724-06a6-4fe0-a574-2e9c0cc8ae4b",
           "name": "Disable Refund Notification Subscription",
           "event": [
             {
@@ -261,6 +258,7 @@
               }
             }
           ],
+          "_postman_id": "ecbc5724-06a6-4fe0-a574-2e9c0cc8ae4b",
           "request": {
             "auth": {
               "type": "noauth"
@@ -286,6 +284,7 @@
           "response": []
         }
       ],
+      "_postman_id": "60ac07b8-fe67-4652-ab82-ddd3907ab9d1",
       "event": [
         {
           "listen": "prerequest",
@@ -310,12 +309,9 @@
       ]
     },
     {
-      "_postman_id": "5a88c7b8-aa51-4bc8-8512-5d89fd34dfd8",
       "name": "Direct Payment, Full Refund",
-      "description": "",
       "item": [
         {
-          "_postman_id": "0a4c9e0d-e5d3-4b72-a374-0763b7a682fb",
           "name": "Create Payment",
           "event": [
             {
@@ -331,6 +327,7 @@
               }
             }
           ],
+          "_postman_id": "0a4c9e0d-e5d3-4b72-a374-0763b7a682fb",
           "request": {
             "method": "POST",
             "header": [
@@ -352,7 +349,6 @@
           "response": []
         },
         {
-          "_postman_id": "1602c26c-4210-47d2-ada1-2e1061a5de8e",
           "name": "Submit Refund",
           "event": [
             {
@@ -369,6 +365,7 @@
               }
             }
           ],
+          "_postman_id": "1602c26c-4210-47d2-ada1-2e1061a5de8e",
           "request": {
             "method": "POST",
             "header": [
@@ -389,15 +386,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "5a88c7b8-aa51-4bc8-8512-5d89fd34dfd8"
     },
     {
-      "_postman_id": "02345c04-b0c7-4611-b181-821a0af032fa",
       "name": "Direct Payment, With Shipping",
-      "description": "",
       "item": [
         {
-          "_postman_id": "76622758-0ee0-41b9-a4fb-8eec21053b66",
           "name": "Create Payment",
           "event": [
             {
@@ -413,6 +408,7 @@
               }
             }
           ],
+          "_postman_id": "76622758-0ee0-41b9-a4fb-8eec21053b66",
           "request": {
             "method": "POST",
             "header": [
@@ -434,7 +430,6 @@
           "response": []
         },
         {
-          "_postman_id": "065b0c3d-09b4-44ab-aa20-ba307eb74553",
           "name": "Submit Refund",
           "event": [
             {
@@ -451,6 +446,7 @@
               }
             }
           ],
+          "_postman_id": "065b0c3d-09b4-44ab-aa20-ba307eb74553",
           "request": {
             "method": "POST",
             "header": [
@@ -471,15 +467,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "02345c04-b0c7-4611-b181-821a0af032fa"
     },
     {
-      "_postman_id": "29b9b343-1531-4bc2-8875-603b1d29f67a",
       "name": "Direct Payment, With Tax",
-      "description": "",
       "item": [
         {
-          "_postman_id": "babd8876-b5c8-4b72-a4fd-67343562d6d6",
           "name": "Create Payment",
           "event": [
             {
@@ -495,6 +489,7 @@
               }
             }
           ],
+          "_postman_id": "babd8876-b5c8-4b72-a4fd-67343562d6d6",
           "request": {
             "method": "POST",
             "header": [
@@ -516,7 +511,6 @@
           "response": []
         },
         {
-          "_postman_id": "53c961de-64b2-4a19-9fe4-a959051aa4bc",
           "name": "Submit Refund",
           "event": [
             {
@@ -533,6 +527,7 @@
               }
             }
           ],
+          "_postman_id": "53c961de-64b2-4a19-9fe4-a959051aa4bc",
           "request": {
             "method": "POST",
             "header": [
@@ -553,15 +548,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "29b9b343-1531-4bc2-8875-603b1d29f67a"
     },
     {
-      "_postman_id": "7404d8fa-2fc2-4fa2-b529-4bc67202818b",
       "name": "Direct Payment, Calculate Tax",
-      "description": "",
       "item": [
         {
-          "_postman_id": "af492d50-2fd3-4a0a-8ee5-5b575c641d97",
           "name": "Create Payment",
           "event": [
             {
@@ -577,6 +570,7 @@
               }
             }
           ],
+          "_postman_id": "af492d50-2fd3-4a0a-8ee5-5b575c641d97",
           "request": {
             "method": "POST",
             "header": [
@@ -598,7 +592,6 @@
           "response": []
         },
         {
-          "_postman_id": "cdb5c3d5-65c5-4db7-aa18-d1a069295e1f",
           "name": "Submit Refund",
           "event": [
             {
@@ -615,6 +608,7 @@
               }
             }
           ],
+          "_postman_id": "cdb5c3d5-65c5-4db7-aa18-d1a069295e1f",
           "request": {
             "method": "POST",
             "header": [
@@ -635,15 +629,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "7404d8fa-2fc2-4fa2-b529-4bc67202818b"
     },
     {
-      "_postman_id": "3974d87a-e592-4fbf-9c7a-f101cd52411f",
       "name": "Direct Payment, With Amounts More Than Original",
-      "description": "",
       "item": [
         {
-          "_postman_id": "c7a727e8-47b9-45f4-a8bd-eafeb1069892",
           "name": "Create Payment",
           "event": [
             {
@@ -659,6 +651,7 @@
               }
             }
           ],
+          "_postman_id": "c7a727e8-47b9-45f4-a8bd-eafeb1069892",
           "request": {
             "method": "POST",
             "header": [
@@ -680,7 +673,6 @@
           "response": []
         },
         {
-          "_postman_id": "9118c6cd-52b0-40d1-94bb-548ad0b942a3",
           "name": "Submit Refund",
           "event": [
             {
@@ -694,6 +686,7 @@
               }
             }
           ],
+          "_postman_id": "9118c6cd-52b0-40d1-94bb-548ad0b942a3",
           "request": {
             "method": "POST",
             "header": [
@@ -714,15 +707,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "3974d87a-e592-4fbf-9c7a-f101cd52411f"
     },
     {
-      "_postman_id": "74fc263e-2491-4a33-97b1-4d1d7d5f93b0",
       "name": "Direct Payment, Partial Refunds",
-      "description": "",
       "item": [
         {
-          "_postman_id": "1a2d9b2a-54d3-4cfa-804b-7956b7ae42bb",
           "name": "Create Payment",
           "event": [
             {
@@ -738,6 +729,7 @@
               }
             }
           ],
+          "_postman_id": "1a2d9b2a-54d3-4cfa-804b-7956b7ae42bb",
           "request": {
             "method": "POST",
             "header": [
@@ -759,7 +751,6 @@
           "response": []
         },
         {
-          "_postman_id": "791e2f91-fcc6-45ac-8a0f-99a1f3bb0e00",
           "name": "Submit Refund",
           "event": [
             {
@@ -776,6 +767,7 @@
               }
             }
           ],
+          "_postman_id": "791e2f91-fcc6-45ac-8a0f-99a1f3bb0e00",
           "request": {
             "method": "POST",
             "header": [
@@ -797,7 +789,6 @@
           "response": []
         },
         {
-          "_postman_id": "f99adf16-64ab-4853-a4ad-7b2e2261c380",
           "name": "Submit Refund Remainder",
           "event": [
             {
@@ -814,6 +805,7 @@
               }
             }
           ],
+          "_postman_id": "f99adf16-64ab-4853-a4ad-7b2e2261c380",
           "request": {
             "method": "POST",
             "header": [
@@ -834,15 +826,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "74fc263e-2491-4a33-97b1-4d1d7d5f93b0"
     },
     {
-      "_postman_id": "b08a8012-6119-4175-8085-4b4b5563803d",
       "name": "Direct Payment, More Than Payment",
-      "description": "",
       "item": [
         {
-          "_postman_id": "dbeece8d-a0ae-448a-b204-7be3eaa144c6",
           "name": "Create Payment",
           "event": [
             {
@@ -858,6 +848,7 @@
               }
             }
           ],
+          "_postman_id": "dbeece8d-a0ae-448a-b204-7be3eaa144c6",
           "request": {
             "method": "POST",
             "header": [
@@ -879,7 +870,6 @@
           "response": []
         },
         {
-          "_postman_id": "5439072e-de80-4924-9a46-a71af48325d5",
           "name": "Submit Refund",
           "event": [
             {
@@ -893,6 +883,7 @@
               }
             }
           ],
+          "_postman_id": "5439072e-de80-4924-9a46-a71af48325d5",
           "request": {
             "method": "POST",
             "header": [
@@ -913,15 +904,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "b08a8012-6119-4175-8085-4b4b5563803d"
     },
     {
-      "_postman_id": "e73c8ded-5650-48c7-8a0e-c82f8b8aea34",
       "name": "Direct Payment, More Than Payment w/ Partials",
-      "description": "",
       "item": [
         {
-          "_postman_id": "ec538ebd-37e6-438e-80dd-ad5a9f166554",
           "name": "Create Payment",
           "event": [
             {
@@ -937,6 +926,7 @@
               }
             }
           ],
+          "_postman_id": "ec538ebd-37e6-438e-80dd-ad5a9f166554",
           "request": {
             "method": "POST",
             "header": [
@@ -958,7 +948,6 @@
           "response": []
         },
         {
-          "_postman_id": "202c84b9-a1fc-4883-83ce-c951b5881b8e",
           "name": "Submit Refund",
           "event": [
             {
@@ -975,6 +964,7 @@
               }
             }
           ],
+          "_postman_id": "202c84b9-a1fc-4883-83ce-c951b5881b8e",
           "request": {
             "method": "POST",
             "header": [
@@ -996,7 +986,6 @@
           "response": []
         },
         {
-          "_postman_id": "0b6c9776-b55e-4deb-b121-58c1def28ccc",
           "name": "Submit Refund More than Original",
           "event": [
             {
@@ -1010,6 +999,7 @@
               }
             }
           ],
+          "_postman_id": "0b6c9776-b55e-4deb-b121-58c1def28ccc",
           "request": {
             "method": "POST",
             "header": [
@@ -1030,15 +1020,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "e73c8ded-5650-48c7-8a0e-c82f8b8aea34"
     },
     {
-      "_postman_id": "dcfdf4f7-f892-4cf9-947d-8dcce2de1b37",
       "name": "From Order, Full Refund",
-      "description": "",
       "item": [
         {
-          "_postman_id": "a4e4c148-c59a-47c0-9c5e-5299884d9852",
           "name": "Create Cart",
           "event": [
             {
@@ -1054,6 +1042,7 @@
               }
             }
           ],
+          "_postman_id": "a4e4c148-c59a-47c0-9c5e-5299884d9852",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1078,7 +1067,6 @@
           "response": []
         },
         {
-          "_postman_id": "f746f38a-fe61-4b97-8be4-226f393d6761",
           "name": "Create Payment",
           "event": [
             {
@@ -1094,6 +1082,7 @@
               }
             }
           ],
+          "_postman_id": "f746f38a-fe61-4b97-8be4-226f393d6761",
           "request": {
             "method": "POST",
             "header": [
@@ -1115,7 +1104,6 @@
           "response": []
         },
         {
-          "_postman_id": "29c7cafc-9bcd-4c26-8706-3bdd71cab7e8",
           "name": "Submit Refund",
           "event": [
             {
@@ -1132,6 +1120,7 @@
               }
             }
           ],
+          "_postman_id": "29c7cafc-9bcd-4c26-8706-3bdd71cab7e8",
           "request": {
             "method": "POST",
             "header": [
@@ -1152,15 +1141,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "dcfdf4f7-f892-4cf9-947d-8dcce2de1b37"
     },
     {
-      "_postman_id": "06a1bf42-46c5-47ba-9413-c5ad4b9e174c",
       "name": "From Order, Partial Refunds",
-      "description": "",
       "item": [
         {
-          "_postman_id": "057641d5-9926-4d8d-b699-d109ce3624d1",
           "name": "Create Cart",
           "event": [
             {
@@ -1176,6 +1163,7 @@
               }
             }
           ],
+          "_postman_id": "057641d5-9926-4d8d-b699-d109ce3624d1",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1200,7 +1188,6 @@
           "response": []
         },
         {
-          "_postman_id": "0657db45-45b9-48ee-bd11-6a9a61d59d65",
           "name": "Create Payment",
           "event": [
             {
@@ -1216,6 +1203,7 @@
               }
             }
           ],
+          "_postman_id": "0657db45-45b9-48ee-bd11-6a9a61d59d65",
           "request": {
             "method": "POST",
             "header": [
@@ -1237,7 +1225,6 @@
           "response": []
         },
         {
-          "_postman_id": "c0af8134-aad9-4360-96b2-43e6885a5d86",
           "name": "Submit Refund",
           "event": [
             {
@@ -1254,6 +1241,7 @@
               }
             }
           ],
+          "_postman_id": "c0af8134-aad9-4360-96b2-43e6885a5d86",
           "request": {
             "method": "POST",
             "header": [
@@ -1275,7 +1263,6 @@
           "response": []
         },
         {
-          "_postman_id": "0a179e8c-140d-46f6-a651-cc62fb072ad3",
           "name": "Submit Refund Remainder",
           "event": [
             {
@@ -1292,6 +1279,7 @@
               }
             }
           ],
+          "_postman_id": "0a179e8c-140d-46f6-a651-cc62fb072ad3",
           "request": {
             "method": "POST",
             "header": [
@@ -1312,15 +1300,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "06a1bf42-46c5-47ba-9413-c5ad4b9e174c"
     },
     {
-      "_postman_id": "21209e77-7960-454f-bd7f-3903a1497923",
       "name": "From Order, Refund Items",
-      "description": "",
       "item": [
         {
-          "_postman_id": "3b4ee9e7-c070-41ea-84f9-6e13b7d6f861",
           "name": "Create Cart",
           "event": [
             {
@@ -1336,6 +1322,7 @@
               }
             }
           ],
+          "_postman_id": "3b4ee9e7-c070-41ea-84f9-6e13b7d6f861",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1360,7 +1347,6 @@
           "response": []
         },
         {
-          "_postman_id": "f182add8-53a6-47e1-b387-d7d4a9e03571",
           "name": "Create Payment",
           "event": [
             {
@@ -1376,6 +1362,7 @@
               }
             }
           ],
+          "_postman_id": "f182add8-53a6-47e1-b387-d7d4a9e03571",
           "request": {
             "method": "POST",
             "header": [
@@ -1397,7 +1384,6 @@
           "response": []
         },
         {
-          "_postman_id": "69223b3d-2749-4111-90b9-aacdc2a97653",
           "name": "Submit Refund",
           "event": [
             {
@@ -1414,6 +1400,7 @@
               }
             }
           ],
+          "_postman_id": "69223b3d-2749-4111-90b9-aacdc2a97653",
           "request": {
             "method": "POST",
             "header": [
@@ -1434,15 +1421,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "21209e77-7960-454f-bd7f-3903a1497923"
     },
     {
-      "_postman_id": "e18094d1-7e9a-4569-9af6-b9edb3bd86f3",
       "name": "From Order, Refund Items, More Than Order",
-      "description": "",
       "item": [
         {
-          "_postman_id": "8820fb1e-2075-447e-846c-464196acd080",
           "name": "Create Cart",
           "event": [
             {
@@ -1458,6 +1443,7 @@
               }
             }
           ],
+          "_postman_id": "8820fb1e-2075-447e-846c-464196acd080",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1482,7 +1468,6 @@
           "response": []
         },
         {
-          "_postman_id": "852d5eb8-012a-44e1-999d-0db44b9a50ba",
           "name": "Create Payment",
           "event": [
             {
@@ -1498,6 +1483,7 @@
               }
             }
           ],
+          "_postman_id": "852d5eb8-012a-44e1-999d-0db44b9a50ba",
           "request": {
             "method": "POST",
             "header": [
@@ -1519,7 +1505,6 @@
           "response": []
         },
         {
-          "_postman_id": "6c477ab5-150b-47cb-a0f2-90cd6c3b1839",
           "name": "Submit Refund",
           "event": [
             {
@@ -1533,6 +1518,7 @@
               }
             }
           ],
+          "_postman_id": "6c477ab5-150b-47cb-a0f2-90cd6c3b1839",
           "request": {
             "method": "POST",
             "header": [
@@ -1553,15 +1539,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "e18094d1-7e9a-4569-9af6-b9edb3bd86f3"
     },
     {
-      "_postman_id": "ed12715b-0224-4ad4-ba2a-85cc759bdcbe",
       "name": "From Order, Refund Items, More Than Order w/ Partials",
-      "description": "",
       "item": [
         {
-          "_postman_id": "a07c323f-43b4-4e67-8b9e-f9567b0baec4",
           "name": "Create Cart",
           "event": [
             {
@@ -1577,6 +1561,7 @@
               }
             }
           ],
+          "_postman_id": "a07c323f-43b4-4e67-8b9e-f9567b0baec4",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1601,44 +1586,6 @@
           "response": []
         },
         {
-          "_postman_id": "bb6fdb2c-cae9-47e9-a73d-6bb8c5314579",
-          "name": "Create Payment",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
-                "exec": [
-                  "tests[\"Payment created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "pm.globals.set(\"order_url\", data.order);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n   \"capture\": true,    \n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
-            },
-            "url": "{{cart_url}}/payments"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b38a81ef-3921-4e4d-b131-dbac6ab0ef02",
           "name": "Submit Refund",
           "event": [
             {
@@ -1655,6 +1602,7 @@
               }
             }
           ],
+          "_postman_id": "b38a81ef-3921-4e4d-b131-dbac6ab0ef02",
           "request": {
             "method": "POST",
             "header": [
@@ -1676,7 +1624,43 @@
           "response": []
         },
         {
-          "_postman_id": "4c573294-6e79-4d94-b8df-d8cc7210cfca",
+          "name": "Create Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6e193edc-602f-4356-8557-fd2cbb35b887",
+                "exec": [
+                  "tests[\"Payment created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"order_url\", data.order);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "bb6fdb2c-cae9-47e9-a73d-6bb8c5314579",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"capture\": true,    \n   \"payment_method\":{\n     \"save\": true,\n     \"type\": \"credit_card\",\n      \"data\":{\n         \"number\":\"4444555566661111\",\n         \"cvv\":123,\n         \"exp_month\":12,\n         \"exp_year\":2022,\n         \"cardholder_name\":\"{{name}}\",\n         \"billing_address\":{\n            \"address_1\":\"{{address_1}}.\",\n            \"city\":\"{{city}}\",\n            \"state_prov\":\"{{state_prov}}\",\n            \"postal_code\":\"{{postal_code}}\",\n            \"country\":\"{{country}}\"\n         }\n      }\n   }\n}"
+            },
+            "url": "{{cart_url}}/payments"
+          },
+          "response": []
+        },
+        {
           "name": "Submit Refund More Than Original",
           "event": [
             {
@@ -1690,6 +1674,7 @@
               }
             }
           ],
+          "_postman_id": "4c573294-6e79-4d94-b8df-d8cc7210cfca",
           "request": {
             "method": "POST",
             "header": [
@@ -1710,15 +1695,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "ed12715b-0224-4ad4-ba2a-85cc759bdcbe"
     },
     {
-      "_postman_id": "36c357a2-af0d-47a0-9192-fc624c2a3260",
       "name": "From Order, Refund Items with Shipping",
-      "description": "",
       "item": [
         {
-          "_postman_id": "cc8d7d89-de81-4c67-ad61-2e3031d6cbb0",
           "name": "Create Cart",
           "event": [
             {
@@ -1734,6 +1717,7 @@
               }
             }
           ],
+          "_postman_id": "cc8d7d89-de81-4c67-ad61-2e3031d6cbb0",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1758,7 +1742,6 @@
           "response": []
         },
         {
-          "_postman_id": "36cf1f98-f7b5-4808-9200-a7c682c38a5a",
           "name": "Create Payment",
           "event": [
             {
@@ -1774,6 +1757,7 @@
               }
             }
           ],
+          "_postman_id": "36cf1f98-f7b5-4808-9200-a7c682c38a5a",
           "request": {
             "method": "POST",
             "header": [
@@ -1795,7 +1779,6 @@
           "response": []
         },
         {
-          "_postman_id": "9751edcb-6dce-421d-a6e1-fa2ffa1eaae1",
           "name": "Submit Refund",
           "event": [
             {
@@ -1812,6 +1795,7 @@
               }
             }
           ],
+          "_postman_id": "9751edcb-6dce-421d-a6e1-fa2ffa1eaae1",
           "request": {
             "method": "POST",
             "header": [
@@ -1832,15 +1816,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "36c357a2-af0d-47a0-9192-fc624c2a3260"
     },
     {
-      "_postman_id": "83b00a3d-ff23-4502-985a-472d685dcc8f",
       "name": "From Order, Shipping Only",
-      "description": "",
       "item": [
         {
-          "_postman_id": "54b02e18-d239-4ef9-b84d-cbc4472b0e65",
           "name": "Create Cart",
           "event": [
             {
@@ -1856,6 +1838,7 @@
               }
             }
           ],
+          "_postman_id": "54b02e18-d239-4ef9-b84d-cbc4472b0e65",
           "request": {
             "auth": {
               "type": "noauth"
@@ -1880,7 +1863,6 @@
           "response": []
         },
         {
-          "_postman_id": "086e3e6e-b117-406a-8c1b-309a5fa3f238",
           "name": "Create Payment",
           "event": [
             {
@@ -1896,6 +1878,7 @@
               }
             }
           ],
+          "_postman_id": "086e3e6e-b117-406a-8c1b-309a5fa3f238",
           "request": {
             "method": "POST",
             "header": [
@@ -1917,7 +1900,6 @@
           "response": []
         },
         {
-          "_postman_id": "504b8b1e-eaf9-43e8-b782-82842ef4b3cc",
           "name": "Submit Refund",
           "event": [
             {
@@ -1934,6 +1916,7 @@
               }
             }
           ],
+          "_postman_id": "504b8b1e-eaf9-43e8-b782-82842ef4b3cc",
           "request": {
             "method": "POST",
             "header": [
@@ -1954,15 +1937,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "83b00a3d-ff23-4502-985a-472d685dcc8f"
     },
     {
-      "_postman_id": "8107c389-274b-488b-a5bf-d3e2f3d2178b",
       "name": "From Order, Multiple Payments",
-      "description": "",
       "item": [
         {
-          "_postman_id": "66c69844-16f2-4ada-8009-df559fd82e4e",
           "name": "Create Invoice",
           "event": [
             {
@@ -1993,6 +1974,10 @@
               }
             }
           ],
+          "_postman_id": "66c69844-16f2-4ada-8009-df559fd82e4e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2017,7 +2002,6 @@
           "response": []
         },
         {
-          "_postman_id": "16762c35-3f1a-4782-b202-c2ae5c8e4a17",
           "name": "Create Payment",
           "event": [
             {
@@ -2035,6 +2019,10 @@
               }
             }
           ],
+          "_postman_id": "16762c35-3f1a-4782-b202-c2ae5c8e4a17",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2056,7 +2044,6 @@
           "response": []
         },
         {
-          "_postman_id": "bb6917a1-005b-4cef-ac23-aae1419c7f55",
           "name": "Create Failed Payment",
           "event": [
             {
@@ -2074,6 +2061,10 @@
               }
             }
           ],
+          "_postman_id": "bb6917a1-005b-4cef-ac23-aae1419c7f55",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2095,7 +2086,6 @@
           "response": []
         },
         {
-          "_postman_id": "52d7ff91-70fd-4f29-82f9-79a983ba11cc",
           "name": "Create Payment (Remainder)",
           "event": [
             {
@@ -2115,6 +2105,10 @@
               }
             }
           ],
+          "_postman_id": "52d7ff91-70fd-4f29-82f9-79a983ba11cc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2142,8 +2136,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order",
-                  "equals": true
+                  "value": "order"
                 }
               ]
             }
@@ -2151,7 +2144,6 @@
           "response": []
         },
         {
-          "_postman_id": "3a08910d-d755-419c-9e52-8a8d24de75e1",
           "name": "Refund Order",
           "event": [
             {
@@ -2177,6 +2169,10 @@
               }
             }
           ],
+          "_postman_id": "3a08910d-d755-419c-9e52-8a8d24de75e1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2204,23 +2200,20 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.order,refunds.invoice",
-                  "equals": true
+                  "value": "refunds.order,refunds.invoice"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "8107c389-274b-488b-a5bf-d3e2f3d2178b"
     },
     {
-      "_postman_id": "02ca3c83-6c10-45fc-a7a5-d0a7a597091d",
       "name": "From Order, Multiple Payments, Refund Failure",
-      "description": "",
       "item": [
         {
-          "_postman_id": "58f9678b-cec7-4820-9b0c-21369807a407",
           "name": "Create Invoice",
           "event": [
             {
@@ -2251,6 +2244,10 @@
               }
             }
           ],
+          "_postman_id": "58f9678b-cec7-4820-9b0c-21369807a407",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2275,7 +2272,6 @@
           "response": []
         },
         {
-          "_postman_id": "a60c109f-0b08-43aa-87fb-e162d4142b85",
           "name": "Create Payment",
           "event": [
             {
@@ -2293,6 +2289,10 @@
               }
             }
           ],
+          "_postman_id": "a60c109f-0b08-43aa-87fb-e162d4142b85",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2314,7 +2314,6 @@
           "response": []
         },
         {
-          "_postman_id": "af5b5d7f-21cb-4aaa-bd02-e092de918178",
           "name": "Create Payment (Remainder)",
           "event": [
             {
@@ -2334,6 +2333,10 @@
               }
             }
           ],
+          "_postman_id": "af5b5d7f-21cb-4aaa-bd02-e092de918178",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2361,8 +2364,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order",
-                  "equals": true
+                  "value": "order"
                 }
               ]
             }
@@ -2370,7 +2372,6 @@
           "response": []
         },
         {
-          "_postman_id": "970ce9d7-db1f-4fd8-b777-76338df88d7d",
           "name": "Refund Order",
           "event": [
             {
@@ -2396,6 +2397,10 @@
               }
             }
           ],
+          "_postman_id": "970ce9d7-db1f-4fd8-b777-76338df88d7d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2423,23 +2428,20 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.order,refunds.invoice",
-                  "equals": true
+                  "value": "refunds.order,refunds.invoice"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "02ca3c83-6c10-45fc-a7a5-d0a7a597091d"
     },
     {
-      "_postman_id": "513e677b-5246-4d07-ada5-ed531384f28c",
       "name": "From Order, Multiple Payments, Pending",
-      "description": "",
       "item": [
         {
-          "_postman_id": "86e36bd9-a0bc-4bf4-8493-d8e0a7ddd68f",
           "name": "Create Invoice",
           "event": [
             {
@@ -2470,6 +2472,10 @@
               }
             }
           ],
+          "_postman_id": "86e36bd9-a0bc-4bf4-8493-d8e0a7ddd68f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2494,7 +2500,6 @@
           "response": []
         },
         {
-          "_postman_id": "b4f9779f-dee3-46a0-acf4-4957efcbfbe2",
           "name": "Create Payment",
           "event": [
             {
@@ -2512,6 +2517,10 @@
               }
             }
           ],
+          "_postman_id": "b4f9779f-dee3-46a0-acf4-4957efcbfbe2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2533,7 +2542,6 @@
           "response": []
         },
         {
-          "_postman_id": "90f5b9fb-a9b7-43f0-b1ae-1b8ab37f5af7",
           "name": "Create Payment (Pending)",
           "event": [
             {
@@ -2551,6 +2559,10 @@
               }
             }
           ],
+          "_postman_id": "90f5b9fb-a9b7-43f0-b1ae-1b8ab37f5af7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2572,7 +2584,6 @@
           "response": []
         },
         {
-          "_postman_id": "56b50cd1-b202-4753-853b-63f860a27a2b",
           "name": "Create Payment (Remainder)",
           "event": [
             {
@@ -2592,6 +2603,10 @@
               }
             }
           ],
+          "_postman_id": "56b50cd1-b202-4753-853b-63f860a27a2b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2619,8 +2634,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order",
-                  "equals": true
+                  "value": "order"
                 }
               ]
             }
@@ -2628,7 +2642,6 @@
           "response": []
         },
         {
-          "_postman_id": "76a4fae6-125d-47dd-96c6-8f1a8d8df3a1",
           "name": "Refund Order (Overflow)",
           "event": [
             {
@@ -2642,6 +2655,10 @@
               }
             }
           ],
+          "_postman_id": "76a4fae6-125d-47dd-96c6-8f1a8d8df3a1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2669,8 +2686,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.order,refunds.invoice",
-                  "equals": true
+                  "value": "refunds.order,refunds.invoice"
                 }
               ]
             }
@@ -2678,7 +2694,6 @@
           "response": []
         },
         {
-          "_postman_id": "192c63dc-c372-4c97-975f-31cf9f4f1cea",
           "name": "Refund Order",
           "event": [
             {
@@ -2704,6 +2719,10 @@
               }
             }
           ],
+          "_postman_id": "192c63dc-c372-4c97-975f-31cf9f4f1cea",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2731,23 +2750,20 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.order,refunds.invoice",
-                  "equals": true
+                  "value": "refunds.order,refunds.invoice"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "513e677b-5246-4d07-ada5-ed531384f28c"
     },
     {
-      "_postman_id": "a18fd47b-6486-49f8-9604-52599c55bb81",
       "name": "From Order, Mixture of Payment Statuses",
-      "description": "",
       "item": [
         {
-          "_postman_id": "6a2ce46a-9657-400c-a902-ee2f2b44ad9e",
           "name": "Create Invoice",
           "event": [
             {
@@ -2763,6 +2779,10 @@
               }
             }
           ],
+          "_postman_id": "6a2ce46a-9657-400c-a902-ee2f2b44ad9e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2787,7 +2807,6 @@
           "response": []
         },
         {
-          "_postman_id": "18f64238-8345-4a7a-8375-c26ca4e331c4",
           "name": "Partial Payment (Success, Capture)",
           "event": [
             {
@@ -2803,6 +2822,10 @@
               }
             }
           ],
+          "_postman_id": "18f64238-8345-4a7a-8375-c26ca4e331c4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2824,7 +2847,6 @@
           "response": []
         },
         {
-          "_postman_id": "93328a64-78aa-4a73-8d22-ffcda58c1668",
           "name": "Partial Payment (Success, No Capture)",
           "event": [
             {
@@ -2840,6 +2862,10 @@
               }
             }
           ],
+          "_postman_id": "93328a64-78aa-4a73-8d22-ffcda58c1668",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2861,7 +2887,6 @@
           "response": []
         },
         {
-          "_postman_id": "aeb093f3-382e-4603-ae7b-5391d8ce6054",
           "name": "Partial Payment (Fail)",
           "event": [
             {
@@ -2875,6 +2900,10 @@
               }
             }
           ],
+          "_postman_id": "aeb093f3-382e-4603-ae7b-5391d8ce6054",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2896,7 +2925,6 @@
           "response": []
         },
         {
-          "_postman_id": "b6caee0d-4b97-44b0-abbc-ec6b7368ee9f",
           "name": "Remainder Payment (Success, Capture)",
           "event": [
             {
@@ -2913,6 +2941,10 @@
               }
             }
           ],
+          "_postman_id": "b6caee0d-4b97-44b0-abbc-ec6b7368ee9f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2934,7 +2966,6 @@
           "response": []
         },
         {
-          "_postman_id": "fdb555a3-0e49-4fbe-9dba-ff1ad9edb7f0",
           "name": "Submit Refund",
           "event": [
             {
@@ -2951,6 +2982,10 @@
               }
             }
           ],
+          "_postman_id": "fdb555a3-0e49-4fbe-9dba-ff1ad9edb7f0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -2972,7 +3007,6 @@
           "response": []
         },
         {
-          "_postman_id": "b8a57a37-0034-4090-aee4-be8f53bc15ad",
           "name": "Submit Refund (Overflow)",
           "event": [
             {
@@ -2986,6 +3020,10 @@
               }
             }
           ],
+          "_postman_id": "b8a57a37-0034-4090-aee4-be8f53bc15ad",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3007,7 +3045,6 @@
           "response": []
         },
         {
-          "_postman_id": "e31feab2-365e-4dd5-99cf-0543c331c3c5",
           "name": "Submit Refund (Remainder)",
           "event": [
             {
@@ -3024,6 +3061,10 @@
               }
             }
           ],
+          "_postman_id": "e31feab2-365e-4dd5-99cf-0543c331c3c5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3044,15 +3085,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "a18fd47b-6486-49f8-9604-52599c55bb81"
     },
     {
-      "_postman_id": "150e1127-5ae8-43e3-b4f5-a455487cecac",
       "name": "From Order, Multiple Payments, Chargeback",
-      "description": "",
       "item": [
         {
-          "_postman_id": "340ed305-94e0-4e06-a5fc-ee626cf8db97",
           "name": "Create Invoice",
           "event": [
             {
@@ -3083,6 +3122,10 @@
               }
             }
           ],
+          "_postman_id": "340ed305-94e0-4e06-a5fc-ee626cf8db97",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3107,7 +3150,6 @@
           "response": []
         },
         {
-          "_postman_id": "22bbc193-165c-44e2-bae3-721b83879ea4",
           "name": "Create Payment",
           "event": [
             {
@@ -3127,6 +3169,10 @@
               }
             }
           ],
+          "_postman_id": "22bbc193-165c-44e2-bae3-721b83879ea4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3148,7 +3194,6 @@
           "response": []
         },
         {
-          "_postman_id": "5764de14-b421-4f59-837c-79b81b88748e",
           "name": "Create Payment (Remainder)",
           "event": [
             {
@@ -3170,6 +3215,10 @@
               }
             }
           ],
+          "_postman_id": "5764de14-b421-4f59-837c-79b81b88748e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3197,8 +3246,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order",
-                  "equals": true
+                  "value": "order"
                 }
               ]
             }
@@ -3206,7 +3254,6 @@
           "response": []
         },
         {
-          "_postman_id": "d2171d2c-b20d-460b-aa66-9797c131fc29",
           "name": "Refund Order",
           "event": [
             {
@@ -3220,6 +3267,10 @@
               }
             }
           ],
+          "_postman_id": "d2171d2c-b20d-460b-aa66-9797c131fc29",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3241,7 +3292,6 @@
           "response": []
         },
         {
-          "_postman_id": "174a3a20-75a4-4f27-aa7b-1d2bc5604f81",
           "name": "Refund Payment",
           "event": [
             {
@@ -3262,6 +3312,10 @@
               }
             }
           ],
+          "_postman_id": "174a3a20-75a4-4f27-aa7b-1d2bc5604f81",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3289,8 +3343,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order,payment",
-                  "equals": true
+                  "value": "order,payment"
                 }
               ]
             }
@@ -3298,7 +3351,6 @@
           "response": []
         },
         {
-          "_postman_id": "917e3b50-12a5-49c8-862e-eb2003012167",
           "name": "Refund Payment (2)",
           "event": [
             {
@@ -3319,6 +3371,10 @@
               }
             }
           ],
+          "_postman_id": "917e3b50-12a5-49c8-862e-eb2003012167",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3346,23 +3402,20 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order,payment",
-                  "equals": true
+                  "value": "order,payment"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "150e1127-5ae8-43e3-b4f5-a455487cecac"
     },
     {
-      "_postman_id": "1e4ec435-bfd8-4b53-ab56-74d35c11a35e",
       "name": "From Order, Record Only",
-      "description": "",
       "item": [
         {
-          "_postman_id": "2103f64d-10bf-4f61-bea8-94d51cb6c4f5",
           "name": "Create Invoice",
           "event": [
             {
@@ -3393,6 +3446,10 @@
               }
             }
           ],
+          "_postman_id": "2103f64d-10bf-4f61-bea8-94d51cb6c4f5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3417,7 +3474,6 @@
           "response": []
         },
         {
-          "_postman_id": "624dfec3-c2b8-45a0-954d-3a7bf0406a3d",
           "name": "Create Payment",
           "event": [
             {
@@ -3437,6 +3493,10 @@
               }
             }
           ],
+          "_postman_id": "624dfec3-c2b8-45a0-954d-3a7bf0406a3d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3458,7 +3518,6 @@
           "response": []
         },
         {
-          "_postman_id": "f8964976-4b1d-48cc-8ff6-4454a95e9f45",
           "name": "Create Payment (Remainder)",
           "event": [
             {
@@ -3479,6 +3538,10 @@
               }
             }
           ],
+          "_postman_id": "f8964976-4b1d-48cc-8ff6-4454a95e9f45",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3500,7 +3563,6 @@
           "response": []
         },
         {
-          "_postman_id": "d4aed47f-8d66-4c81-95d3-c8964eaaa515",
           "name": "Refund Order",
           "event": [
             {
@@ -3514,6 +3576,10 @@
               }
             }
           ],
+          "_postman_id": "d4aed47f-8d66-4c81-95d3-c8964eaaa515",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3535,7 +3601,6 @@
           "response": []
         },
         {
-          "_postman_id": "b5aec1f1-ac22-462a-bc68-9e595d94c1e9",
           "name": "Refund Payment",
           "event": [
             {
@@ -3557,6 +3622,10 @@
               }
             }
           ],
+          "_postman_id": "b5aec1f1-ac22-462a-bc68-9e595d94c1e9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3584,23 +3653,20 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order,payment",
-                  "equals": true
+                  "value": "order,payment"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "1e4ec435-bfd8-4b53-ab56-74d35c11a35e"
     },
     {
-      "_postman_id": "947a8e5b-feda-4b93-85b9-a7b8bf157b7d",
       "name": "From Order, Multiple Payments, Refunds, Calculated Final",
-      "description": "",
       "item": [
         {
-          "_postman_id": "d4b624a8-f6e5-409e-836f-48c742bfbb16",
           "name": "Create Invoice",
           "event": [
             {
@@ -3631,6 +3697,10 @@
               }
             }
           ],
+          "_postman_id": "d4b624a8-f6e5-409e-836f-48c742bfbb16",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3655,7 +3725,6 @@
           "response": []
         },
         {
-          "_postman_id": "91ea354b-406a-4b94-928f-ce62eb0e679f",
           "name": "Create Payment",
           "event": [
             {
@@ -3675,6 +3744,10 @@
               }
             }
           ],
+          "_postman_id": "91ea354b-406a-4b94-928f-ce62eb0e679f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3696,7 +3769,6 @@
           "response": []
         },
         {
-          "_postman_id": "a719ca96-3983-49a9-89ae-83776639ed16",
           "name": "Create Failed Payment",
           "event": [
             {
@@ -3714,6 +3786,10 @@
               }
             }
           ],
+          "_postman_id": "a719ca96-3983-49a9-89ae-83776639ed16",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3735,7 +3811,6 @@
           "response": []
         },
         {
-          "_postman_id": "a44a0091-96a3-45a5-ba64-9f81ae77b63f",
           "name": "Create Payment (Remainder)",
           "event": [
             {
@@ -3757,6 +3832,10 @@
               }
             }
           ],
+          "_postman_id": "a44a0091-96a3-45a5-ba64-9f81ae77b63f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3784,8 +3863,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order",
-                  "equals": true
+                  "value": "order"
                 }
               ]
             }
@@ -3793,7 +3871,6 @@
           "response": []
         },
         {
-          "_postman_id": "5cccd5ae-5890-4366-9196-e48384ce70de",
           "name": "Partial Refund",
           "event": [
             {
@@ -3813,6 +3890,10 @@
               }
             }
           ],
+          "_postman_id": "5cccd5ae-5890-4366-9196-e48384ce70de",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3840,8 +3921,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order,payment",
-                  "equals": true
+                  "value": "order,payment"
                 }
               ]
             }
@@ -3849,7 +3929,6 @@
           "response": []
         },
         {
-          "_postman_id": "f9ec1b7d-19ee-4c9a-807c-d7f934360d24",
           "name": "Partial Refund (2)",
           "event": [
             {
@@ -3869,6 +3948,10 @@
               }
             }
           ],
+          "_postman_id": "f9ec1b7d-19ee-4c9a-807c-d7f934360d24",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3896,8 +3979,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order,payment",
-                  "equals": true
+                  "value": "order,payment"
                 }
               ]
             }
@@ -3905,7 +3987,6 @@
           "response": []
         },
         {
-          "_postman_id": "2aaa3279-d9b8-4d19-a6c2-f1699f9a57e1",
           "name": "Refund Order",
           "event": [
             {
@@ -3931,6 +4012,10 @@
               }
             }
           ],
+          "_postman_id": "2aaa3279-d9b8-4d19-a6c2-f1699f9a57e1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -3958,23 +4043,20 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.order,refunds.invoice",
-                  "equals": true
+                  "value": "refunds.order,refunds.invoice"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "947a8e5b-feda-4b93-85b9-a7b8bf157b7d"
     },
     {
-      "_postman_id": "460d1df1-790f-4a62-b557-40d938f5c32d",
       "name": "From Order, Multiple Payments, Refunds, Chain",
-      "description": "",
       "item": [
         {
-          "_postman_id": "5f67ecf7-2d1f-46ab-9740-f3ee20aff2a1",
           "name": "Create Invoice",
           "event": [
             {
@@ -4005,6 +4087,10 @@
               }
             }
           ],
+          "_postman_id": "5f67ecf7-2d1f-46ab-9740-f3ee20aff2a1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4029,7 +4115,6 @@
           "response": []
         },
         {
-          "_postman_id": "856a2fe3-7a7c-44a5-bc51-1e61d5bf270d",
           "name": "Create Payment",
           "event": [
             {
@@ -4049,6 +4134,10 @@
               }
             }
           ],
+          "_postman_id": "856a2fe3-7a7c-44a5-bc51-1e61d5bf270d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4070,7 +4159,6 @@
           "response": []
         },
         {
-          "_postman_id": "e7cbd022-bdf5-43cb-b22b-2cc30ab921a8",
           "name": "Create Payment (2)",
           "event": [
             {
@@ -4090,6 +4178,10 @@
               }
             }
           ],
+          "_postman_id": "e7cbd022-bdf5-43cb-b22b-2cc30ab921a8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4117,8 +4209,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order",
-                  "equals": true
+                  "value": "order"
                 }
               ]
             }
@@ -4126,7 +4217,6 @@
           "response": []
         },
         {
-          "_postman_id": "7f3007c2-097e-4f52-9d8f-90fc5e5b86f1",
           "name": "Create Payment (Remainder)",
           "event": [
             {
@@ -4148,6 +4238,10 @@
               }
             }
           ],
+          "_postman_id": "7f3007c2-097e-4f52-9d8f-90fc5e5b86f1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4175,8 +4269,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order",
-                  "equals": true
+                  "value": "order"
                 }
               ]
             }
@@ -4184,7 +4277,6 @@
           "response": []
         },
         {
-          "_postman_id": "8c56b638-0b58-422e-872c-79f94557d3fb",
           "name": "Partial Refund",
           "event": [
             {
@@ -4204,6 +4296,10 @@
               }
             }
           ],
+          "_postman_id": "8c56b638-0b58-422e-872c-79f94557d3fb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4231,8 +4327,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order,payment",
-                  "equals": true
+                  "value": "order,payment"
                 }
               ]
             }
@@ -4240,7 +4335,6 @@
           "response": []
         },
         {
-          "_postman_id": "46b69f14-d66c-4ff7-9809-b333285faedf",
           "name": "Partial Refund (2)",
           "event": [
             {
@@ -4260,6 +4354,10 @@
               }
             }
           ],
+          "_postman_id": "46b69f14-d66c-4ff7-9809-b333285faedf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4287,8 +4385,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order,payment",
-                  "equals": true
+                  "value": "order,payment"
                 }
               ]
             }
@@ -4296,7 +4393,6 @@
           "response": []
         },
         {
-          "_postman_id": "ca589115-b2cf-44d0-97e6-213c5f35cde2",
           "name": "Partial Refund (3)",
           "event": [
             {
@@ -4316,6 +4412,10 @@
               }
             }
           ],
+          "_postman_id": "ca589115-b2cf-44d0-97e6-213c5f35cde2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4343,8 +4443,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order,payment",
-                  "equals": true
+                  "value": "order,payment"
                 }
               ]
             }
@@ -4352,7 +4451,6 @@
           "response": []
         },
         {
-          "_postman_id": "7e24eeea-fe8d-48d3-81da-f90a2e86428f",
           "name": "Refund Order",
           "event": [
             {
@@ -4379,6 +4477,10 @@
               }
             }
           ],
+          "_postman_id": "7e24eeea-fe8d-48d3-81da-f90a2e86428f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4406,8 +4508,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.order,refunds.invoice",
-                  "equals": true
+                  "value": "refunds.order,refunds.invoice"
                 }
               ]
             }
@@ -4415,7 +4516,6 @@
           "response": []
         },
         {
-          "_postman_id": "090c2073-6b77-49c0-9d1e-eda68c1cccc9",
           "name": "Refund Order (2)",
           "event": [
             {
@@ -4438,6 +4538,10 @@
               }
             }
           ],
+          "_postman_id": "090c2073-6b77-49c0-9d1e-eda68c1cccc9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4465,23 +4569,20 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.order,refunds.invoice",
-                  "equals": true
+                  "value": "refunds.order,refunds.invoice"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "460d1df1-790f-4a62-b557-40d938f5c32d"
     },
     {
-      "_postman_id": "02def655-f40b-4756-8405-efcd1e6d4382",
       "name": "From Order, Refund to CAB, with Chargeback",
-      "description": "",
       "item": [
         {
-          "_postman_id": "7ed8dbe2-2c7a-4ee8-8e40-d408d3b84623",
           "name": "Create Cart",
           "event": [
             {
@@ -4497,6 +4598,10 @@
               }
             }
           ],
+          "_postman_id": "7ed8dbe2-2c7a-4ee8-8e40-d408d3b84623",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4521,7 +4626,6 @@
           "response": []
         },
         {
-          "_postman_id": "7a37ecf5-0cba-4cca-92d9-e417a5d8b9c3",
           "name": "Create Payment",
           "event": [
             {
@@ -4538,6 +4642,10 @@
               }
             }
           ],
+          "_postman_id": "7a37ecf5-0cba-4cca-92d9-e417a5d8b9c3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4559,7 +4667,6 @@
           "response": []
         },
         {
-          "_postman_id": "381f02c5-1d27-46a1-b390-333dc8682d35",
           "name": "Submit Refund",
           "event": [
             {
@@ -4578,6 +4685,10 @@
               }
             }
           ],
+          "_postman_id": "381f02c5-1d27-46a1-b390-333dc8682d35",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4605,8 +4716,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method",
-                  "equals": true
+                  "value": "refunds.payment_method"
                 }
               ]
             }
@@ -4614,7 +4724,6 @@
           "response": []
         },
         {
-          "_postman_id": "e16956bf-6c6e-461d-8e1f-4d26e8f5507c",
           "name": "Check CAB",
           "event": [
             {
@@ -4631,6 +4740,10 @@
               }
             }
           ],
+          "_postman_id": "e16956bf-6c6e-461d-8e1f-4d26e8f5507c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -4652,7 +4765,6 @@
           "response": []
         },
         {
-          "_postman_id": "7286811a-f611-4225-9cb3-42dd05affa16",
           "name": "Process Chargeback",
           "event": [
             {
@@ -4671,6 +4783,10 @@
               }
             }
           ],
+          "_postman_id": "7286811a-f611-4225-9cb3-42dd05affa16",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4698,8 +4814,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method",
-                  "equals": true
+                  "value": "refunds.payment_method"
                 }
               ]
             }
@@ -4707,7 +4822,6 @@
           "response": []
         },
         {
-          "_postman_id": "3ccd42da-ac8d-4104-950a-5c98b503d19b",
           "name": "Check CAB (2)",
           "event": [
             {
@@ -4724,6 +4838,10 @@
               }
             }
           ],
+          "_postman_id": "3ccd42da-ac8d-4104-950a-5c98b503d19b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -4745,7 +4863,6 @@
           "response": []
         },
         {
-          "_postman_id": "458d1cfa-7d9a-49eb-b9e5-145332f9899b",
           "name": "Process Chargeback (2)",
           "event": [
             {
@@ -4759,6 +4876,10 @@
               }
             }
           ],
+          "_postman_id": "458d1cfa-7d9a-49eb-b9e5-145332f9899b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4786,23 +4907,20 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method",
-                  "equals": true
+                  "value": "refunds.payment_method"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "02def655-f40b-4756-8405-efcd1e6d4382"
     },
     {
-      "_postman_id": "6a86a0eb-a28d-44ef-9fe6-2f3580cea443",
       "name": "From Order, Refund to CAB, with Partial Chargeback",
-      "description": "",
       "item": [
         {
-          "_postman_id": "a4d97d9e-6cbd-4277-b7ff-cd1a3f80e6a4",
           "name": "Create Cart",
           "event": [
             {
@@ -4818,6 +4936,10 @@
               }
             }
           ],
+          "_postman_id": "a4d97d9e-6cbd-4277-b7ff-cd1a3f80e6a4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4842,7 +4964,6 @@
           "response": []
         },
         {
-          "_postman_id": "44d20936-4c8e-4546-a834-61b7eb79cb87",
           "name": "Create Payment",
           "event": [
             {
@@ -4859,6 +4980,10 @@
               }
             }
           ],
+          "_postman_id": "44d20936-4c8e-4546-a834-61b7eb79cb87",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4880,7 +5005,6 @@
           "response": []
         },
         {
-          "_postman_id": "45866749-11d4-407a-8ced-39a0f7e9fa4a",
           "name": "Submit Refund",
           "event": [
             {
@@ -4899,6 +5023,10 @@
               }
             }
           ],
+          "_postman_id": "45866749-11d4-407a-8ced-39a0f7e9fa4a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -4926,8 +5054,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method",
-                  "equals": true
+                  "value": "refunds.payment_method"
                 }
               ]
             }
@@ -4935,7 +5062,6 @@
           "response": []
         },
         {
-          "_postman_id": "d229054e-3d16-456a-be19-6a3694ffcfd3",
           "name": "Check CAB",
           "event": [
             {
@@ -4952,6 +5078,10 @@
               }
             }
           ],
+          "_postman_id": "d229054e-3d16-456a-be19-6a3694ffcfd3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -4973,7 +5103,6 @@
           "response": []
         },
         {
-          "_postman_id": "62b4ac60-4ed1-411c-bba5-20e18fe8096f",
           "name": "Process Chargeback",
           "event": [
             {
@@ -4992,6 +5121,10 @@
               }
             }
           ],
+          "_postman_id": "62b4ac60-4ed1-411c-bba5-20e18fe8096f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -5019,8 +5152,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method",
-                  "equals": true
+                  "value": "refunds.payment_method"
                 }
               ]
             }
@@ -5028,7 +5160,6 @@
           "response": []
         },
         {
-          "_postman_id": "1cfaa0e8-6233-48d7-ae2b-8ba4475c490a",
           "name": "Check CAB (2)",
           "event": [
             {
@@ -5045,6 +5176,10 @@
               }
             }
           ],
+          "_postman_id": "1cfaa0e8-6233-48d7-ae2b-8ba4475c490a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -5066,7 +5201,6 @@
           "response": []
         },
         {
-          "_postman_id": "137fb08f-2e0a-4c32-9f72-f273d227b224",
           "name": "Process Chargeback (2)",
           "event": [
             {
@@ -5085,6 +5219,10 @@
               }
             }
           ],
+          "_postman_id": "137fb08f-2e0a-4c32-9f72-f273d227b224",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -5112,8 +5250,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method",
-                  "equals": true
+                  "value": "refunds.payment_method"
                 }
               ]
             }
@@ -5121,7 +5258,6 @@
           "response": []
         },
         {
-          "_postman_id": "d13c191a-a154-4727-ac97-2f6b99814664",
           "name": "Check CAB (3)",
           "event": [
             {
@@ -5138,6 +5274,10 @@
               }
             }
           ],
+          "_postman_id": "d13c191a-a154-4727-ac97-2f6b99814664",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -5158,15 +5298,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "6a86a0eb-a28d-44ef-9fe6-2f3580cea443"
     },
     {
-      "_postman_id": "6873f127-04fa-496e-a6e0-cb167de4ff26",
       "name": "From Order, Single Payment, Order Level Discount",
-      "description": "",
       "item": [
         {
-          "_postman_id": "dc9dfc60-1370-4431-9fd4-5373ef19b112",
           "name": "Create Coupon: 40% off Order",
           "event": [
             {
@@ -5186,6 +5324,10 @@
               }
             }
           ],
+          "_postman_id": "dc9dfc60-1370-4431-9fd4-5373ef19b112",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5210,7 +5352,6 @@
           "response": []
         },
         {
-          "_postman_id": "0b9362c0-bffa-4b5f-94cc-49d5065d80da",
           "name": "Create Cart",
           "event": [
             {
@@ -5226,6 +5367,10 @@
               }
             }
           ],
+          "_postman_id": "0b9362c0-bffa-4b5f-94cc-49d5065d80da",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5250,7 +5395,6 @@
           "response": []
         },
         {
-          "_postman_id": "342bb27c-6e02-43be-9bd2-cef330f82483",
           "name": "Create Payment",
           "event": [
             {
@@ -5266,6 +5410,10 @@
               }
             }
           ],
+          "_postman_id": "342bb27c-6e02-43be-9bd2-cef330f82483",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -5287,7 +5435,6 @@
           "response": []
         },
         {
-          "_postman_id": "74bbd129-7f90-40f9-b805-ef6037708989",
           "name": "Submit Refund",
           "event": [
             {
@@ -5304,6 +5451,10 @@
               }
             }
           ],
+          "_postman_id": "74bbd129-7f90-40f9-b805-ef6037708989",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -5325,7 +5476,6 @@
           "response": []
         },
         {
-          "_postman_id": "091876e5-f94c-48cc-b5ed-95efaf2ff0f9",
           "name": "Create Cart w/ Tax, Shipping",
           "event": [
             {
@@ -5341,6 +5491,10 @@
               }
             }
           ],
+          "_postman_id": "091876e5-f94c-48cc-b5ed-95efaf2ff0f9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5365,7 +5519,6 @@
           "response": []
         },
         {
-          "_postman_id": "5931d725-ce32-4b7a-86d1-2e1b26722996",
           "name": "Create Payment w/Tax, Shipping",
           "event": [
             {
@@ -5381,6 +5534,10 @@
               }
             }
           ],
+          "_postman_id": "5931d725-ce32-4b7a-86d1-2e1b26722996",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -5402,7 +5559,6 @@
           "response": []
         },
         {
-          "_postman_id": "99bd71e2-127f-47c5-a088-8adb20f3cc85",
           "name": "Submit Refund w/Tax, Shipping",
           "event": [
             {
@@ -5413,12 +5569,16 @@
                   "tests[\"Payment created successfully\"] = responseCode.code === 201;",
                   "var data = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Refund was successful\"] = data.total === 5 && data.subtotal === 5 && data.tax === 0 && data.shipping === 0;"
+                  "tests[\"Refund was successful\"] = data.total === 10 && data.subtotal === 7.67 && data.tax === 0.79 && data.shipping === 1.54;"
                 ],
                 "type": "text/javascript"
               }
             }
           ],
+          "_postman_id": "99bd71e2-127f-47c5-a088-8adb20f3cc85",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -5433,14 +5593,13 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"total\": 5\n}"
+              "raw": "{\n\t\"total\": 10\n}"
             },
             "url": "{{order_url}}/refunds"
           },
           "response": []
         },
         {
-          "_postman_id": "bfa27727-3b28-4692-8582-9b63817216c4",
           "name": "Delete Coupon",
           "event": [
             {
@@ -5454,6 +5613,10 @@
               }
             }
           ],
+          "_postman_id": "bfa27727-3b28-4692-8582-9b63817216c4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5477,15 +5640,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "6873f127-04fa-496e-a6e0-cb167de4ff26"
     },
     {
-      "_postman_id": "94a42b9f-5156-4ba1-af0d-017fee50f55a",
       "name": "Post-request Cleanup",
-      "description": "",
       "item": [
         {
-          "_postman_id": "eb942784-a8de-4ae6-b4e7-4ea57720b405",
           "name": "Enable Duplicate Payment Checker",
           "event": [
             {
@@ -5511,6 +5672,7 @@
               }
             }
           ],
+          "_postman_id": "eb942784-a8de-4ae6-b4e7-4ea57720b405",
           "request": {
             "auth": {
               "type": "noauth"
@@ -5536,7 +5698,6 @@
           "response": []
         },
         {
-          "_postman_id": "d0a0d472-93d2-4b18-b3ea-89249d841310",
           "name": "Enable Order Notification Subscription",
           "event": [
             {
@@ -5560,6 +5721,7 @@
               }
             }
           ],
+          "_postman_id": "d0a0d472-93d2-4b18-b3ea-89249d841310",
           "request": {
             "auth": {
               "type": "noauth"
@@ -5585,7 +5747,6 @@
           "response": []
         },
         {
-          "_postman_id": "17a20ac9-d78c-4848-9e27-3a55ba22b6a2",
           "name": "Enable Payment Notification Subscription",
           "event": [
             {
@@ -5611,6 +5772,7 @@
               }
             }
           ],
+          "_postman_id": "17a20ac9-d78c-4848-9e27-3a55ba22b6a2",
           "request": {
             "auth": {
               "type": "noauth"
@@ -5636,7 +5798,6 @@
           "response": []
         },
         {
-          "_postman_id": "ae24805c-529f-46a0-a4ee-72937413b1be",
           "name": "Enable Refund Notification Subscription Copy",
           "event": [
             {
@@ -5667,6 +5828,7 @@
               }
             }
           ],
+          "_postman_id": "ae24805c-529f-46a0-a4ee-72937413b1be",
           "request": {
             "auth": {
               "type": "noauth"
@@ -5691,7 +5853,8 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "94a42b9f-5156-4ba1-af0d-017fee50f55a"
     }
   ],
   "event": [
@@ -5718,53 +5881,46 @@
   ],
   "variable": [
     {
-      "id": "6a8397bf-5dbc-416a-9185-4882bcd6af95",
+      "id": "ffd4da91-8f5a-49e9-8a45-e3e9c81e77cb",
       "key": "name",
       "value": "James Smith",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "687696c1-86e1-4fd8-bd69-0fff3a378127",
+      "id": "e43cb2f3-c8f3-43b7-9454-3e1d090660a6",
       "key": "address_1",
       "value": "648 Broad St",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "df6489ad-f6b7-4439-9a3d-bbf1409c1e84",
+      "id": "858c7396-b588-4421-ac24-83beb5706ebb",
       "key": "city",
       "value": "Westerville",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "b0eeba45-5d18-4f96-a873-d4120c0e7fd7",
+      "id": "1669e4a6-68f0-49c1-a99b-8f6dddc58045",
       "key": "state_prov",
       "value": "OH",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "33b0afa6-f45e-46a3-9377-20ad574f8fde",
+      "id": "7005be1a-ef8f-4631-989b-222b2e5f7eaf",
       "key": "postal_code",
       "value": "43081",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "d32f77ae-8979-44c1-a5f1-18868edfdea5",
+      "id": "e452d85f-5f71-4621-be5d-33bfb4cc271e",
       "key": "country",
       "value": "US",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "267c04c0-a454-427c-bb06-4c053f56d029",
+      "id": "e5ddc7d9-a046-406e-bfcd-ebccec761366",
       "key": "phone",
       "value": "614-555-0191",
-      "type": "string",
-      "description": ""
+      "type": "string"
     }
   ]
 }
