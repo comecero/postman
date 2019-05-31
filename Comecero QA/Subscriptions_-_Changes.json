@@ -7,12 +7,9 @@
   },
   "item": [
     {
-      "_postman_id": "e249d914-1176-4db3-8c3c-f894365b80d1",
       "name": "Pre-request Configurations",
-      "description": "",
       "item": [
         {
-          "_postman_id": "b1e21aeb-a714-47ff-a05c-e23022efda24",
           "name": "Get Notification Subscriptions",
           "event": [
             {
@@ -56,6 +53,10 @@
               }
             }
           ],
+          "_postman_id": "b1e21aeb-a714-47ff-a05c-e23022efda24",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -71,17 +72,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/notification_subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "198a3de0-9b75-4b45-9623-f524dc6b0ce4",
           "name": "Disable Order Notification Subscription",
           "event": [
             {
@@ -108,6 +104,10 @@
               }
             }
           ],
+          "_postman_id": "198a3de0-9b75-4b45-9623-f524dc6b0ce4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -133,7 +133,6 @@
           "response": []
         },
         {
-          "_postman_id": "fe766129-3a5e-4e03-abfd-4f2dd8bf1d69",
           "name": "Disable Payment Notification Subscription",
           "event": [
             {
@@ -159,6 +158,10 @@
               }
             }
           ],
+          "_postman_id": "fe766129-3a5e-4e03-abfd-4f2dd8bf1d69",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -184,7 +187,6 @@
           "response": []
         },
         {
-          "_postman_id": "462ebf98-b8e4-4b3b-b44e-da4cb082c475",
           "name": "Disable Refund Notification Subscription",
           "event": [
             {
@@ -210,6 +212,10 @@
               }
             }
           ],
+          "_postman_id": "462ebf98-b8e4-4b3b-b44e-da4cb082c475",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -235,7 +241,6 @@
           "response": []
         },
         {
-          "_postman_id": "7dc53f33-4609-4dd9-a7e7-63b7839c44ea",
           "name": "Get Subscription Plans",
           "event": [
             {
@@ -290,6 +295,10 @@
               }
             }
           ],
+          "_postman_id": "7dc53f33-4609-4dd9-a7e7-63b7839c44ea",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -305,16 +314,13 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscription_plans",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         }
       ],
+      "_postman_id": "e249d914-1176-4db3-8c3c-f894365b80d1",
       "event": [
         {
           "listen": "prerequest",
@@ -339,12 +345,9 @@
       ]
     },
     {
-      "_postman_id": "43fb8e33-9ac3-4faf-b9e7-1f927a838c18",
       "name": "Quantity Change Up, Immediate",
-      "description": "",
       "item": [
         {
-          "_postman_id": "14b083c2-a1cc-483d-90a4-453f6f8a78c3",
           "name": "Create Cart",
           "event": [
             {
@@ -371,6 +374,10 @@
               }
             }
           ],
+          "_postman_id": "14b083c2-a1cc-483d-90a4-453f6f8a78c3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -404,8 +411,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             }
@@ -413,7 +419,6 @@
           "response": []
         },
         {
-          "_postman_id": "8c5158e8-38af-49fc-a1d4-f9d26d7b68e1",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -431,6 +436,10 @@
               }
             }
           ],
+          "_postman_id": "8c5158e8-38af-49fc-a1d4-f9d26d7b68e1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -461,8 +470,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items",
-                  "equals": true
+                  "value": "order.items"
                 }
               ]
             }
@@ -470,7 +478,6 @@
           "response": []
         },
         {
-          "_postman_id": "752a11b4-fc69-4293-ab14-8459c95d925f",
           "name": "Get the Subscription",
           "event": [
             {
@@ -489,6 +496,10 @@
               }
             }
           ],
+          "_postman_id": "752a11b4-fc69-4293-ab14-8459c95d925f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -513,7 +524,6 @@
           "response": []
         },
         {
-          "_postman_id": "6da33cf6-0155-4a74-a9a6-568a8853f050",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -549,6 +559,10 @@
               }
             }
           ],
+          "_postman_id": "6da33cf6-0155-4a74-a9a6-568a8853f050",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -564,16 +578,11 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions"
           },
           "response": []
         },
         {
-          "_postman_id": "6b0dc3ff-ae74-408e-bd54-db5b3e384d41",
           "name": "Preview",
           "event": [
             {
@@ -601,6 +610,10 @@
               }
             }
           ],
+          "_postman_id": "6b0dc3ff-ae74-408e-bd54-db5b3e384d41",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -631,8 +644,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             }
@@ -640,7 +652,6 @@
           "response": []
         },
         {
-          "_postman_id": "af24adca-2be2-4ad5-9cbc-772391651d51",
           "name": "Change Item Quantity",
           "event": [
             {
@@ -672,6 +683,10 @@
               }
             }
           ],
+          "_postman_id": "af24adca-2be2-4ad5-9cbc-772391651d51",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -699,8 +714,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
-                  "equals": true
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method"
                 }
               ]
             }
@@ -708,7 +722,6 @@
           "response": []
         },
         {
-          "_postman_id": "a465ba70-45fb-4543-9cdb-2dcb25d9c2c5",
           "name": "Change Item Quantity with Bad URL",
           "event": [
             {
@@ -722,6 +735,10 @@
               }
             }
           ],
+          "_postman_id": "a465ba70-45fb-4543-9cdb-2dcb25d9c2c5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -749,8 +766,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             }
@@ -758,7 +774,6 @@
           "response": []
         },
         {
-          "_postman_id": "4d7d365a-6285-49a5-b224-d2beb0502f9f",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -774,6 +789,10 @@
               }
             }
           ],
+          "_postman_id": "4d7d365a-6285-49a5-b224-d2beb0502f9f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -797,15 +816,72 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "43fb8e33-9ac3-4faf-b9e7-1f927a838c18"
     },
     {
-      "_postman_id": "5dbe7b72-406a-47d1-bbec-6c008990bd99",
       "name": "Quantity Change Up, Period End",
-      "description": "",
       "item": [
         {
-          "_postman_id": "df7feea3-610d-4d50-9de1-52466115418e",
+          "name": "Submit Cart Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
+                "exec": [
+                  "tests[\"Status is 201\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "var item = data.order.items[0];",
+                  "tests[\"Subscription was created\"] === item.subcription !== null;",
+                  "pm.globals.set(\"subscription_url\", item.subscription);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "c0744ad5-22ff-4659-8b12-443d1b8f33e0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
+            },
+            "url": {
+              "raw": "{{cart_url}}/payments?expand=order.items",
+              "host": [
+                "{{cart_url}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "key": "expand",
+                  "value": "order.items"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Create Cart",
           "event": [
             {
@@ -832,6 +908,10 @@
               }
             }
           ],
+          "_postman_id": "df7feea3-610d-4d50-9de1-52466115418e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -865,8 +945,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             }
@@ -874,64 +953,6 @@
           "response": []
         },
         {
-          "_postman_id": "c0744ad5-22ff-4659-8b12-443d1b8f33e0",
-          "name": "Submit Cart Payment",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "30ae10f7-5785-4af0-a0cf-fb1fbdf0cc25",
-                "exec": [
-                  "tests[\"Status is 201\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "var item = data.order.items[0];",
-                  "tests[\"Subscription was created\"] === item.subcription !== null;",
-                  "pm.globals.set(\"subscription_url\", item.subscription);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
-            },
-            "url": {
-              "raw": "{{cart_url}}/payments?expand=order.items",
-              "host": [
-                "{{cart_url}}"
-              ],
-              "path": [
-                "payments"
-              ],
-              "query": [
-                {
-                  "key": "expand",
-                  "value": "order.items",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1d313a94-1b96-40b0-a643-3d73111f13c4",
           "name": "Get the Subscription",
           "event": [
             {
@@ -950,6 +971,10 @@
               }
             }
           ],
+          "_postman_id": "1d313a94-1b96-40b0-a643-3d73111f13c4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -974,7 +999,6 @@
           "response": []
         },
         {
-          "_postman_id": "9951fda2-5d5b-4143-abfe-89594ba6cb32",
           "name": "Preview",
           "event": [
             {
@@ -1001,6 +1025,10 @@
               }
             }
           ],
+          "_postman_id": "9951fda2-5d5b-4143-abfe-89594ba6cb32",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1031,8 +1059,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             }
@@ -1040,7 +1067,6 @@
           "response": []
         },
         {
-          "_postman_id": "39398421-0b31-4023-9bf3-d6e204c83240",
           "name": "Change Item Quantity",
           "event": [
             {
@@ -1059,6 +1085,10 @@
               }
             }
           ],
+          "_postman_id": "39398421-0b31-4023-9bf3-d6e204c83240",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1086,8 +1116,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             }
@@ -1095,7 +1124,6 @@
           "response": []
         },
         {
-          "_postman_id": "be4d7a8f-0995-4a19-9d65-5147964c059e",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -1111,6 +1139,10 @@
               }
             }
           ],
+          "_postman_id": "be4d7a8f-0995-4a19-9d65-5147964c059e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1134,15 +1166,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "5dbe7b72-406a-47d1-bbec-6c008990bd99"
     },
     {
-      "_postman_id": "1ff557c8-9dfb-4b26-ab1c-10d218bb02e9",
       "name": "Quantity Change Down, Immediate",
-      "description": "",
       "item": [
         {
-          "_postman_id": "d3c926a6-e875-41f3-b9c8-95034700849b",
           "name": "Create Cart",
           "event": [
             {
@@ -1169,6 +1199,10 @@
               }
             }
           ],
+          "_postman_id": "d3c926a6-e875-41f3-b9c8-95034700849b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1202,8 +1236,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             }
@@ -1211,7 +1244,6 @@
           "response": []
         },
         {
-          "_postman_id": "fa60297e-461b-45cb-8adf-c883bb3ed752",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -1229,6 +1261,10 @@
               }
             }
           ],
+          "_postman_id": "fa60297e-461b-45cb-8adf-c883bb3ed752",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1259,8 +1295,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items",
-                  "equals": true
+                  "value": "order.items"
                 }
               ]
             }
@@ -1268,7 +1303,6 @@
           "response": []
         },
         {
-          "_postman_id": "b094ab05-b89f-422f-91d5-6bca082f254f",
           "name": "Get the Subscription",
           "event": [
             {
@@ -1287,6 +1321,10 @@
               }
             }
           ],
+          "_postman_id": "b094ab05-b89f-422f-91d5-6bca082f254f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1311,7 +1349,6 @@
           "response": []
         },
         {
-          "_postman_id": "b0e92f72-edde-4233-b36a-c20443f04cda",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -1347,6 +1384,10 @@
               }
             }
           ],
+          "_postman_id": "b0e92f72-edde-4233-b36a-c20443f04cda",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1362,16 +1403,11 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions"
           },
           "response": []
         },
         {
-          "_postman_id": "fa8a72c1-1ac7-4773-ae6c-04cf4655a88f",
           "name": "Preview",
           "event": [
             {
@@ -1400,6 +1436,10 @@
               }
             }
           ],
+          "_postman_id": "fa8a72c1-1ac7-4773-ae6c-04cf4655a88f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1430,8 +1470,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             },
@@ -1440,7 +1479,6 @@
           "response": []
         },
         {
-          "_postman_id": "b15b7cc6-a315-445f-a7c6-876eeea4b16b",
           "name": "Change Item Quantity",
           "event": [
             {
@@ -1471,6 +1509,10 @@
               }
             }
           ],
+          "_postman_id": "b15b7cc6-a315-445f-a7c6-876eeea4b16b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1498,8 +1540,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
-                  "equals": true
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method"
                 }
               ]
             },
@@ -1508,7 +1549,6 @@
           "response": []
         },
         {
-          "_postman_id": "d15eec0b-dce6-4229-97a6-f790f80cde4a",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -1524,6 +1564,10 @@
               }
             }
           ],
+          "_postman_id": "d15eec0b-dce6-4229-97a6-f790f80cde4a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1548,15 +1592,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "1ff557c8-9dfb-4b26-ab1c-10d218bb02e9"
     },
     {
-      "_postman_id": "335dc719-64fa-416a-a868-8377d2b3e9cc",
       "name": "Quantity Change Down, Period End",
-      "description": "",
       "item": [
         {
-          "_postman_id": "87485bbf-fd7b-4fa4-bd39-139b0141b969",
           "name": "Create Cart",
           "event": [
             {
@@ -1583,6 +1625,10 @@
               }
             }
           ],
+          "_postman_id": "87485bbf-fd7b-4fa4-bd39-139b0141b969",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1616,8 +1662,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -1626,7 +1671,6 @@
           "response": []
         },
         {
-          "_postman_id": "3d3d0742-3a12-4f24-b12e-483df7f0e757",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -1644,6 +1688,10 @@
               }
             }
           ],
+          "_postman_id": "3d3d0742-3a12-4f24-b12e-483df7f0e757",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1674,8 +1722,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items",
-                  "equals": true
+                  "value": "order.items"
                 }
               ]
             },
@@ -1684,7 +1731,6 @@
           "response": []
         },
         {
-          "_postman_id": "84ce2b69-83ea-4111-928b-1b399694fe03",
           "name": "Get the Subscription",
           "event": [
             {
@@ -1703,6 +1749,10 @@
               }
             }
           ],
+          "_postman_id": "84ce2b69-83ea-4111-928b-1b399694fe03",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1728,7 +1778,6 @@
           "response": []
         },
         {
-          "_postman_id": "2b420157-9507-40b6-b0f4-9eed48978077",
           "name": "Preview",
           "event": [
             {
@@ -1755,6 +1804,10 @@
               }
             }
           ],
+          "_postman_id": "2b420157-9507-40b6-b0f4-9eed48978077",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1785,8 +1838,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             },
@@ -1795,7 +1847,6 @@
           "response": []
         },
         {
-          "_postman_id": "aeee875c-568b-409c-9a4c-dafa9b6b22fe",
           "name": "Change Item Quantity",
           "event": [
             {
@@ -1814,6 +1865,10 @@
               }
             }
           ],
+          "_postman_id": "aeee875c-568b-409c-9a4c-dafa9b6b22fe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1841,8 +1896,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             },
@@ -1851,7 +1905,6 @@
           "response": []
         },
         {
-          "_postman_id": "c6191914-87cc-4c1c-8773-0ba89500fca2",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -1867,6 +1920,10 @@
               }
             }
           ],
+          "_postman_id": "c6191914-87cc-4c1c-8773-0ba89500fca2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1891,15 +1948,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "335dc719-64fa-416a-a868-8377d2b3e9cc"
     },
     {
-      "_postman_id": "28202a47-3039-4349-8069-aeefa47ed61e",
       "name": "Add Item, Immediate",
-      "description": "",
       "item": [
         {
-          "_postman_id": "ec7a2e8a-aa89-4a32-bad4-598128738a44",
           "name": "Create Cart",
           "event": [
             {
@@ -1926,6 +1981,10 @@
               }
             }
           ],
+          "_postman_id": "ec7a2e8a-aa89-4a32-bad4-598128738a44",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1959,8 +2018,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -1969,7 +2027,6 @@
           "response": []
         },
         {
-          "_postman_id": "ec4d7b3e-32e3-4492-a44e-8f23c66f1f02",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -1987,6 +2044,10 @@
               }
             }
           ],
+          "_postman_id": "ec4d7b3e-32e3-4492-a44e-8f23c66f1f02",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2017,8 +2078,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -2027,7 +2087,6 @@
           "response": []
         },
         {
-          "_postman_id": "ef4dbffa-f563-4020-bd58-f3f9a22a6024",
           "name": "Get the Subscription",
           "event": [
             {
@@ -2046,6 +2105,10 @@
               }
             }
           ],
+          "_postman_id": "ef4dbffa-f563-4020-bd58-f3f9a22a6024",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2071,7 +2134,6 @@
           "response": []
         },
         {
-          "_postman_id": "1392517c-384d-49a6-8e44-5401a4b80949",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -2107,6 +2169,10 @@
               }
             }
           ],
+          "_postman_id": "1392517c-384d-49a6-8e44-5401a4b80949",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2122,17 +2188,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "c7c362ef-8d32-4981-88d9-c05d6133b340",
           "name": "Get the Product",
           "event": [
             {
@@ -2148,6 +2209,10 @@
               }
             }
           ],
+          "_postman_id": "c7c362ef-8d32-4981-88d9-c05d6133b340",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2182,8 +2247,7 @@
               "query": [
                 {
                   "key": "currency",
-                  "value": "USD",
-                  "equals": true
+                  "value": "USD"
                 }
               ]
             },
@@ -2192,7 +2256,6 @@
           "response": []
         },
         {
-          "_postman_id": "c82721b8-3b7f-41dd-98a9-14a49eb68986",
           "name": "Update Product Subscription Plan (Physical)",
           "event": [
             {
@@ -2216,6 +2279,10 @@
               }
             }
           ],
+          "_postman_id": "c82721b8-3b7f-41dd-98a9-14a49eb68986",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2241,7 +2308,6 @@
           "response": []
         },
         {
-          "_postman_id": "4b5b5aa6-c58a-48bf-9cc9-b4e0f67bea71",
           "name": "Preview",
           "event": [
             {
@@ -2269,6 +2335,10 @@
               }
             }
           ],
+          "_postman_id": "4b5b5aa6-c58a-48bf-9cc9-b4e0f67bea71",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2300,8 +2370,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             },
@@ -2310,7 +2379,6 @@
           "response": []
         },
         {
-          "_postman_id": "72b3f66d-c093-4c4b-824c-6ffbf390cdb2",
           "name": "Add New Item",
           "event": [
             {
@@ -2344,6 +2412,10 @@
               }
             }
           ],
+          "_postman_id": "72b3f66d-c093-4c4b-824c-6ffbf390cdb2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2374,8 +2446,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
-                  "equals": true
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method"
                 }
               ]
             },
@@ -2384,7 +2455,6 @@
           "response": []
         },
         {
-          "_postman_id": "7c82ac5d-3ca3-45db-8057-e10a91aec264",
           "name": "Revert Product Subscription Plan (Physical)",
           "event": [
             {
@@ -2408,6 +2478,10 @@
               }
             }
           ],
+          "_postman_id": "7c82ac5d-3ca3-45db-8057-e10a91aec264",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2433,7 +2507,6 @@
           "response": []
         },
         {
-          "_postman_id": "0c6840a1-19dd-4404-9dee-05a0c3aed82f",
           "name": "Add Item with Bad product_id",
           "event": [
             {
@@ -2447,6 +2520,10 @@
               }
             }
           ],
+          "_postman_id": "0c6840a1-19dd-4404-9dee-05a0c3aed82f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2474,8 +2551,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             },
@@ -2484,7 +2560,6 @@
           "response": []
         },
         {
-          "_postman_id": "e4842d39-9eec-41b3-afb2-24cc6029e7a1",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -2500,6 +2575,10 @@
               }
             }
           ],
+          "_postman_id": "e4842d39-9eec-41b3-afb2-24cc6029e7a1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2524,15 +2603,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "28202a47-3039-4349-8069-aeefa47ed61e"
     },
     {
-      "_postman_id": "1447dbde-8fc7-4a1f-8471-ba2c046b6970",
       "name": "Add Item, Period End",
-      "description": "",
       "item": [
         {
-          "_postman_id": "3fc174a6-ca6f-461a-8197-e5bc29531fc8",
           "name": "Create Cart",
           "event": [
             {
@@ -2559,6 +2636,10 @@
               }
             }
           ],
+          "_postman_id": "3fc174a6-ca6f-461a-8197-e5bc29531fc8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2592,8 +2673,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -2602,7 +2682,6 @@
           "response": []
         },
         {
-          "_postman_id": "b9559195-f044-4c82-b9a6-275f8fc06bc1",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -2620,6 +2699,10 @@
               }
             }
           ],
+          "_postman_id": "b9559195-f044-4c82-b9a6-275f8fc06bc1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2650,8 +2733,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -2660,7 +2742,6 @@
           "response": []
         },
         {
-          "_postman_id": "c2e5e45e-0a2c-47b7-a603-84ec803a1b24",
           "name": "Get the Subscription",
           "event": [
             {
@@ -2679,6 +2760,10 @@
               }
             }
           ],
+          "_postman_id": "c2e5e45e-0a2c-47b7-a603-84ec803a1b24",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2704,7 +2789,6 @@
           "response": []
         },
         {
-          "_postman_id": "f5f64b85-c1d7-4042-bc85-d208c27f8900",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -2740,6 +2824,10 @@
               }
             }
           ],
+          "_postman_id": "f5f64b85-c1d7-4042-bc85-d208c27f8900",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2755,17 +2843,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "4653893e-c527-4932-9e61-f8bb1d084910",
           "name": "Get the Product",
           "event": [
             {
@@ -2781,6 +2864,10 @@
               }
             }
           ],
+          "_postman_id": "4653893e-c527-4932-9e61-f8bb1d084910",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2815,8 +2902,7 @@
               "query": [
                 {
                   "key": "currency",
-                  "value": "USD",
-                  "equals": true
+                  "value": "USD"
                 }
               ]
             },
@@ -2825,7 +2911,6 @@
           "response": []
         },
         {
-          "_postman_id": "69ef8052-7a0d-44d4-bc92-65e35ee67b94",
           "name": "Update Product Subscription Plan (Physical)",
           "event": [
             {
@@ -2849,6 +2934,10 @@
               }
             }
           ],
+          "_postman_id": "69ef8052-7a0d-44d4-bc92-65e35ee67b94",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2874,7 +2963,6 @@
           "response": []
         },
         {
-          "_postman_id": "baaa0d6a-9925-4d2c-ba21-10eb30723910",
           "name": "Preview",
           "event": [
             {
@@ -2901,6 +2989,10 @@
               }
             }
           ],
+          "_postman_id": "baaa0d6a-9925-4d2c-ba21-10eb30723910",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2931,8 +3023,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             },
@@ -2941,7 +3032,6 @@
           "response": []
         },
         {
-          "_postman_id": "cbdc995c-29f9-49d1-99f6-26af56cf69e9",
           "name": "Add New Item",
           "event": [
             {
@@ -2962,6 +3052,10 @@
               }
             }
           ],
+          "_postman_id": "cbdc995c-29f9-49d1-99f6-26af56cf69e9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -2992,8 +3086,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             },
@@ -3002,7 +3095,6 @@
           "response": []
         },
         {
-          "_postman_id": "5b204998-abc2-4d3a-bb43-dde292b904c7",
           "name": "Revert Product Subscription Plan (Physical)",
           "event": [
             {
@@ -3026,6 +3118,10 @@
               }
             }
           ],
+          "_postman_id": "5b204998-abc2-4d3a-bb43-dde292b904c7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3051,7 +3147,6 @@
           "response": []
         },
         {
-          "_postman_id": "4e73daf8-33ee-46d9-8b37-2a6c41ab1128",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -3067,6 +3162,10 @@
               }
             }
           ],
+          "_postman_id": "4e73daf8-33ee-46d9-8b37-2a6c41ab1128",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3091,15 +3190,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "1447dbde-8fc7-4a1f-8471-ba2c046b6970"
     },
     {
-      "_postman_id": "24acd2da-6b1d-4e8d-939f-f4d80668bc0e",
       "name": "Replace Item, Immediate, Same Plan, Upgrade",
-      "description": "",
       "item": [
         {
-          "_postman_id": "7222f7b9-cec3-4439-be2d-f4fb410a811d",
           "name": "Create Cart",
           "event": [
             {
@@ -3126,6 +3223,10 @@
               }
             }
           ],
+          "_postman_id": "7222f7b9-cec3-4439-be2d-f4fb410a811d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3159,8 +3260,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -3169,7 +3269,6 @@
           "response": []
         },
         {
-          "_postman_id": "93e33568-bdd8-4b23-bacc-f541fbe315e7",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -3187,6 +3286,10 @@
               }
             }
           ],
+          "_postman_id": "93e33568-bdd8-4b23-bacc-f541fbe315e7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3217,8 +3320,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -3227,7 +3329,6 @@
           "response": []
         },
         {
-          "_postman_id": "da9abdd2-4c6a-4098-84f8-aad337a0344b",
           "name": "Get the Subscription",
           "event": [
             {
@@ -3247,6 +3348,10 @@
               }
             }
           ],
+          "_postman_id": "da9abdd2-4c6a-4098-84f8-aad337a0344b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3272,7 +3377,6 @@
           "response": []
         },
         {
-          "_postman_id": "f1ef4534-2e70-4c47-9b37-34dc5d44a7ad",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -3308,6 +3412,10 @@
               }
             }
           ],
+          "_postman_id": "f1ef4534-2e70-4c47-9b37-34dc5d44a7ad",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3323,17 +3431,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "7ed8d8e7-1b95-4e4c-af1d-bb38c150efed",
           "name": "Get the Product",
           "event": [
             {
@@ -3349,6 +3452,10 @@
               }
             }
           ],
+          "_postman_id": "7ed8d8e7-1b95-4e4c-af1d-bb38c150efed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3383,8 +3490,7 @@
               "query": [
                 {
                   "key": "currency",
-                  "value": "USD",
-                  "equals": true
+                  "value": "USD"
                 }
               ]
             },
@@ -3393,7 +3499,6 @@
           "response": []
         },
         {
-          "_postman_id": "8a1fd539-8737-4bfc-b0a1-0b8ad0fa8b2b",
           "name": "Run Preview",
           "event": [
             {
@@ -3424,6 +3529,10 @@
               }
             }
           ],
+          "_postman_id": "8a1fd539-8737-4bfc-b0a1-0b8ad0fa8b2b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3455,8 +3564,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 }
               ]
             },
@@ -3465,7 +3573,6 @@
           "response": []
         },
         {
-          "_postman_id": "2ad6ad41-d9c8-478c-826c-d5f998efc1f7",
           "name": "Replace the Item",
           "event": [
             {
@@ -3501,6 +3608,10 @@
               }
             }
           ],
+          "_postman_id": "2ad6ad41-d9c8-478c-826c-d5f998efc1f7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3531,13 +3642,11 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
-                  "equals": true
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method"
                 }
               ]
             },
@@ -3546,7 +3655,6 @@
           "response": []
         },
         {
-          "_postman_id": "4b92862e-ed2d-4d4a-8898-0f7f6dcb498f",
           "name": "Get the Customer",
           "event": [
             {
@@ -3572,6 +3680,10 @@
               }
             }
           ],
+          "_postman_id": "4b92862e-ed2d-4d4a-8898-0f7f6dcb498f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3599,8 +3711,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders",
-                  "equals": true
+                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders"
                 }
               ]
             },
@@ -3609,7 +3720,6 @@
           "response": []
         },
         {
-          "_postman_id": "b12081da-34df-4041-a8af-a1799a0f5c21",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -3625,6 +3735,10 @@
               }
             }
           ],
+          "_postman_id": "b12081da-34df-4041-a8af-a1799a0f5c21",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3649,15 +3763,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "24acd2da-6b1d-4e8d-939f-f4d80668bc0e"
     },
     {
-      "_postman_id": "65f7c45b-b100-4b52-8570-7281e574dbe1",
       "name": "Replace Item, Period End, Same Plan, Upgrade",
-      "description": "",
       "item": [
         {
-          "_postman_id": "83b2c8ea-d696-4eac-b2a2-7f1b88aa9795",
           "name": "Create Cart",
           "event": [
             {
@@ -3684,6 +3796,10 @@
               }
             }
           ],
+          "_postman_id": "83b2c8ea-d696-4eac-b2a2-7f1b88aa9795",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3717,8 +3833,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -3727,7 +3842,6 @@
           "response": []
         },
         {
-          "_postman_id": "5434ed09-03c5-4046-8873-9438f691c491",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -3745,6 +3859,10 @@
               }
             }
           ],
+          "_postman_id": "5434ed09-03c5-4046-8873-9438f691c491",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3775,8 +3893,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -3785,7 +3902,6 @@
           "response": []
         },
         {
-          "_postman_id": "a7545592-e2e7-478a-89c0-f683c65d01db",
           "name": "Get the Subscription",
           "event": [
             {
@@ -3805,6 +3921,10 @@
               }
             }
           ],
+          "_postman_id": "a7545592-e2e7-478a-89c0-f683c65d01db",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3830,7 +3950,6 @@
           "response": []
         },
         {
-          "_postman_id": "57084893-863a-45b3-8656-10b9f3dfca9b",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -3866,6 +3985,10 @@
               }
             }
           ],
+          "_postman_id": "57084893-863a-45b3-8656-10b9f3dfca9b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3881,17 +4004,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "93091a5e-7b7f-4d99-a80f-0cf8ef13438f",
           "name": "Get the Product",
           "event": [
             {
@@ -3907,6 +4025,10 @@
               }
             }
           ],
+          "_postman_id": "93091a5e-7b7f-4d99-a80f-0cf8ef13438f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -3941,8 +4063,7 @@
               "query": [
                 {
                   "key": "currency",
-                  "value": "USD",
-                  "equals": true
+                  "value": "USD"
                 }
               ]
             },
@@ -3951,7 +4072,6 @@
           "response": []
         },
         {
-          "_postman_id": "7af465e5-d067-4569-8f1e-4fce4886d892",
           "name": "Run Preview",
           "event": [
             {
@@ -3977,6 +4097,10 @@
               }
             }
           ],
+          "_postman_id": "7af465e5-d067-4569-8f1e-4fce4886d892",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4008,8 +4132,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 }
               ]
             },
@@ -4018,7 +4141,6 @@
           "response": []
         },
         {
-          "_postman_id": "967d3b29-4be1-4334-b852-d87d52b10072",
           "name": "Replace the Item",
           "event": [
             {
@@ -4038,6 +4160,10 @@
               }
             }
           ],
+          "_postman_id": "967d3b29-4be1-4334-b852-d87d52b10072",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4068,13 +4194,11 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             },
@@ -4083,7 +4207,6 @@
           "response": []
         },
         {
-          "_postman_id": "c31b2a3c-1f98-49ff-8c5b-6610b37a5a77",
           "name": "Get the Customer",
           "event": [
             {
@@ -4106,6 +4229,10 @@
               }
             }
           ],
+          "_postman_id": "c31b2a3c-1f98-49ff-8c5b-6610b37a5a77",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4133,8 +4260,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders",
-                  "equals": true
+                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders"
                 }
               ]
             },
@@ -4143,7 +4269,6 @@
           "response": []
         },
         {
-          "_postman_id": "e87b7c72-2a72-43d3-bf07-f057bc6b530e",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -4159,6 +4284,10 @@
               }
             }
           ],
+          "_postman_id": "e87b7c72-2a72-43d3-bf07-f057bc6b530e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4183,15 +4312,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "65f7c45b-b100-4b52-8570-7281e574dbe1"
     },
     {
-      "_postman_id": "6785ffd8-623a-4db6-941d-562ad4e49775",
       "name": "Replace Item, Immediate, Same Plan, Downgrade",
-      "description": "",
       "item": [
         {
-          "_postman_id": "e482d487-6d51-48f9-8771-ac39b9c20554",
           "name": "Create Cart",
           "event": [
             {
@@ -4218,6 +4345,10 @@
               }
             }
           ],
+          "_postman_id": "e482d487-6d51-48f9-8771-ac39b9c20554",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4251,8 +4382,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -4261,7 +4391,6 @@
           "response": []
         },
         {
-          "_postman_id": "b75d730a-7d2b-49bf-aa48-c7e6af12943c",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -4279,6 +4408,10 @@
               }
             }
           ],
+          "_postman_id": "b75d730a-7d2b-49bf-aa48-c7e6af12943c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4309,8 +4442,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -4319,7 +4451,6 @@
           "response": []
         },
         {
-          "_postman_id": "544b5637-92f5-4abb-83d1-a4162ef0780e",
           "name": "Get the Subscription",
           "event": [
             {
@@ -4339,6 +4470,10 @@
               }
             }
           ],
+          "_postman_id": "544b5637-92f5-4abb-83d1-a4162ef0780e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4364,7 +4499,6 @@
           "response": []
         },
         {
-          "_postman_id": "78d96430-dedd-480e-ba0b-0fd55dcea30a",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -4400,6 +4534,10 @@
               }
             }
           ],
+          "_postman_id": "78d96430-dedd-480e-ba0b-0fd55dcea30a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4415,17 +4553,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "7beb77a4-6917-462e-b7cb-c4c04e10f6ce",
           "name": "Get the Product",
           "event": [
             {
@@ -4441,6 +4574,10 @@
               }
             }
           ],
+          "_postman_id": "7beb77a4-6917-462e-b7cb-c4c04e10f6ce",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4475,8 +4612,7 @@
               "query": [
                 {
                   "key": "currency",
-                  "value": "USD",
-                  "equals": true
+                  "value": "USD"
                 }
               ]
             },
@@ -4485,7 +4621,6 @@
           "response": []
         },
         {
-          "_postman_id": "271cfb07-5631-405d-b82e-1a860eee0fe9",
           "name": "Run Preview",
           "event": [
             {
@@ -4518,6 +4653,10 @@
               }
             }
           ],
+          "_postman_id": "271cfb07-5631-405d-b82e-1a860eee0fe9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4549,8 +4688,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-pro-sub.test",
-                  "equals": true
+                  "value": "digital-pro-sub.test"
                 }
               ]
             },
@@ -4559,7 +4697,6 @@
           "response": []
         },
         {
-          "_postman_id": "1e7419c7-a2ef-4b65-995f-4e366afdb947",
           "name": "Replace the Item",
           "event": [
             {
@@ -4595,6 +4732,10 @@
               }
             }
           ],
+          "_postman_id": "1e7419c7-a2ef-4b65-995f-4e366afdb947",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4625,13 +4766,11 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-pro-sub.test",
-                  "equals": true
+                  "value": "digital-pro-sub.test"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method",
-                  "equals": true
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.refunds.payment_method"
                 }
               ]
             },
@@ -4640,7 +4779,6 @@
           "response": []
         },
         {
-          "_postman_id": "99dab75e-df97-438a-bb69-e99c38f9b397",
           "name": "Get the Customer",
           "event": [
             {
@@ -4666,6 +4804,10 @@
               }
             }
           ],
+          "_postman_id": "99dab75e-df97-438a-bb69-e99c38f9b397",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4693,8 +4835,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders",
-                  "equals": true
+                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders"
                 }
               ]
             },
@@ -4703,7 +4844,6 @@
           "response": []
         },
         {
-          "_postman_id": "36f48a26-0dc3-4bce-900d-92462252db1f",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -4719,6 +4859,10 @@
               }
             }
           ],
+          "_postman_id": "36f48a26-0dc3-4bce-900d-92462252db1f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4743,15 +4887,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "6785ffd8-623a-4db6-941d-562ad4e49775"
     },
     {
-      "_postman_id": "5e7326af-2c74-46ed-b714-16e11c7c6e82",
       "name": "Replace Item, Period End, Same Plan, Downgrade",
-      "description": "",
       "item": [
         {
-          "_postman_id": "8cc9c5ef-183d-45cb-b5d3-77d2acdc44d0",
           "name": "Create Cart",
           "event": [
             {
@@ -4778,6 +4920,10 @@
               }
             }
           ],
+          "_postman_id": "8cc9c5ef-183d-45cb-b5d3-77d2acdc44d0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4811,8 +4957,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -4821,7 +4966,6 @@
           "response": []
         },
         {
-          "_postman_id": "6a0af3f6-ab14-4a0b-b127-93e5ae8901e6",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -4839,6 +4983,10 @@
               }
             }
           ],
+          "_postman_id": "6a0af3f6-ab14-4a0b-b127-93e5ae8901e6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4869,8 +5017,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -4879,7 +5026,6 @@
           "response": []
         },
         {
-          "_postman_id": "5b6e18bb-f0db-48c4-bc86-aef9efaa1942",
           "name": "Get the Subscription",
           "event": [
             {
@@ -4899,6 +5045,10 @@
               }
             }
           ],
+          "_postman_id": "5b6e18bb-f0db-48c4-bc86-aef9efaa1942",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4924,7 +5074,6 @@
           "response": []
         },
         {
-          "_postman_id": "2b3c510a-2e39-48cd-b2af-922a0293a92d",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -4960,6 +5109,10 @@
               }
             }
           ],
+          "_postman_id": "2b3c510a-2e39-48cd-b2af-922a0293a92d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -4975,17 +5128,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "ca2aee69-cdca-45f6-8552-a930be9f3ce5",
           "name": "Get the Product",
           "event": [
             {
@@ -5001,6 +5149,10 @@
               }
             }
           ],
+          "_postman_id": "ca2aee69-cdca-45f6-8552-a930be9f3ce5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5035,8 +5187,7 @@
               "query": [
                 {
                   "key": "currency",
-                  "value": "USD",
-                  "equals": true
+                  "value": "USD"
                 }
               ]
             },
@@ -5045,7 +5196,6 @@
           "response": []
         },
         {
-          "_postman_id": "6de3d632-b336-4b44-b9a3-1556eb647a8a",
           "name": "Run Preview",
           "event": [
             {
@@ -5071,6 +5221,10 @@
               }
             }
           ],
+          "_postman_id": "6de3d632-b336-4b44-b9a3-1556eb647a8a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5102,8 +5256,7 @@
               "query": [
                 {
                   "key": "remove_product_id",
-                  "value": "digital-pro-sub.test",
-                  "equals": true
+                  "value": "digital-pro-sub.test"
                 }
               ]
             },
@@ -5112,7 +5265,6 @@
           "response": []
         },
         {
-          "_postman_id": "db694461-b07a-4980-ab8c-353bc4742517",
           "name": "Replace the Item",
           "event": [
             {
@@ -5132,6 +5284,10 @@
               }
             }
           ],
+          "_postman_id": "db694461-b07a-4980-ab8c-353bc4742517",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5162,13 +5318,11 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-pro-sub.test",
-                  "equals": true
+                  "value": "digital-pro-sub.test"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             },
@@ -5177,7 +5331,6 @@
           "response": []
         },
         {
-          "_postman_id": "54d84c8d-4c56-4ffa-94a5-d03f85af914a",
           "name": "Get the Customer",
           "event": [
             {
@@ -5200,6 +5353,10 @@
               }
             }
           ],
+          "_postman_id": "54d84c8d-4c56-4ffa-94a5-d03f85af914a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5227,8 +5384,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders",
-                  "equals": true
+                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders"
                 }
               ]
             },
@@ -5237,7 +5393,6 @@
           "response": []
         },
         {
-          "_postman_id": "3d1c2432-c824-41e3-9e55-9fa3dc23864f",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -5253,6 +5408,10 @@
               }
             }
           ],
+          "_postman_id": "3d1c2432-c824-41e3-9e55-9fa3dc23864f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5277,15 +5436,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "5e7326af-2c74-46ed-b714-16e11c7c6e82"
     },
     {
-      "_postman_id": "43e2a560-a967-4f08-9ed1-678828c15e3e",
       "name": "Replace Item, Immediate, Different Plan, Upgrade",
-      "description": "",
       "item": [
         {
-          "_postman_id": "ecccf38c-d2e1-4104-a6cd-6103e4723f98",
           "name": "Create Cart",
           "event": [
             {
@@ -5312,6 +5469,10 @@
               }
             }
           ],
+          "_postman_id": "ecccf38c-d2e1-4104-a6cd-6103e4723f98",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5345,8 +5506,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -5355,7 +5515,6 @@
           "response": []
         },
         {
-          "_postman_id": "7f8090e6-993f-46a0-8bcd-aa2b2b45f24b",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -5373,6 +5532,10 @@
               }
             }
           ],
+          "_postman_id": "7f8090e6-993f-46a0-8bcd-aa2b2b45f24b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5403,8 +5566,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -5413,7 +5575,6 @@
           "response": []
         },
         {
-          "_postman_id": "aa79b562-e2c8-4e2c-a636-6e5b09cec399",
           "name": "Get the Subscription",
           "event": [
             {
@@ -5433,6 +5594,10 @@
               }
             }
           ],
+          "_postman_id": "aa79b562-e2c8-4e2c-a636-6e5b09cec399",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5458,7 +5623,6 @@
           "response": []
         },
         {
-          "_postman_id": "33c8348a-13d3-47f4-818c-ff6d98387187",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -5494,6 +5658,10 @@
               }
             }
           ],
+          "_postman_id": "33c8348a-13d3-47f4-818c-ff6d98387187",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5509,17 +5677,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "7ced7913-599b-48b5-9e8c-8607f04f6d27",
           "name": "Get the Product",
           "event": [
             {
@@ -5535,6 +5698,10 @@
               }
             }
           ],
+          "_postman_id": "7ced7913-599b-48b5-9e8c-8607f04f6d27",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5569,13 +5736,11 @@
               "query": [
                 {
                   "key": "currency",
-                  "value": "USD",
-                  "equals": true
+                  "value": "USD"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription_plan",
-                  "equals": true
+                  "value": "subscription_plan"
                 }
               ]
             },
@@ -5584,7 +5749,6 @@
           "response": []
         },
         {
-          "_postman_id": "c095d95f-f1ba-4e66-bbdf-660f37565f69",
           "name": "Run Preview",
           "event": [
             {
@@ -5621,6 +5785,10 @@
               }
             }
           ],
+          "_postman_id": "c095d95f-f1ba-4e66-bbdf-660f37565f69",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5652,8 +5820,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 }
               ]
             },
@@ -5662,7 +5829,6 @@
           "response": []
         },
         {
-          "_postman_id": "764d2a4d-fd0e-42ee-82b1-f1614b7efb4a",
           "name": "Replace the Item",
           "event": [
             {
@@ -5695,6 +5861,10 @@
               }
             }
           ],
+          "_postman_id": "764d2a4d-fd0e-42ee-82b1-f1614b7efb4a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5725,13 +5895,11 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method",
-                  "equals": true
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method"
                 }
               ]
             },
@@ -5740,7 +5908,6 @@
           "response": []
         },
         {
-          "_postman_id": "4eac5373-1b0e-4fbb-ad6b-1e9d8f5426de",
           "name": "Get the Customer",
           "event": [
             {
@@ -5768,6 +5935,10 @@
               }
             }
           ],
+          "_postman_id": "4eac5373-1b0e-4fbb-ad6b-1e9d8f5426de",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5795,8 +5966,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders",
-                  "equals": true
+                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders"
                 }
               ]
             },
@@ -5804,15 +5974,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "43e2a560-a967-4f08-9ed1-678828c15e3e"
     },
     {
-      "_postman_id": "5cf6a4c4-c456-4d14-bf80-b321c55623ba",
       "name": "Replace Item, Period End, Different Plan, Upgrade",
-      "description": "",
       "item": [
         {
-          "_postman_id": "0f989431-a7e7-4d7e-84f2-828e5b5daf14",
           "name": "Create Cart",
           "event": [
             {
@@ -5839,6 +6007,10 @@
               }
             }
           ],
+          "_postman_id": "0f989431-a7e7-4d7e-84f2-828e5b5daf14",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5872,8 +6044,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -5882,7 +6053,6 @@
           "response": []
         },
         {
-          "_postman_id": "a8ba4e0b-febd-456c-b13f-82dfcaa99192",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -5900,6 +6070,10 @@
               }
             }
           ],
+          "_postman_id": "a8ba4e0b-febd-456c-b13f-82dfcaa99192",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5930,8 +6104,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -5940,7 +6113,6 @@
           "response": []
         },
         {
-          "_postman_id": "bfbb9fb0-a4fc-4c47-b037-3591d9f4f0ae",
           "name": "Get the Subscription",
           "event": [
             {
@@ -5960,6 +6132,10 @@
               }
             }
           ],
+          "_postman_id": "bfbb9fb0-a4fc-4c47-b037-3591d9f4f0ae",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -5985,7 +6161,6 @@
           "response": []
         },
         {
-          "_postman_id": "a85d44e7-56e4-4bc0-837a-4a2be1742e8f",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -6021,6 +6196,10 @@
               }
             }
           ],
+          "_postman_id": "a85d44e7-56e4-4bc0-837a-4a2be1742e8f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6036,17 +6215,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "8a50bd8f-c60a-4933-80a5-792769e47452",
           "name": "Get the Product",
           "event": [
             {
@@ -6062,6 +6236,10 @@
               }
             }
           ],
+          "_postman_id": "8a50bd8f-c60a-4933-80a5-792769e47452",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6096,8 +6274,7 @@
               "query": [
                 {
                   "key": "currency",
-                  "value": "USD",
-                  "equals": true
+                  "value": "USD"
                 }
               ]
             },
@@ -6106,7 +6283,6 @@
           "response": []
         },
         {
-          "_postman_id": "d0604277-001e-4356-b80d-f771cea1eba6",
           "name": "Run Preview",
           "event": [
             {
@@ -6132,6 +6308,10 @@
               }
             }
           ],
+          "_postman_id": "d0604277-001e-4356-b80d-f771cea1eba6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6163,8 +6343,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 }
               ]
             },
@@ -6173,7 +6352,6 @@
           "response": []
         },
         {
-          "_postman_id": "90feab5f-c253-43a7-b100-4ad9bc6dc34c",
           "name": "Replace the Item",
           "event": [
             {
@@ -6194,6 +6372,10 @@
               }
             }
           ],
+          "_postman_id": "90feab5f-c253-43a7-b100-4ad9bc6dc34c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6224,13 +6406,11 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             },
@@ -6239,7 +6419,6 @@
           "response": []
         },
         {
-          "_postman_id": "b13b5cb6-dbd6-404a-b301-1d60aa381f45",
           "name": "Get the Customer",
           "event": [
             {
@@ -6262,6 +6441,10 @@
               }
             }
           ],
+          "_postman_id": "b13b5cb6-dbd6-404a-b301-1d60aa381f45",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6289,8 +6472,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders",
-                  "equals": true
+                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders"
                 }
               ]
             },
@@ -6299,7 +6481,6 @@
           "response": []
         },
         {
-          "_postman_id": "cc0b63df-d0c2-4bbc-9e99-963116574856",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -6315,6 +6496,10 @@
               }
             }
           ],
+          "_postman_id": "cc0b63df-d0c2-4bbc-9e99-963116574856",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6339,15 +6524,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "5cf6a4c4-c456-4d14-bf80-b321c55623ba"
     },
     {
-      "_postman_id": "5fa4fd44-148e-4ef0-a6f3-b179adc26627",
       "name": "Replace Item, Immediate, Different Plan, Downgrade",
-      "description": "",
       "item": [
         {
-          "_postman_id": "ba735ea5-08c3-4ac7-ba91-eb48b0a484f1",
           "name": "Create Cart",
           "event": [
             {
@@ -6374,6 +6557,10 @@
               }
             }
           ],
+          "_postman_id": "ba735ea5-08c3-4ac7-ba91-eb48b0a484f1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6407,8 +6594,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -6417,7 +6603,6 @@
           "response": []
         },
         {
-          "_postman_id": "0c8954c1-a631-433e-8d59-326c94f5910a",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -6435,6 +6620,10 @@
               }
             }
           ],
+          "_postman_id": "0c8954c1-a631-433e-8d59-326c94f5910a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6465,8 +6654,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -6475,7 +6663,6 @@
           "response": []
         },
         {
-          "_postman_id": "8d5df13e-4e7a-4163-9256-332e3190562c",
           "name": "Get the Subscription",
           "event": [
             {
@@ -6494,6 +6681,10 @@
               }
             }
           ],
+          "_postman_id": "8d5df13e-4e7a-4163-9256-332e3190562c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6519,7 +6710,6 @@
           "response": []
         },
         {
-          "_postman_id": "5bb6c6c6-574d-400a-9222-68f806907009",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -6555,6 +6745,10 @@
               }
             }
           ],
+          "_postman_id": "5bb6c6c6-574d-400a-9222-68f806907009",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6570,17 +6764,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "f241ab28-6b11-42ed-9f82-3ce8835e6c4e",
           "name": "Get the Product",
           "event": [
             {
@@ -6596,6 +6785,10 @@
               }
             }
           ],
+          "_postman_id": "f241ab28-6b11-42ed-9f82-3ce8835e6c4e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6630,8 +6823,7 @@
               "query": [
                 {
                   "key": "currency",
-                  "value": "USD",
-                  "equals": true
+                  "value": "USD"
                 }
               ]
             },
@@ -6640,7 +6832,6 @@
           "response": []
         },
         {
-          "_postman_id": "69ce595e-054c-4eb4-bcb2-d38c44ca2813",
           "name": "Run Preview",
           "event": [
             {
@@ -6677,6 +6868,10 @@
               }
             }
           ],
+          "_postman_id": "69ce595e-054c-4eb4-bcb2-d38c44ca2813",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6708,8 +6903,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-term-sub.test",
-                  "equals": true
+                  "value": "digital-term-sub.test"
                 }
               ]
             },
@@ -6718,7 +6912,6 @@
           "response": []
         },
         {
-          "_postman_id": "9987c8cf-4b6d-4407-a4bb-f4cd60f26d7a",
           "name": "Replace the Item",
           "event": [
             {
@@ -6751,6 +6944,10 @@
               }
             }
           ],
+          "_postman_id": "9987c8cf-4b6d-4407-a4bb-f4cd60f26d7a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6781,13 +6978,11 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-term-sub.test",
-                  "equals": true
+                  "value": "digital-term-sub.test"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method",
-                  "equals": true
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method"
                 }
               ]
             },
@@ -6796,7 +6991,6 @@
           "response": []
         },
         {
-          "_postman_id": "f30a3483-e090-41cc-9457-94b1ff838fe4",
           "name": "Get the Customer",
           "event": [
             {
@@ -6822,6 +7016,10 @@
               }
             }
           ],
+          "_postman_id": "f30a3483-e090-41cc-9457-94b1ff838fe4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6849,8 +7047,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders",
-                  "equals": true
+                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders"
                 }
               ]
             },
@@ -6858,15 +7055,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "5fa4fd44-148e-4ef0-a6f3-b179adc26627"
     },
     {
-      "_postman_id": "4fcfc9d6-01be-43e3-97ad-104ae22eb849",
       "name": "Replace Item, Period End, Different Plan, Downgrade",
-      "description": "",
       "item": [
         {
-          "_postman_id": "1f878988-4374-4af7-b7b5-f8aa9cf6a46e",
           "name": "Create Cart",
           "event": [
             {
@@ -6893,6 +7088,10 @@
               }
             }
           ],
+          "_postman_id": "1f878988-4374-4af7-b7b5-f8aa9cf6a46e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6926,8 +7125,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -6936,7 +7134,6 @@
           "response": []
         },
         {
-          "_postman_id": "e0ac153b-322c-4609-9bb9-7f87710ba745",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -6954,6 +7151,10 @@
               }
             }
           ],
+          "_postman_id": "e0ac153b-322c-4609-9bb9-7f87710ba745",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -6984,8 +7185,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -6994,7 +7194,6 @@
           "response": []
         },
         {
-          "_postman_id": "a36d911f-d5ea-48bf-af7d-fe95eb715337",
           "name": "Get the Subscription",
           "event": [
             {
@@ -7014,6 +7213,10 @@
               }
             }
           ],
+          "_postman_id": "a36d911f-d5ea-48bf-af7d-fe95eb715337",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7039,7 +7242,6 @@
           "response": []
         },
         {
-          "_postman_id": "69e90e67-dcfe-49c5-a345-5a5a79757d60",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -7075,6 +7277,10 @@
               }
             }
           ],
+          "_postman_id": "69e90e67-dcfe-49c5-a345-5a5a79757d60",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7090,17 +7296,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "704f51f7-77c5-4b31-aec8-cc9f2ca3aff3",
           "name": "Get the Product",
           "event": [
             {
@@ -7116,6 +7317,10 @@
               }
             }
           ],
+          "_postman_id": "704f51f7-77c5-4b31-aec8-cc9f2ca3aff3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7150,8 +7355,7 @@
               "query": [
                 {
                   "key": "currency",
-                  "value": "USD",
-                  "equals": true
+                  "value": "USD"
                 }
               ]
             },
@@ -7160,7 +7364,6 @@
           "response": []
         },
         {
-          "_postman_id": "43891b65-1ddc-477b-adf8-515223499ec8",
           "name": "Run Preview",
           "event": [
             {
@@ -7186,6 +7389,10 @@
               }
             }
           ],
+          "_postman_id": "43891b65-1ddc-477b-adf8-515223499ec8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7217,8 +7424,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-term-sub.test",
-                  "equals": true
+                  "value": "digital-term-sub.test"
                 }
               ]
             },
@@ -7227,7 +7433,6 @@
           "response": []
         },
         {
-          "_postman_id": "9b2ab518-f11f-4d25-8586-ac19f770dda8",
           "name": "Replace the Item",
           "event": [
             {
@@ -7248,6 +7453,10 @@
               }
             }
           ],
+          "_postman_id": "9b2ab518-f11f-4d25-8586-ac19f770dda8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7278,13 +7487,11 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-term-sub.test",
-                  "equals": true
+                  "value": "digital-term-sub.test"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription.invoices",
-                  "equals": true
+                  "value": "subscription.invoices"
                 }
               ]
             },
@@ -7293,7 +7500,6 @@
           "response": []
         },
         {
-          "_postman_id": "7b064485-9e41-43de-a0fa-75634e08f204",
           "name": "Get the Customer",
           "event": [
             {
@@ -7316,6 +7522,10 @@
               }
             }
           ],
+          "_postman_id": "7b064485-9e41-43de-a0fa-75634e08f204",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7343,8 +7553,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders",
-                  "equals": true
+                  "value": "refunds.payment_method,payments.payment_method,subscriptions,invoices,orders"
                 }
               ]
             },
@@ -7353,7 +7562,6 @@
           "response": []
         },
         {
-          "_postman_id": "21486841-54c8-45bc-af0b-e876a890c8d6",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -7369,6 +7577,10 @@
               }
             }
           ],
+          "_postman_id": "21486841-54c8-45bc-af0b-e876a890c8d6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7393,15 +7605,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "4fcfc9d6-01be-43e3-97ad-104ae22eb849"
     },
     {
-      "_postman_id": "2c40ffaf-30a7-44fe-a6f4-b5b840d66ce9",
       "name": "Replace Item, Immediate, Different Plan, Upgrade, Both Trial",
-      "description": "",
       "item": [
         {
-          "_postman_id": "9873dd72-76a4-4587-93e9-969d9f59ecc4",
           "name": "Get Product",
           "event": [
             {
@@ -7417,6 +7627,10 @@
               }
             }
           ],
+          "_postman_id": "9873dd72-76a4-4587-93e9-969d9f59ecc4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7441,7 +7655,6 @@
           "response": []
         },
         {
-          "_postman_id": "43947f7a-5064-4803-b334-ac7c2861d1e4",
           "name": "Add Trial to Subscription Plan",
           "event": [
             {
@@ -7455,6 +7668,10 @@
               }
             }
           ],
+          "_postman_id": "43947f7a-5064-4803-b334-ac7c2861d1e4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7479,7 +7696,6 @@
           "response": []
         },
         {
-          "_postman_id": "608f5177-def4-4ab5-8418-24c96f3f19bd",
           "name": "Get Product (2)",
           "event": [
             {
@@ -7495,6 +7711,10 @@
               }
             }
           ],
+          "_postman_id": "608f5177-def4-4ab5-8418-24c96f3f19bd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7519,7 +7739,6 @@
           "response": []
         },
         {
-          "_postman_id": "36a34cdb-3b9d-4898-95b2-c7e51f18c5a7",
           "name": "Add Trial to Subscription Plan (2)",
           "event": [
             {
@@ -7533,6 +7752,10 @@
               }
             }
           ],
+          "_postman_id": "36a34cdb-3b9d-4898-95b2-c7e51f18c5a7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7557,7 +7780,6 @@
           "response": []
         },
         {
-          "_postman_id": "a85e39ba-9579-4774-b093-7fb2d3fb4da3",
           "name": "Create Cart",
           "event": [
             {
@@ -7584,6 +7806,10 @@
               }
             }
           ],
+          "_postman_id": "a85e39ba-9579-4774-b093-7fb2d3fb4da3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7617,8 +7843,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -7627,7 +7852,6 @@
           "response": []
         },
         {
-          "_postman_id": "d97943d3-a69b-4e82-8dae-8353ee37abeb",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -7645,6 +7869,10 @@
               }
             }
           ],
+          "_postman_id": "d97943d3-a69b-4e82-8dae-8353ee37abeb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7675,8 +7903,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -7685,7 +7912,6 @@
           "response": []
         },
         {
-          "_postman_id": "231e0cce-f476-45bc-bc46-fc4ce9bb2b06",
           "name": "Get the Subscription",
           "event": [
             {
@@ -7706,6 +7932,10 @@
               }
             }
           ],
+          "_postman_id": "231e0cce-f476-45bc-bc46-fc4ce9bb2b06",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7731,7 +7961,6 @@
           "response": []
         },
         {
-          "_postman_id": "9d0e4701-6d13-49b8-acf8-05e4fbe9e3c9",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -7767,6 +7996,10 @@
               }
             }
           ],
+          "_postman_id": "9d0e4701-6d13-49b8-acf8-05e4fbe9e3c9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7782,17 +8015,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "b79ed4b1-a8bc-4ce4-82d9-7ccfa28c4d5c",
           "name": "Run Preview",
           "event": [
             {
@@ -7827,6 +8055,10 @@
               }
             }
           ],
+          "_postman_id": "b79ed4b1-a8bc-4ce4-82d9-7ccfa28c4d5c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7858,8 +8090,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-term-sub.test",
-                  "equals": true
+                  "value": "digital-term-sub.test"
                 }
               ]
             },
@@ -7868,7 +8099,6 @@
           "response": []
         },
         {
-          "_postman_id": "45c96025-5c2a-4a6d-91c4-fb55183498f4",
           "name": "Replace the Item",
           "event": [
             {
@@ -7901,6 +8131,10 @@
               }
             }
           ],
+          "_postman_id": "45c96025-5c2a-4a6d-91c4-fb55183498f4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7931,13 +8165,11 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-term-sub.test",
-                  "equals": true
+                  "value": "digital-term-sub.test"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscription.customer.subscriptions",
-                  "equals": true
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscription.customer.subscriptions"
                 }
               ]
             }
@@ -7945,7 +8177,6 @@
           "response": []
         },
         {
-          "_postman_id": "5399501a-6213-4ca2-b11d-deabed6b7ef4",
           "name": "Remove Trial from Subscription Plan",
           "event": [
             {
@@ -7959,6 +8190,10 @@
               }
             }
           ],
+          "_postman_id": "5399501a-6213-4ca2-b11d-deabed6b7ef4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -7983,7 +8218,6 @@
           "response": []
         },
         {
-          "_postman_id": "5b18e423-e49a-41ee-898d-e752436b5eab",
           "name": "Remove Trial from Subscription Plan (2)",
           "event": [
             {
@@ -7997,6 +8231,10 @@
               }
             }
           ],
+          "_postman_id": "5b18e423-e49a-41ee-898d-e752436b5eab",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8021,7 +8259,6 @@
           "response": []
         },
         {
-          "_postman_id": "b6171b11-4294-4c1d-80cd-294b2f44f566",
           "name": "Cancel Subscription (2)",
           "event": [
             {
@@ -8037,6 +8274,10 @@
               }
             }
           ],
+          "_postman_id": "b6171b11-4294-4c1d-80cd-294b2f44f566",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8062,6 +8303,7 @@
           "response": []
         }
       ],
+      "_postman_id": "2c40ffaf-30a7-44fe-a6f4-b5b840d66ce9",
       "event": [
         {
           "listen": "prerequest",
@@ -8086,12 +8328,9 @@
       ]
     },
     {
-      "_postman_id": "0d714cc9-5510-46dd-b476-7303be6f6672",
       "name": "Replace Item, Immediate, Different Plan, Upgrade, Original Trial",
-      "description": "",
       "item": [
         {
-          "_postman_id": "a0396ae5-b640-400f-92e1-3ef975e364c1",
           "name": "Get Product",
           "event": [
             {
@@ -8107,6 +8346,10 @@
               }
             }
           ],
+          "_postman_id": "a0396ae5-b640-400f-92e1-3ef975e364c1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8131,7 +8374,6 @@
           "response": []
         },
         {
-          "_postman_id": "e488e21b-522c-4f18-99dc-adbc239c1f37",
           "name": "Add Trial to Subscription Plan",
           "event": [
             {
@@ -8145,6 +8387,10 @@
               }
             }
           ],
+          "_postman_id": "e488e21b-522c-4f18-99dc-adbc239c1f37",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8169,7 +8415,6 @@
           "response": []
         },
         {
-          "_postman_id": "236d01f2-45b7-4855-9e6d-75022e7c89dd",
           "name": "Create Cart",
           "event": [
             {
@@ -8196,6 +8441,10 @@
               }
             }
           ],
+          "_postman_id": "236d01f2-45b7-4855-9e6d-75022e7c89dd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8229,8 +8478,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -8239,7 +8487,6 @@
           "response": []
         },
         {
-          "_postman_id": "2fc5f773-488d-43a4-9231-993cf9b751e7",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -8257,6 +8504,10 @@
               }
             }
           ],
+          "_postman_id": "2fc5f773-488d-43a4-9231-993cf9b751e7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8287,8 +8538,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -8297,7 +8547,6 @@
           "response": []
         },
         {
-          "_postman_id": "c8d3550e-a5bb-4370-a2c8-82f2b8b24938",
           "name": "Get the Subscription",
           "event": [
             {
@@ -8318,6 +8567,10 @@
               }
             }
           ],
+          "_postman_id": "c8d3550e-a5bb-4370-a2c8-82f2b8b24938",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8343,7 +8596,6 @@
           "response": []
         },
         {
-          "_postman_id": "52766d3d-1221-4f75-893b-9a8e7251412c",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -8379,6 +8631,10 @@
               }
             }
           ],
+          "_postman_id": "52766d3d-1221-4f75-893b-9a8e7251412c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8394,17 +8650,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "f49017ec-cd7d-411a-a9ba-3abc94952d38",
           "name": "Run Preview",
           "event": [
             {
@@ -8441,6 +8692,10 @@
               }
             }
           ],
+          "_postman_id": "f49017ec-cd7d-411a-a9ba-3abc94952d38",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8472,8 +8727,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-term-sub.test",
-                  "equals": true
+                  "value": "digital-term-sub.test"
                 }
               ]
             },
@@ -8482,7 +8736,6 @@
           "response": []
         },
         {
-          "_postman_id": "36d33a8f-2095-4c43-9fc2-d4aa9941e99a",
           "name": "Replace the Item",
           "event": [
             {
@@ -8514,6 +8767,10 @@
               }
             }
           ],
+          "_postman_id": "36d33a8f-2095-4c43-9fc2-d4aa9941e99a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8544,13 +8801,11 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-term-sub.test",
-                  "equals": true
+                  "value": "digital-term-sub.test"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscription.customer.subscriptions",
-                  "equals": true
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscription.customer.subscriptions"
                 }
               ]
             }
@@ -8558,7 +8813,6 @@
           "response": []
         },
         {
-          "_postman_id": "38aaf060-9b34-43d9-b2e6-6bbedd3d1d51",
           "name": "Remove Trial from Subscription Plan",
           "event": [
             {
@@ -8572,6 +8826,10 @@
               }
             }
           ],
+          "_postman_id": "38aaf060-9b34-43d9-b2e6-6bbedd3d1d51",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8596,7 +8854,6 @@
           "response": []
         },
         {
-          "_postman_id": "f226b366-6554-4237-b234-faac6db20865",
           "name": "Cancel Subscription (2)",
           "event": [
             {
@@ -8612,6 +8869,10 @@
               }
             }
           ],
+          "_postman_id": "f226b366-6554-4237-b234-faac6db20865",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8637,6 +8898,7 @@
           "response": []
         }
       ],
+      "_postman_id": "0d714cc9-5510-46dd-b476-7303be6f6672",
       "event": [
         {
           "listen": "prerequest",
@@ -8661,12 +8923,9 @@
       ]
     },
     {
-      "_postman_id": "50e83c7b-8f41-4b9b-9be9-adf4f1021f8b",
       "name": "Replace Item, Immediate, Different Plan, Upgrade, New Trial",
-      "description": "",
       "item": [
         {
-          "_postman_id": "86999560-65fd-40ae-9e4e-cbbfc8c38a4d",
           "name": "Get Product",
           "event": [
             {
@@ -8682,6 +8941,10 @@
               }
             }
           ],
+          "_postman_id": "86999560-65fd-40ae-9e4e-cbbfc8c38a4d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8706,7 +8969,6 @@
           "response": []
         },
         {
-          "_postman_id": "acaf125c-cfc5-4ecf-98e8-b659061f8c28",
           "name": "Add Trial to Subscription Plan",
           "event": [
             {
@@ -8720,6 +8982,10 @@
               }
             }
           ],
+          "_postman_id": "acaf125c-cfc5-4ecf-98e8-b659061f8c28",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8744,7 +9010,6 @@
           "response": []
         },
         {
-          "_postman_id": "8385de49-77f7-4d52-a579-2255a4fec9ee",
           "name": "Create Cart",
           "event": [
             {
@@ -8771,6 +9036,10 @@
               }
             }
           ],
+          "_postman_id": "8385de49-77f7-4d52-a579-2255a4fec9ee",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8804,8 +9073,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -8814,7 +9082,6 @@
           "response": []
         },
         {
-          "_postman_id": "b55f5e4c-5fda-461c-9488-992b284998ef",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -8832,6 +9099,10 @@
               }
             }
           ],
+          "_postman_id": "b55f5e4c-5fda-461c-9488-992b284998ef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8862,8 +9133,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -8872,7 +9142,6 @@
           "response": []
         },
         {
-          "_postman_id": "3aebcf50-a030-4cec-af99-dd55a4b69c3d",
           "name": "Get the Subscription",
           "event": [
             {
@@ -8893,6 +9162,10 @@
               }
             }
           ],
+          "_postman_id": "3aebcf50-a030-4cec-af99-dd55a4b69c3d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8918,7 +9191,6 @@
           "response": []
         },
         {
-          "_postman_id": "c344c6d1-c2c1-4ade-bb42-b75865f816c0",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -8954,6 +9226,10 @@
               }
             }
           ],
+          "_postman_id": "c344c6d1-c2c1-4ade-bb42-b75865f816c0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -8969,17 +9245,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "cc8ff86a-250a-46d3-b691-79bace404300",
           "name": "Run Preview",
           "event": [
             {
@@ -9016,6 +9287,10 @@
               }
             }
           ],
+          "_postman_id": "cc8ff86a-250a-46d3-b691-79bace404300",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9047,8 +9322,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-term-sub.test",
-                  "equals": true
+                  "value": "digital-term-sub.test"
                 }
               ]
             },
@@ -9057,7 +9331,6 @@
           "response": []
         },
         {
-          "_postman_id": "07d02f63-7d4c-433c-9c04-604f09478c5c",
           "name": "Replace the Item",
           "event": [
             {
@@ -9090,6 +9363,10 @@
               }
             }
           ],
+          "_postman_id": "07d02f63-7d4c-433c-9c04-604f09478c5c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9120,13 +9397,11 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-term-sub.test",
-                  "equals": true
+                  "value": "digital-term-sub.test"
                 },
                 {
                   "key": "expand",
-                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscription.customer.subscriptions",
-                  "equals": true
+                  "value": "subscription.invoices,subscription.customer.payments.payment_method,subscription.customer.invoices,subscription.customer.refunds.payment_method,subscription.customer.subscriptions"
                 }
               ]
             }
@@ -9134,7 +9409,6 @@
           "response": []
         },
         {
-          "_postman_id": "b13b5cd3-4632-4712-943d-6bb5a7574786",
           "name": "Remove Trial from Subscription Plan",
           "event": [
             {
@@ -9148,6 +9422,10 @@
               }
             }
           ],
+          "_postman_id": "b13b5cd3-4632-4712-943d-6bb5a7574786",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9172,7 +9450,6 @@
           "response": []
         },
         {
-          "_postman_id": "e0e0ce31-7511-4daa-b210-e6a0b70bd13c",
           "name": "Cancel Subscription (2)",
           "event": [
             {
@@ -9188,6 +9465,10 @@
               }
             }
           ],
+          "_postman_id": "e0e0ce31-7511-4daa-b210-e6a0b70bd13c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9213,6 +9494,7 @@
           "response": []
         }
       ],
+      "_postman_id": "50e83c7b-8f41-4b9b-9be9-adf4f1021f8b",
       "event": [
         {
           "listen": "prerequest",
@@ -9237,12 +9519,9 @@
       ]
     },
     {
-      "_postman_id": "661f2e6e-29cf-4835-a4af-e699a800bf0b",
       "name": "Limited Token Permissions",
-      "description": "",
       "item": [
         {
-          "_postman_id": "f27a6f4f-d999-471c-b48a-c5696013d0ee",
           "name": "Create Limited Token",
           "event": [
             {
@@ -9258,6 +9537,10 @@
               }
             }
           ],
+          "_postman_id": "f27a6f4f-d999-471c-b48a-c5696013d0ee",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9292,8 +9575,7 @@
               "query": [
                 {
                   "key": "test",
-                  "value": "true",
-                  "equals": true
+                  "value": "true"
                 }
               ]
             },
@@ -9302,7 +9584,6 @@
           "response": []
         },
         {
-          "_postman_id": "5c960bd0-3b69-470b-b1f0-3aeed2640941",
           "name": "Create Cart",
           "event": [
             {
@@ -9329,6 +9610,10 @@
               }
             }
           ],
+          "_postman_id": "5c960bd0-3b69-470b-b1f0-3aeed2640941",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9362,8 +9647,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -9372,7 +9656,6 @@
           "response": []
         },
         {
-          "_postman_id": "20d8e95f-48fa-416f-9d80-450abea24b55",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -9390,6 +9673,10 @@
               }
             }
           ],
+          "_postman_id": "20d8e95f-48fa-416f-9d80-450abea24b55",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9420,8 +9707,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items.subscription",
-                  "equals": true
+                  "value": "order.items.subscription"
                 }
               ]
             },
@@ -9430,7 +9716,6 @@
           "response": []
         },
         {
-          "_postman_id": "6f55465e-035d-4d04-b157-19f61780f0cd",
           "name": "Change Price",
           "event": [
             {
@@ -9444,6 +9729,10 @@
               }
             }
           ],
+          "_postman_id": "6f55465e-035d-4d04-b157-19f61780f0cd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9474,8 +9763,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 }
               ]
             },
@@ -9484,7 +9772,6 @@
           "response": []
         },
         {
-          "_postman_id": "587de319-986f-451c-89ab-5dc5d43c8234",
           "name": "Change Currency",
           "event": [
             {
@@ -9498,6 +9785,10 @@
               }
             }
           ],
+          "_postman_id": "587de319-986f-451c-89ab-5dc5d43c8234",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9528,8 +9819,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 }
               ]
             },
@@ -9538,7 +9828,6 @@
           "response": []
         },
         {
-          "_postman_id": "331363f3-ce4e-45ac-918e-ea06042a4040",
           "name": "Change Discount",
           "event": [
             {
@@ -9552,6 +9841,10 @@
               }
             }
           ],
+          "_postman_id": "331363f3-ce4e-45ac-918e-ea06042a4040",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9582,8 +9875,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 }
               ]
             },
@@ -9592,7 +9884,6 @@
           "response": []
         },
         {
-          "_postman_id": "64adf09d-7d2d-4077-950f-83d35e4ed7cf",
           "name": "Change Discount Apply Count",
           "event": [
             {
@@ -9606,6 +9897,10 @@
               }
             }
           ],
+          "_postman_id": "64adf09d-7d2d-4077-950f-83d35e4ed7cf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9636,8 +9931,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 }
               ]
             },
@@ -9646,7 +9940,6 @@
           "response": []
         },
         {
-          "_postman_id": "e89c36ad-7167-450f-9784-ec5d3890c461",
           "name": "Apply Immediately Flag",
           "event": [
             {
@@ -9660,6 +9953,10 @@
               }
             }
           ],
+          "_postman_id": "e89c36ad-7167-450f-9784-ec5d3890c461",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9690,8 +9987,7 @@
               "query": [
                 {
                   "key": "remove_item_id",
-                  "value": "digital-sub.test",
-                  "equals": true
+                  "value": "digital-sub.test"
                 }
               ]
             },
@@ -9700,7 +9996,6 @@
           "response": []
         },
         {
-          "_postman_id": "21d05034-c9f8-44ad-b827-ce920bc54bc6",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -9716,6 +10011,10 @@
               }
             }
           ],
+          "_postman_id": "21d05034-c9f8-44ad-b827-ce920bc54bc6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9740,15 +10039,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "661f2e6e-29cf-4835-a4af-e699a800bf0b"
     },
     {
-      "_postman_id": "4d7dbd85-3c1f-46f2-976d-25f8ba780f9a",
       "name": "Extend Subscription, No Trial",
-      "description": "",
       "item": [
         {
-          "_postman_id": "22fac37b-2281-492d-b081-b1535c29a812",
           "name": "Create Cart",
           "event": [
             {
@@ -9775,6 +10072,10 @@
               }
             }
           ],
+          "_postman_id": "22fac37b-2281-492d-b081-b1535c29a812",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9808,8 +10109,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -9818,7 +10118,6 @@
           "response": []
         },
         {
-          "_postman_id": "e505c807-d9c9-412c-940d-5d137a2e9a49",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -9836,6 +10135,10 @@
               }
             }
           ],
+          "_postman_id": "e505c807-d9c9-412c-940d-5d137a2e9a49",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9866,8 +10169,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items",
-                  "equals": true
+                  "value": "order.items"
                 }
               ]
             },
@@ -9876,7 +10178,6 @@
           "response": []
         },
         {
-          "_postman_id": "dc9a1787-2e9a-4656-945b-58d976bd148d",
           "name": "Get the Subscription",
           "event": [
             {
@@ -9895,6 +10196,10 @@
               }
             }
           ],
+          "_postman_id": "dc9a1787-2e9a-4656-945b-58d976bd148d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9920,7 +10225,6 @@
           "response": []
         },
         {
-          "_postman_id": "5235d9b0-0f6f-466b-9195-4b5b007b3e5c",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -9956,6 +10260,10 @@
               }
             }
           ],
+          "_postman_id": "5235d9b0-0f6f-466b-9195-4b5b007b3e5c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -9971,17 +10279,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "d49dcafe-2cf3-4166-aab1-a85522c39f11",
           "name": "Extend Subscription",
           "event": [
             {
@@ -10005,6 +10308,10 @@
               }
             }
           ],
+          "_postman_id": "d49dcafe-2cf3-4166-aab1-a85522c39f11",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10030,7 +10337,6 @@
           "response": []
         },
         {
-          "_postman_id": "771377ad-deb4-4668-9352-5b8360a47d63",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -10046,6 +10352,10 @@
               }
             }
           ],
+          "_postman_id": "771377ad-deb4-4668-9352-5b8360a47d63",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10070,15 +10380,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "4d7dbd85-3c1f-46f2-976d-25f8ba780f9a"
     },
     {
-      "_postman_id": "1768e429-a636-4670-94bc-c77a6cfbb5e9",
       "name": "Extend Subscription, Trial",
-      "description": "",
       "item": [
         {
-          "_postman_id": "86ca9806-7f9a-4c07-960a-514c0800c3cc",
           "name": "Create Cart",
           "event": [
             {
@@ -10105,6 +10413,10 @@
               }
             }
           ],
+          "_postman_id": "86ca9806-7f9a-4c07-960a-514c0800c3cc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10138,8 +10450,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -10148,7 +10459,6 @@
           "response": []
         },
         {
-          "_postman_id": "91bbda66-ff79-4870-a7f1-9f98e2754198",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -10166,6 +10476,10 @@
               }
             }
           ],
+          "_postman_id": "91bbda66-ff79-4870-a7f1-9f98e2754198",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10196,8 +10510,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items",
-                  "equals": true
+                  "value": "order.items"
                 }
               ]
             },
@@ -10206,7 +10519,6 @@
           "response": []
         },
         {
-          "_postman_id": "2c1e4647-70ed-4104-b5dc-c2f3591d633f",
           "name": "Get the Subscription",
           "event": [
             {
@@ -10225,6 +10537,10 @@
               }
             }
           ],
+          "_postman_id": "2c1e4647-70ed-4104-b5dc-c2f3591d633f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10250,7 +10566,6 @@
           "response": []
         },
         {
-          "_postman_id": "7549216e-1b6b-40b5-9c68-82774a86267d",
           "name": "Wait 3 seconds",
           "event": [
             {
@@ -10286,6 +10601,10 @@
               }
             }
           ],
+          "_postman_id": "7549216e-1b6b-40b5-9c68-82774a86267d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10301,17 +10620,12 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         },
         {
-          "_postman_id": "be86fee3-7697-453e-91c8-4e3cc500ab04",
           "name": "Extend Subscription",
           "event": [
             {
@@ -10335,6 +10649,10 @@
               }
             }
           ],
+          "_postman_id": "be86fee3-7697-453e-91c8-4e3cc500ab04",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10360,7 +10678,6 @@
           "response": []
         },
         {
-          "_postman_id": "2dad5894-d4da-4249-96e6-f487d4fb5dd6",
           "name": "Cancel Subscription",
           "event": [
             {
@@ -10376,6 +10693,10 @@
               }
             }
           ],
+          "_postman_id": "2dad5894-d4da-4249-96e6-f487d4fb5dd6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10400,15 +10721,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "1768e429-a636-4670-94bc-c77a6cfbb5e9"
     },
     {
-      "_postman_id": "d5550751-b8e0-4ccc-8a8b-6e7f6a149d1d",
       "name": "Cancel Item, Immediate, Single Item Subscription",
-      "description": "",
       "item": [
         {
-          "_postman_id": "432a48f1-88cf-41aa-99cf-1a2b74a99c44",
           "name": "Create Cart",
           "event": [
             {
@@ -10435,6 +10754,10 @@
               }
             }
           ],
+          "_postman_id": "432a48f1-88cf-41aa-99cf-1a2b74a99c44",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10468,8 +10791,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -10478,7 +10800,6 @@
           "response": []
         },
         {
-          "_postman_id": "4b8f524f-2fd8-48ed-9071-79aa83ca7c06",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -10496,6 +10817,10 @@
               }
             }
           ],
+          "_postman_id": "4b8f524f-2fd8-48ed-9071-79aa83ca7c06",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10526,8 +10851,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items",
-                  "equals": true
+                  "value": "order.items"
                 }
               ]
             },
@@ -10536,7 +10860,6 @@
           "response": []
         },
         {
-          "_postman_id": "c1e12811-446b-41ac-9fc0-e4011a4ed7d7",
           "name": "Cancel Item",
           "event": [
             {
@@ -10553,6 +10876,10 @@
               }
             }
           ],
+          "_postman_id": "c1e12811-446b-41ac-9fc0-e4011a4ed7d7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10578,7 +10905,6 @@
           "response": []
         },
         {
-          "_postman_id": "7ddc2f86-a0b4-47c0-b996-ac18cef55ce2",
           "name": "Get the Subscription",
           "event": [
             {
@@ -10596,6 +10922,10 @@
               }
             }
           ],
+          "_postman_id": "7ddc2f86-a0b4-47c0-b996-ac18cef55ce2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10621,6 +10951,7 @@
           "response": []
         }
       ],
+      "_postman_id": "d5550751-b8e0-4ccc-8a8b-6e7f6a149d1d",
       "event": [
         {
           "listen": "prerequest",
@@ -10645,12 +10976,9 @@
       ]
     },
     {
-      "_postman_id": "50b75519-3d2c-4154-8222-72c8a2cf23cd",
       "name": "Cancel Item, Immediate, Multi Item Subscription",
-      "description": "",
       "item": [
         {
-          "_postman_id": "6112092a-be1d-4891-a066-1b97e1876a6d",
           "name": "Create Cart",
           "event": [
             {
@@ -10677,6 +11005,10 @@
               }
             }
           ],
+          "_postman_id": "6112092a-be1d-4891-a066-1b97e1876a6d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10710,8 +11042,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -10720,7 +11051,6 @@
           "response": []
         },
         {
-          "_postman_id": "6199d1e0-7c80-4613-a611-6b16b9e6eb55",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -10738,6 +11068,10 @@
               }
             }
           ],
+          "_postman_id": "6199d1e0-7c80-4613-a611-6b16b9e6eb55",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10768,8 +11102,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items",
-                  "equals": true
+                  "value": "order.items"
                 }
               ]
             },
@@ -10778,7 +11111,6 @@
           "response": []
         },
         {
-          "_postman_id": "a57f53f4-91be-4656-98f4-00b98b7623a4",
           "name": "Cancel Item",
           "event": [
             {
@@ -10795,6 +11127,10 @@
               }
             }
           ],
+          "_postman_id": "a57f53f4-91be-4656-98f4-00b98b7623a4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10820,7 +11156,6 @@
           "response": []
         },
         {
-          "_postman_id": "9b212ee4-adc3-4487-a712-deeb5eef07b6",
           "name": "Get the Subscription",
           "event": [
             {
@@ -10838,6 +11173,10 @@
               }
             }
           ],
+          "_postman_id": "9b212ee4-adc3-4487-a712-deeb5eef07b6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10863,6 +11202,7 @@
           "response": []
         }
       ],
+      "_postman_id": "50b75519-3d2c-4154-8222-72c8a2cf23cd",
       "event": [
         {
           "listen": "prerequest",
@@ -10887,12 +11227,9 @@
       ]
     },
     {
-      "_postman_id": "081be738-4ef8-441b-9812-b62b31139dde",
       "name": "Cancel Item, Period End, Single Item Subscription",
-      "description": "",
       "item": [
         {
-          "_postman_id": "c26dd546-9896-4c03-a981-1b86c324303c",
           "name": "Create Cart",
           "event": [
             {
@@ -10919,6 +11256,10 @@
               }
             }
           ],
+          "_postman_id": "c26dd546-9896-4c03-a981-1b86c324303c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -10952,8 +11293,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "items.subscription_plan,items.subscription_terms",
-                  "equals": true
+                  "value": "items.subscription_plan,items.subscription_terms"
                 }
               ]
             },
@@ -10962,7 +11302,6 @@
           "response": []
         },
         {
-          "_postman_id": "4e791268-84d8-46a9-a1bc-8239476a76fe",
           "name": "Submit Cart Payment",
           "event": [
             {
@@ -10980,6 +11319,10 @@
               }
             }
           ],
+          "_postman_id": "4e791268-84d8-46a9-a1bc-8239476a76fe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -11010,8 +11353,7 @@
               "query": [
                 {
                   "key": "expand",
-                  "value": "order.items",
-                  "equals": true
+                  "value": "order.items"
                 }
               ]
             },
@@ -11020,7 +11362,6 @@
           "response": []
         },
         {
-          "_postman_id": "e4789603-ab91-40ce-beba-7e195a54f3a8",
           "name": "Cancel Item",
           "event": [
             {
@@ -11038,6 +11379,10 @@
               }
             }
           ],
+          "_postman_id": "e4789603-ab91-40ce-beba-7e195a54f3a8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -11063,7 +11408,6 @@
           "response": []
         },
         {
-          "_postman_id": "6f8b30f0-1a48-4e5a-b0f8-df97830e0d72",
           "name": "Get the Subscription",
           "event": [
             {
@@ -11081,6 +11425,10 @@
               }
             }
           ],
+          "_postman_id": "6f8b30f0-1a48-4e5a-b0f8-df97830e0d72",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -11106,6 +11454,7 @@
           "response": []
         }
       ],
+      "_postman_id": "081be738-4ef8-441b-9812-b62b31139dde",
       "event": [
         {
           "listen": "prerequest",
@@ -11130,12 +11479,9 @@
       ]
     },
     {
-      "_postman_id": "f7b781c5-11db-4f0e-934c-a037517f64a9",
       "name": "Post-request Cleanup",
-      "description": "",
       "item": [
         {
-          "_postman_id": "4de380bd-d6e7-466e-884b-ed656fa3dffb",
           "name": "Enable Order Notification Subscription",
           "event": [
             {
@@ -11159,6 +11505,10 @@
               }
             }
           ],
+          "_postman_id": "4de380bd-d6e7-466e-884b-ed656fa3dffb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -11184,7 +11534,6 @@
           "response": []
         },
         {
-          "_postman_id": "f3f10b99-370b-4ab6-b474-f0d33e648194",
           "name": "Enable Payment Notification Subscription",
           "event": [
             {
@@ -11218,6 +11567,10 @@
               }
             }
           ],
+          "_postman_id": "f3f10b99-370b-4ab6-b474-f0d33e648194",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -11243,7 +11596,6 @@
           "response": []
         },
         {
-          "_postman_id": "10e3c58c-cfa2-49b7-9cd0-f1d0ef16cd44",
           "name": "Enable Refund Notification Subscription",
           "event": [
             {
@@ -11278,6 +11630,10 @@
               }
             }
           ],
+          "_postman_id": "10e3c58c-cfa2-49b7-9cd0-f1d0ef16cd44",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -11303,7 +11659,6 @@
           "response": []
         },
         {
-          "_postman_id": "26d5bdb3-8624-4fd5-8377-2280733c021e",
           "name": "Get Subscription Plans",
           "event": [
             {
@@ -11339,6 +11694,10 @@
               }
             }
           ],
+          "_postman_id": "26d5bdb3-8624-4fd5-8377-2280733c021e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -11354,16 +11713,13 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://{{host}}/api/v1/subscription_plans",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "f7b781c5-11db-4f0e-934c-a037517f64a9"
     }
   ],
   "event": [
@@ -11390,60 +11746,52 @@
   ],
   "variable": [
     {
-      "id": "2b1d0185-10b8-48a3-b60c-bb582d389082",
+      "id": "a9eb3d26-e0ec-4d0a-a2c2-eabc9e455704",
       "key": "name",
       "value": "James Smith",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "c1d6e56c-8419-49a2-ad54-a99f6abf1f8f",
+      "id": "78814350-b9e0-4880-ba86-f6adc304c949",
       "key": "address_1",
       "value": "678 Broad St",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "24658eec-8837-489d-9c3c-9ec45f7d1058",
+      "id": "66e31f36-f180-4f1d-a4a0-376b60e2321f",
       "key": "city",
       "value": "Westerville",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "553d8e97-9aff-4eb0-9f90-eda72d165015",
+      "id": "915bf718-0410-48e2-8c02-670d50a4d97f",
       "key": "state_prov",
       "value": "OH",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "67a50b9c-250d-4b53-8b93-7c2aaccb343e",
+      "id": "6ece03ad-e0ea-471f-9d88-15af1ebd8149",
       "key": "postal_code",
       "value": "43081",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "7cd81c27-db37-429b-9077-8e4b2a5a0ea5",
+      "id": "99aff48c-1f50-45c0-9dbd-b7ecd7488912",
       "key": "country",
       "value": "US",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "e69afd5d-707c-4b0f-bdc3-e9cfd00e7407",
+      "id": "8c44b5e8-aedb-48ea-8bf0-b63009ca386f",
       "key": "phone",
       "value": "614-555-0191",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "090b1367-e0e8-4914-9b70-bcb50a98b0ee",
+      "id": "713adcd2-58ae-408f-91f7-d59353ba13e4",
       "key": "product_id",
       "value": "physical-sub.test",
-      "type": "string",
-      "description": ""
+      "type": "string"
     }
   ]
 }
