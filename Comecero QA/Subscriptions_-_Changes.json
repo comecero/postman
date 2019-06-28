@@ -11773,66 +11773,6 @@
           "response": []
         },
         {
-          "name": "Get Subscription Plans",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a7f20a52-80fb-4c20-a8d5-e7c404517d70",
-                "exec": [
-                  "tests[\"Get subscription plans\"] = responseCode.code === 200;",
-                  "",
-                  "var list = JSON.parse(responseBody);",
-                  "var data = list.data;",
-                  "",
-                  "data.forEach(function(item) {",
-                  "    if (item.billing_interval_unit === \"hour\" && item.trial_interval_unit === null) {",
-                  "        pm.globals.set(\"hour_subscription_plan_id\", item.subscription_plan_id);",
-                  "    }",
-                  "        if (item.billing_interval_unit === \"hour\" && item.trial_interval_unit === \"hour\") {",
-                  "        pm.globals.set(\"hour_subscription_with_trial_plan_id\", item.subscription_plan_id);",
-                  "    }",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "26d5bdb3-8624-4fd5-8377-2280733c021e",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": "https://{{host}}/api/v1/subscription_plans",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "name": "Enable Refund Notification Subscription Copy",
           "event": [
             {
@@ -11894,6 +11834,66 @@
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
+        },
+        {
+          "name": "Get Subscription Plans",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a7f20a52-80fb-4c20-a8d5-e7c404517d70",
+                "exec": [
+                  "tests[\"Get subscription plans\"] = responseCode.code === 200;",
+                  "",
+                  "var list = JSON.parse(responseBody);",
+                  "var data = list.data;",
+                  "",
+                  "data.forEach(function(item) {",
+                  "    if (item.billing_interval_unit === \"hour\" && item.trial_interval_unit === null) {",
+                  "        pm.globals.set(\"hour_subscription_plan_id\", item.subscription_plan_id);",
+                  "    }",
+                  "        if (item.billing_interval_unit === \"hour\" && item.trial_interval_unit === \"hour\") {",
+                  "        pm.globals.set(\"hour_subscription_with_trial_plan_id\", item.subscription_plan_id);",
+                  "    }",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "812a60fa-cc92-46a0-914d-6599430f5976",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "26d5bdb3-8624-4fd5-8377-2280733c021e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "https://{{host}}/api/v1/subscription_plans",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
         }
       ],
       "_postman_id": "f7b781c5-11db-4f0e-934c-a037517f64a9"
@@ -11923,49 +11923,49 @@
   ],
   "variable": [
     {
-      "id": "e8b2e036-6458-4d2e-b7d8-c0636a224dc9",
+      "id": "2d0a8ee9-01d4-4b5d-9969-01b4f0e3dd17",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "cd7d45b4-4e04-4932-a2aa-e2296b84e080",
+      "id": "9a7f0912-9a4f-43b0-8771-5cf6feb593a3",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string"
     },
     {
-      "id": "6520ad34-92c8-4c7b-aa45-e70decb27667",
+      "id": "a31c2152-3735-4f10-957b-8d3e85194792",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "8080dfc7-3961-453c-ab24-d07ef406d4b6",
+      "id": "9181db1e-18d0-4ed1-b53b-f51ba9edd3a1",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "06779646-d42d-4867-841b-8cfb0fffcfa4",
+      "id": "aed55271-5f90-406e-a08d-a4f1456754df",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "3ead07a1-6709-4221-8d65-694673a157e3",
+      "id": "8fff8ee5-08d6-429c-9408-d6f9805c620b",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "28167f9a-fb71-44e6-859f-60058882fca8",
+      "id": "94e16330-da8a-423d-a53d-7bb234142dea",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "05d28cba-4c93-4067-acfa-ee96f0a781da",
+      "id": "5df80a4d-44db-42ee-83df-a1f8974c2ea8",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
