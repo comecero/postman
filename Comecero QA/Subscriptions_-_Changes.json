@@ -11899,69 +11899,6 @@
           "response": []
         },
         {
-          "name": "Enable Subscription Cancellation Notification Subscription Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "92ba83da-5fd8-40c6-af75-0bdd3dca901c",
-                "exec": [
-                  "tests[\"Refund email notifications have been enabled\"] = responseCode.code === 200;",
-                  "",
-                  "pm.globals.unset(\"order_confirmation_subscription_url\");",
-                  "pm.globals.unset(\"payment_confirmation_subscription_url\");",
-                  "pm.globals.unset(\"refund_confirmation_subscription_url\");",
-                  "pm.globals.unset(\"cart_url\");",
-                  "pm.globals.unset(\"subscription_plan\");",
-                  "pm.globals.unset(\"subscription_terms\");",
-                  "pm.globals.unset(\"subscription_url\");",
-                  "pm.globals.unset(\"coupon_url\");",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "0334ec34-1072-4284-baba-9e5181bed225",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"active\": true\n}"
-            },
-            "url": "{{subscription_cancel_confirmation_url}}",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
-        },
-        {
           "name": "Get Subscription Plans",
           "event": [
             {
@@ -12049,49 +11986,49 @@
   ],
   "variable": [
     {
-      "id": "740b4b55-5f94-4e7c-a7fd-1912fb178217",
+      "id": "635e758f-12b9-4e4c-acf2-cf785941fffc",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "ff94f1ff-d9ba-485d-bb2a-1362bd7a9bd5",
+      "id": "bd447ed9-bdf3-41f2-aacd-7c9435931921",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string"
     },
     {
-      "id": "0428b697-3f97-4694-9fea-465d225ce34d",
+      "id": "2f7e0764-0b8c-425a-9368-28b1df7f9986",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "a1aab620-6c68-44dc-9497-c132d45b4c6d",
+      "id": "cf378e9d-593f-4f0e-a09e-7ed8334f73f1",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "3b92fae7-9571-4338-9dd3-aa3a37468ef8",
+      "id": "1004bbcb-7fb3-4e2c-b334-dc9206ef400d",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "9ed36629-0af2-460c-a9ad-8dde56002711",
+      "id": "b8d323c0-1ee4-4485-82e0-049bd654abc5",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "58cd41e0-18fe-4004-83b6-9ad2d55bb17f",
+      "id": "02a85194-6744-49cc-83d8-eee151352732",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "81838c59-8f5c-4743-81ea-446f1a276bb6",
+      "id": "86832302-7903-47d7-86da-4cc2d2519616",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
