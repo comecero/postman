@@ -432,60 +432,6 @@
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
-        },
-        {
-          "name": "Disable Subscription Prebill Notification Subscription Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "82452e4c-9550-4daa-8063-f5b84f40aee0",
-                "exec": [
-                  "tests[\"Refund email notifications have been disabled\"] = responseCode.code === 200;",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "c33310da-f584-40bf-878b-a717b93fdb8b",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"active\": false\n}"
-            },
-            "url": "{{subscription_prebill_notification_url}}",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
         }
       ],
       "_postman_id": "e249d914-1176-4db3-8c3c-f894365b80d1",
@@ -12040,49 +11986,49 @@
   ],
   "variable": [
     {
-      "id": "03723a17-1a29-4ec6-b596-25157ca536ff",
+      "id": "9bb65111-5599-4160-b45d-fba499b5e9f6",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "c4451770-facf-43cc-b433-11722a7e304b",
+      "id": "a2eca0a1-af6b-4e57-88f6-048fdc73dd2b",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string"
     },
     {
-      "id": "36613cef-4dff-44f7-b18a-4b6aeae40432",
+      "id": "a3a832ae-fe41-4e67-b9ed-cca036340b12",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "362d8328-d842-4a13-9f77-b26009483832",
+      "id": "1c48386d-eb6d-48da-bb5d-b6a2439ebe43",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "08896786-c6fb-46c9-9d9b-5c39706137c3",
+      "id": "0cd0aca8-18a2-49c8-8109-13327377871f",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "cfddcea3-197a-4995-b78c-63ad88d71759",
+      "id": "6747952b-0c8a-43f0-b073-d52aae5fbfd4",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "9a8e5903-285e-42f0-b51f-70ed855664a2",
+      "id": "f5dd93e0-e4b8-43a7-91f0-44b589c4338e",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "98de69bb-4653-461d-9e4b-6d53ca8f2095",
+      "id": "a2c6f8c7-2418-40a7-b819-b308a1e28b3d",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
