@@ -301,7 +301,7 @@
           "response": []
         },
         {
-          "name": "Disable Subscription Prebill Notification Subscription Copy",
+          "name": "Disable Subscription Cancellation Notification Subscription",
           "event": [
             {
               "listen": "test",
@@ -11860,49 +11860,49 @@
   ],
   "variable": [
     {
-      "id": "a88e2e0a-ca1f-43b5-8673-5820781a38a1",
+      "id": "860d96fa-0cbd-4b3d-988a-93f5e74b9207",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "55f313fa-b4f1-4a88-a58e-0acfb31c3d9c",
+      "id": "f4314193-b215-4294-9ffa-93b61a594007",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string"
     },
     {
-      "id": "4851d76c-2ad1-475f-af0e-cdc52875a886",
+      "id": "303f5c47-6b08-4dd1-acc8-46f61381ad9d",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "9626e324-baae-461f-aa3e-253f8be6fb32",
+      "id": "fdf42e60-b2d4-43df-ba2c-7c523d52d1c1",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "63706d97-ff14-4b0a-b0e4-ca6b14cbb2dc",
+      "id": "95f74618-b4c5-40b7-ae51-eeedace1aafb",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "900b82d2-5fc3-4341-8e1f-352c9a9ff864",
+      "id": "ae309cb7-931e-409b-bd78-6db0bda8897f",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "f7691929-815c-4945-8599-ec38fe3ebd10",
+      "id": "955ad8d2-74d7-49bd-9887-fe5f5acb1133",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "23574103-a53d-41c8-8367-6837dc8c4134",
+      "id": "9da1bafd-de6a-4898-9530-ef76dc430963",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
