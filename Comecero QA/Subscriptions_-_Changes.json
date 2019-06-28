@@ -11773,7 +11773,7 @@
           "response": []
         },
         {
-          "name": "Enable Refund Notification Subscription Copy",
+          "name": "Enable Subscription Prebill Notification Subscription",
           "event": [
             {
               "listen": "test",
@@ -11830,7 +11830,7 @@
               "mode": "raw",
               "raw": "{\n\t\"active\": true\n}"
             },
-            "url": "{{refund_confirmation_subscription_url}}",
+            "url": "{{subscription_prebill_notification_url}}",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -11894,6 +11894,69 @@
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
+        },
+        {
+          "name": "Enable Subscription Prebill Notification Subscription Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "92ba83da-5fd8-40c6-af75-0bdd3dca901c",
+                "exec": [
+                  "tests[\"Refund email notifications have been enabled\"] = responseCode.code === 200;",
+                  "",
+                  "pm.globals.unset(\"order_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"payment_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"refund_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"cart_url\");",
+                  "pm.globals.unset(\"subscription_plan\");",
+                  "pm.globals.unset(\"subscription_terms\");",
+                  "pm.globals.unset(\"subscription_url\");",
+                  "pm.globals.unset(\"coupon_url\");",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "4096d593-e5dc-48e9-b816-6cdd904b57b3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": true\n}"
+            },
+            "url": "{{subscription_prebill_notification_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
         }
       ],
       "_postman_id": "f7b781c5-11db-4f0e-934c-a037517f64a9"
@@ -11923,49 +11986,49 @@
   ],
   "variable": [
     {
-      "id": "2d0a8ee9-01d4-4b5d-9969-01b4f0e3dd17",
+      "id": "f61342d0-c630-4a2e-aeaa-32070ea2064b",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "9a7f0912-9a4f-43b0-8771-5cf6feb593a3",
+      "id": "4e8abd09-89b9-4d44-a4f6-041c138a0ec4",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string"
     },
     {
-      "id": "a31c2152-3735-4f10-957b-8d3e85194792",
+      "id": "549e39d2-1d16-4870-86bb-c21dc83eb194",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "9181db1e-18d0-4ed1-b53b-f51ba9edd3a1",
+      "id": "7de74d3f-7e68-4b2d-9c16-bd7d3e0ed2b3",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "aed55271-5f90-406e-a08d-a4f1456754df",
+      "id": "98bbcc09-eff5-4905-b9d8-2d7ca51e9283",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "8fff8ee5-08d6-429c-9408-d6f9805c620b",
+      "id": "d235c0c1-7b33-4795-961d-15a9dc56070b",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "94e16330-da8a-423d-a53d-7bb234142dea",
+      "id": "74149900-df17-4d50-b4ce-d0a5176ae32c",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "5df80a4d-44db-42ee-83df-a1f8974c2ea8",
+      "id": "35b4e958-3706-4d3d-b8a2-ed75662c5f76",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
