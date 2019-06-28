@@ -708,6 +708,60 @@
         "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
       },
       "response": []
+    },
+    {
+      "name": "Disable Subscription Cancellation Notification Subscription",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "82452e4c-9550-4daa-8063-f5b84f40aee0",
+            "exec": [
+              "tests[\"Refund email notifications have been disabled\"] = responseCode.code === 200;",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "8b1744fe-d6f9-4864-9f7b-419afb4672b3",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"active\": false\n}"
+        },
+        "url": "{{subscription_cancel_confirmation_url}}",
+        "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+      },
+      "response": []
     }
   ],
   "event": [
@@ -822,85 +876,85 @@
   ],
   "variable": [
     {
-      "id": "68393f6e-0f2b-46e4-96ef-62a4c57af83c",
+      "id": "85c545ff-40f3-44fd-abd5-b77f85ef965b",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "2b7f9db1-692b-4625-a146-ff9d9ae4bf98",
+      "id": "6cbdd9e6-2ccd-4ae6-a1b9-5ce026f3003e",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string"
     },
     {
-      "id": "ee0f5f85-b5dd-4d8c-aefa-d4e00aeed78e",
+      "id": "09aeb035-a1f4-45c6-b708-4bf23954c654",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "a1906f61-97fe-4ebc-b1ea-f8a30996e330",
+      "id": "264956b7-5f8b-4bae-ad6c-59e3de13686c",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "4fe58bc1-452f-4785-bfdd-5a5ae6b524eb",
+      "id": "e96bfc4e-8972-479f-a42b-c9a223278c1c",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "27313ff5-f7f0-4cdd-9727-44ca2d2ad471",
+      "id": "ca9a2592-df92-4dbb-b1a7-8fcb124b1ffd",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "17c03a65-4d88-42cd-a1f4-69cd512ada57",
+      "id": "65b209cf-5ea9-4e1c-b84b-1731f00b0ecc",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "2a25107c-08f8-44ee-bcfa-3fc029f9b778",
+      "id": "b5e212c5-ab7d-4379-a71d-ad85eebdcbf2",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
     },
     {
-      "id": "1ea5eb08-7eff-4309-851b-b491e9caf2bb",
+      "id": "049878e8-20ab-4779-89e3-636fb9c9186a",
       "key": "promotion_code",
       "value": "",
       "type": "string"
     },
     {
-      "id": "7252975d-e90a-4339-b753-c2de0714b337",
+      "id": "c4a20c0b-5e9d-4217-85f8-f2c7b1bb065d",
       "key": "expected_item_price",
       "value": "20",
       "type": "string"
     },
     {
-      "id": "a4df6a3c-b951-4cb6-b228-0daa78118e6d",
+      "id": "1d6479b7-4a99-4482-bba9-321b7b1e16d7",
       "key": "expected_item_discount",
       "value": "0",
       "type": "string"
     },
     {
-      "id": "a5aec960-a993-4ead-9b8b-7bef02d9cb2b",
+      "id": "560ad15a-ae4c-4037-a297-32cb1cedde02",
       "key": "expected_subscription_price",
       "value": "20",
       "type": "string"
     },
     {
-      "id": "965fbf02-6f41-48ed-964d-59152e2b1dbf",
+      "id": "625d1889-5c57-401f-8368-d78f31b4c329",
       "key": "expected_discount_apply_count",
       "value": "",
       "type": "string"
     },
     {
-      "id": "6ae8518a-c310-4354-90c6-e73f1f612a60",
+      "id": "a237b3f1-95c0-495f-ba89-ab97cf57b969",
       "key": "expected_subscription_discount",
       "value": "0",
       "type": "string"
