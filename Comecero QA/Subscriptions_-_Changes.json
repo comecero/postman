@@ -11957,6 +11957,69 @@
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
+        },
+        {
+          "name": "Enable Subscription Cancellation Notification Subscription",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "92ba83da-5fd8-40c6-af75-0bdd3dca901c",
+                "exec": [
+                  "tests[\"Refund email notifications have been enabled\"] = responseCode.code === 200;",
+                  "",
+                  "pm.globals.unset(\"order_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"payment_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"refund_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"cart_url\");",
+                  "pm.globals.unset(\"subscription_plan\");",
+                  "pm.globals.unset(\"subscription_terms\");",
+                  "pm.globals.unset(\"subscription_url\");",
+                  "pm.globals.unset(\"coupon_url\");",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "8c32d5d4-2ca3-4d1a-8b0d-7857e9f9ef87",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": true\n}"
+            },
+            "url": "{{subscription_cancel_confirmation_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
         }
       ],
       "_postman_id": "f7b781c5-11db-4f0e-934c-a037517f64a9"
@@ -11986,49 +12049,49 @@
   ],
   "variable": [
     {
-      "id": "18da5c18-8fd4-4317-9054-4ff19244d8fd",
+      "id": "cb2c947d-ed76-4944-95a5-c33dabbbf909",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "d4f6c924-0f5e-46a2-b58c-6dbcd3c94509",
+      "id": "9ee8afae-2f34-4199-adb2-1a6366c6b5a6",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string"
     },
     {
-      "id": "fec89cdf-3a68-4727-b92c-6c86b310b1e1",
+      "id": "4f22a683-c720-443b-a47f-a6a6754dd73b",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "58aa2fd0-af87-4794-8bc3-c0bfaa020694",
+      "id": "2c298ce7-3cda-44c5-9133-25641aab028f",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "cf1ac820-ce70-4776-8cd6-52961f900975",
+      "id": "6612a6cc-cc6e-4e6e-bca1-fd7f91ebb77a",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "7236d292-5d5a-412b-b743-79058e2f5188",
+      "id": "ba86c61c-2f04-407e-9faa-1e25725bc6de",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "bec77501-c4a4-4be4-9558-d01558b2e937",
+      "id": "4a840213-9c97-447a-a9e8-7d3fedb00f09",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "4692c42a-280d-42c4-abf8-9c113e48ad35",
+      "id": "809fdbbc-9191-4960-8823-2ac6d8dac00e",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
