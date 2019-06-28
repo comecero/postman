@@ -452,60 +452,6 @@
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
-        },
-        {
-          "name": "Disable Subscription Cancellation Notification Subscription Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "82452e4c-9550-4daa-8063-f5b84f40aee0",
-                "exec": [
-                  "tests[\"Refund email notifications have been disabled\"] = responseCode.code === 200;",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "308432f8-3a84-4a4a-8c07-da5afd7c5cd7",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"active\": false\n}"
-            },
-            "url": "{{subscription_cancel_confirmation_url}}",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
         }
       ],
       "_postman_id": "4f533ac0-15f8-4ad9-a7a9-e85fbfb6d337",
@@ -14511,55 +14457,55 @@
   ],
   "variable": [
     {
-      "id": "f07d3f46-4c19-4b2d-8cf7-f7ee6455ce51",
+      "id": "023edf9b-ba89-467d-a679-223fac712998",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "9f038c57-16e6-4023-88c7-6daacecd6154",
+      "id": "34ace780-56ea-4d0e-9d7b-6baf7303812c",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string"
     },
     {
-      "id": "a1275463-d53a-4d58-b6fa-fbba20c080c1",
+      "id": "d4e448d5-d26f-4f17-8e8c-cd5b83fc0b85",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "da10684c-b692-4bda-bbff-a889f2537a70",
+      "id": "8ab765dc-851a-4d36-a62b-89454634fdd8",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "cd358e61-8bdc-462f-9deb-d24f09e4275a",
+      "id": "4008a374-ee62-486c-97e7-4b66ed738878",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "56126d24-4ae2-4082-99aa-5d04f16b6a61",
+      "id": "630eead1-4c72-4083-878d-ea3edc9b8d85",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "51c5f3d1-342b-4ae7-ac6e-97cc40f16ef7",
+      "id": "3b7222dc-eaa8-4390-bbfd-45037b67fc60",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "67c6dd62-14b8-4ad1-9c5f-b8377b7c869e",
+      "id": "1942483f-6441-4f00-8577-2eef06f24eb1",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
     },
     {
-      "id": "6781f550-7af8-45e4-be85-8dfb618647c5",
+      "id": "8799c86b-be53-42b8-ae83-3e25eab5efb0",
       "key": "promotion_code",
       "value": "",
       "type": "string"
