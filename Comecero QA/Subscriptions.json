@@ -7,14 +7,12 @@
   },
   "item": [
     {
-      "_postman_id": "9433de7f-0b11-4690-a96f-89973931a5ed",
       "name": "Get Notification Subscriptions",
       "event": [
         {
           "listen": "test",
           "script": {
             "id": "09e78ddc-848e-4610-a39c-393e9d4f1259",
-            "type": "text/javascript",
             "exec": [
               "tests[\"Status is 200\"] = responseCode.code === 200;",
               "",
@@ -29,25 +27,36 @@
               "        ",
               "            if (item.type === \"payment:confirmation\")",
               "        pm.globals.set(\"payment_confirmation_subscription_url\", item.url);",
+              "        ",
+              "            if (item.type === \"refund:confirmation\")",
+              "        pm.globals.set(\"refund_confirmation_subscription_url\", item.url);",
+              "",
+              "            if (item.type === \"subscription:prebill_notification\")",
+              "        pm.globals.set(\"subscription_prebill_notification_url\", item.url);",
+              "        ",
+              "            if (item.type === \"subscription:cancel_confirmation\")",
+              "        pm.globals.set(\"subscription_cancel_confirmation_url\", item.url);",
               "    ",
               "});",
               "",
               "",
               ""
-            ]
+            ],
+            "type": "text/javascript"
           }
         },
         {
           "listen": "prerequest",
           "script": {
             "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
-            "type": "text/javascript",
             "exec": [
               ""
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
+      "_postman_id": "9433de7f-0b11-4690-a96f-89973931a5ed",
       "request": {
         "auth": {
           "type": "noauth"
@@ -63,17 +72,12 @@
             "value": "application/json"
           }
         ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"promotion_code\": \"{{promotion_code}}\",\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"{{product_id}}\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
-        },
         "url": "https://{{host}}/api/v1/notification_subscriptions",
         "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
       },
       "response": []
     },
     {
-      "_postman_id": "2fd0d757-42db-4cb9-a947-6f65cbdf7822",
       "name": "Disable Order Notification Subscription",
       "event": [
         {
@@ -100,6 +104,7 @@
           }
         }
       ],
+      "_postman_id": "2fd0d757-42db-4cb9-a947-6f65cbdf7822",
       "request": {
         "auth": {
           "type": "noauth"
@@ -125,7 +130,6 @@
       "response": []
     },
     {
-      "_postman_id": "3d3b2218-30f2-4055-a00c-9520a4bc8cb4",
       "name": "Disable Payment Notification Subscription",
       "event": [
         {
@@ -151,6 +155,7 @@
           }
         }
       ],
+      "_postman_id": "3d3b2218-30f2-4055-a00c-9520a4bc8cb4",
       "request": {
         "auth": {
           "type": "noauth"
@@ -176,7 +181,6 @@
       "response": []
     },
     {
-      "_postman_id": "61640ab5-47dc-4be6-9609-c916e0e31bdf",
       "name": "Create Coupon: Thirty off Items",
       "event": [
         {
@@ -192,6 +196,7 @@
           }
         }
       ],
+      "_postman_id": "61640ab5-47dc-4be6-9609-c916e0e31bdf",
       "request": {
         "auth": {
           "type": "noauth"
@@ -216,7 +221,6 @@
       "response": []
     },
     {
-      "_postman_id": "4da70c65-1e3c-490e-a92e-008efe8c59b6",
       "name": "Create Coupon: Thirty off Items Recurring",
       "event": [
         {
@@ -232,6 +236,7 @@
           }
         }
       ],
+      "_postman_id": "4da70c65-1e3c-490e-a92e-008efe8c59b6",
       "request": {
         "auth": {
           "type": "noauth"
@@ -256,7 +261,6 @@
       "response": []
     },
     {
-      "_postman_id": "b313cd1e-0aea-4fdd-85fb-c1c013d655e4",
       "name": "Cart with Subscription",
       "event": [
         {
@@ -300,6 +304,7 @@
           }
         }
       ],
+      "_postman_id": "b313cd1e-0aea-4fdd-85fb-c1c013d655e4",
       "request": {
         "auth": {
           "type": "noauth"
@@ -333,8 +338,7 @@
           "query": [
             {
               "key": "expand",
-              "value": "items.subscription_plan,items.subscription_terms",
-              "equals": true
+              "value": "items.subscription_plan,items.subscription_terms"
             }
           ]
         },
@@ -343,7 +347,6 @@
       "response": []
     },
     {
-      "_postman_id": "b9c3d234-6728-4773-b672-212b2e24f23c",
       "name": "Submit Cart Payment",
       "event": [
         {
@@ -395,6 +398,7 @@
           }
         }
       ],
+      "_postman_id": "b9c3d234-6728-4773-b672-212b2e24f23c",
       "request": {
         "auth": {
           "type": "noauth"
@@ -425,8 +429,7 @@
           "query": [
             {
               "key": "expand",
-              "value": "order.items.subscription,order.items.subscription_terms",
-              "equals": true
+              "value": "order.items.subscription,order.items.subscription_terms"
             }
           ]
         },
@@ -435,7 +438,6 @@
       "response": []
     },
     {
-      "_postman_id": "f818a0d0-1ca7-4d3a-beb8-d63c2c3a92b2",
       "name": "Cancel Subscription",
       "event": [
         {
@@ -451,6 +453,7 @@
           }
         }
       ],
+      "_postman_id": "f818a0d0-1ca7-4d3a-beb8-d63c2c3a92b2",
       "request": {
         "auth": {
           "type": "noauth"
@@ -476,7 +479,6 @@
       "response": []
     },
     {
-      "_postman_id": "e0872fc0-0d31-4aba-acce-6ecf052388c9",
       "name": "Delete Coupon",
       "event": [
         {
@@ -490,6 +492,7 @@
           }
         }
       ],
+      "_postman_id": "e0872fc0-0d31-4aba-acce-6ecf052388c9",
       "request": {
         "auth": {
           "type": "noauth"
@@ -505,17 +508,12 @@
             "value": "application/json"
           }
         ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
-        },
         "url": "{{coupon_url}}",
         "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
       },
       "response": []
     },
     {
-      "_postman_id": "835cfbf2-d222-4900-b8b0-893af623fd69",
       "name": "Delete Coupon",
       "event": [
         {
@@ -529,6 +527,7 @@
           }
         }
       ],
+      "_postman_id": "835cfbf2-d222-4900-b8b0-893af623fd69",
       "request": {
         "auth": {
           "type": "noauth"
@@ -544,17 +543,12 @@
             "value": "application/json"
           }
         ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}"
-        },
         "url": "{{coupon_recurring_url}}",
         "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
       },
       "response": []
     },
     {
-      "_postman_id": "b23c2196-0ca1-47bb-8b88-1c745bb499e2",
       "name": "Enable Order Notification Subscription",
       "event": [
         {
@@ -578,6 +572,7 @@
           }
         }
       ],
+      "_postman_id": "b23c2196-0ca1-47bb-8b88-1c745bb499e2",
       "request": {
         "auth": {
           "type": "noauth"
@@ -603,7 +598,6 @@
       "response": []
     },
     {
-      "_postman_id": "ae9e89a6-dee9-4919-a946-98401adc2de9",
       "name": "Enable Payment Notification Subscription",
       "event": [
         {
@@ -636,6 +630,7 @@
           }
         }
       ],
+      "_postman_id": "ae9e89a6-dee9-4919-a946-98401adc2de9",
       "request": {
         "auth": {
           "type": "noauth"
@@ -773,102 +768,88 @@
   ],
   "variable": [
     {
-      "id": "bb4c0507-e56f-421f-bb4d-cd25e95ff248",
+      "id": "414751ef-6856-41e1-80fc-c2a1ed0c6d17",
       "key": "name",
       "value": "James Smith",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "dc63f13e-d04d-4c3b-b951-37b18cb4a3d2",
+      "id": "f58e80dd-6ee1-487c-91aa-85029aa0f146",
       "key": "address_1",
       "value": "648 Broad St",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "50ee4380-1bd9-4c9c-a178-62ad3d5af9f9",
+      "id": "f952010a-2bc6-4724-bfa4-567aea15518d",
       "key": "city",
       "value": "Westerville",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "f885f50e-8625-4a93-b5e1-51156f3a73c8",
+      "id": "d8621883-85b6-4d60-bce8-451a97287750",
       "key": "state_prov",
       "value": "OH",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "791185da-3bdd-4a51-90ec-a0bd953eeb31",
+      "id": "1ec48716-e143-4507-ab38-0ac1cc5935ca",
       "key": "postal_code",
       "value": "43081",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "0c3ac2e6-d182-4121-b03a-e0779e957dfc",
+      "id": "b920a598-f906-44e9-8dc2-571c143bf2fb",
       "key": "country",
       "value": "US",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "c5f50f1a-4f5c-4718-9872-4d7c9cf2c2c6",
+      "id": "d46d898d-27e8-45ed-b516-eea50d96d5b2",
       "key": "phone",
       "value": "614-555-0191",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "e13849b9-ac6b-4cd5-a5c3-df3d3ba3c921",
+      "id": "5fa3fd15-f439-439d-af85-ad75ba6a067b",
       "key": "product_id",
       "value": "physical-sub.test",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "3ac2a031-04d1-4de4-8e49-b9ead7b18c72",
+      "id": "7f467c06-fdcf-40a0-b60c-9c0738001393",
       "key": "promotion_code",
       "value": "",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "6df29347-1661-45d0-9ef9-6070c2f1c77e",
+      "id": "fbfb622e-bc01-4219-affc-3b2a92e64eee",
       "key": "expected_item_price",
       "value": "20",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "00b820ea-8f90-4923-ac12-d12a6945e3cf",
+      "id": "eae40e5a-8598-4266-8164-ed45708e26e4",
       "key": "expected_item_discount",
       "value": "0",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "8df7ed81-6a40-46b9-95f2-d3a3abb7a253",
+      "id": "8a77459c-1d58-4c25-9d66-63f449a1b510",
       "key": "expected_subscription_price",
       "value": "20",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "136b1ace-6f6c-4781-95b3-41fa665e08f0",
+      "id": "f8297d65-9769-411b-a089-758b43ce3e8b",
       "key": "expected_discount_apply_count",
       "value": "",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "388a348f-4b81-4218-9604-6979868b2d24",
+      "id": "5771bf50-078f-4519-ab48-9b424febeafe",
       "key": "expected_subscription_discount",
       "value": "0",
-      "type": "string",
-      "description": ""
+      "type": "string"
     }
   ]
 }
