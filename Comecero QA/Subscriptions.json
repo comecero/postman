@@ -181,6 +181,114 @@
       "response": []
     },
     {
+      "name": "Disable Subscription Cancellation Notification Subscription",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "82452e4c-9550-4daa-8063-f5b84f40aee0",
+            "exec": [
+              "tests[\"Refund email notifications have been disabled\"] = responseCode.code === 200;",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "8b1744fe-d6f9-4864-9f7b-419afb4672b3",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"active\": false\n}"
+        },
+        "url": "{{subscription_cancel_confirmation_url}}",
+        "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+      },
+      "response": []
+    },
+    {
+      "name": "Disable Subscription Prebill Notification Subscription Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "82452e4c-9550-4daa-8063-f5b84f40aee0",
+            "exec": [
+              "tests[\"Refund email notifications have been disabled\"] = responseCode.code === 200;",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "21a3abc0-86fa-464f-aadc-ee2648a9673e",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"active\": false\n}"
+        },
+        "url": "{{subscription_prebill_notification_url}}",
+        "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+      },
+      "response": []
+    },
+    {
       "name": "Create Coupon: Thirty off Items",
       "event": [
         {
@@ -654,114 +762,6 @@
         "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
       },
       "response": []
-    },
-    {
-      "name": "Disable Subscription Prebill Notification Subscription Copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "82452e4c-9550-4daa-8063-f5b84f40aee0",
-            "exec": [
-              "tests[\"Refund email notifications have been disabled\"] = responseCode.code === 200;",
-              "",
-              ""
-            ],
-            "type": "text/javascript"
-          }
-        },
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "_postman_id": "21a3abc0-86fa-464f-aadc-ee2648a9673e",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "noauth"
-        },
-        "method": "POST",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          },
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n\t\"active\": false\n}"
-        },
-        "url": "{{subscription_prebill_notification_url}}",
-        "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-      },
-      "response": []
-    },
-    {
-      "name": "Disable Subscription Cancellation Notification Subscription",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "82452e4c-9550-4daa-8063-f5b84f40aee0",
-            "exec": [
-              "tests[\"Refund email notifications have been disabled\"] = responseCode.code === 200;",
-              "",
-              ""
-            ],
-            "type": "text/javascript"
-          }
-        },
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "_postman_id": "8b1744fe-d6f9-4864-9f7b-419afb4672b3",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "noauth"
-        },
-        "method": "POST",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          },
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n\t\"active\": false\n}"
-        },
-        "url": "{{subscription_cancel_confirmation_url}}",
-        "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-      },
-      "response": []
     }
   ],
   "event": [
@@ -876,85 +876,85 @@
   ],
   "variable": [
     {
-      "id": "85c545ff-40f3-44fd-abd5-b77f85ef965b",
+      "id": "2fc4a6a5-7736-40f3-ae25-64a9e706f9ea",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "6cbdd9e6-2ccd-4ae6-a1b9-5ce026f3003e",
+      "id": "15084f69-05b9-42f5-8d95-aa7714cec1ee",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string"
     },
     {
-      "id": "09aeb035-a1f4-45c6-b708-4bf23954c654",
+      "id": "d7d4a8c3-e4f1-45d1-b201-6f6f42b16d04",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "264956b7-5f8b-4bae-ad6c-59e3de13686c",
+      "id": "965cfb0b-78d0-4749-a974-ba08bed19d72",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "e96bfc4e-8972-479f-a42b-c9a223278c1c",
+      "id": "1268ee98-94f3-4767-bf4b-309536af026b",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "ca9a2592-df92-4dbb-b1a7-8fcb124b1ffd",
+      "id": "b27bbd27-855f-4853-b6a0-bcde23e28662",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "65b209cf-5ea9-4e1c-b84b-1731f00b0ecc",
+      "id": "25b84e76-7390-4b37-8452-b4bab13c9bc5",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "b5e212c5-ab7d-4379-a71d-ad85eebdcbf2",
+      "id": "4c0606b0-54c6-4dce-9611-952eab0c30f1",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
     },
     {
-      "id": "049878e8-20ab-4779-89e3-636fb9c9186a",
+      "id": "ca0f0570-c1a5-47bd-9e16-fe9dd7733a02",
       "key": "promotion_code",
       "value": "",
       "type": "string"
     },
     {
-      "id": "c4a20c0b-5e9d-4217-85f8-f2c7b1bb065d",
+      "id": "cbecd344-e6f1-4481-a6c7-08b1371a0582",
       "key": "expected_item_price",
       "value": "20",
       "type": "string"
     },
     {
-      "id": "1d6479b7-4a99-4482-bba9-321b7b1e16d7",
+      "id": "0ada3983-0654-4f7a-9cca-3bd3fde10c63",
       "key": "expected_item_discount",
       "value": "0",
       "type": "string"
     },
     {
-      "id": "560ad15a-ae4c-4037-a297-32cb1cedde02",
+      "id": "2d9d3903-3b76-4106-8875-a167899aca92",
       "key": "expected_subscription_price",
       "value": "20",
       "type": "string"
     },
     {
-      "id": "625d1889-5c57-401f-8368-d78f31b4c329",
+      "id": "c29a4340-c6ec-407b-84ec-c5e111aa35ba",
       "key": "expected_discount_apply_count",
       "value": "",
       "type": "string"
     },
     {
-      "id": "a237b3f1-95c0-495f-ba89-ab97cf57b969",
+      "id": "64393f7f-71db-4fe7-9b39-05f3200dbee5",
       "key": "expected_subscription_discount",
       "value": "0",
       "type": "string"
