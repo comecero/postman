@@ -289,7 +289,7 @@
               "mode": "raw",
               "raw": "{\n\t\"active\": false\n}"
             },
-            "url": "{{refund_confirmation_subscription_url}}",
+            "url": "{{subscription_prebill_notification_url}}",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
@@ -11854,49 +11854,49 @@
   ],
   "variable": [
     {
-      "id": "bb42c42d-1314-4332-939b-df65e13b333f",
+      "id": "84e21205-c246-44e6-8e72-e4397713f89c",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "be7e08af-a8e0-482b-ac7e-c044b66fb8ec",
+      "id": "1ab326fa-dccb-4cc1-8783-927270df396c",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string"
     },
     {
-      "id": "66736c4f-cf76-4798-91d6-bfef861d93ee",
+      "id": "4874c48a-e5a2-4117-a26b-ed0492656d28",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "046249d0-1aa8-4235-836b-eeb36bccbeb1",
+      "id": "2e390e6b-fa5e-4034-ac9c-55001b081e3d",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "e324197d-c245-4229-9f6d-e6b2379e13e7",
+      "id": "89f4ea15-8f8f-435c-a4bb-060c4067cf07",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "18e92930-b586-4c1f-9c55-784d93518c52",
+      "id": "cd0c68d0-0d8f-4c40-8476-73251acaba17",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "62bedce4-9f74-4d2e-bf80-869d929e475d",
+      "id": "fefd4da0-d0fb-4bf3-9a50-7f0ca1676d8d",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "39d6692f-3150-402d-b1f5-7abcbc5af509",
+      "id": "2bcbc14a-9ac6-46c1-a7c8-93d0b6ee92f6",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
