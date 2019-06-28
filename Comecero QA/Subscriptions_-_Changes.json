@@ -11773,6 +11773,69 @@
           "response": []
         },
         {
+          "name": "Enable Refund Notification Subscription Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "92ba83da-5fd8-40c6-af75-0bdd3dca901c",
+                "exec": [
+                  "tests[\"Refund email notifications have been enabled\"] = responseCode.code === 200;",
+                  "",
+                  "pm.globals.unset(\"order_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"payment_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"refund_confirmation_subscription_url\");",
+                  "pm.globals.unset(\"cart_url\");",
+                  "pm.globals.unset(\"subscription_plan\");",
+                  "pm.globals.unset(\"subscription_terms\");",
+                  "pm.globals.unset(\"subscription_url\");",
+                  "pm.globals.unset(\"coupon_url\");",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "982ceba9-83c6-49a3-8cf6-724283033b7d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"active\": true\n}"
+            },
+            "url": "{{refund_confirmation_subscription_url}}",
+            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
+          },
+          "response": []
+        },
+        {
           "name": "Enable Subscription Prebill Notification Subscription",
           "event": [
             {
@@ -11957,69 +12020,6 @@
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
           "response": []
-        },
-        {
-          "name": "Enable Refund Notification Subscription Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "92ba83da-5fd8-40c6-af75-0bdd3dca901c",
-                "exec": [
-                  "tests[\"Refund email notifications have been enabled\"] = responseCode.code === 200;",
-                  "",
-                  "pm.globals.unset(\"order_confirmation_subscription_url\");",
-                  "pm.globals.unset(\"payment_confirmation_subscription_url\");",
-                  "pm.globals.unset(\"refund_confirmation_subscription_url\");",
-                  "pm.globals.unset(\"cart_url\");",
-                  "pm.globals.unset(\"subscription_plan\");",
-                  "pm.globals.unset(\"subscription_terms\");",
-                  "pm.globals.unset(\"subscription_url\");",
-                  "pm.globals.unset(\"coupon_url\");",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "aba03a74-55f6-4b4f-9ff9-e0e92a9f735a",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "982ceba9-83c6-49a3-8cf6-724283033b7d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"active\": true\n}"
-            },
-            "url": "{{refund_confirmation_subscription_url}}",
-            "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
-          },
-          "response": []
         }
       ],
       "_postman_id": "f7b781c5-11db-4f0e-934c-a037517f64a9"
@@ -12049,49 +12049,49 @@
   ],
   "variable": [
     {
-      "id": "17a2f927-6a1b-4ac0-9ebe-4c090cf9296a",
+      "id": "0c96706f-ad2d-4050-ab58-00193aae101d",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "464d0480-47ae-46d3-84cb-499d486c117f",
+      "id": "eec34577-47c5-4aaf-a98b-33799cee843a",
       "key": "address_1",
       "value": "678 Broad St",
       "type": "string"
     },
     {
-      "id": "c12336ca-5b5d-4b28-88df-8e5713e068ed",
+      "id": "8a0ff785-9b91-481d-a113-0c300bfb9fab",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "51d185ae-e6dd-406c-8e0b-7e89a0075721",
+      "id": "2b92cf40-41c1-4f28-b853-e42cefa0fe5c",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "7f5c5bc4-7026-44f6-a051-5656ae000fa1",
+      "id": "ce97b6ad-5c8c-420a-b106-9494e4f478d3",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "78e65f72-4106-49d3-9595-6cba6eb0f18d",
+      "id": "852a73c9-8dff-4471-9942-68cdfa70143f",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "ac95af2b-a9ee-4e07-88f7-d035197064ad",
+      "id": "f160c277-e955-4dea-91f2-8a670d729990",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "3684aef7-36f6-4a1b-b3fc-2e20722a48f6",
+      "id": "e751eecd-ef44-41a0-8372-df59aa3f1628",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
