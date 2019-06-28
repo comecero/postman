@@ -14216,7 +14216,7 @@
           "response": []
         },
         {
-          "name": "Enable Refund Notification Subscription Copy",
+          "name": "Enable Refund Notification Subscription",
           "event": [
             {
               "listen": "test",
@@ -14457,55 +14457,55 @@
   ],
   "variable": [
     {
-      "id": "32f12e26-2fbc-4ce6-afb9-82a1f5b38f36",
+      "id": "53a89f98-192a-40fe-983e-f76eb43d1a57",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "302ee3a8-fc49-4259-bdfa-cd49e9e10508",
+      "id": "8badbaf6-a91a-46ca-bfb4-6d47f330ff13",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string"
     },
     {
-      "id": "371e96c8-a84d-41dd-be31-180c773dcb30",
+      "id": "cc3633c8-bb85-4e2c-9a1d-e07f4639a21d",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "c1009584-3734-43f0-8f2b-eb86e295e2df",
+      "id": "8d9e8450-ed72-459a-b60e-51f9fe710e92",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "40d04519-3c6d-4d7b-9e6d-5eaa7f2fbc1a",
+      "id": "66dbd750-dd2f-463e-a89c-3d5bfd5f962d",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "630b1268-c2be-40f6-85f5-332ee82a7e83",
+      "id": "ecaf0bf8-bc23-4012-8232-4f8e5f7c6bb4",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "6992e313-e378-4fc0-bd64-1063bc5b2b88",
+      "id": "cd9de618-bb3e-46e5-9c31-0e1caa36fa67",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "f539bd8e-4c1b-4d9d-9815-f36c4ecc9e44",
+      "id": "43f0265f-3568-4423-a32b-00a943c287df",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
     },
     {
-      "id": "7073489e-e2f0-4f68-a5eb-29c296650cd0",
+      "id": "335cb70e-e5dc-4eca-a508-7d3864483a0e",
       "key": "promotion_code",
       "value": "",
       "type": "string"
