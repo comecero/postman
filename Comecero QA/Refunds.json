@@ -5559,47 +5559,6 @@
           "response": []
         },
         {
-          "name": "Submit Refund w/Tax, Shipping",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "3c71742a-d648-4a47-8acf-1ea1c2532396",
-                "exec": [
-                  "tests[\"Payment created successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Refund was successful\"] = data.total === 10 && data.subtotal === 7.67 && data.tax === 0.79 && data.shipping === 1.54;"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "99bd71e2-127f-47c5-a088-8adb20f3cc85",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"total\": 10\n}"
-            },
-            "url": "{{order_url}}/refunds"
-          },
-          "response": []
-        },
-        {
           "name": "Delete Coupon",
           "event": [
             {
@@ -5637,6 +5596,47 @@
               "raw": ""
             },
             "url": "{{coupon_url}}"
+          },
+          "response": []
+        },
+        {
+          "name": "Submit Refund w/Tax, Shipping",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3c71742a-d648-4a47-8acf-1ea1c2532396",
+                "exec": [
+                  "tests[\"Payment created successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Refund was successful\"] = data.total === 10 && data.subtotal === 7.67 && data.tax === 0.79 && data.shipping === 1.54;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "99bd71e2-127f-47c5-a088-8adb20f3cc85",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"total\": 10\n}"
+            },
+            "url": "{{order_url}}/refunds"
           },
           "response": []
         }
@@ -5881,43 +5881,43 @@
   ],
   "variable": [
     {
-      "id": "a5365117-8a19-4294-bc49-e339101768f5",
+      "id": "4db7dc98-d685-4f2d-aa61-d5ec3663d917",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "c3463458-116a-4ac9-b439-0c6e3b2fb8c5",
+      "id": "27c9b24e-f708-4bff-9b54-9ee8fa776b7b",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string"
     },
     {
-      "id": "a399e678-67f5-4d84-86ea-f2c02c93e8db",
+      "id": "3b961ec4-caab-4e0c-9d52-c130d40527a8",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "2c3f1d52-cedb-4dab-9997-52d293c32097",
+      "id": "eb1e95fd-737e-4cd2-8d0d-5d33b351f0ed",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "44a2140a-0b37-48df-a1ce-865f6bb353f8",
+      "id": "20b675a1-e668-44c6-8433-2c7b405cd9cd",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "5ffd7281-d6cd-4d12-9b8b-fc2f103ddc83",
+      "id": "1c76a1c0-46a9-41c3-a7ea-df127f916ef3",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "8f5b2952-67e9-4460-ba22-de22cf044d31",
+      "id": "f478f194-c960-4277-945c-33f429773025",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
