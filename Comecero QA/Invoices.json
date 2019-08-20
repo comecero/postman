@@ -7130,64 +7130,6 @@
           "response": []
         },
         {
-          "name": "Get Invoice",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
-                "exec": [
-                  "tests[\"Invoice fetched successfully\"] = responseCode.code === 200;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Total remaining is OK\"] = data.total_remaining === 20;",
-                  "tests[\"Total payments is OK\"] = data.total_payments === 25;",
-                  "tests[\"Payment status is OK\"] = data.payment_status === 'unpaid';"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "exec": [
-                  "var date = new Date();",
-                  "date.setMonth(date.getMonth() + 1);",
-                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "b5ff461c-45ce-4c5a-b1ad-cb0ba4594f21",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{invoice_url}}"
-          },
-          "response": []
-        },
-        {
           "name": "Pay Partial Invoice (3)",
           "event": [
             {
@@ -7243,6 +7185,64 @@
               "raw": "{\r\n   \"capture\": true,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
             },
             "url": "{{invoice_url}}/payments"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f73e074e-0051-4e94-82f4-e0517427cadc",
+                "exec": [
+                  "tests[\"Invoice fetched successfully\"] = responseCode.code === 200;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total remaining is OK\"] = data.total_remaining === 20;",
+                  "tests[\"Total payments is OK\"] = data.total_payments === 25;",
+                  "tests[\"Payment status is OK\"] = data.payment_status === 'unpaid';"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "b5ff461c-45ce-4c5a-b1ad-cb0ba4594f21",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{invoice_url}}"
           },
           "response": []
         },
@@ -8257,43 +8257,43 @@
   ],
   "variable": [
     {
-      "id": "27bd5e0b-16c3-4c8e-98a7-7d7eff3a28b7",
+      "id": "22a1c856-afaf-4469-b793-cb8985a33b4f",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "c9a2931d-00cb-4902-b5c3-4415aeece9ff",
+      "id": "c7cc3726-dc5e-4a81-8be9-b9d043359475",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string"
     },
     {
-      "id": "315f8d84-65c5-4392-86d5-a8a53436ee1e",
+      "id": "47d7d655-0c55-40a9-823b-7396485787b7",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "ac0ee4a9-b820-4e07-ba42-b97149cadd6e",
+      "id": "5b1866b8-4ca4-4d4b-ab55-92ad4b3fc488",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "e1f1eaf2-9d0e-4d34-a6f1-035d01d5ed46",
+      "id": "18d3c740-63b2-4af3-b043-6e0805861c3b",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "d5340f43-610c-4746-93da-62168e0e48c7",
+      "id": "f94410b6-6bdf-436a-a55b-be38d1c7584f",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "f17c0358-4625-4c67-a277-5632797dd6fb",
+      "id": "830dc713-8a1d-4186-ab10-ea2867be5544",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
