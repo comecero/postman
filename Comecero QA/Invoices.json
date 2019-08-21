@@ -7486,64 +7486,6 @@
           "response": []
         },
         {
-          "name": "Pay Partial Invoice (1)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
-                "exec": [
-                  "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
-                  "var data = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Total is OK\"] = data.total === 15;",
-                  "tests[\"Status is OK\"] = data.status === \"pending\";",
-                  "tests[\"No order created\"] = data.order === null;"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
-                "exec": [
-                  "var date = new Date();",
-                  "date.setMonth(date.getMonth() + 1);",
-                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "51989733-9e8e-4d98-abe8-4143d9569a56",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n   \"total\": 15,\r\n   \"capture\": false,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
-            },
-            "url": "{{invoice_url}}/payments"
-          },
-          "response": []
-        },
-        {
           "name": "Get Invoice",
           "event": [
             {
@@ -7598,6 +7540,64 @@
               "raw": ""
             },
             "url": "{{invoice_url}}"
+          },
+          "response": []
+        },
+        {
+          "name": "Pay Partial Invoice (1)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "569bae8a-9c34-4322-a80a-d598b789334d",
+                "exec": [
+                  "tests[\"Payment processed successfully\"] = responseCode.code === 201;",
+                  "var data = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Total is OK\"] = data.total === 15;",
+                  "tests[\"Status is OK\"] = data.status === \"pending\";",
+                  "tests[\"No order created\"] = data.order === null;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4953e1ce-d1dd-48de-af8f-1305445dc4e8",
+                "exec": [
+                  "var date = new Date();",
+                  "date.setMonth(date.getMonth() + 1);",
+                  "pm.globals.set(\"date_due\", date.toISOString().substring(0, 10));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "51989733-9e8e-4d98-abe8-4143d9569a56",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"total\": 15,\r\n   \"capture\": false,\r\n   \"payment_method\": {\r\n     \"save\": false,\r\n     \"type\": \"credit_card\",\r\n     \"data\": {\r\n         \"number\": \"4444555566661111\",\r\n         \"cvv\": 123,\r\n         \"exp_month\": 12,\r\n         \"exp_year\": 2025\r\n      }\r\n   }\r\n}\r\n"
+            },
+            "url": "{{invoice_url}}/payments"
           },
           "response": []
         },
@@ -8257,43 +8257,43 @@
   ],
   "variable": [
     {
-      "id": "dd8ecc5b-b88d-41eb-9420-b7e85dd19787",
+      "id": "6f8faade-0575-432e-b298-ec5f47c50db5",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "cf0cb773-55fc-4f26-bd8d-84aa63e67f90",
+      "id": "2a12b00b-c89e-4e5b-bf65-08ce1a0a4fc9",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string"
     },
     {
-      "id": "22b84079-bd2b-426e-9b95-0b9d77d8e097",
+      "id": "6bc3ec0e-f0ec-4e3d-b044-58223ab2475b",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "5e18810d-caa0-4f02-bc38-aedecde4d8ce",
+      "id": "9b49e34e-3ccf-42de-95fe-1de2e4709445",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "f9570828-2de7-481c-91e5-33870103a276",
+      "id": "15e53b93-b941-410c-9265-b42d56e15b04",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "cce003f8-82aa-4928-bf83-9b171f22fa18",
+      "id": "9a02c09e-3951-45eb-bd5b-245e70ccb080",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "368c7f02-9844-4e73-9c8c-a0f6d1648586",
+      "id": "f8b66025-c443-436c-8c15-0c186243495b",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
