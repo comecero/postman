@@ -10221,7 +10221,7 @@
                   "tests[\"Status is 200\"] = responseCode.code === 200;",
                   "",
                   "var date = new Date();",
-                  "var waitForMinutes = 3;",
+                  "var waitForMinutes = 4;",
                   "",
                   "tests[\"Waiting a bit more than \" + waitForMinutes + \" minutes for invoice payments to occur. Timer start: \" + date.toString()] = true;",
                   "",
@@ -10263,10 +10263,6 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"promotion_code\": \"{{promotion_code}}\",\r\n  \"currency\": \"USD\",\r\n   \"items\":[\r\n      {\r\n         \"product_id\":\"{{product_id}}\",\r\n         \"quantity\":1\r\n      }        \r\n   ],\r\n  \"customer\": {\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"billing_address\": {\r\n        \"address_1\": \"{{address_1}}\",\r\n        \"city\": \"{{city}}\",\r\n        \"state_prov\": \"{{state_prov}}\",\r\n        \"postal_code\": \"{{postal_code}}\",\r\n        \"country\": \"{{country}}\"\r\n    }   \r\n  }   \r\n}"
-            },
             "url": "https://{{host}}/api/v1/subscriptions",
             "description": "- This set of tests expects you to use the [Customer Data Subscriptions](https://docs.google.com/spreadsheets/d/14wnj6iScmBw6jANOGR4Ki71uVzn5dZgE0KFAGEbz6LI/edit#gid=0) data collection in the runner.\n- This set of tests expects you to be using the Base Account."
           },
@@ -14457,55 +14453,55 @@
   ],
   "variable": [
     {
-      "id": "84c00d9d-7d0a-4526-a037-7a3109bdf938",
+      "id": "bc5f653c-be84-4ee4-93fd-c5f2fdf8844b",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "7d8c25db-de99-4856-ae9d-1278b32b712e",
+      "id": "619494f6-d0d9-4618-ae2b-fc89df045000",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string"
     },
     {
-      "id": "9ad1c739-14cf-4e46-926b-121ed411095c",
+      "id": "e663f3c0-ecef-4dbb-9d6e-e868f960192d",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "2e173550-2db5-4d96-a39c-73a55c58a50f",
+      "id": "b66e8636-8208-4139-9cac-44c3c0f4c027",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "fdc9d902-8970-44f6-8c6e-a080a0ba2f01",
+      "id": "25b99ef6-d8cc-4cd6-8347-ce3830e48c5f",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "16f1b912-5c31-4fa6-9da8-c0dbc57073af",
+      "id": "9e975091-921e-4f43-8a5d-3c118c92d7c5",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "ada3a523-dcdd-4297-a1fc-238a2316306a",
+      "id": "58692f82-a2a2-4786-acf8-81df7bac9628",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "3ade437c-3f1b-42e9-b7da-92a9ee331ae4",
+      "id": "2d1a0cec-ae2d-446c-ad8f-8a0ecbd6348c",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
     },
     {
-      "id": "52d25095-bfcd-4410-8b63-50d1fb6c8d16",
+      "id": "b4cf3503-2df2-4506-af25-1505b98c167e",
       "key": "promotion_code",
       "value": "",
       "type": "string"
