@@ -933,6 +933,22 @@
           "                trial_interval_unit = \"hour\";",
           "                trial_interval_description = \"1 hour\";",
           "                break;",
+          "            case \"Two Hourly Subscription\":",
+          "                billing_interval = 2;",
+          "                billing_interval_unit = \"hour\";",
+          "                billing_interval_description = \"2 hours\";",
+          "                trial_interval = null;",
+          "                trial_interval_unit = null;",
+          "                trial_interval_description = null;",
+          "                break;",
+          "            case \"Two Hourly Subscription with Trial\":",
+          "                billing_interval = 2;",
+          "                billing_interval_unit = \"hour\";",
+          "                billing_interval_description = \"2 hours\";",
+          "                trial_interval = 1;",
+          "                trial_interval_unit = \"hour\";",
+          "                trial_interval_description = \"1 hour\";",
+          "                break;                ",
           "             case \"5 Minute Subscription\":",
           "                billing_interval = 5;",
           "                billing_interval_unit = \"minute\";",
@@ -1002,85 +1018,85 @@
   ],
   "variable": [
     {
-      "id": "49887d13-7e10-4894-9c03-69d3efd88b77",
+      "id": "a8df416f-1701-4c3b-a581-e81f7ef844e2",
       "key": "name",
       "value": "James Smith",
       "type": "string"
     },
     {
-      "id": "76340398-6ad7-45c7-a775-e3ffc98a5efb",
+      "id": "7c6bd950-59fe-4c05-bcb4-2a1d1d29768d",
       "key": "address_1",
       "value": "648 Broad St",
       "type": "string"
     },
     {
-      "id": "7f9a1d77-c32f-48cb-bd7f-8809cd9fc89c",
+      "id": "24e19853-3206-4621-a412-db7e899c9720",
       "key": "city",
       "value": "Westerville",
       "type": "string"
     },
     {
-      "id": "21874896-1a10-4197-91c8-ea9b440449ae",
+      "id": "9b57c19e-6dd7-44ef-8483-3c69c5de59ce",
       "key": "state_prov",
       "value": "OH",
       "type": "string"
     },
     {
-      "id": "553630e5-6d12-4068-93be-0d27ccf670e6",
+      "id": "0b0eb5eb-fff2-4f33-ae73-1e947ff0a019",
       "key": "postal_code",
       "value": "43081",
       "type": "string"
     },
     {
-      "id": "7a0cd6f6-189c-4902-a326-0cc97a1e2c93",
+      "id": "b35966a8-987c-4770-9e69-a64e12fb1ff9",
       "key": "country",
       "value": "US",
       "type": "string"
     },
     {
-      "id": "88a58df9-a492-42eb-8ab2-60d87dee14fd",
+      "id": "dafa870c-f21d-4a5e-9dfd-09e94a690656",
       "key": "phone",
       "value": "614-555-0191",
       "type": "string"
     },
     {
-      "id": "ccc8049b-8950-40d8-bd93-9b93c8100283",
+      "id": "f53b649e-18df-4d78-b391-14552b958e03",
       "key": "product_id",
       "value": "physical-sub.test",
       "type": "string"
     },
     {
-      "id": "2b889cff-a090-4080-a8e7-8db561d883e7",
+      "id": "fa51edc6-3d18-4708-bf6e-56d23635fd3b",
       "key": "promotion_code",
       "value": "",
       "type": "string"
     },
     {
-      "id": "c5ec2588-6889-4d78-b2cf-fbe0e250d2dd",
+      "id": "97cdd757-bcd4-4f60-95fc-ae4dd772d80e",
       "key": "expected_item_price",
       "value": "20",
       "type": "string"
     },
     {
-      "id": "cb4ff606-12b3-4406-85c8-c3b0075c8de9",
+      "id": "d80d5fb8-1443-4201-b873-1b43cf7cbe86",
       "key": "expected_item_discount",
       "value": "0",
       "type": "string"
     },
     {
-      "id": "925647bb-c014-4bd2-9bb3-a78934294edb",
+      "id": "615e172b-8352-4ec4-89e0-8e19ee1eb9cb",
       "key": "expected_subscription_price",
       "value": "20",
       "type": "string"
     },
     {
-      "id": "aa5a6ade-145a-4888-a74e-f8b4a4e9600d",
+      "id": "52687cdb-66bd-438f-b1db-b700dd4a90de",
       "key": "expected_discount_apply_count",
       "value": "",
       "type": "string"
     },
     {
-      "id": "9774c25a-d9d5-4c1f-ba7e-a92946022bc6",
+      "id": "0afecf92-d79c-4df5-948c-d5d1f40caf59",
       "key": "expected_subscription_discount",
       "value": "0",
       "type": "string"
